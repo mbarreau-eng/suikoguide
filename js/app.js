@@ -106,6 +106,32 @@ function setupEventListeners() {
       toggleProgress(cat, key);
     }
   });
+
+  // Initialize floating tooltip div
+  if (typeof initEnemyTooltip === 'function') {
+    initEnemyTooltip();
+  }
+
+  // GLOBAL HOVER DELEGATION FOR ENEMIES/BOSSES
+  document.addEventListener('mouseover', (e) => {
+    // Looks for elements with class .enemy-chip or attribute data-enemy-name
+    const target = e.target.closest('.enemy-chip, [data-enemy-name]');
+    if (!target) return;
+
+    const enemyName = target.getAttribute('data-enemy-name') || target.textContent;
+    showEnemyTooltip(enemyName, e);
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    positionEnemyTooltip(e);
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    const target = e.target.closest('.enemy-chip, [data-enemy-name]');
+    if (target) {
+      hideEnemyTooltip();
+    }
+  });
 }
 
 

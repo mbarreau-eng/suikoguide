@@ -965,3 +965,32 @@ body {
 .stat-item.stat-level.enemy-level .stat-label {
   color: #3498db;
 }
+
+/* Floating Enemy Card Tooltip Container */
+#enemy-tooltip {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none; /* Prevents cursor flicker */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+  transform: translateY(6px);
+  max-width: 650px;
+  width: 90vw;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+}
+
+/* Active / Visible state */
+#enemy-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Ensure enemy card inside floating container is compact */
+#enemy-tooltip .boss-card {
+  margin: 0;
+  background: rgba(15, 15, 22, 0.96);
+  backdrop-filter: blur(8px);
+}

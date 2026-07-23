@@ -85,11 +85,12 @@ function renderBadges(dataObj) {
         if (isBoss) badgeClass += ' badge-boss';
         if (cat.trackable) badgeClass += ' badge-trackable';
         if (checked) badgeClass += ' checked';
+        if(cat.key === 'enemies') badgeClass += ' enemy-chip ';
 
         const icon = isBoss ? '💀 ' : (checked ? '✔ ' : '');
         const trackAttrs = cat.trackable ? `data-track-cat="${cat.key}" data-track-key="${label}" title="Click to check off"` : '';
 
-        return `<span class="${badgeClass}" ${trackAttrs}>${icon}${label}</span>`;
+        return `<span data-enemy-name="${cat.key === 'enemies' ? label : ''}" class="${badgeClass}" ${trackAttrs}>${icon}${label}</span>`;
       }).join('');
 
       html += `<div class="badge-group"><span class="badge-label">${cat.label}:</span> ${badges}</div>`;
@@ -207,4 +208,66 @@ function formatStatLabel(key) {
   return key
     .replace(/_/g, ' ')
     .replace(/\b\w/g, l => l.toUpperCase());
+}
+
+// 1. Ensure floating element exists in DOM
+function initEnemyTooltip() {
+  if (!document.getElementById('enemy-tooltip')) {
+    const tooltip = document.createElement('div');
+    tooltip.id = 'enemy-tooltip';
+    document.body.appendChild(tooltip);
+  }
+}
+
+// 2. Show Tooltip
+function showEnemyTooltip(enemyName, mouseEvent) {
+  const tooltip = document.getElementById('enemy-tooltip');
+  if (!tooltip || !guideData.enemies) return;
+
+  // Clean name lookup (removes leading emojis or icons)
+  const cleanName = enemyName.replace(/^[\s★⚔️👾]+/g, '').trim();
+  const enemyData = guideData.enemies[0][cleanName];
+
+  if (!enemyData) return; // If enemy isn't in database, do nothing
+
+  // Render using your existing card generator!
+  tooltip.innerHTML = renderEnemyCard(cleanName, enemyData);
+  tooltip.classList.add('visible');
+
+  positionEnemyTooltip(mouseEvent);
+}
+
+// 3. Move Tooltip with Cursor + Viewport Safety
+function positionEnemyTooltip(e) {
+  const tooltip = document.getElementById('enemy-tooltip');
+  if (!tooltip || !tooltip.classList.contains('visible')) return;
+
+  const offset = 16; // Margin from cursor
+  let left = e.clientX + offset;
+  let top = e.clientY + offset;
+
+  const rect = tooltip.getBoundingClientRect();
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  // Flip horizontally if overflow right
+  if (left + rect.width > windowWidth - 10) {
+    left = e.clientX - rect.width - offset;
+  }
+
+  // Flip vertically if overflow bottom
+  if (top + rect.height > windowHeight - 10) {
+    top = e.clientY - rect.height - offset;
+  }
+
+  tooltip.style.left = `${Math.max(10, left)}px`;
+  tooltip.style.top = `${Math.max(10, top)}px`;
+}
+
+// 4. Hide Tooltip
+function hideEnemyTooltip() {
+  const tooltip = document.getElementById('enemy-tooltip');
+  if (tooltip) {
+    tooltip.classList.remove('visible');
+  }
 }
