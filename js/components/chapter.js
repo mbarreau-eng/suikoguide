@@ -5,6 +5,9 @@ import { updateProgressBar } from './sidebar.js';
 export function renderCurrentChapter() {
   const main = document.getElementById('main-content');
   const chapter = AppState.getCurrentChapter();
+
+  console.log("Active Chapter Data:", chapter);
+
   if (!main || !chapter) return;
 
   const completedTasks = Storage.getCompletedTasks();
