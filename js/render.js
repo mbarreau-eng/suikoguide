@@ -306,10 +306,21 @@ function renderBossCard(bossName) {
 
 // Render Individual Normal Enemy Card
 // Render Normal Enemy Card Component (Matches Boss Card Structure)
+// Render Card Component for Enemies & Bosses
 function renderEnemyCard(name, enemyData) {
-  const imgPath = `./img/enemies/${enemyData.picture}`;
+  // 1. Determine if this entry is a Boss
+  const isBoss = String(enemyData.type || '').toLowerCase() === 'boss';
 
-  // 1. Primary Stats (Level first to fill Column 1 across 2 rows)
+  // 2. Dynamic Image Path & Styling based on Type
+  const imgFolder = isBoss ? 'bosses' : 'enemies';
+  const imgPath = isBoss ? `./img/${imgFolder}/${name.toLowerCase()}.gif` : `./img/${imgFolder}/${enemyData.picture}`;
+
+  const cardClass = isBoss ? 'boss-card' : 'boss-card enemy-card-style';
+  const badgeText = isBoss ? '⚔️ BOSS' : '👾 ENEMY';
+  const badgeClass = isBoss ? 'boss-badge' : 'boss-badge enemy-badge';
+  const levelClass = isBoss ? 'stat-item stat-level' : 'stat-item stat-level enemy-level';
+
+  // 3. Primary Stats (Level first for Column 1 spanning 2 rows)
   const statsList = [
     { key: 'level', label: 'LEVEL', val: enemyData.Level },
     { key: 'hp', label: 'HP', val: enemyData.HP },
@@ -321,18 +332,18 @@ function renderEnemyCard(name, enemyData) {
     { key: 'luck', label: 'LUCK', val: enemyData.luck }
   ].filter(s => s.val !== undefined && s.val !== null);
 
-  // 2. Process Weaknesses
+  // 4. Process Weaknesses
   let weaknesses = [];
   if (Array.isArray(enemyData.weaknesses) && enemyData.weaknesses.length > 0) {
     const rawWeaknesses = enemyData.weaknesses[0];
     Object.entries(rawWeaknesses).forEach(([elem, value]) => {
-    
+      
         weaknesses.push({ element: elem, affinity: value });
       
     });
   }
 
-  // 3. Process Drops
+  // 5. Process Drops
   let drops = [];
   if (Array.isArray(enemyData.drop)) {
     drops = enemyData.drop.map(item => ({
@@ -341,18 +352,15 @@ function renderEnemyCard(name, enemyData) {
     }));
   }
 
-  let bits = null;
-  bits = enemyData.bits;
-  
   return `
-    <div class="boss-card enemy-card-style">
+    <div class="${cardClass}">
       <div class="boss-header">
-        
+        <span class="${badgeClass}">${badgeText}</span>
         <h3 class="boss-name">${name}</h3>
       </div>
 
       <div class="boss-body">
-        <!-- Enemy GIF Sprite -->
+        <!-- GIF Sprite (Folder depends on isBoss) -->
         <div class="boss-portrait-container">
           <img 
             src="${imgPath}" 
@@ -362,10 +370,10 @@ function renderEnemyCard(name, enemyData) {
           />
         </div>
 
-        <!-- 5-Column Grid: Level (Col 1, 2 Rows) + 8 Stats (Cols 2-5, 2 Rows) -->
+        <!-- 5-Column Grid -->
         <div class="boss-stats-grid">
           ${statsList.map(s => `
-            <div class="stat-item ${s.key === 'level' ? 'stat-level enemy-level' : ''}">
+            <div class="${s.key === 'level' ? levelClass : 'stat-item'}">
               <span class="stat-label">${s.label}</span>
               <span class="stat-value">${s.val}</span>
             </div>
@@ -386,19 +394,15 @@ function renderEnemyCard(name, enemyData) {
           </div>
         </div>
       ` : ''}
-
-        <!-- Bits -->
-  
+        
         <div class="boss-drops">
           <span class="drop-title">💰 Bits:</span>
-          
+         
             <span class="drop-chip">
-              ${bits}
+              ${enemyData.bits} 
             </span>
-          
+
         </div>
-
-
 
       <!-- Drops -->
       ${drops.length > 0 ? `
@@ -425,7 +429,7 @@ function renderEnemiesView() {
   // Filter enemies where type is 'normal' (or not explicitly marked as boss)
   const normalEnemies = Object.entries(allEnemies).filter(([_, data]) => {
     const type = String(data.type || '').toLowerCase();
-    return type === 'normal' || (type !== 'boss' && type !== '');
+    return type === 'normal' || type === 'boss';
   });
 
   main.innerHTML = `
