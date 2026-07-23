@@ -456,7 +456,54 @@ const guideData = {
           "reward": "1500 Bits",
           "picture": "golem.gif",
           "text":"Have Gremio and Pahn use the Unite command to perform their Talisman Attack, and have Hero, Cleo, and Ted attack. This battle should be really easy if you took  the time to travel to Sarady to get one of those runes. Even if you didn't, it isn't too terribly hard. "
+        },
+        {
+          "type":"plain",
+          "text":"After the battle, Luc is impressed that you beat his magic, recognizing you as the Imperial Guards; he was just testing you to make sure you were the real thing. Follow him into the tower, then follow the path, climbing the stairs to the top. When you reach the top, talk to Leknaat, and she'll ask you to follow her to get the Astral Conclusions. Follow her into the next room, and when she gives them to you, she seems surprised; she can see the future, and she says that she sees you bearing a huge burden in the flow of destiny, and that you will experience much pain and sorrow, but you'll be able to handle it. You'll finally receive the [_ASTRAL CONCLUSIONS_]."
+        },
+        {
+          "type":"plain",
+          "text":"Leave the room and approach your party. As you prepare to leave, Leknaat will come back in and decide to have Luc take you to the shore. Before you leave, Leknaat will give Cleo a [_FIRE CRYSTAL_] to use to protect you. Luc will then transport you back to the shore with Futch, where you'll fly back to Gregminster after some bickering."
+        },
+        {
+          "type":"place",
+        "text":"Gregminster",
+        "party": [
+              {
+                "level": "13",
+                "name": "Hero"
+              },
+              {
+                "level": "05",
+                "name": "Gremio"
+              },
+              {
+                "level": "05",
+                "name": "Pahn"
+              },
+              {
+                "level": "05",
+                "name": "Cleo"
+              },
+              {
+                "level": "09",
+                "name": "Ted"
+              }
+            ],
+        },
+        {
+          "type":"plain",
+          "text":"Head into the castle and report to Commander Kraze. He decides that you're not totally useless, so he gives you another assignment; now we've got to go east of Gregminster to a town called Rockland and find out why they're not paying their taxes. To make it even more fun, we have to take his idiotic assistant, Kanaan, with us to talk to the town's head honcho, Grady. After Kanaan joins you, leave the palace."
+        },
+        {
+          "type":"plain",
+          "text":"Head to the lower-right of Gregminster to the Rune Shop and put the Fire Crystal on Cleo. To be able to actually use the Fire Rune, you'll need to head over to Marie's Inn and rest there to replenish your MP; you should be at least at level 4, so Cleo should have 2 available level 1 MP to use. If you don't rest, your MP won't be replenished, and you won't be able to use it."
+        },
+        {
+          "type":"plain",
+          "text":"Before going to Rockland, I recommend going south to Lenankamp and upgrading Gremio's and Cleo's weapons and armor, as well as fighting for a little while on the World Map before continuing, if you feel that you need to. When you're ready, head east of Gregminster to Rockland."
         }
+      
       ]
     },
     {

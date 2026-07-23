@@ -8,7 +8,7 @@ function renderSidebarControls() {
     controlsContainer = document.createElement('div');
     controlsContainer.id = 'sidebar-controls';
     controlsContainer.className = 'sidebar-controls';
-    sidebar.insertBefore(controlsContainer, sidebar.firstChild);
+    sidebar.insertBefore(controlsContainer, sidebar.lastChild);
   }
 
   const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
@@ -19,24 +19,46 @@ function renderSidebarControls() {
   `;
 }
 
+// Render Sidebar Vertical Accordion
 function renderSidebar() {
-  const container = document.getElementById('chapter-list-container');
-  if (!container) return;
+  const sidebar = document.getElementById('sidebar-nav') || document.getElementById('sidebar');
+  if (!sidebar) return;
 
-  container.innerHTML = '';
+  const chapters = guideData.chapters || [];
 
-  if (!guideData || !guideData.chapters) return;
+  sidebar.innerHTML = `
+    <nav class="sidebar-accordion">
+      <!-- 1. Walkthrough Accordion Group -->
+      <div class="accordion-group expanded" id="group-walkthrough">
+        <button class="accordion-toggle" id="toggle-walkthrough">
+          <span>📖 Walkthrough</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        
+        <div class="accordion-menu" id="chapter-sub-menu">
+          ${chapters.map(ch => {
+            const label = typeof getChapterLabel === 'function' ? getChapterLabel(ch) : `Chapter ${ch.id}`;
+            const isActive = String(ch.id) === String(currentChapterId);
+            return `
+              <a href="#" class="nav-item ${isActive ? 'active' : ''}" data-chapter-id="${ch.id}">
+                ${label}
+              </a>
+            `;
+          }).join('')}
+        </div>
+      </div>
 
-  guideData.chapters.forEach(ch => {
-    const li = document.createElement('li');
-    li.className = `chapter-item ${ch.id === currentChapterId && activeTab === 'chapters' ? 'active' : ''}`;
-    li.onclick = () => selectChapter(ch.id);
-    li.innerHTML = `
-      <span class="chapter-num">#${ch.id}</span>
-      <span>${ch.title}</span>
-    `;
-    container.appendChild(li);
-  });
+      <!-- 2. Enemies View Button -->
+      <button class="nav-btn-main" data-view="enemies">
+        <span>👾 Enemies / Bestiary</span>
+      </button>
+
+      <!-- 3. Recruits View Button -->
+      <button class="nav-btn-main" data-view="recruits">
+        <span>★ Recruits</span>
+      </button>
+    </nav>
+  `;
 }
 
 function renderContent() {
@@ -220,7 +242,6 @@ function renderBossCard(bossName) {
   const statsList = [
     { key: 'level', label: 'LEVEL', val: bossData.Level },
     { key: 'hp', label: 'HP', val: bossData.HP },
-    { key: 'potch', label: 'POTCH', val: bossData.bits ? `${bossData.bits}` : null },
     { key: 'power', label: 'POWER', val: bossData.power },
     { key: 'defense', label: 'DEFENSE', val: bossData.defense },
     { key: 'speed', label: 'SPEED', val: bossData.speed },
@@ -234,12 +255,12 @@ function renderBossCard(bossName) {
   if (Array.isArray(bossData.weaknesses) && bossData.weaknesses.length > 0) {
     const rawWeaknesses = bossData.weaknesses[0];
     Object.entries(rawWeaknesses).forEach(([elem, value]) => {
-      if (value && value.trim() !== '') {
+
         weaknesses.push({
           element: elem,
           affinity: value
         });
-      }
+      
     });
   }
 
@@ -283,7 +304,7 @@ function renderBossCard(bossName) {
           <div class="affinity-chips">
             ${weaknesses.map(w => `
               <span class="affinity-chip affinity-${w.affinity.toLowerCase()}">
-                ${w.element}: <strong>${w.affinity}</strong>
+                ${w.element} <strong>${w.affinity}</strong>
               </span>
             `).join('')}
           </div>
@@ -421,7 +442,7 @@ function renderEnemyCard(name, enemyData) {
 
 // Render Main Enemies View
 function renderEnemiesView() {
-  const main = document.getElementById('main-container');
+  const main = document.getElementById('main-content');
   if (!main) return;
 
   const allEnemies = guideData.enemies[0] || {};
@@ -449,6 +470,7 @@ function renderEnemiesView() {
 
 // Render Active Walkthrough Chapter
 function renderCurrentChapter() {
+    
   const main = document.getElementById('main-content');
   if (!main) return;
 
@@ -462,118 +484,6 @@ function renderCurrentChapter() {
     return;
   }
 
-  // Helpers & state
-  const chapterLabel = typeof getChapterLabel === 'function' ? getChapterLabel(chapter) : `Chapter ${chapter.id}`;
-  const completedTasks = typeof getCompletedTasks === 'function' ? getCompletedTasks() : [];
-
-  // Data normalization
-  const partyList = chapter.party || chapter.team || chapter.enemies || [];
-  const recruitsList = chapter.recruits || chapter.stars || [];
-  const bossesList = chapter.bosses || [];
-  const mainSections = chapter.sections || chapter.content || chapter.paragraphs || [];
-  const topText = chapter.text || chapter.summary || chapter.overview || '';
-
-  // 2. Build HTML Content
-  main.innerHTML = `
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb">
-      <a href="#">Home</a> &gt; <span>${chapterLabel}</span>
-    </nav>
-
-    <!-- Header Card -->
-    <section class="chapter-header-card">
-      <div class="chapter-number">${chapterLabel}</div>
-      <h1 class="chapter-title">${chapter.title || 'Untitled Chapter'}</h1>
-      ${topText ? `<p style="margin-top: 8px; color: var(--text-main); line-height: 1.5;">${topText}</p>` : ''}
-    </section>
-
-    <!-- Party / Enemies & Recruits Card -->
-    ${(partyList.length > 0 || recruitsList.length > 0) ? `
-      <section class="notice-card" style="margin-bottom: 20px;">
-        ${partyList.length > 0 ? `
-          <div>
-            <strong>Enemies / Encountered:</strong>
-            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px;">
-              ${partyList.map(m => {
-                const name = typeof m === 'object' ? m.name : m;
-                return `<span class="enemy-chip" data-enemy-name="${name}">${name}</span>`;
-              }).join('')}
-            </div>
-          </div>
-        ` : ''}
-
-        ${recruitsList.length > 0 ? `
-          <div style="${partyList.length > 0 ? 'margin-top: 12px;' : ''}">
-            <strong>Recruits Available:</strong>
-            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px;">
-              ${recruitsList.map(rec => {
-                const name = typeof rec === 'object' ? rec.name : rec;
-                const range = typeof rec === 'object' ? rec.range : null;
-                const rangeBadge = typeof renderRangeBadge === 'function' ? renderRangeBadge(range) : '';
-                return `
-                  <span class="recruit-chip">
-                    ★ ${name} ${rangeBadge}
-                  </span>
-                `;
-              }).join('')}
-            </div>
-          </div>
-        ` : ''}
-      </section>
-    ` : ''}
-
-    <!-- Embedded Boss Cards (If explicitly listed in chapter) -->
-    ${(bossesList.length > 0) ? `
-      <section class="chapter-bosses" style="margin-bottom: 20px;">
-        ${bossesList.map(b => {
-          const bossName = typeof b === 'object' ? b.name : b;
-          const enemyData = (guideData.enemies && guideData.enemies[bossName]) || (typeof b === 'object' ? b : { type: 'boss' });
-          return typeof renderEnemyCard === 'function' 
-            ? renderEnemyCard(bossName, enemyData) 
-            : '';
-        }).join('')}
-      </section>
-    ` : ''}
-
-    <!-- Main Section Content & Task Checkboxes -->
-    ${Array.isArray(mainSections) ? mainSections.map((sec, secIdx) => {
-      const secTitle = sec.title || '';
-      const secText = typeof sec === 'string' ? sec : (sec.text || sec.content || '');
-      const secTasks = sec.tasks || [];
-
-      return `
-        <section class="paragraph-block">
-          ${secTitle ? `<h3>${secTitle}</h3>` : ''}
-          ${secText ? `<p style="line-height: 1.6;">${secText}</p>` : ''}
-
-          ${secTasks.length > 0 ? `
-            <div class="task-list" style="margin-top: 12px;">
-              ${secTasks.map((task, tIdx) => {
-                const taskId = typeof task === 'object' ? task.id : `task-${chapter.id}-${secIdx}-${tIdx}`;
-                const taskText = typeof task === 'object' ? task.text : task;
-                const isChecked = completedTasks.includes(taskId);
-
-                return `
-                  <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; margin-bottom: 8px;">
-                    <input type="checkbox" class="task-checkbox" data-task-id="${taskId}" ${isChecked ? 'checked' : ''} style="margin-top: 3px;">
-                    <span style="${isChecked ? 'text-decoration: line-through; opacity: 0.6;' : ''}">${taskText}</span>
-                  </label>
-                `;
-              }).join('')}
-            </div>
-          ` : ''}
-        </section>
-      `;
-    }).join('') : ''}
-  `;
-
-  // 3. Attach interactive checkbox handlers
-  main.querySelectorAll('.task-checkbox').forEach(box => {
-    box.addEventListener('change', () => {
-      const taskId = box.getAttribute('data-task-id');
-      if (typeof toggleTaskStorage === 'function') toggleTaskStorage(taskId);
-      if (typeof updateProgressBar === 'function') updateProgressBar();
-      renderCurrentChapter();
-    });
-  });
+  main.innerHTML = ``;
+ renderChapterView(main, chapter.id);
 }
