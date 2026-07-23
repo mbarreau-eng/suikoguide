@@ -579,17 +579,25 @@ function renderMajorBattleCard(mbId) {
 
       <!-- Force Count Comparison -->
       <div class="mb-forces">
-        <div class="force-item force-us">
-          <span class="force-label">Liberation Army</span>
-          <span class="force-count">🛡️ ${countUs}</span>
-        </div>
-        <div class="force-vs">VS</div>
         <div class="force-item force-them">
           <span class="force-label">Imperial Army</span>
           <span class="force-count">⚔️ ${countThem}</span>
         </div>
+        <div class="force-vs">VS</div>
+        <div class="force-item force-us">
+          <span class="force-label">Liberation Army</span>
+          <span class="force-count">🛡️ ${countUs}</span>
+        </div>
       </div>
-
+      <div class="mb-strategy-box">
+        <div class="mb-strategy-paragraphs">
+            <p><strong>Charge vs. Bow</strong> : Both sides take losses, Bow more so.</p>
+            <p><strong>Bow vs. Magic</strong> : Magic suffers losses, loses its turn.</p>
+            <p><strong>Magic vs. Charge</strong> : Charge suffers heavy losses, loses its turn.</p>
+            <p><strong>Same vs. Same</strong> : Both sides suffer losses.</p>
+        </div>
+      </div>
+      <br />
       <!-- Tactical Strategy Paragraphs -->
       ${strategyItems.length > 0 ? `
         <div class="mb-strategy-box">
