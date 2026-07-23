@@ -31,6 +31,42 @@ const guideData = {
       "range": "NP"
     },
     {
+      "id": 6,
+      "name": "Camille",
+      "condition": "Joins automatically through the storyline.",
+      "range": "M"
+    },
+    {
+      "id": 7,
+      "name": "Tai Ho",
+      "condition": "Joins automatically through the storyline.",
+      "range": "M"
+    },
+    {
+      "id": 8,
+      "name": "Yam Koo",
+      "condition": "Joins automatically through the storyline.",
+      "range": "M"
+    },
+        {
+      "id": 9,
+      "name": "Luc",
+      "condition": "Joins automatically through the storyline.",
+      "range": "S"
+    },
+    {
+      "id": 10,
+      "name": "Sergei",
+      "condition": "Recruit at the Tavern in Kaku.",
+      "range": "S"
+    },
+    {
+      "id": 11,
+      "name": "Chandler",
+      "condition": "Recruit at the southern end of Kwaba.",
+      "range": "NP"
+    },
+    {
       "id": 40,
       "name": "Fu Su Lu",
       "condition": "Pay 10,000 bits for his meal at the Inn of the Kobold Village area of the Great Forest to recruit.",
@@ -140,6 +176,169 @@ const guideData = {
           {
           "name":"Medicine x 6",
           "Rarity":"1.96%%"
+          }
+        ]
+      },
+      "FurFur":
+      {
+        "type": "normal",
+        "picture": "furfur.gif",
+        "Level":4,
+        "HP":18,
+        "power":31,
+        "skill":5,
+        "defense":5,
+        "speed":16,
+        "magic":7,
+        "luck":5,
+        "bits":50,
+        "weaknesses":  [
+          {
+          "water":"",
+          "fire":"weak",
+          "thunder":"",
+          "earth":"",
+          "wind":"",
+          "holy":"",
+          "death":""
+          }
+        ],
+        "drop":[
+          {
+          "name":"Wooden Shoes",
+          "Rarity":"0.78%"
+          },
+          {
+            "name":"Medicine x6",
+            "Rarity":"1.04%"
+          }
+        ]
+      },
+      "Mosquito":
+      {
+        "type": "normal",
+        "picture": "mosquito.gif",
+        "Level":4,
+        "HP":17,
+        "power":30,
+        "skill":50,
+        "defense":6,
+        "speed":29,
+        "magic":0,
+        "luck":35,
+        "bits":20,
+        "weaknesses":  [
+          {
+          "water":"",
+          "fire":"weak",
+          "thunder":"",
+          "earth":"weak",
+          "wind":"",
+          "holy":"",
+          "death":""
+          }
+        ],
+        "drop":[
+          {
+          "name":"Medicine x6",
+          "Rarity":"0.65%"
+          },
+          {
+            "name":"Holy Rune",
+            "Rarity":"0.65%"
+          }
+        ]
+      },
+      "Crow":
+      {
+        "type": "normal",
+        "picture": "crow.gif",
+        "Level":4,
+        "HP":15,
+        "power":30,
+        "skill":70,
+        "defense":7,
+        "speed":27,
+        "magic":5,
+        "luck":24,
+        "bits":50,
+        "weaknesses":  [
+          {
+          "water":"",
+          "fire":"weak",
+          "thunder":"",
+          "earth":"weak",
+          "wind":"",
+          "holy":"",
+          "death":""
+          }
+        ],
+        "drop":[
+          {
+          "name":"Bandana",
+          "Rarity":"0.78%"
+          }
+        ]
+      },
+      "Red Soldier Ant":
+      {
+        "type": "normal",
+        "picture": "red_soldier_ant.gif",
+        "Level":8,
+        "HP":28,
+        "power":48,
+        "skill":18,
+        "defense":10,
+        "speed":22,
+        "magic":0,
+        "luck":3,
+        "bits":60,
+        "weaknesses":  [
+          {
+          "water":"",
+          "fire":"weak",
+          "thunder":"",
+          "earth":"",
+          "wind":"",
+          "holy":"",
+          "death":""
+          }
+        ],
+        "drop":[
+          {
+          "name":"Pointed Hat",
+          "Rarity":"1.31%"
+          }
+        ]
+      },
+      "Wild Boar":
+      {
+        "type": "normal",
+        "picture": "wild_boar.gif",
+        "Level":7,
+        "HP":60,
+        "power":65,
+        "skill":15,
+        "defense":19,
+        "speed":20,
+        "magic":0,
+        "luck":14,
+        "bits":300,
+        "weaknesses":  [
+          {
+          "water":"",
+          "fire":"",
+          "thunder":"",
+          "earth":"",
+          "wind":"",
+          "holy":"",
+          "death":""
+          }
+        ],
+        "drop":[
+          {
+          "name":"Wind Rune Piece",
+          "Rarity":"0.52%"
           }
         ]
       }
@@ -572,7 +771,13 @@ const guideData = {
     },
     {
       "id": 17,
-      "title": "Pannu Yakuta, the rising of the Liberation Army"
+      "title": "Pannu Yakuta, the rising of the Liberation Army",
+      "paragraphs":[
+        {
+          "type":"duel",
+          "id":1
+        }
+      ]
     },
     {
       "id": 18,
@@ -642,11 +847,66 @@ const guideData = {
       "picture":"pannuyakuta.gif",
       "countUs":7015,
       "countThem":9000,
+      "intro":[{
+        "Kirkis": "Kwanda Rosman! you'll pay for burning down our village!",
+        "Kwanda": "Liberation Army? Conceit! I shall destroy you on behalf of His Majesty the Emperor!",
+        "Mathiu": "This is the first battle for new Liberation Army's. Give it your best.",
+        "Viktor": "Hey! Here we go!"
+    }],
+      "outro":[{
+        "Mathiu": "Congratulations! We won!",
+        "Kwanda": "Damn you! It's time for the Burning Mirror."
+      }],
       "strategy":[
         "After some words between the two sides, the battle will begin. Major Battles work like a rock, paper,scissors type of game. You have three choices of attacks; Charge, Bow, and Magic, as well as an Others command. Charge works well against Bow, but is weak against Magic. Bow works well against Magic, but is weak against Charge. Magic works well against Charge, but is weak against Bow.",
         "As for the Others command, you'll have various skills that you can use; I ALWAYS recommend using the Thieves or Ninjas command first off (though you don't have any Ninjas just yet). They will tell you what the enemy is planning on doing, giving you the edge for the next attack.",
         "Now for the battle; use the Thieves command first off to see what they're going to do; if they fail, you'll just have to pick one of the three. I always use a Bow attack in this case, because it WILL do damage no matter what they do, even though if they charge, you'll take a bigger hit. Kwanda's Attack is a Charge attack, so use a Magic attack to counter it, and it's usually the first attack that they will use in this battle. If  your thieves tell you that they're going to do a Bow attack, use the Strategists command under Other to boost your Charge attack power, then  use the Charge command with the Commander's Team or the Lepant family. After that turn, use the Thieves command again, then do whichever is strongest, and so on and so forth until you win the battle.",
         "Like I said, if you're ever in doubt, or if the Thieves command fails, just use a Bow attack, that way you will be able to inflict damage on them no matter what. Pretty easy, isn't it?"
+      ]
+    }
+  ],
+  "duel":[
+    {
+      "id":1,
+      "me":"Hero",
+      "opp":"Kwanda Rosman",
+      "picture":"ooo1.png",
+      "super" : [
+        "At a loss, are you? But I'll show you no mercy!",
+        "Damn! I underestimated you.",
+        "Ha ha! You'll have to do better than that!",
+        "Heh, now it's my turn.",
+        "Taste the sharpness of my blade!",
+        "That's nothing!",
+        "Well done. But can you take this?",
+        "What's the matter? If you don't attack, I will!",
+        "Whoa! Pretty good, Teo's little boy. Now it's my turn!",
+        "You're better than I thought. But how about this?"
+      ],
+      "normal":[
+        "Arghhh! I underestimated you.",
+        "Can you break my invulnerable defenses?",
+        "Carefully...",
+        "Cautious, aren't you. Just like a leader.",
+        "Damn! My turn!",
+        "Don't bore me. Show me what you can do.",
+        "Forget it. You're methods are obvious.",
+        "Now it's your turn. Come on!",
+        "Pretty good. How about another one?",
+        "What now?"
+
+      ],
+      "defend": [
+        "Here we go again!                                      ",
+        "I'll get you!                                          ",
+        "I'll show you how it's done.                           ",
+        "Impossible! You can't avoid my blows!                  ",
+        "Interesting. How about another round?                  ",
+        "Take that!                                             ",
+        "The next one won't be so easy!                         ",
+        "Victory is near! I strike with all my might!           ",
+        "We're getting nowhere. Here I come!                    ",
+        "Well done. You're a worthy opponent. Now it's my turn! "
       ]
     }
   ]

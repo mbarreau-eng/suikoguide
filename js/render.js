@@ -228,6 +228,10 @@ const bgImageName = chapter.pictures || chapter.picture || chapter.image;
       el.innerHTML = renderMajorBattleCard(p.id);
     }
 
+        else if (p.type === 'duel'){
+      el.innerHTML = renderDuelCard(p.id);
+    }
+
     container.appendChild(el);
   });
   container.innerHTML += `<!-- Bottom Navigation Footer (Prev / Next Chapter) -->
@@ -564,10 +568,42 @@ function renderMajorBattleCard(mbId) {
     ? battle.strategy 
     : [battle.strategy].filter(Boolean);
 
+  const ontroItems = Array.isArray(battle.ontro) 
+    ? battle.ontro 
+    : [battle.ontro].filter(Boolean);
+
   let img = battle.picture ? `./img/major/` + battle.picture :``;
   let bgStyle = ``;
   if(img) {
     bgStyle = `background-image: linear-gradient(rgba(15, 15, 22, 0.8), rgb(15, 15, 22)), url('`+ img + `'); background-size: cover; background-position: center center;`;
+  }
+
+// Process Intro Pre-Battle Dialogue
+  let introLines = [];
+  if (Array.isArray(battle.intro)) {
+    battle.intro.forEach(item => {
+      if (typeof item === 'object' && item !== null) {
+        Object.entries(item).forEach(([speaker, line]) => {
+          if (line && String(line).trim()) {
+            introLines.push({ speaker, line: String(line).trim() });
+          }
+        });
+      }
+    });
+  }
+
+// Process Intro Pre-Battle Dialogue
+  let outroLines = [];
+  if (Array.isArray(battle.outro)) {
+    battle.outro.forEach(item => {
+      if (typeof item === 'object' && item !== null) {
+        Object.entries(item).forEach(([speaker, line]) => {
+          if (line && String(line).trim()) {
+            outroLines.push({ speaker, line: String(line).trim() });
+          }
+        });
+      }
+    });
   }
 
   return `
@@ -589,6 +625,22 @@ function renderMajorBattleCard(mbId) {
           <span class="force-count">🛡️ ${countUs}</span>
         </div>
       </div>
+
+   <!-- Pre-Battle Dialogue Intro -->
+      ${introLines.length > 0 ? `
+        <div class="mb-intro-box">
+          <h4 class="mb-intro-title">💬 Intro</h4>
+          <div class="mb-dialogue-list">
+            ${introLines.map(d => `
+              <div class="mb-dialogue-line">
+                <strong class="mb-speaker">${d.speaker}:</strong>
+                <span class="mb-quote">"${d.line}"</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+
       <div class="mb-strategy-box">
         <div class="mb-strategy-paragraphs">
             <p><strong>Charge vs. Bow</strong> : Both sides take losses, Bow more so.</p>
@@ -605,8 +657,132 @@ function renderMajorBattleCard(mbId) {
           <div class="mb-strategy-paragraphs">
             ${strategyItems.map(p => `<p>${p}</p>`).join('')}
           </div>
+        </div><br />
+      ` : ''}
+ <!-- Pre-Battle Dialogue Intro -->
+      ${outroLines.length > 0 ? `
+        <div class="mb-intro-box">
+          <h4 class="mb-intro-title">💬 Battle conclusion</h4>
+          <div class="mb-dialogue-list">
+            ${outroLines.map(d => `
+              <div class="mb-dialogue-line">
+                <strong class="mb-speaker">${d.speaker}:</strong>
+                <span class="mb-quote">"${d.line}"</span>
+              </div>
+            `).join('')}
+          </div>
         </div>
       ` : ''}
+
+    </div>
+  `;
+}
+
+//render duel block
+// Render Single Combat Duel Card
+function renderDuelCard(duelId) {
+  if (!duelId && duelId !== 0) return '';
+
+  // Look up in guideData.duel or guideData.duels
+  const duelsList = guideData.duel || guideData.duels || [];
+  const duel = duelsList.find(d => String(d.id) === String(duelId));
+
+  if (!duel) return '';
+
+  const me = duel.me || 'Hero';
+  const opp = duel.opp || 'Opponent';
+  const imgPath = duel.picture ? `./img/duels/${duel.picture}` : '';
+
+  // Helper to trim trailing whitespace from dialogue lines
+  const cleanQuotes = (arr) => Array.isArray(arr) ? arr.map(q => q.trim()).filter(Boolean) : [];
+
+  const superQuotes = cleanQuotes(duel.super);
+  const normalQuotes = cleanQuotes(duel.normal);
+  const defendQuotes = cleanQuotes(duel.defend);
+
+  let img = duel.picture ? `./img/duels/` + duel.picture :``;
+  let bgStyle = ``;
+  if(img) {
+    bgStyle = `background-image: linear-gradient(rgba(15, 15, 22, 0.8), rgb(15, 15, 22)), url('`+ img + `'); background-size: cover; background-position: center center;`;
+  }
+
+  return `
+    <div class="duel-card" style="${bgStyle}">
+      <div class="duel-header">
+        <span class="duel-badge">🗡️ DUEL</span>
+        <h3 class="duel-title">${me} vs. ${opp}</h3>
+      </div>
+
+      <!-- Duel Showcase Bar -->
+      <!--
+      <div class="duel-matchup-bar">
+        
+        <div class="duel-combatants">
+          <div class="combatant hero-side">
+            <small>Player</small>
+            <span>${me}</span>
+          </div>
+          <div class="duel-vs-badge">VS</div>
+          <div class="combatant opp-side">
+            <small>Opponent</small>
+            <span>${opp}</span>
+          </div>
+        </div>
+      </div>
+      -->
+
+      <!-- Strategy & Dialogue Reference -->
+      <div class="duel-dialogue-grid">
+        
+        <!-- 1. Super / Wild Attack (Red Warning) -->
+        ${superQuotes.length > 0 ? `
+          <div class="duel-move-block move-super">
+            <div class="move-header">
+              <span class="move-icon">🔥</span>
+              <div>
+                <strong>${opp} uses Wild Attack when he says:</strong>
+                <small class="counter-tip">Counter: 🛡️ DEFEND</small>
+              </div>
+            </div>
+            <ul class="dialogue-list">
+              ${superQuotes.map(q => `<li>"${q}"</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        <!-- 2. Normal Attack (Orange) -->
+        ${normalQuotes.length > 0 ? `
+          <div class="duel-move-block move-normal">
+            <div class="move-header">
+              <span class="move-icon">⚔️</span>
+              <div>
+                <strong>${opp} uses Attack when he says:</strong>
+                <small class="counter-tip">Counter: 🔥 WILD ATTACK</small>
+              </div>
+            </div>
+            <ul class="dialogue-list">
+              ${normalQuotes.map(q => `<li>"${q}"</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        <!-- 3. Defend (Blue) -->
+        ${defendQuotes.length > 0 ? `
+          <div class="duel-move-block move-defend">
+            <div class="move-header">
+              <span class="move-icon">🛡️</span>
+              <div>
+                <strong>${opp} Defends when he says:</strong>
+                <small class="counter-tip">Counter: ⚔️ ATTACK</small>
+              </div>
+            </div>
+            <ul class="dialogue-list">
+              ${defendQuotes.map(q => `<li>"${q}"</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+      </div>
     </div>
   `;
 }

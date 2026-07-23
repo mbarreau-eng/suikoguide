@@ -5,7 +5,7 @@ function renderRangeBadge(range) {
   const r = String(range).trim().toUpperCase();
 
   if (r === 'NP') {
-    return `<span class="range-badge range-np" title="Non-Playable / Support Staff">NP (Support)</span>`;
+    return `<span class="range-badge range-np" title="Non-Playable / Support Staff">NP</span>`;
   }
 
   // Standard combat ranges (S, M, L)
@@ -25,6 +25,7 @@ function renderRecruitCard(ref) {
             <div class="recruit-name"><span>${fallbackName}</span></div>
           </div>
         </div>
+        <div class="recruit-condition">${recruit.condition}</div>
       </div>
     `;
   }
@@ -36,7 +37,7 @@ function renderRecruitCard(ref) {
   const idPrefix = (recruit.id !== null && recruit.id !== undefined) ? `#${recruit.id} ` : '';
 
   return `
-    <div class="recruit-card ${recruited ? 'recruited' : ''}" 
+    <div class="recruit-card ${recruited ? 'recruited' : ''} ${recruit.range === 'NP' ? 'recruit-support' : ''}" 
          data-track-cat="recruits" 
          data-track-key="${recruitKey}"
          title="Click to toggle recruited status">
@@ -50,6 +51,7 @@ function renderRecruitCard(ref) {
         </div>
         <span class="recruit-status-badge">${recruited ? '✔ Recruited' : '◯ Not Recruited'}</span>
       </div>
+      <div class="recruit-condition">${recruit.condition ? recruit.condition : ''}</div>
     </div>
   `;
 }

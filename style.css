@@ -258,6 +258,10 @@ mark.item-tag {
   padding: 16px;
 }
 
+.recruit-support {
+  background-color:#8d44ad5e;
+}
+
 .recruit-name {
   font-size: 1.1rem;
   color: var(--accent-gold);
@@ -594,6 +598,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  height:2em;
 }
 
 /* Distinct Non-Playable / Support Styling (Muted Slate / Gray) */
@@ -1048,6 +1053,8 @@ body {
 /* Accordion Expanded State */
 .accordion-group.expanded .accordion-menu {
   display: flex;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .accordion-group.expanded .accordion-arrow {
@@ -1239,4 +1246,224 @@ body {
 
 .mb-strategy-paragraphs p:last-child {
   margin-bottom: 0;
+}
+
+/* Duel Container Card */
+.duel-card {
+  background: rgba(22, 14, 28, 0.92);
+  border: 1px solid #8e44ad;
+  border-left: 5px solid #9b59b6;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 24px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.duel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(155, 89, 182, 0.3);
+  padding-bottom: 10px;
+}
+
+.duel-badge {
+  background: #8e44ad;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.duel-title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #e0aaff;
+}
+
+/* Matchup Banner */
+.duel-matchup-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(155, 89, 182, 0.25);
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+}
+
+.duel-portrait {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.duel-combatants {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.combatant {
+  display: flex;
+  flex-direction: column;
+}
+
+.combatant small {
+  font-size: 0.7rem;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+.combatant span {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.hero-side span {
+  color: #3498db;
+}
+
+.opp-side span {
+  color: #e74c3c;
+}
+
+.duel-vs-badge {
+  background: rgba(241, 196, 15, 0.15);
+  color: #f1c40f;
+  border: 1px solid #f1c40f;
+  font-weight: 900;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 50%;
+}
+
+/* Move Blocks Grid */
+.duel-dialogue-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.duel-move-block {
+  border-radius: 6px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.move-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.move-icon {
+  font-size: 1.2rem;
+}
+
+.move-header strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.counter-tip {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-top: 2px;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+/* Category Specific Color Accents */
+.move-super {
+  border-left: 4px solid #3ce73c;
+  background: rgba(60, 231, 146, 0.06);
+}
+.move-super strong { color: #ff6b6b; }
+.move-super .counter-tip { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+
+.move-normal {
+  border-left: 4px solid #e67e22;
+  background: rgba(230, 126, 34, 0.06);
+}
+.move-normal strong { color: #f39c12; }
+.move-normal .counter-tip { background: rgba(231, 76, 60, 0.2); color: #ff6b6b; }
+
+.move-defend {
+  border-left: 4px solid #3498db;
+  background: rgba(52, 152, 219, 0.06);
+}
+.move-defend strong { color: #5ad1e8; }
+.move-defend .counter-tip { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
+
+/* Quotes Bullet List */
+.dialogue-list {
+  margin: 0;
+  padding-left: 20px;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--text-main, #d1d5db);
+}
+
+.dialogue-list li {
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.dialogue-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Pre-Battle Dialogue Box inside Major Battles */
+.mb-intro-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(230, 126, 34, 0.25);
+  border-left: 3px solid #e67e22;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+}
+
+.mb-intro-title {
+  margin: 0 0 10px 0;
+  color: #f39c12;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.mb-dialogue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mb-dialogue-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.mb-speaker {
+  color: #f1c40f;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.mb-quote {
+  color: var(--text-main, #e0e0e0);
+  font-style: italic;
 }
