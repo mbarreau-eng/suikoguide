@@ -3,7 +3,7 @@
   --bg-card: #1e293b;
   --bg-sidebar: #090d16;
   --border-color: #334155;
-  --accent-gold: #f59e0b;
+  --accent-gold: #f59f0b;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --tag-item-bg: #854d0e;
@@ -166,7 +166,8 @@ mark.item-tag {
   border-left: 4px solid var(--accent-gold);
   border-radius: 0 8px 8px 0;
   padding: 16px 20px;
-  margin: 20px 0;
+  margin: 20px auto;
+  width:40%;
 }
 
 .choices-title {
@@ -564,7 +565,7 @@ body {
 
 .recruit-card.recruited {
   border: 1px solid var(--accent-gold);
-  background: rgba(245, 158, 11, 0.08);
+  background: rgba(245, 159, 11, 0.336);
   box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);
 }
 
@@ -1128,4 +1129,114 @@ body {
 .nav-btn-text span {
   font-size: 0.92rem;
   font-weight: 600;
+}
+
+/* Major Battle Container */
+.major-battle-card {
+  background: rgba(28, 18, 24, 0.9);
+  border: 1px solid #d35400;
+  border-left: 5px solid #e67e22;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 24px 0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.mb-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(230, 126, 34, 0.3);
+  padding-bottom: 10px;
+}
+
+.mb-badge {
+  background: #d35400;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.mb-title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #f39c12;
+}
+
+/* Forces Comparison Bar */
+.mb-forces {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+}
+
+.force-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.force-label {
+  font-size: 0.72rem;
+  color: #aaa;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.force-count {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.force-us .force-count {
+  color: #2ecc71;
+}
+
+.force-them .force-count {
+  color: #e74c3c;
+}
+
+.force-vs {
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #e67e22;
+  opacity: 0.8;
+  padding: 0 10px;
+}
+
+/* Strategy Box */
+.mb-strategy-box {
+  background: rgba(243, 156, 18, 0.05);
+  border-left: 3px solid #f39c12;
+  border-radius: 4px;
+  padding: 14px 18px;
+}
+
+.mb-strategy-title {
+  margin: 0 0 10px 0;
+  color: #f39c12;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.mb-strategy-paragraphs p {
+  margin: 0 0 10px 0;
+  line-height: 1.6;
+  color: var(--text-main, #e0e0e0);
+  font-size: 0.92rem;
+}
+
+.mb-strategy-paragraphs p:last-child {
+  margin-bottom: 0;
 }

@@ -84,8 +84,18 @@ function renderChapterView(container, chapterId) {
   const chapterBadgesHTML = renderBadges(chapter);
   const chapterRecruitsHTML = renderRecruitsSection(chapter);
 
+// 1. Get picture filename and build background style with legibility overlay
+const bgImageName = chapter.pictures || chapter.picture || chapter.image;
+
+  if(bgImageName) {
+    header.style.backgroundImage = "linear-gradient(rgba(15, 15, 22, 0.80), rgba(15, 15, 22, 1)), url('./img/chapters/" + bgImageName + "')";
+    header.style.backgroundSize = "cover";
+    header.style.backgroundPosition = "center";
+  }
+
+
 // 1. Find Current Chapter Index & Objects
-const chapters = guideData.chapters || [];
+  const chapters = guideData.chapters || [];
   const currentIndex = chapters.findIndex(
     ch => String(ch.id) === String(currentChapterId)
   );
@@ -111,14 +121,14 @@ const chapters = guideData.chapters || [];
   }
 
   if (!chapter.paragraphs || chapter.paragraphs.length === 0) {
-    if (!chapter.party || chapter.party.length === 0) {
+    //if (!chapter.party || chapter.party.length === 0) {
       container.innerHTML += `
         <div class="empty-state">
           <h3>No walkthrough content yet</h3>
           <p>Select another chapter or update your data.js file.</p>
         </div>
       `;
-    }
+    //}
     return;
   }
 
@@ -213,6 +223,9 @@ const chapters = guideData.chapters || [];
         ${placePartyHTML}
         
       `;
+    }
+    else if (p.type === 'mb'){
+      el.innerHTML = renderMajorBattleCard(p.id);
     }
 
     container.appendChild(el);
@@ -533,4 +546,59 @@ function renderCurrentChapter() {
 
   main.innerHTML = ``;
  renderChapterView(main, chapter.id);
+}
+
+// Render Major Battle Card
+function renderMajorBattleCard(mbId) {
+  if (!mbId && mbId !== 0) return '';
+
+  const majorList = guideData.major || [];
+  const battle = majorList.find(b => String(b.id) === String(mbId));
+
+  if (!battle) return '';
+
+  const title = battle.title || 'Major Battle';
+  const countUs = battle.countUs !== undefined ? battle.countUs.toLocaleString() : '???';
+  const countThem = battle.countThem !== undefined ? battle.countThem.toLocaleString() : '???';
+  const strategyItems = Array.isArray(battle.strategy) 
+    ? battle.strategy 
+    : [battle.strategy].filter(Boolean);
+
+  let img = battle.picture ? `./img/major/` + battle.picture :``;
+  let bgStyle = ``;
+  if(img) {
+    bgStyle = `background-image: linear-gradient(rgba(15, 15, 22, 0.8), rgb(15, 15, 22)), url('`+ img + `'); background-size: cover; background-position: center center;`;
+  }
+
+  return `
+    <div class="major-battle-card" style="${bgStyle}">
+      <div class="mb-header">
+        <span class="mb-badge">⚔️ MAJOR BATTLE</span>
+        <h3 class="mb-title">${title}</h3>
+      </div>
+
+      <!-- Force Count Comparison -->
+      <div class="mb-forces">
+        <div class="force-item force-us">
+          <span class="force-label">Liberation Army</span>
+          <span class="force-count">🛡️ ${countUs}</span>
+        </div>
+        <div class="force-vs">VS</div>
+        <div class="force-item force-them">
+          <span class="force-label">Imperial Army</span>
+          <span class="force-count">⚔️ ${countThem}</span>
+        </div>
+      </div>
+
+      <!-- Tactical Strategy Paragraphs -->
+      ${strategyItems.length > 0 ? `
+        <div class="mb-strategy-box">
+          <h4 class="mb-strategy-title">📜 Battle Strategy</h4>
+          <div class="mb-strategy-paragraphs">
+            ${strategyItems.map(p => `<p>${p}</p>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `;
 }

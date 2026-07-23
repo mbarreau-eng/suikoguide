@@ -280,41 +280,6 @@ function hideEnemyTooltip() {
 function getChapterLabel(chapter) {
   if (!chapter) return 'Chapter';
 
-  // 1. If chapter is passed as a primitive (number or string)
-  if (typeof chapter !== 'object') {
-    const rawStr = String(chapter).trim();
-    if (/^\d+$/.test(rawStr)) return `Chapter ${rawStr}`;
-    const match = rawStr.match(/ch(?:apter)?[-_\s]*(\d+)/i);
-    return match ? `Chapter ${match[1]}` : rawStr;
-  }
-
-  // 2. Explicit label or custom title (e.g., "Prologue", "Epilogue")
-  if (chapter.label) return chapter.label;
-  if (chapter.number) return String(chapter.number);
-
-  // 3. Numeric ID (e.g., id: 1 -> "Chapter 1")
-  if (typeof chapter.id === 'number') {
-    return `Chapter ${chapter.id}`;
-  }
-
-  // 4. String ID normalization (e.g., id: "ch01" or "chapter-2")
-  if (typeof chapter.id === 'string') {
-    const cleanId = chapter.id.trim();
-    
-    // Pure numeric string ("1" -> "Chapter 1")
-    if (/^\d+$/.test(cleanId)) {
-      return `Chapter ${cleanId}`;
-    }
-
-    // Pattern matching ("ch1", "ch_02", "chapter-3")
-    const match = cleanId.match(/ch(?:apter)?[-_\s]*(\d+)/i);
-    if (match) {
-      return `Chapter ${parseInt(match[1], 10)}`;
-    }
-
-    // Non-standard string ID (e.g., id: "prologue")
-    return cleanId.charAt(0).toUpperCase() + cleanId.slice(1);
-  }
-
+  return `${chapter.id} - ${chapter.title}`
   return 'Chapter';
 }
