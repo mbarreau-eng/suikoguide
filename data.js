@@ -1,4 +1,8 @@
-const guideData = {
+export const guideData = {
+  meta: {
+    title: "SUIKODEN GUIDE",
+    version: "v0.1"
+  },
   "recruits": [
     {
       "id": 1,
@@ -104,7 +108,7 @@ const guideData = {
         "drop":[
           {
           "name":"Medicine x 6",
-          "Rarity":"1.96%%"
+          "Rarity":"1.96%"
           }
         ]
       }
@@ -112,7 +116,7 @@ const guideData = {
   ],
   "chapters": [
     {
-      "id": 1,
+      "id": "ch1",
       "title": "Gregminster, the Golden Capital",
       "party": [
         {
@@ -368,7 +372,7 @@ const guideData = {
       ]
     },
     {
-      "id": 2,
+      "id": "ch2",
       "title": "Magician's Island, the future in the stars",
       "party": [
         {
@@ -425,123 +429,123 @@ const guideData = {
       ]
     },
     {
-      "id": 3,
+      "id": "ch3",
       "title": "Rockland, capturing tax thieves"
     },
     {
-      "id": 4,
+      "id": "ch4",
       "title": "Gregminster, the rain's dark omen"
     },
     {
-      "id": 5,
+      "id": "ch5",
       "title": "Lenankamp, meeting a new ally"
     },
     {
-      "id": 6,
+      "id": "ch6",
       "title": "Rockland, bandits in need"
     },
     {
-      "id": 7,
+      "id": "ch7",
       "title": "Lenankamp, plans for a flaming spear"
     },
     {
-      "id": 8,
+      "id": "ch8",
       "title": "Lenankamp, the end of one era; the beginning of another"
     },
     {
-      "id": 9,
+      "id": "ch9",
       "title": "Kwaba, the Fortress of Lord Ain Gide"
     },
     {
-      "id": 10,
+      "id": "ch10",
       "title": "Seika, a new leader is born"
     },
     {
-      "id": 11,
+      "id": "ch11",
       "title": "Kaku, off to the Lake Toran Castle"
     },
     {
-      "id": 12,
+      "id": "ch12",
       "title": "Headquarters, building a new army"
     },
     {
-      "id": 13,
+      "id": "ch13",
       "title": "Kouan, the theft of the great Kirinji"
     },
     {
-      "id": 14,
+      "id": "ch14",
       "title": "Great Forest, the path to different cultures"
     },
     {
-      "id": 15,
+      "id": "ch15",
       "title": "Village of the Elves, will everything turn to ashes?"
     },
     {
-      "id": 16,
+      "id": "ch16",
       "title": "Village of the Dwarves, proving our story"
     },
     {
-      "id": 17,
+      "id": "ch17",
       "title": "Pannu Yakuta, the rising of the Liberation Army"
     },
     {
-      "id": 18,
+      "id": "ch18",
       "title": "Headquarters, three months later"
     },
     {
-      "id": 19,
+      "id": "ch19",
       "title": "Teien, looking for an antidote"
     },
     {
-      "id": 20,
+      "id": "ch20",
       "title": "Soniere, the sacrifice"
     },
     {
-      "id": 21,
+      "id": "ch21",
       "title": "Scarleticia, avenging an ally"
     },
     {
-      "id": 22,
+      "id": "ch22",
       "title": "Kirov, retrieving our final gift"
     },
     {
-      "id": 23,
+      "id": "ch23",
       "title": "Headquarters, a son surpasses his father"
     },
     {
-      "id": 24,
+      "id": "ch24",
       "title": "Lorimar, a resurgence of Viktor's past"
     },
     {
-      "id": 25,
+      "id": "ch25",
       "title": "Qlon, where the Star Dragon Sword sleeps"
     },
     {
-      "id": 26,
+      "id": "ch26",
       "title": "Neclord's Castle, the symphony ends here"
     },
     {
-      "id": 27,
+      "id": "ch27",
       "title": "Dragon's Den, allies of the skies"
     },
     {
-      "id": 28,
+      "id": "ch28",
       "title": "Seek Valley, the fallen dragon"
     },
     {
-      "id": 29,
+      "id": "ch29",
       "title": "Headquarters, filtering out a spy"
     },
     {
-      "id": 30,
+      "id": "ch30",
       "title": "Moravia, rescuing a noble and a bear"
     },
     {
-      "id": 31,
+      "id": "ch31",
       "title": "Shasarazade, the war is near its end"
     },
     {
-      "id": 32,
+      "id": "ch32",
       "title": "Gregminster, the end of the Scarlet Moon Empire"
     }
   ]
