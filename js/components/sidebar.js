@@ -5,12 +5,10 @@ export function initSidebar(onChapterChange) {
   renderSidebarNav(onChapterChange);
   updateProgressBar();
 
-  // Search Input Handler
   const searchInput = document.getElementById('walkthrough-search');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       AppState.setSearchQuery(e.target.value);
-      // Optional: Filter sidebar links or search results
     });
   }
 }
@@ -21,27 +19,26 @@ export function renderSidebarNav(onChapterChange) {
 
   navList.innerHTML = AppState.guide.chapters.map(ch => `
     <li>
-      <a href="#${ch.id}" 
-         class="nav-item ${ch.id === AppState.currentChapterId ? 'active' : ''}" 
+      <a href="#chapter-${ch.id}" 
+         class="nav-item ${ch.id == AppState.currentChapterId ? 'active' : ''}" 
          data-chapter-id="${ch.id}">
         ${ch.title}
       </a>
     </li>
   `).join('');
 
-  // Attach click events
+  // Attach click handlers
   navList.querySelectorAll('.nav-item').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const chapterId = link.getAttribute('data-chapter-id');
+      const rawId = link.getAttribute('data-chapter-id');
       
-      AppState.setChapter(chapterId);
+      AppState.setChapter(rawId);
       
-      // Update active menu link styles
       navList.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
       link.classList.add('active');
 
-      onChapterChange(chapterId);
+      onChapterChange(AppState.currentChapterId);
     });
   });
 }
@@ -49,8 +46,14 @@ export function renderSidebarNav(onChapterChange) {
 export function updateProgressBar() {
   const completed = Storage.getCompletedTasks();
   
-  // Calculate total tasks across all chapters in guideData
-  const totalTasks = AppState.guide.chapters.reduce((acc, ch) => acc + (ch.tasks ? ch.tasks.length : 0), 0) || 1;
+  // Calculate total tasks across chapters
+  const totalTasks = AppState.guide.chapters.reduce((acc, ch) => {
+    if (ch.sections) {
+      return acc + ch.sections.reduce((sAcc, sec) => sAcc + (sec.tasks ? sec.tasks.length : 0), 0);
+    }
+    return acc + (ch.tasks ? ch.tasks.length : 0);
+  }, 0) || 1;
+
   const percentage = Math.round((completed.length / totalTasks) * 100);
 
   const fill = document.getElementById('progress-fill');
