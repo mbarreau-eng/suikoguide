@@ -84,6 +84,18 @@ function renderChapterView(container, chapterId) {
   const chapterBadgesHTML = renderBadges(chapter);
   const chapterRecruitsHTML = renderRecruitsSection(chapter);
 
+// 1. Find Current Chapter Index & Objects
+const chapters = guideData.chapters || [];
+  const currentIndex = chapters.findIndex(
+    ch => String(ch.id) === String(currentChapterId)
+  );
+
+  // Determine Prev / Next Chapters
+  const prevChapter = currentIndex > 0 ? chapters[currentIndex - 1] : null;
+  const nextChapter = (currentIndex >= 0 && currentIndex < chapters.length - 1) 
+    ? chapters[currentIndex + 1] 
+    : null;
+
   header.innerHTML = `
     <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.05em; font-weight: bold;">Chapter ${chapter.id}</div>
     <h2 class="chapter-title">${chapter.title}</h2>
@@ -199,11 +211,46 @@ function renderChapterView(container, chapterId) {
         ${badgesHTML}
         ${placeRecruitsHTML}
         ${placePartyHTML}
+        
       `;
     }
 
     container.appendChild(el);
   });
+  container.innerHTML += `<!-- Bottom Navigation Footer (Prev / Next Chapter) -->
+    <footer class="chapter-nav-footer">
+      ${prevChapter ? `
+        <button class="chapter-nav-btn prev-btn" data-chapter-id="${prevChapter.id}">
+          <span class="nav-arrow">←</span>
+          <div class="nav-btn-text">
+            <small>Previous</small>
+            <span>${typeof getChapterLabel === 'function' ? getChapterLabel(prevChapter) : `Chapter ${prevChapter.id}`}</span>
+          </div>
+        </button>
+      ` : '<div></div>'}
+
+      ${nextChapter ? `
+        <button class="chapter-nav-btn next-btn" data-chapter-id="${nextChapter.id}">
+          <div class="nav-btn-text" style="text-align: right;">
+            <small>Next</small>
+            <span>${typeof getChapterLabel === 'function' ? getChapterLabel(nextChapter) : `Chapter ${nextChapter.id}`}</span>
+          </div>
+          <span class="nav-arrow">→</span>
+        </button>
+      ` : '<div></div>'}
+    </footer>`;
+ // 4. Attach Bottom Nav Button Handlers
+  document.querySelectorAll('.chapter-nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-chapter-id');
+      if (targetId) {
+        currentChapterId = targetId;
+        if (typeof renderSidebar === 'function') renderSidebar(); // Sync sidebar selection
+        renderCurrentChapter();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }); 
 }
 
 function renderRecruitsView(container) {

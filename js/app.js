@@ -249,6 +249,8 @@ function switchView(viewName) {
       break;
   }
 }
+
+
 // Start app when DOM loads
 window.addEventListener('DOMContentLoaded', initApp);
 
