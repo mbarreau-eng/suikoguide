@@ -3,48 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Suikoden Guide</title>
+  <title>Suikoden Walkthrough & Guide</title>
   <link rel="stylesheet" href="style.css">
-  <script type="module" src="js/main.js"></script>
 </head>
 <body>
 
-  <!-- STATIC FULL-WIDTH HEADER -->
-  <header class="top-header">
-    <div class="logo">SUIKODEN GUIDE</div>
-    <div class="header-actions">
-      <button id="menu-toggle-btn" class="pill-btn">☰ Menu</button>
-      <span class="version-tag">v0.1</span>
-      <button id="theme-toggle-btn" class="pill-btn">
-        <span id="theme-icon">☀️</span> <span id="theme-text">Light</span>
-      </button>
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>Suikoden Guide</h1>
+      <p>Walkthrough & 108 Stars Database</p>
     </div>
-  </header>
+    <div class="nav-tabs">
+      <button class="nav-tab active" id="tab-chapters">Chapters</button>
+      <button class="nav-tab" id="tab-recruits">Recruits</button>
+    </div>
+    <ul class="chapter-list" id="chapter-list-container"></ul>
+  </aside>
 
-  <!-- APP LAYOUT -->
-  <div class="app-layout">
-    <!-- LEFT SIDEBAR -->
-    <aside class="sidebar">
-      <div class="search-box">
-        <input type="text" id="walkthrough-search" placeholder="Search walkthrough..." class="search-input">
-      </div>
+  <main class="main-content">
+    <div class="content-container" id="main-container">
+      <!-- Dynamic Content Rendered Here -->
+    </div>
+  </main>
 
-      <h2 class="section-title">STORY PROGRESS</h2>
-      <div class="progress-wrapper">
-        <div class="progress-bar">
-          <div id="progress-fill" class="progress-fill"></div>
-        </div>
-        <div id="progress-value" class="progress-value">0%</div>
-      </div>
-
-      <nav class="sidebar-nav">
-        <ul id="sidebar-nav-list"></ul>
-      </nav>
-    </aside>
-
-    <!-- RIGHT DYNAMIC WALKTHROUGH MAIN FEED -->
-    <main class="main-content" id="main-content"></main>
-  </div>
-
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

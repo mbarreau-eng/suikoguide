@@ -1,8 +1,4 @@
-export const guideData = {
-  meta: {
-    title: "SUIKODEN GUIDE",
-    version: "v0.1"
-  },
+const guideData = {
   "recruits": [
     {
       "id": 1,
@@ -108,7 +104,7 @@ export const guideData = {
         "drop":[
           {
           "name":"Medicine x 6",
-          "Rarity":"1.96%"
+          "Rarity":"1.96%%"
           }
         ]
       }
