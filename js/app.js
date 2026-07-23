@@ -69,58 +69,7 @@ function updateThemeButtonUI(theme) {
   }
 }
 
-// Helper: Formats image path into ./img/stars/ with NO spaces
-function getImagePath(name) {
-  if (!name) return '';
-  const fileName = name.toLowerCase().replace(/\s+/g, '');
-  return `./img/stars/${fileName}.png`;
-}
 
-// Helper: Resolves a recruit reference (ID, ID object, or full object) to guideData.recruits
-function resolveRecruit(ref) {
-  if (!guideData || !guideData.recruits) return null;
-
-  let recruitId = null;
-  let customOverrides = null;
-
-  if (typeof ref === 'number' || (typeof ref === 'string' && !isNaN(Number(ref)))) {
-    recruitId = Number(ref);
-  } else if (ref && typeof ref === 'object') {
-    if (ref.id !== undefined && ref.id !== null) {
-      recruitId = Number(ref.id);
-      customOverrides = ref;
-    } else {
-      return ref; // Object without ID, treat as direct recruit object
-    }
-  }
-
-  if (recruitId !== null) {
-    const found = guideData.recruits.find(r => r.id === recruitId);
-    if (found) {
-      return customOverrides ? { ...found, ...customOverrides } : found;
-    }
-  }
-
-  return null;
-}
-
-
-
-// Helper: Builds a recruits section grid for chapters or place blocks
-function renderRecruitsSection(dataObj) {
-  if (!dataObj || !dataObj.recruits || !Array.isArray(dataObj.recruits) || dataObj.recruits.length === 0) {
-    return '';
-  }
-
-  const cardsHTML = dataObj.recruits.map(ref => renderRecruitCard(ref)).join('');
-
-  return `
-    <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border-color);">
-      <div style="font-size: 0.8rem; font-weight: bold; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">⭐ Available Recruit(s)</div>
-      <div class="recruits-grid">${cardsHTML}</div>
-    </div>
-  `;
-}
 
 // Initialize the app
 function initApp() {
@@ -143,8 +92,9 @@ function initApp() {
 }
 
 function setupEventListeners() {
-  document.getElementById('tab-chapters').addEventListener('click', () => switchTab('chapters'));
+  document.getElementById('tab-walkthrough').addEventListener('click', () => switchTab('walkthrough'));
   document.getElementById('tab-recruits').addEventListener('click', () => switchTab('recruits'));
+  document.getElementById('tab-enemies').addEventListener('click', () => switchTab('enemies'));
 
   // Global Event Delegation for interactive progress tracking clicks (Items, Recruits, etc.)
   document.getElementById('main-container').addEventListener('click', (e) => {
@@ -162,15 +112,16 @@ function setupEventListeners() {
 
 function switchTab(tab) {
   activeTab = tab;
-  document.getElementById('tab-chapters').classList.toggle('active', tab === 'chapters');
+  document.getElementById('tab-walkthrough').classList.toggle('active', tab === 'walkthrough');
   document.getElementById('tab-recruits').classList.toggle('active', tab === 'recruits');
+  document.getElementById('tab-enemies').classList.toggle('active', tab === 'enemies');
   renderSidebar();
   renderContent();
 }
 
 function selectChapter(id) {
   currentChapterId = id;
-  if (activeTab !== 'chapters') switchTab('chapters');
+  if (activeTab !== 'walkthrough') switchTab('walkthrough');
   renderSidebar();
   renderContent();
 }

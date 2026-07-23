@@ -45,8 +45,10 @@ function renderContent() {
 
   if (activeTab === 'recruits') {
     renderRecruitsView(container);
-  } else {
+  } else if (activeTab === 'walkthrough') {
     renderChapterView(container, currentChapterId);
+  } else if (activeTab === 'enemies') {
+    renderEnemiesView();
   }
 }
 
@@ -98,14 +100,14 @@ function renderChapterView(container, chapterId) {
     else if (p.type === 'choices') {
       el.className = 'choices-card';
       el.innerHTML = `
-        <div class="choices-title">Dialogue / Choice Branch</div>
+        <div class="choices-title">Dialogue</div>
         ${p.items.map(choice => `<div class="choice-item">▸ "${choice}"</div>`).join('')}
       `;
     } 
     else if (p.type === 'note') {
       el.className = 'note-card';
       el.innerHTML = `
-        <div class="note-title">💡 Strategy Note</div>
+        <div class="note-title">💡</div>
         <div>${p.text}</div>
       `;
     } 
@@ -299,5 +301,144 @@ function renderBossCard(bossName) {
           `).join('')}
         </div>
       ` : ''}
+  `;
+}
+
+// Render Individual Normal Enemy Card
+// Render Normal Enemy Card Component (Matches Boss Card Structure)
+function renderEnemyCard(name, enemyData) {
+  const imgPath = `./img/enemies/${enemyData.picture}`;
+
+  // 1. Primary Stats (Level first to fill Column 1 across 2 rows)
+  const statsList = [
+    { key: 'level', label: 'LEVEL', val: enemyData.Level },
+    { key: 'hp', label: 'HP', val: enemyData.HP },
+    { key: 'power', label: 'POWER', val: enemyData.power },
+    { key: 'defense', label: 'DEFENSE', val: enemyData.defense },
+    { key: 'speed', label: 'SPEED', val: enemyData.speed },
+    { key: 'magic', label: 'MAGIC', val: enemyData.magic },
+    { key: 'skill', label: 'SKILL', val: enemyData.skill },
+    { key: 'luck', label: 'LUCK', val: enemyData.luck }
+  ].filter(s => s.val !== undefined && s.val !== null);
+
+  // 2. Process Weaknesses
+  let weaknesses = [];
+  if (Array.isArray(enemyData.weaknesses) && enemyData.weaknesses.length > 0) {
+    const rawWeaknesses = enemyData.weaknesses[0];
+    Object.entries(rawWeaknesses).forEach(([elem, value]) => {
+    
+        weaknesses.push({ element: elem, affinity: value });
+      
+    });
+  }
+
+  // 3. Process Drops
+  let drops = [];
+  if (Array.isArray(enemyData.drop)) {
+    drops = enemyData.drop.map(item => ({
+      name: item.name,
+      rarity: String(item.Rarity || '').replace(/%%/g, '%')
+    }));
+  }
+
+  let bits = null;
+  bits = enemyData.bits;
+  
+  return `
+    <div class="boss-card enemy-card-style">
+      <div class="boss-header">
+        
+        <h3 class="boss-name">${name}</h3>
+      </div>
+
+      <div class="boss-body">
+        <!-- Enemy GIF Sprite -->
+        <div class="boss-portrait-container">
+          <img 
+            src="${imgPath}" 
+            alt="${name}" 
+            class="boss-sprite" 
+            onerror="this.parentElement.style.display='none'"
+          />
+        </div>
+
+        <!-- 5-Column Grid: Level (Col 1, 2 Rows) + 8 Stats (Cols 2-5, 2 Rows) -->
+        <div class="boss-stats-grid">
+          ${statsList.map(s => `
+            <div class="stat-item ${s.key === 'level' ? 'stat-level enemy-level' : ''}">
+              <span class="stat-label">${s.label}</span>
+              <span class="stat-value">${s.val}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Elemental Affinities -->
+      ${weaknesses.length > 0 ? `
+        <div class="boss-affinities">
+          <span class="affinity-title">Affinities:</span>
+          <div class="affinity-chips">
+            ${weaknesses.map(w => `
+              <span class="affinity-chip affinity-${w.affinity.toLowerCase()}">
+                ${w.element} <strong>${w.affinity}</strong>
+              </span>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+        <!-- Bits -->
+  
+        <div class="boss-drops">
+          <span class="drop-title">💰 Bits:</span>
+          
+            <span class="drop-chip">
+              ${bits}
+            </span>
+          
+        </div>
+
+
+
+      <!-- Drops -->
+      ${drops.length > 0 ? `
+        <div class="boss-drops">
+          <span class="drop-title">🎁 Drops:</span>
+          ${drops.map(d => `
+            <span class="drop-chip">
+              ${d.name} <small>(${d.rarity})</small>
+            </span>
+          `).join('')}
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+// Render Main Enemies View
+function renderEnemiesView() {
+  const main = document.getElementById('main-container');
+  if (!main) return;
+
+  const allEnemies = guideData.enemies[0] || {};
+
+  // Filter enemies where type is 'normal' (or not explicitly marked as boss)
+  const normalEnemies = Object.entries(allEnemies).filter(([_, data]) => {
+    const type = String(data.type || '').toLowerCase();
+    return type === 'normal' || (type !== 'boss' && type !== '');
+  });
+
+  main.innerHTML = `
+    <section class="chapter-header-card">
+      <h1 class="chapter-title">👾 Enemy Bestiary</h1>
+      <p>Stats, drops, and weaknesses for monsters encountered across the realm (${normalEnemies.length} entries).</p>
+    </section>
+
+    <div class="enemies-grid">
+      ${normalEnemies.length > 0 
+        ? normalEnemies.map(([name, data]) => renderEnemyCard(name, data)).join('')
+        : '<p style="padding: 20px; color: var(--text-muted);">No normal enemies found in database.</p>'
+      }
+    </div>
   `;
 }

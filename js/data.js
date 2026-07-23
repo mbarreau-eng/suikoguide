@@ -78,6 +78,41 @@ const guideData = {
           }
         ]
       },
+      "Holly Boy":
+      {
+        "type": "normal",
+        "picture": "holly_boy_1.gif",
+        "Level":3,
+        "HP":10,
+        "power":29,
+        "skill":5,
+        "defense":7,
+        "speed":15,
+        "magic":10,
+        "luck":70,
+        "bits":10,
+        "weaknesses":  [
+          {
+          "water":"",
+          "fire":"weak",
+          "thunder":"",
+          "earth":"",
+          "wind":"",
+          "holy":"",
+          "death":""
+          }
+        ],
+        "drop":[
+          {
+          "name":"Medicine x6",
+          "Rarity":"1.04%"
+          },
+          {
+            "name":"Robe",
+            "Rarity":"0.78%"
+          }
+        ]
+      },
       "Golem": 
       {
         "type": "boss",
