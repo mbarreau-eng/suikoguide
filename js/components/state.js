@@ -1,7 +1,13 @@
+import { guideData } from '../data.js';
+
 export const AppState = {
-  currentChapterId: 'ch1',
+  guide: guideData,
+  currentChapterId: guideData.chapters[0]?.id || 'ch1',
   searchQuery: '',
-  walkthroughData: null,
+
+  getCurrentChapter() {
+    return this.guide.chapters.find(ch => ch.id === this.currentChapterId) || this.guide.chapters[0];
+  },
 
   setChapter(chapterId) {
     this.currentChapterId = chapterId;
