@@ -1,22 +1,7 @@
 guideData.recruits = [
-    {
-      "id": 1,
-      "name": "Hero",
-      "condition": "Joins automatically through the storyline. ",
-      "range": "M"
-    },
-    {
-      "id": 2,
-      "name": "Gremio",
-      "condition": "Joins automatically through the storyline. ",
-      "range": "M"
-    },
-    {
-      "id": 3,
-      "name": "Cleo",
-      "condition": "Joins automatically through the storyline. ",
-      "range": "L"
-    },
+    {"id": 1,"name": "Hero","condition": "Joins automatically through the storyline. ","range": "M"},
+    {"id": 2,"name": "Gremio","condition": "Joins automatically through the storyline. ","range": "M"},
+    {"id": 3,"name": "Cleo","condition": "Joins automatically through the storyline. ","range": "L"},
     {
       "id": 4,
       "name": "Viktor",

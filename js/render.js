@@ -65,6 +65,10 @@ function renderSidebar() {
       <button class="nav-btn-main" data-view="collectibles">
         <span>💎 Collectibles</span>
       </button>
+
+      <button class="nav-btn-main" data-view="unites">
+        <span>🤜🤛 Unites</span>
+      </button>
     </nav>
   `;
 }
@@ -1220,4 +1224,107 @@ function filterMasterCollectibles() {
     // Hide whole category box if zero matching items remain
     card.style.display = (categoryMatches && visibleItemCount > 0) ? 'block' : 'none';
   });
+}
+
+function renderUnitesView(containerId = 'main-content') {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const unites = guideData?.unites || [];
+  const recruits = guideData?.recruits || [];
+
+  // Group unites by the number of participant IDs in 'stars'
+  const groupedUnites = unites.reduce((acc, unite) => {
+    // Split comma-separated IDs (e.g. "12, 15" -> ["12", "15"])
+    const participants = String(unite.stars || '')
+      .split(',')
+      .map(id => id.trim())
+      .filter(Boolean);
+
+    const count = participants.length;
+    if (count === 0) return acc;
+
+    if (!acc[count]) acc[count] = [];
+    acc[count].push({ ...unite, participants });
+    return acc;
+  }, {});
+
+  // Sort groups numerically (2-Person, 3-Person, etc.)
+  const sortedCounts = Object.keys(groupedUnites).sort((a, b) => Number(a) - Number(b));
+
+  container.innerHTML = `
+    <div class="unites-view">
+      <header class="unites-header">
+        <h1>⚔️ Unite Attacks Database</h1>
+        <p>Discover powerful combo attacks and the recruits required to perform them.</p>
+      </header>
+
+      ${sortedCounts.map(count => `
+        <section class="unites-group">
+          <h2 class="unites-group-title">
+            <span class="star-badge">${'★'.repeat(Number(count))}</span> ${count}-Person Unites
+          </h2>
+          
+          <div class="unites-grid">
+            ${groupedUnites[count].map(unite => renderUniteCard(unite, recruits)).join('')}
+          </div>
+        </section>
+      `).join('')}
+    </div>
+  `;
+}
+
+// Render individual Unite Card with character avatars & tooltips
+function renderUniteCard(unite, allRecruits) {
+  return `
+    <div class="unite-card">
+      <div class="unite-card-header">
+        <h3>${unite.name}</h3>
+      </div>
+      
+
+
+      <div class="unite-characters">
+        ${unite.participants.map(id => {
+          // Find recruit by numeric or string ID match
+          const recruit = allRecruits.find(r => String(r.id) === String(id));
+
+          if (!recruit) {
+            return `
+              <div class="unite-char-container">
+                <div class="unite-char-avatar missing">?</div>
+                <span class="unite-char-name">ID #${id}</span>
+              </div>
+            `;
+          }
+
+          return `
+            <div class="unite-char-container">
+              <div class="unite-char-avatar">
+                <img 
+                  src="./img/stars/${recruit.name.replace(/\s/g, '') }.png" 
+                  alt="${recruit.name}" 
+                  onerror="this.src='img/placeholder.png'" 
+                />
+              </div>
+              <span class="unite-char-name">${recruit.name}</span>
+              
+              <!-- Hover Tooltip matching your recruit fields -->
+              <div class="recruit-tooltip">
+                <strong>${recruit.name}</strong>
+                <ul>
+                  ${recruit.range ? `<li>🎯 Range: <span>${recruit.range}</span></li>` : ''}
+                  ${recruit.condition ? `<li>📍 How to Recruit: <span>${recruit.condition}</span></li>` : ''}
+                </ul>
+              </div>
+            </div>
+          `;
+        }).join('<span class="unite-plus">+</span>')}
+      </div>
+
+            <div class="unite-effect">
+        <strong>Effect:</strong> ${unite.effect}
+      </div>
+    </div>
+  `;
 }

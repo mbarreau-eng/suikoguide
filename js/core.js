@@ -8,6 +8,7 @@ const dataFiles = [
   './data/major.js',
   './data/duel.js',
   './data/hq.js',
+  './data/unites.js',
   './data/chapters/ch01.js',
   './data/chapters/ch02.js',
   './data/chapters/ch03.js',

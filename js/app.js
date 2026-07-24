@@ -250,6 +250,13 @@ function switchView(viewName) {
         renderAllCollectiblesView();
       }
       break;  
+      case 'unites':
+          if (typeof renderUnitesView === 'function') {
+            renderUnitesView();
+          }
+      break;  
+
+
     default:
       console.warn(`Unknown view: ${viewName}. Defaulting to walkthrough.`);
       if (typeof renderCurrentChapter === 'function') {
