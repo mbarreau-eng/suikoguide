@@ -12,4 +12,5 @@ body {
   height: 100vh;
   overflow: hidden;
   transition: background-color 0.25s ease, color 0.25s ease;
+  min-height: 100%;
 }

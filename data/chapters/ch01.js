@@ -33,6 +33,7 @@ guideData.chapters.push({
       "paragraphs": [
         {
           "type": "plain",
+          "picture":"1-1.jpg",
           "text": "You'll start off in the Emperor's Palace in Gregminster. Talk to your father, Teo, and you'll be taken to an audience with Emperor Barbarossa. After the chat between Teo, Barbarossa, and Windy, the Emperor will decide to send Teo to the northern border to protect it from the United City-States of Jowston. He'll give Teo his sword, Prakk, and then he'll ask you if you would like to help the Empire while Teo is away."
         },
         {
@@ -44,6 +45,7 @@ guideData.chapters.push({
         },
         {
           "type": "plain",
+          "picture":"1.1bis.png",
           "text": "Choose either one, and he'll be happy to hear what you have to say. Commander Kraze will be assigned to watch over you, then you'll be wished luck. You'll automatically head back a little ways before you gain control. Head right, all the way up, then right and down the stairs. Go right and down some more to have Teo tell you to introduce yourself to Kraze. Before you do that, move right into this room and check the statue in the right corner; you'll find [_100 BITS_] here. After you've grabbed that, head left and talk to Kraze, then go back and talk to Teo to head back home."
         },
         {
@@ -173,6 +175,7 @@ guideData.chapters.push({
         },
         {
           "type": "plain",
+          "picture":"1-3.png",
           "text": "Go into the northeasternmost house and talk to the man in here. If you're alone, you'll receive the [_FORTUNE CRYSTAL_], but if Ted is with you, you'll receive the [_PROSPERITY CRYSTAL_]. I always drag Ted along and get the Prosperity Rune, because the EXP in this game is variable depending on levels. Also, DO NOT EQUIP EITHER ONE ON HERO! Wait until Gremio joins your party, then put it on him. Hero will automatically gain a rune of his own through the storyline, and if he has another one equipped at that point, he'll lose it for good! Buy some Medicine or rest at the Inn if you want, then make your way ALL THE WAY back to Gregminster to your house. Now, we continue the story."
         },
         {
@@ -228,6 +231,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
+          "picture":"1-2.jpg",
           "text":"Choose 1, then listen to him asking you questions about your meeting with the Emperor. After that, Ted will start to tell you something, only to be interrupted by Gremio telling you that it's time to eat. Go sit in the chair beside your father, Teo. He tells  everyone that he's heading north tomorrow, so he'll leave everything to you. It's up to Gremio and two of Teo's other servants, Cleo and Pahn, to take care of him."
         },
         {
@@ -240,6 +244,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
+          "picture":"1-4.png",
           "text":"Once inside, go up a little bit, then left into Kraze's room. He'll scold you for being late, then he'll give you your first assignment; you have to go northeast of Gregminster to a place called Magician's Island to see a woman known as Leknaat the Seer, to retrieve the astrological results. He'll then ask if you were listening, and where to go."
         },
         {
@@ -252,6 +257,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
+          "picture":"1-5.png",
           "text":"Option 1 is the correct answer, but choose however you like. He'll tell you that a Dragon Knight from the Dragon's Den will take you there, so head back outside of the palace. After listening to the party's  opinions on the errand, talk to the Dragon Knight to your far right where the stables are. This kid is Futch, with his Dragon, Black. (This is probably redundant, and a well known fact, but why do the dragons in this game sound like elephants? *sigh*) Futch has a bit of a temper, as does Ted, and the sparks will fly between the two of them every time they talk to each other. Notice that Ted mentions that he happens to be 300-years... After climbing on Black's back, you'll fly off to Magician's Island."
         },
       ]

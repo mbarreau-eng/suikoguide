@@ -1,8 +1,10 @@
 /* Main Content Wrapper */
 .main-content {
-  flex: 1;
+ flex: 1;
   overflow-y: auto;
   padding: 30px;
+min-height: min-content;
+margin:0 15%;
 }
 
 .content-container {

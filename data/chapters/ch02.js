@@ -35,7 +35,7 @@ guideData.chapters.push(
         "Fire Crystal"
       ],
       "enemies": [
-        "Furfur",
+        "FurFur",
         "Holly Boy",
         {
           "type": "Boss",
@@ -46,6 +46,7 @@ guideData.chapters.push(
       "paragraphs": [
         {
           "type": "plain",
+          "picture":"2-1.png",
           "text":"Move north to go into the forest, then follow the straightforward path to the next area. Once there, head northwest and grab the [_MEDICINE_] out of the chest. Make your way northeast and follow the path to the next area. Keep following the path until you reach a fork; take the eastern path north to find a chest containing a [_LEATHER COAT_]. Go back and take the western path north, following it some more to run into a kid named Luc. He'll summon a Golem to battle you."
         },
         {
@@ -57,6 +58,7 @@ guideData.chapters.push(
         },
         {
           "type":"plain",
+          "picture":"2-2.png",
           "text":"After the battle, Luc is impressed that you beat his magic, recognizing you as the Imperial Guards; he was just testing you to make sure you were the real thing. Follow him into the tower, then follow the path, climbing the stairs to the top. When you reach the top, talk to Leknaat, and she'll ask you to follow her to get the Astral Conclusions. Follow her into the next room, and when she gives them to you, she seems surprised; she can see the future, and she says that she sees you bearing a huge burden in the flow of destiny, and that you will experience much pain and sorrow, but you'll be able to handle it. You'll finally receive the [_ASTRAL CONCLUSIONS_]."
         },
         {
@@ -91,6 +93,7 @@ guideData.chapters.push(
         },
         {
           "type":"plain",
+          "picture":"2-3.png",
           "text":"Head into the castle and report to Commander Kraze. He decides that you're not totally useless, so he gives you another assignment; now we've got to go east of Gregminster to a town called Rockland and find out why they're not paying their taxes. To make it even more fun, we have to take his idiotic assistant, Kanaan, with us to talk to the town's head honcho, Grady. After Kanaan joins you, leave the palace."
         },
         {

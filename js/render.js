@@ -100,7 +100,7 @@ function renderChapterView(container, chapterId) {
 const bgImageName = chapter.pictures || chapter.picture || chapter.image;
 
   if(bgImageName) {
-    header.style.backgroundImage = "linear-gradient(rgba(15, 15, 22, 0.80), rgba(15, 15, 22, 1)), url('./img/chapters/" + bgImageName + "')";
+    header.style.backgroundImage = "linear-gradient(rgba(15, 15, 22, 0.2), rgba(15, 15, 22, 1)), url('./img/chapters/" + bgImageName + "')";
     header.style.backgroundSize = "cover";
     header.style.backgroundPosition = "center";
   }
@@ -156,8 +156,19 @@ const bgImageName = chapter.pictures || chapter.picture || chapter.image;
 
     if (p.type === 'plain') {
       el.className = 'paragraph-block';
+      // Generate image element if p.picture is defined
+        const imageMarkup = p.picture ? `
+          <figure class="inline-paragraph-img">
+            <img 
+              src="img/chapters/${p.picture}" 
+              alt="Walkthrough screenshot" 
+              loading="lazy"
+              onerror="this.parentNode.style.display='none'"
+            />
+          </figure>
+        ` : '';
       const formattedText = p.text.replace(/\[_(.*?)_\]/g, '<mark class="item-tag">$1</mark>');
-      el.innerHTML = formattedText;
+      el.innerHTML = imageMarkup + formattedText;
     } 
     else if (p.type === 'choices') {
       el.className = 'choices-card';
@@ -246,7 +257,7 @@ const bgImageName = chapter.pictures || chapter.picture || chapter.image;
       el.innerHTML = renderMajorBattleCard(p.id);
     }
 
-        else if (p.type === 'duel'){
+    else if (p.type === 'duel'){
       el.innerHTML = renderDuelCard(p.id);
     }
 
@@ -593,7 +604,7 @@ function renderMajorBattleCard(mbId) {
   let img = battle.picture ? `./img/major/` + battle.picture :``;
   let bgStyle = ``;
   if(img) {
-    bgStyle = `background-image: linear-gradient(rgba(15, 15, 22, 0.8), rgb(15, 15, 22)), url('`+ img + `'); background-size: cover; background-position: center center;`;
+    bgStyle = `background-image: linear-gradient(rgba(15, 15, 22, 0.2), rgb(15, 15, 22)), url('`+ img + `'); background-size: cover; background-position: center center;`;
   }
 
 // Process Intro Pre-Battle Dialogue
@@ -721,7 +732,7 @@ function renderDuelCard(duelId) {
   let img = duel.picture ? `./img/duels/` + duel.picture :``;
   let bgStyle = ``;
   if(img) {
-    bgStyle = `background-image: linear-gradient(rgba(15, 15, 22, 0.8), rgb(15, 15, 22)), url('`+ img + `'); background-size: cover; background-position: center center;`;
+    bgStyle = `background-image: linear-gradient(rgba(15, 15, 22, 0.2), rgb(15, 15, 22)), url('`+ img + `'); background-size: cover; background-position: center center;`;
   }
 
   return `
@@ -824,7 +835,7 @@ function renderHQView() {
 
   main.innerHTML = `
     <!-- HQ Header Banner -->
-    <section class="hq-header-card" ${bgPicture ? `style="background-image: linear-gradient(rgba(15, 15, 22, 0.75), rgba(15, 15, 22, 0.95)), url('${bgPicture}');"` : ''}>
+    <section class="hq-header-card" ${bgPicture ? `style="background-image: linear-gradient(rgba(15, 15, 22, 0.2), rgba(15, 15, 22, 0.95)), url('${bgPicture}');"` : ''}>
       <div class="hq-header-content">
         <span class="hq-badge">🏰 CASTLE HEADQUARTERS</span>
         <h1 class="hq-title">Headquarters Upgrades & Facilities</h1>

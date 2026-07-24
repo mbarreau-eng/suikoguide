@@ -33,6 +33,7 @@ guideData.chapters.push(
         },
         {
           "type":"plain",
+          "picture":"3-1.png",
           "text":"Go to the top of the area to the mansion, and go through the left door. After Kanaan yells at the guard here, the guard will go get Grady. Grady knows that they're here about the taxes, so he'll explain; bandits have settled on nearby Mt. Seifu and have been stealing from them, so they can't pay their taxes. Grady's just glad that the Imperial Guard is here to get rid of the bandits for them. Should we go now?"
         },
         {
@@ -112,6 +113,7 @@ guideData.chapters.push(
         },
         {
           "type":"plain",
+          "picture":"3-2.png",
           "text":"From the center of this room, grab the [_MEDICINE_] to the southwest, the [_LEGGINGS_] to the southeast, and an [_ESCAPE TALISMAN_] to the northwest. Move northeast and follow the path here up to the next room, up a set of stairs, and down to a large room where you'll find the Queen Ant. "
         },
         {
@@ -127,6 +129,7 @@ guideData.chapters.push(
         },
         {
           "type":"plain",
+          "picture":"3-3.png",
           "text":"Pick 1, and he'll head back into battle by himself. He'll use a strange rune, which wipes out the Queen Ant in one blow. After the battle, everyone is in awe of how he just did that. After Kanaan mutters something suspicious, head north and follow the path, up the stairs, then east to find a chest with a [_THUNDER RUNE PIECE_] to your north. Head south, west, and south from here to be back outside. Heal your party, then save at the Journeyman's Crystal. After you save, head up the stairs to the next screen, where you'll meet the bandits Varkas and Sydonia. First, you'll have to fight 5 Bandits, then the leaders themselves."
         },
         {
@@ -184,6 +187,7 @@ guideData.chapters.push(
         },
         {
           "type":"plain",
+          "picture":"3-4.png",
           "text":"You know what to do; choose to fight and take out those despicable soldiers. After you're finished with them, head into the mansion to the north. Grady will come and take the bandits to the dungeon, as well as a 10,000 bit reward! (which Kanaan greedily takes for himself, so no penance for us). Now it's time to head back to Gregminster, but before you enter Gregminster, TAKE EVERYTHING OFF OF TED, as well as anything important off of Pahn; he'll be joining our party later in the game, so feel free to leave unimportant stuff on him, but Ted won't, so don't leave anything on him. When you've done that, head back to Gregminster."
         }
       ]

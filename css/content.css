@@ -18,6 +18,54 @@
   margin-bottom: 16px;
   line-height: 1.6;
   font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.paragraph-block::after {
+content: "";
+  display: table;
+  clear: both;
+}
+
+/* Floating Image Container */
+.inline-paragraph-img {
+  float: left; /* Text wraps around to the left */
+  margin: 4px 18px 12px 0; /* Top, Right, Bottom, Left spacing */
+  max-width: 240px; /* Limits size on desktop */
+  width: 35%; /* Scales down on medium screens */
+  min-width: 140px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background: #111;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Image behavior inside container */
+.inline-paragraph-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  z-index:999;
+}
+
+/* Subtle hover effect */
+.inline-paragraph-img:hover {
+  transform: scale(1.92) translate(100px, 0);
+  border-color: rgba(241, 196, 15, 0.5); /* Gold highlight */
+}
+
+/* Responsive: On mobile screens, center the image instead of floating */
+@media (max-width: 480px) {
+  .inline-paragraph-img {
+    float: none;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 12px 0;
+  }
 }
 
 mark.item-tag {

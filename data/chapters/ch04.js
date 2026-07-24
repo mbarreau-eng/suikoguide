@@ -10,6 +10,7 @@ guideData.chapters.push({
         "paragraphs":[
           {
             "type":"plain",
+            "picture":"4-1.png",
             "text":"As soon as you enter, Kanaan will decide to go report his spectacular work to Kraze. Gremio decides to make a great meal for everyone, but Kanaan has to take Ted with him, so Ted will head off to the Palace while we need to head over to the McDohl residence."
           },
           {
@@ -81,6 +82,7 @@ guideData.chapters.push({
           },
           {
             "type":"plain",
+            "picture":"4-2.png",
             "text":"The guards buy it, and Viktor will decide to 'kick us out'. As you leave, Marie realizes that guy just left without paying! Outside, Viktor admits tobilking Marie, but thanks you for helping him out as well. Head north and talk to Viktor again; he says that he knows that you're the rebel McDohl, and that he also has an idea to help us all escape if we listen."
           },
           {
