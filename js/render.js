@@ -74,16 +74,10 @@ function renderSidebar() {
 }
 
 function renderContent() {
-  const container = document.getElementById('main-container');
-  container.innerHTML = '';
+  const container = document.getElementById('main-content');
 
-  if (activeTab === 'recruits') {
-    renderRecruitsView(container);
-  } else if (activeTab === 'walkthrough') {
-    renderChapterView(container, currentChapterId);
-  } else if (activeTab === 'enemies') {
-    renderEnemiesView();
-  }
+
+
 }
 
 function renderChapterView(container, chapterId) {
@@ -288,9 +282,11 @@ const bgImageName = chapter.pictures || chapter.picture || chapter.image;
  // 4. Attach Bottom Nav Button Handlers
   document.querySelectorAll('.chapter-nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const targetId = btn.getAttribute('data-chapter-id');
+      const targetId = parseInt(btn.getAttribute('data-chapter-id'));
+      
       if (targetId) {
         currentChapterId = targetId;
+        saveCurrentChapter();
         if (typeof renderSidebar === 'function') renderSidebar(); // Sync sidebar selection
         renderCurrentChapter();
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -578,7 +574,52 @@ function renderCurrentChapter() {
   }
 
   main.innerHTML = ``;
- renderChapterView(main, chapter.id);
+  activeTab = activeTab ? activeTab : 'walkthrough';
+
+ switch (activeTab) {
+    case 'walkthrough':
+      if (typeof renderChapterView === 'function') {
+
+        renderChapterView(main, currentChapterId)
+      }
+      break;
+
+    case 'enemies':
+      if (typeof renderEnemiesView === 'function') {
+        renderEnemiesView();
+      }
+      break;
+
+    case 'recruits':
+      if (typeof renderRecruitsView === 'function') {
+        let container = document.getElementById('main-content');
+        renderRecruitsView(container);
+      }
+      break;
+    case 'hq':
+      if (typeof renderHQView === 'function') {
+        renderHQView();
+      }
+      break;  
+          case 'collectibles':
+      if (typeof renderAllCollectiblesView === 'function') {
+        renderAllCollectiblesView();
+      }
+      break;  
+      case 'unites':
+          if (typeof renderUnitesView === 'function') {
+            renderUnitesView();
+          }
+      break;  
+
+
+    default:
+      console.warn(`Unknown view: ${activeTab}. Defaulting to walkthrough.`);
+      if (typeof renderChapterView === 'function') {
+        renderChapterView(main,1);
+      }
+      break;
+  }
 }
 
 // Render Major Battle Card

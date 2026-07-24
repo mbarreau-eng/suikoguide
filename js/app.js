@@ -1,13 +1,16 @@
 // State variables
-let currentChapterId = 1;
-let activeTab = 'chapters';
+
 
 // Local Storage Keys
 const STORAGE_PROGRESS_KEY = 'suiko_progress_data';
 const STORAGE_THEME_KEY = 'suiko_theme';
+const STORAGE_CHAPTER_KEY = 'suiko_chapter';
 
 // Load User Progress from localStorage
 let userProgress = loadProgress();
+let currentChapterId = loadSavedChapter();
+
+var activeTab = 'walkthrough';
 
 function loadProgress() {
   try {
@@ -18,11 +21,29 @@ function loadProgress() {
   }
 }
 
+function loadSavedChapter() {
+  try {
+    const data = localStorage.getItem(STORAGE_CHAPTER_KEY);
+    return parseInt(data) ;
+  } catch (e) {
+    return 1;
+  }
+}
+
+
 function saveProgress() {
   try {
     localStorage.setItem(STORAGE_PROGRESS_KEY, JSON.stringify(userProgress));
   } catch (e) {
     console.error('Failed to save progress to localStorage:', e);
+  }
+}
+
+function saveCurrentChapter() {
+  try {
+    localStorage.setItem(STORAGE_CHAPTER_KEY, currentChapterId);
+  } catch (e) {
+    console.error('Failed to save chapter to localStorage:', e);
   }
 }
 
@@ -40,7 +61,7 @@ function toggleProgress(category, key) {
   }
 
   saveProgress();
-  renderContent(); // Re-render view to reflect checked state
+  renderCurrentChapter(); // Re-render view to reflect checked state
 }
 
 function isChecked(category, key) {
@@ -76,7 +97,7 @@ function initApp() {
   initTheme();
 
   if (typeof guideData === 'undefined' || !guideData) {
-    document.getElementById('main-container').innerHTML = `
+    document.getElementById('main-content').innerHTML = `
       <div class="empty-state">
         <h3>Unable to load guide data</h3>
         <p>Make sure <code>data.js</code> is correctly loaded in <code>index.html</code> before <code>app.js</code>.</p>
@@ -98,7 +119,7 @@ function setupEventListeners() {
   document.getElementById('tab-enemies').addEventListener('click', () => switchTab('enemies'));
 */
   // Global Event Delegation for interactive progress tracking clicks (Items, Recruits, etc.)
-  document.getElementById('main-container').addEventListener('click', (e) => {
+  document.getElementById('main-content').addEventListener('click', (e) => {
     const trackable = e.target.closest('[data-track-cat]');
     if (trackable) {
       e.stopPropagation();
@@ -151,18 +172,22 @@ function setupEventListeners() {
       if (chapterLink) {
         e.preventDefault();
         const rawId = chapterLink.getAttribute('data-chapter-id');
-        currentChapterId = rawId;
-
+        currentChapterId = parseInt(rawId);
+        saveCurrentChapter();
         // Highlight active chapter
         sidebar.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
         chapterLink.classList.add('active');
 
+
+        /*
         // Render selected chapter & scroll up
         if (typeof switchView === 'function') {
           switchView('walkthrough');
         } else {
           renderCurrentChapter();
         }
+          */
+         renderCurrentChapter();
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
@@ -221,9 +246,12 @@ function switchView(viewName) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   // 3. Render Content Based on View Name
+
+activeTab = viewName;
   switch (viewName) {
     case 'walkthrough':
       if (typeof renderCurrentChapter === 'function') {
+
         renderCurrentChapter();
       }
       break;
@@ -294,6 +322,34 @@ function toggleChapterCollectible(itemId, chapterIdsJson) {
     countSpan.innerText = `${foundCount} / ${chapterIds.length} Found`;
   }
 }
+
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // Attach to document.body to survive any innerHTML re-renders
+  document.body.addEventListener('click', (e) => {
+    const trackable = e.target.closest('[data-track-cat]');
+    
+    if (trackable) {
+      // PREVENT DOUBLE-FIRE: If they clicked a label, let the browser 
+      // trigger the checkbox's click event instead of handling it twice.
+      if (e.target.tagName.toLowerCase() === 'label') {
+        return; 
+      }
+
+      // Read your data attributes
+      const cat = trackable.getAttribute('data-track-cat');
+      const key = trackable.getAttribute('data-track-key');
+      
+      // Execute your logic
+      if (typeof toggleProgress === 'function') {
+         toggleProgress(cat, key);
+      }
+    }
+  });
+
+});
+
 // Start app when DOM loads
 window.addEventListener('DOMContentLoaded', initApp);
 
