@@ -240,7 +240,11 @@ function switchView(viewName) {
         renderRecruitsView(container);
       }
       break;
-
+    case 'hq':
+      if (typeof renderHQView === 'function') {
+        renderHQView();
+      }
+      break;  
     default:
       console.warn(`Unknown view: ${viewName}. Defaulting to walkthrough.`);
       if (typeof renderCurrentChapter === 'function') {

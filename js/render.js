@@ -57,6 +57,10 @@ function renderSidebar() {
       <button class="nav-btn-main" data-view="recruits">
         <span>★ Recruits</span>
       </button>
+
+      <button class="nav-btn-main" data-view="hq">
+        <span>🏰 Headquarters</span>
+      </button>
     </nav>
   `;
 }
@@ -785,4 +789,164 @@ function renderDuelCard(duelId) {
       </div>
     </div>
   `;
+}
+
+// Render Castle Headquarters (HQ) View
+function renderHQView() {
+  const main = document.getElementById('main-content');
+  if (!main) return;
+
+  const hq = guideData.hq;
+  if (!hq) {
+    main.innerHTML = `<p style="padding: 20px; color: #e74c3c;">Headquarters data not found in guideData!</p>`;
+    return;
+  }
+
+  
+
+  const bgPicture = hq.picture ? `./img/hq/${hq.picture}` : '';
+  const levels = Array.isArray(hq.levels) ? hq.levels : [];
+  const facilities = Array.isArray(hq.facilities) ? hq.facilities : [];
+
+  main.innerHTML = `
+    <!-- HQ Header Banner -->
+    <section class="hq-header-card" ${bgPicture ? `style="background-image: linear-gradient(rgba(15, 15, 22, 0.75), rgba(15, 15, 22, 0.95)), url('${bgPicture}');"` : ''}>
+      <div class="hq-header-content">
+        <span class="hq-badge">🏰 CASTLE HEADQUARTERS</span>
+        <h1 class="hq-title">Headquarters Upgrades & Facilities</h1>
+        <p class="hq-subtitle">Track castle growth, level unlock conditions, and available facilities.</p>
+      </div>
+    </section>
+
+    <!-- HQ Castle Levels Section -->
+    ${levels.length > 0 ? `
+      <section class="hq-section">
+        <h2 class="hq-section-title">🏰 Castle Expansion Levels</h2>
+        <div class="hq-levels-list">
+          ${levels.map(lvl => `
+            <div class="hq-level-card">
+              <div class="hq-level-header">
+                <span class="hq-level-badge">Level ${lvl.id}</span>
+                <span class="hq-level-unlock"><strong>Unlock:</strong> ${lvl.unlock || 'Default'}</span>
+              </div>
+              ${Array.isArray(lvl.upgrades) && lvl.upgrades.length > 0 ? `
+                <div class="hq-upgrades-box">
+                  <strong>Upgrades Unlocked:</strong>
+                  <div class="hq-upgrade-chips">
+                    ${lvl.upgrades.map(u => `<span class="hq-chip">${u}</span>`).join('')}
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </section>
+    ` : ''}
+
+    <!-- HQ Facilities Section -->
+    ${facilities.length > 0 ? `
+      <section class="hq-section" style="margin-top: 32px;">
+        <h2 class="hq-section-title">🏪 Castle Facilities</h2>
+        <div class="hq-facilities-grid">
+          ${facilities.map(fac => {
+            const facilityName = fac.Facility || fac.facility || 'Facility';
+            const reqLevel = fac["HQ Level"] || fac.hqLevel;
+            const rawUnlock = fac["Unlocked By"] || fac.unlockedBy;
+            const description = fac.Description || fac.description || '';
+            const recruitInfo = getRecruitInfo(rawUnlock);
+
+            return `
+              <div class="hq-facility-card">
+                <div class="hq-facility-header">
+                  <h3 class="facility-name">${facilityName}</h3>
+                  ${reqLevel ? `<span class="facility-hq-tag">HQ Lv. ${reqLevel}</span>` : ''}
+                </div>
+                
+                <div class="hq-facility-body">
+                  <div class="facility-unlocked-by" data-recruit-key="${rawUnlock || ''}">
+                    <small>Unlocked By:</small>
+                    ${recruitInfo ? `
+                      <div class="hq-recruit-unlock">
+                        <img 
+                          src="${recruitInfo.picture}" 
+                          alt="${recruitInfo.name}" 
+                          class="hq-recruit-thumb" 
+                          onerror="this.style.display='none'"
+                        />
+                        <span>${recruitInfo.isStar ? '★ ' : ''}${recruitInfo.name}</span>
+                      </div>
+                    ` : '<span class="hq-raw-unlock">N/A</span>'}
+                  </div>
+                  ${description ? `<p class="facility-desc">${description}</p>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </section>
+    ` : ''}
+  `;
+
+  // Attach hover pop-up event handlers
+  initRecruitPopups();
+}
+
+// Pop-up Card Mouse Hover Controller
+function initRecruitPopups() {
+  let popup = document.getElementById('recruit-popup-card');
+  if (!popup) {
+    popup = document.createElement('div');
+    popup.id = 'recruit-popup-card';
+    popup.className = 'recruit-popup-card hidden';
+    document.body.appendChild(popup);
+  }
+
+  const grid = document.querySelector('.hq-facilities-grid');
+  if (!grid) return;
+
+  grid.addEventListener('mouseover', (e) => {
+    const trigger = e.target.closest('.facility-unlocked-by[data-recruit-key]');
+    if (!trigger) return;
+
+    const recruitKey = trigger.getAttribute('data-recruit-key');
+    if (!recruitKey) return;
+
+    const recruit = findRecruitData(recruitKey);
+    const name = recruit ? (recruit.name || recruit.character || recruitKey) : recruitKey;
+    const picture = recruit && recruit.picture ? recruit.picture : `${name}.png`;
+    const star = recruit ? (recruit.star || recruit.id || '') : '';
+    const location = recruit ? (recruit.location || recruit.foundAt || '') : '';
+    const role = recruit ? (recruit.role || recruit.job || '') : '';
+    const reqs = recruit ? (recruit.recruitment || recruit.howToRecruit || recruit.description || '') : '';
+
+    popup.innerHTML = renderRecruitCard(recruit);
+
+    popup.classList.remove('hidden');
+  });
+
+  grid.addEventListener('mousemove', (e) => {
+    if (popup.classList.contains('hidden')) return;
+
+    const offset = 15;
+    let x = e.clientX + offset;
+    let y = e.clientY + offset;
+
+    const rect = popup.getBoundingClientRect();
+    if (x + rect.width > window.innerWidth - 10) {
+      x = e.clientX - rect.width - offset;
+    }
+    if (y + rect.height > window.innerHeight - 10) {
+      y = e.clientY - rect.height - offset;
+    }
+
+    popup.style.left = `${x}px`;
+    popup.style.top = `${y}px`;
+  });
+
+  grid.addEventListener('mouseout', (e) => {
+    const trigger = e.target.closest('.facility-unlocked-by[data-recruit-key]');
+    if (trigger) {
+      popup.classList.add('hidden');
+    }
+  });
 }

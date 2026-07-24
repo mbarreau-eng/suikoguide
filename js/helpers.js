@@ -285,3 +285,41 @@ function getChapterLabel(chapter) {
   return `${chapter.id} - ${chapter.title}`
   return 'Chapter';
 }
+// Helper to search recruit data across guideData structures
+function findRecruitData(key) {
+  if (!key) return null;
+  const rawKey = String(key).trim();
+  const recruits = guideData.recruits || guideData.stars || [];
+
+  if (Array.isArray(recruits)) {
+    return recruits.find(r => 
+      String(r.id) === rawKey || 
+      String(r.star) === rawKey || 
+      String(r.number) === rawKey ||
+      (r.name && r.name.toLowerCase() === rawKey.toLowerCase())
+    ) || null;
+  } else if (typeof recruits === 'object' && recruits !== null) {
+    if (recruits[rawKey]) return recruits[rawKey];
+    return Object.values(recruits).find(r => 
+      r.name && String(r.name).toLowerCase() === rawKey.toLowerCase()
+    ) || null;
+  }
+  return null;
+}
+
+// Helper to resolve recruit display info
+  const getRecruitInfo = (unlockedBy) => {
+    if (!unlockedBy && unlockedBy !== 0) return null;
+
+    const rawKey = String(unlockedBy).trim();
+    const found = findRecruitData(rawKey);
+    const recruitName = found ? (found.name || found.character || rawKey) : rawKey;
+    const picFileName = (found && found.picture) ? found.picture : `${recruitName}.png`;
+
+    return {
+      rawKey: rawKey,
+      name: recruitName,
+      picture: `./img/stars/${picFileName.toLowerCase()}`,
+      isStar: !!found
+    };
+  };
