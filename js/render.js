@@ -735,7 +735,7 @@ function renderDuelCard(duelId) {
       <div class="duel-dialogue-grid">
         
         <!-- 1. Super / Wild Attack (Red Warning) -->
-        ${superQuotes.length > 0 ? `
+        ${defendQuotes.length > 0 ? `
           <div class="duel-move-block move-super">
             <div class="move-header">
               <span class="move-icon">🔥</span>
@@ -745,13 +745,13 @@ function renderDuelCard(duelId) {
               </div>
             </div>
             <ul class="dialogue-list">
-              ${superQuotes.map(q => `<li>"${q}"</li>`).join('')}
+              ${defendQuotes.map(q => `<li>"${q}"</li>`).join('')}
             </ul>
           </div>
         ` : ''}
 
         <!-- 2. Normal Attack (Orange) -->
-        ${normalQuotes.length > 0 ? `
+        ${superQuotes.length > 0 ? `
           <div class="duel-move-block move-normal">
             <div class="move-header">
               <span class="move-icon">⚔️</span>
@@ -761,13 +761,13 @@ function renderDuelCard(duelId) {
               </div>
             </div>
             <ul class="dialogue-list">
-              ${normalQuotes.map(q => `<li>"${q}"</li>`).join('')}
+              ${superQuotes.map(q => `<li>"${q}"</li>`).join('')}
             </ul>
           </div>
         ` : ''}
 
         <!-- 3. Defend (Blue) -->
-        ${defendQuotes.length > 0 ? `
+        ${normalQuotes.length > 0 ? `
           <div class="duel-move-block move-defend">
             <div class="move-header">
               <span class="move-icon">🛡️</span>
@@ -777,7 +777,7 @@ function renderDuelCard(duelId) {
               </div>
             </div>
             <ul class="dialogue-list">
-              ${defendQuotes.map(q => `<li>"${q}"</li>`).join('')}
+              ${normalQuotes.map(q => `<li>"${q}"</li>`).join('')}
             </ul>
           </div>
         ` : ''}

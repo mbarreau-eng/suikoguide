@@ -66,12 +66,103 @@ const guideData = {
       "condition": "Recruit at the southern end of Kwaba.",
       "range": "NP"
     },
-    {
-      "id": 40,
-      "name": "Fu Su Lu",
-      "condition": "Pay 10,000 bits for his meal at the Inn of the Kobold Village area of the Great Forest to recruit.",
-      "range": "S"
-    }
+{"name":"Marie","range":"NP","id": 12,"condition":"Recruit at the Inn in Seika."},
+{"name":"Onil","range":"NP","id": 13,"condition":"Recruit in the building north of Seika's Inn."},
+{"name":"Antonio","range":"M","id": 14,"condition":"Talk to Marie at HQ several times until she says I finally opened my Inn, but I have no time to prepare the food. Do you know any good cooks? Afterward, recruit Antonio at the Inn in Seika."},
+{"name":"Kai","range":"M","id": 15,"condition":"Recruit at the eastern end of Garan."},
+{"name":"Maas","range":"M","id": 16,"condition":"Recruit at the Blacksmith in the Great Forest."},
+{"name":"Sansuke","range":"S","id": 17,"condition":"Recruit in the building to the northwest ofthe Blacksmith in the Great Forest."},
+{"name":"Rock","range":"NP","id": 18,"condition":"Recruit in Lepant's mansion in Kouan."},
+{"name":"Lepant","range":"S","id": 19,"condition":"Joins automatically through the storyline."},
+{"name":"Eileen","range":"L","id": 20,"condition":"Joins automatically through the storyline."},
+{"name":"Pahn","range":"S","id": 21,"condition":"Choose to let him rejoin your party in Kouan."},
+{"name":"Giovanni","range":"NP","id": 22,"condition":"Joins automatically through the storyline."},
+{"name":"Krin","range":"L","id": 23,"condition":"Joins automatically through the storyline."},
+{"name":"Juppo","range":"L","id": 24,"condition":"Joins automatically through the storyline."},
+{"name":"Varkas","range":"M","id": 25,"condition":"Joins automatically through the storyline."},
+{"name":"Sydonia","range":"L","id": 26,"condition":"Joins automatically through the storyline."},
+{"name":"Kirkis","range":"L","id": 27,"condition":"Joins automatically through the storyline."},
+{"name":"Meg","range":"L","id": 28,"condition":"Bring Juppo with you and recruit her by the Inn in Kaku."},
+{"name":"Gaspar","range":"NP","id": 29,"condition":"Win 5,000 bits from him at the game of Dice in the basement of Kaku's Tavern to recruit."},
+{"name":"Sheena","range":"S","id": 30,"condition":"Bring Lepant with you and recruit him at the Inn in Seika."},
+{"name":"Viki","range":"NP","id": 31,"condition":"Joins automatically through the storyline."},
+{"name":"Valeria","range":"S","id": 32,"condition":"Joins automatically through the storyline."},
+{"name":"Meese","range":"M","id": 33,"condition":"Recruit at the Blacksmith in the Village of the Dwarves."},
+{"name":"Templeton","range":"NP","id": 34,"condition":"Recruit at the Burnt Village of the Elves after initially visiting there."},
+{"name":"Kuromimi","range":"S","id": 35,"condition":"Joins automatically through the storyline."},
+{"name":"Humphrey","range":"S","id": 36,"condition":"Joins automatically through the storyline."},
+{"name":"Kwanda","range":"M","id": 37,"condition":"Choose to spare his life TWICE to recruit him at Pannu Yakuta."},
+{"name":"Sylvina","range":"L","id": 38,"condition":"Joins automatically through the storyline."},
+{"name":"Stallion","range":"L","id": 39,"condition":"Joins automatically through the storyline."},
+{"name":"Fu Su Lu","range":"S","id": 40,"condition":"Pay 10,000 bits for his meal at the Inn of the Kobold Village area of the Great Forest to recruit."},
+{"name":"Gon","range":"S","id": 41,"condition":"Bring Kuromimi with you and recruit Gon in southernmost house in the Kobold Village area of the Great Forest."},
+{"name":"Lorelai","range":"L","id": 42,"condition":"Recruit at the Inn in Kouan after Hero has reached level 25."},
+{"name":"Apple","range":"NP","id": 43,"condition":"Recruit at Mathiu's house in Seika."},
+{"name":"Flik","range":"S","id": 44,"condition":"Joins automatically through the storyline."},
+{"name":"Hellion","range":"S","id": 45,"condition":"Recruit at the Inn in Teien."},
+{"name":"Chapman","range":"NP","id": 46,"condition":"Recruit at the Armory in Antei."},
+{"name":"Jeane","range":"NP","id": 47,"condition":"Recruit at the Rune Shop in Antei."},
+{"name":"Mina","range":"S","id": 48,"condition":"Recruit at the Inn in Antei WITH the Toe Shoes equipped on Hero."},
+{"name":"Jabba","range":"NP","id": 49,"condition":"After getting the Nameless Urn from fighting the Holly Fairy outside of Rikon on the World Map, bring it to him at the Appraiser in Rikon to recruit."},
+{"name":"Lotte","range":"S","id": 50,"condition":"Talk to her on the second floor of the Inn in Rikon to find out she lost her cat. Chase and capture the cat in Kaku, then bring it back to her to recruit."},
+{"name":"Anji","range":"M","id": 51,"condition":"Fight him and his 2 friends at the Pirates' Fortress west-northwest of your HQ and beat them within 5 rounds to recruit all 3 of them."},
+{"name":"Leonardo","range":"M","id": 52,"condition":"Fight him and his 2 friends at the Pirates' Fortress west-northwest of your HQ and beat them within 5 rounds to recruit all 3 of them."},
+{"name":"Kanak","range":"M","id": 53,"condition":"Fight him and his 2 friends at the Pirates' Fortress west-northwest of your HQ and beat them within 5 rounds to recruit all 3 of them."},
+{"name":"Gen","range":"S","id": 54,"condition":"Joins automatically through the storyline."},
+{"name":"Kamandol","range":"S","id": 55,"condition":"Joins automatically through the storyline."},
+{"name":"Kimberly","range":"S","id": 56,"condition":"Joins automatically through the storyline."},
+{"name":"Tesla","range":"NP","id": 57,"condition":"Joins automatically through the storyline."},
+{"name":"Esmerelda","range":"NP","id": 58,"condition":"After getting the Opal from fighting the Nightmares in Soniere, bring it to her on the second floor of the Inn in Antei to recruit."},
+{"name":"Liukan","range":"S","id": 59,"condition":"Joins automatically through the storyline."},
+{"name":"Milich","range":"S","id": 60,"condition":"Choose to spare his life TWICE to recruit him at Scarleticia."},
+{"name":"Kasumi","range":"L","id": 61,"condition":"Joins automatically through the storyline."},
+{"name":"Ivanov","range":"NP","id": 62,"condition":"Bring Milich with you and recruit him on the first floor of Scarleticia."},
+{"name":"Kasios","range":"NP","id": 63,"condition":"Bring Milich with you and recruit her on the second floor of Scarleticia."},
+{"name":"Qlon","range":"NP","id": 64,"condition":"Recruit at the entrance of Antei."},
+{"name":"Georges","range":"NP","id": 65,"condition":"Beat one of his records of his card game in Kirov to recruit."},
+{"name":"Lester","range":"M","id": 66,"condition":"In Kirov, go into the house to the left of the woman washing clothes and taste the stew cooking on the stove, then leave this house and go into the one to your right. Taste thestew cooking on this stove as well. Now, leave this house and go into the house that's right beside the docks and your boat. Talk to Lester in here after all of this to recruit."},
+{"name":"Sarah","range":"L","id": 67,"condition":"In Kirov, talk to Sarah, the woman who's washing clothes, and choose to recruit her; she'll agree to join, but only if you get her some soap. Go talk to the man walking between the Inn and the Armory, and he says that he'll give you some Soap if you get him some Soy Sauce. Go talk to the guy that's close to the house below the Inn; he'll give you some Soy Sauce if you give him some Salt. Go to the southeast end of town and talk to the person here; they will give you some Salt, but only if you give them a Yardstick. Go to the Inn and talk to the guy in the room on the right; he'll give you a Yardstick if you can get him some Sugar. After you talk to ALL of them...Go to the Item Shop and buy some Sugar, then go to the Inn and give it to the man here to get the Yardstick. Go to the southeast end of town and give the Yardstick to the person here to get the Salt. Talk to the guy between the Item Shop and building beside Sarah and give him the Salt to get the Soy Sauce. Talk to the guy between the Inn and the Armory and give him the Soy Sauce and he'll give you the Soap. Finally, go over to Sarah and give her the Soap, only to find out that she had some all along ARGH!. She will then join your party!"},
+{"name":"Blackman","range":"M","id": 68,"condition":"At Kalekka, DO NOT STEP ON THE PLANTS that are beside the northern exit, then talk to him to recruit. If you stepped on the plants, leave Kalekka and come back, then talk to him without stepping on them again) to recruit."},
+{"name":"Kessler","range":"M","id": 69,"condition":"Joins automatically through the storyline."},
+{"name":"Ledon","range":"NP","id": 70,"condition":"Joins automatically through the storyline."},
+{"name":"Kage","range":"L","id": 71,"condition":"Pay him 20,000 bits at the Secret Factory to recruit."},
+{"name":"Melodye","range":"NP","id": 72,"condition":"After getting the Sound Crystal from a chest in Kalekka, go to Kirov and give it to Melodye to recruit."},
+{"name":"Kun To","range":"NP","id": 73,"condition":"Joins automatically through the storyline."},
+{"name":"Mose","range":"M","id": 74,"condition":"Joins automatically through the storyline."},
+{"name":"Ronnie Bell","range":"S","id": 75,"condition":"Joins automatically through the storyline."},
+{"name":"Alen","range":"S","id": 76,"condition":"Joins automatically through the storyline."},
+{"name":"Grenseal","range":"S","id": 77,"condition":"Joins automatically through the storyline."},
+{"name":"Kirke","range":"S","id": 78,"condition":"Recruit at the southern end of Lorimar after initially visiting there."},
+{"name":"Moose","range":"M","id": 79,"condition":"Bring Maas, Meese, and Mose with you to the northeastern house in the Warrior's Village to recruit."},
+{"name":"Marco","range":"NP","id": 80,"condition":"Win 5,000 bits from him at the cup game in the Warrior's Village to recruit."},
+{"name":"Zen","range":"NP","id": 81,"condition":"Give the Red Flower Seeds, Blue Flower Seeds, and Yellow Flower Seeds at Qlon just outside of the caves to recruit him. These seeds can be bought at the Items Shops in the Warrior's Village, Rikon, and Teien."},
+{"name":"Morgan","range":"S","id": 82,"condition":"Recruit at the temple in Qlon."},
+{"name":"Fukien","range":"S","id": 83,"condition":"Joins automatically through the storyline."},
+{"name":"Hugo","range":"NP","id": 84,"condition":"After getting the War Scroll from a chest in the Qlon caves, go to the Qlon temple and give it to him to recruit."},
+{"name":"Quincy","range":"L","id": 85,"condition":"Recruit at the western end of Garan after recruiting 81 characters."},
+{"name":"Rubi","range":"L","id": 86,"condition":"Recruit at the Inn of the Kobold Forest area of the Great Forest after Kirkis has reached level 40."},
+{"name":"Eikei","range":"S","id": 87,"condition":"Recruit by the docks in Teien after Hero has reached level 40."},
+{"name":"Window","range":"NP","id": 88,"condition":"After getting the Window Crystal from a chest in the Qlon caves, go to the Item Shop in the Warrior's Village and give it to him to recruit."},
+{"name":"Hix","range":"S","id": 89,"condition":"Joins automatically through the storyline."},
+{"name":"Tengaar","range":"L","id": 90,"condition":"Joins automatically through the storyline."},
+{"name":"Clive","range":"L","id": 91,"condition":"Recruit on the second floor of the Inn in Rikon. If he is not there, leave Rikon and go back out to the World Map, then re-enter and check again. It may take several times before he shows up."},
+{"name":"Leon","range":"NP","id": 92,"condition":"Talk to Leon at Kalekka, then go back to HQ and talk to Mathiu. He will give you a letter to give to him, so go back to Kalekka to deliver it to have a scene where he joins."},
+{"name":"Crowley","range":"S","id": 93,"condition":"At Qlon, go into the caves. Go north to the next screen, then down the stairs to the third screen, then east and south to the fourth screen. Head east and then south at the fork on this screen, then follow the path up a set of stairs then down another set on the next screen. Head south through this little room, and you'll be in the big room where you can find Crowley. Head south from the entrance of the big room and search the bottom wall for the entrance of the maze, then follow the diagram below to get to Crowley. Talk to him, and since your castle is now large enough, he will decide to join your party!"},
+{"name":"Pesmerga","range":"S","id": 94,"condition":"Recruit at the top floor of Neclord's Castle."},
+{"name":"Fuma","range":"L","id": 95,"condition":"Recruit at the top right area of the Dragon Knights' Fortress, outside of the building. He's slightly hidden."},
+{"name":"Kreutz","range":"S","id": 96,"condition":"Bring Humphrey with you and recruit him inside of the Dragon Knights' Fortress."},
+{"name":"Milia","range":"M","id": 97,"condition":"Joins automatically through the storyline."},
+{"name":"Joshua","range":"NP","id": 98,"condition":"Joins automatically through the storyline."},
+{"name":"Futch","range":"M","id": 99,"condition":"Joins automatically through the storyline."},
+{"name":"Mace","range":"M","id":100,"condition":"Bring Maas, Meese, Mose, and Moose with you to the Blacksmith in Seek Valley to recruit."},
+{"name":"Griffith","range":"S","id":101,"condition":"Joins automatically through the storyline."},
+{"name":"Warren","range":"M","id":102,"condition":"Joins automatically through the storyline."},
+{"name":"Kasim","range":"S","id":103,"condition":"Joins automatically through the storyline."},
+{"name":"Taggart","range":"NP","id":104,"condition":"Joins automatically through the storyline."},
+{"name":"Vincent","range":"NP","id":105,"condition":"Recruit at the top floor of Moravia after your first visit where you rescued Viktor."},
+{"name":"Max","range":"NP","id":106,"condition":"Enter the Northern Checkpoint from the north to run into Max and Sancho, and choose to recruit both of them."},
+{"name":"Sancho","range":"NP","id":107,"condition":"Enter the Northern Checkpoint from the north to run into Max and Sancho, and choose to recruit both of them."},
+{"name":"Sonya","range":"S","id":108,"condition":"Recruit in B1 of your HQ after defeating her at Shasarazade."}
   ],
   "enemies":[
     {
@@ -899,7 +990,52 @@ const guideData = {
     {
       "id": 4,
       "title": "Gregminster, the rain's dark omen",
-      "picture":"4.jpg"
+      "picture":"4.jpg",
+      "recruits": [
+        {
+          "id": 4
+        }
+      ],
+        "paragraphs":[
+          {
+            "type":"plain",
+            "text":"As soon as you enter, Kanaan will decide to go report his spectacular work to Kraze. Gremio decides to make a great meal for everyone, but Kanaan has to take Ted with him, so Ted will head off to the Palace while we need to head over to the McDohl residence."
+          },
+          {
+            "type":"choices",
+            "items":[
+              "Help.",
+              "Don't help."
+            ]
+          },
+          {
+            "type":"plain",
+            "text":"Help him, and you'll take him into one of the beds. After some discussion, Ted will come to and he'll tell you what happened. Ted was taken to see Lady Windy, who turns out to be a witch that Ted remembers from 300 years ago; she wanted the rune on his right hand, but he used the power of that rune, the Soul Eater, to escape from them."
+          },
+          {
+            "type":"plain",
+            "text":"He'll pass out again, and Pahn will start to wonder if the Imperial Guard would do such a thing. Gremio will argue with Pahn about contacting them about this, then you'll regain control. Talk to Pahn outside of the door, and he'll decide to go wake up the shopkeeper and get some medicine for Ted. Ted will wake up once again, then he'll ask you to do something for him."
+          },
+          {
+            "type":"choices",
+            "items":[
+              "What is it, Ted?",
+              "No"
+            ]
+          },
+          {
+            "type":"plain",
+            "text":"Choose option 1 to take off his glove to reveal one of the 27 True Runes, the Soul Eater. If Ted hadn't used the Soul Eater at Mt. Seifu, Windy would have  never found out about it, but it's too late now. Ted won't be able to escape from her with his wound, so he will ask you to take the Soul Eater and to protect it from Windy."
+          },
+          {
+            "type":"choices",
+            "items":[
+              "I'll take it, Ted. Don't worry.",
+              "No"
+            ]
+          }
+        ]
+      
     },
     {
       "id": 5,
@@ -982,7 +1118,13 @@ const guideData = {
     },
     {
       "id": 21,
-      "title": "Scarleticia, avenging an ally"
+      "title": "Scarleticia, avenging an ally",
+      "paragraphs":[
+        {
+          "type":"duel",
+          "id":2
+        }
+      ]
     },
     {
       "id": 22,
@@ -1086,17 +1228,59 @@ const guideData = {
 
       ],
       "defend": [
-        "Here we go again!                                      ",
-        "I'll get you!                                          ",
-        "I'll show you how it's done.                           ",
-        "Impossible! You can't avoid my blows!                  ",
-        "Interesting. How about another round?                  ",
-        "Take that!                                             ",
-        "The next one won't be so easy!                         ",
-        "Victory is near! I strike with all my might!           ",
-        "We're getting nowhere. Here I come!                    ",
+        "Here we go again!",
+        "I'll get you!",
+        "I'll show you how it's done.",
+        "Impossible! You can't avoid my blows!",
+        "Interesting. How about another round?",
+        "Take that!",
+        "The next one won't be so easy!",
+        "Victory is near! I strike with all my might!",
+        "We're getting nowhere. Here I come!",
         "Well done. You're a worthy opponent. Now it's my turn! "
       ]
-    }
+    },
+    {
+      "id":2,
+      "me":"Pahn",
+      "opp":"Teo McDohl",
+      "picture":"ooo2.jpg",
+      "super":[
+        "All you can do is defend, Pahn? No mercy!",
+        "Did you see me coming?",
+        "Do you see how we're mismatched?",
+        "Get serious, Pahn. This is how it's done.",
+        "Is that all you've got? Now it's my turn!",
+        "My sword's not rusty yet.",
+        "Pretty good, Pahn.",
+        "That was a good one, Pahn. Now it's my turn.",
+        "The numbness in my hands, it's real.",
+        "We're getting nowhere. Here I come!"
+      ],
+      "normal":[
+        "All right, do it again!",
+        "Come on, Pahn. See if you can kill me.",
+        "Do you give up?",
+        "Good work, Pahn. I'll have to be more careful.",
+        "I'm losing my cool. Better be careful.",
+        "I'll see that coming next time!",
+        "Strike me, Pahn!",
+        "What's the matter, Pahn? How about another round?",
+        "You're a smart one, Pahn.",
+        "You're better than I thought."
+      ],
+      "defend":[
+        "Can you dodge my blade, Pahn?",
+        "Excellent, Pahn. You're a real fighter. Here's another!",
+        "Finish me with a single blow!",
+        "Hmmm. Here I come again!",
+        "If you don't attack, I will!",
+        "Impossible! Take that!",
+        "My killer blade...",
+        "Now that I've seen what you've got, I'll show you what I can do.",
+        "That's...no good.",
+        "The next one will be more painful."
+      ]
+    }  
   ]
 };
