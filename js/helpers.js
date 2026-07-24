@@ -323,3 +323,8 @@ function findRecruitData(key) {
       isStar: !!found
     };
   };
+
+  // Helper to safely format HTML element IDs from titles with spaces
+function sanitizeId(str) {
+  return String(str).replace(/[^a-zA-Z0-9_-]/g, '_');
+}

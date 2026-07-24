@@ -61,6 +61,10 @@ function renderSidebar() {
       <button class="nav-btn-main" data-view="hq">
         <span>🏰 Headquarters</span>
       </button>
+
+      <button class="nav-btn-main" data-view="collectibles">
+        <span>💎 Collectibles</span>
+      </button>
     </nav>
   `;
 }
@@ -122,6 +126,12 @@ const bgImageName = chapter.pictures || chapter.picture || chapter.image;
   if (chapter.party && Array.isArray(chapter.party) && chapter.party.length > 0) {
     const partyCard = createPartyCard(chapter.party, 'Chapter Starting Party');
     container.appendChild(partyCard);
+  }
+
+  //Key items / collectibles
+      if (chapter.collectibles && Array.isArray(chapter.collectibles) && chapter.collectibles.length > 0) {
+    const keyCard = renderChapterCollectibles(chapter.collectibles);
+    container.innerHTML += keyCard;
   }
 
   if (!chapter.paragraphs || chapter.paragraphs.length === 0) {
@@ -948,5 +958,266 @@ function initRecruitPopups() {
     if (trigger) {
       popup.classList.add('hidden');
     }
+  });
+}
+
+// Render Collectibles Box at Chapter Start
+function renderChapterCollectibles(chapterCollectibleIds = []) {
+  if (!chapterCollectibleIds.length) return '';
+
+  const checkedIds = getCheckedCollectibles();
+  const allCollectibles = guideData.collectibles || [];
+
+  // Find matching items using item.id (e.g. "Astral Predications")
+  const chapterItems = chapterCollectibleIds
+    .map(id => allCollectibles.find(c => c.id === id))
+    .filter(Boolean);
+
+  if (!chapterItems.length) return '';
+
+  const chapterIdsAttr = JSON.stringify(chapterCollectibleIds).replace(/"/g, '&quot;');
+
+  return `
+    <div class="chapter-collectibles-card">
+      <div class="collectibles-card-header">
+        <h3>🏆 Collectibles & Key Items</h3>
+        <span class="collectibles-count" id="chapter-coll-count">
+          ${chapterItems.filter(i => checkedIds.includes(i.id)).length} / ${chapterItems.length} Found
+        </span>
+      </div>
+
+      <ul class="chapter-collectibles-list">
+        ${chapterItems.map(item => {
+          const isChecked = checkedIds.includes(item.id);
+          const domId = sanitizeId(item.id);
+          const detailText = item.desc || item.get || '';
+
+          return `
+            <li class="chapter-collectible-item ${isChecked ? 'completed' : ''}" id="chapter-item-${domId}">
+            
+              <input 
+                type="checkbox" 
+                id="chk_${domId}" 
+                ${isChecked ? 'checked' : ''}
+                onchange="toggleChapterCollectible('${item.id.replace(/'/g, "\\'")}', '${chapterIdsAttr}')"
+              />
+              
+              <label for="chk_${domId}">
+                ${item.category ? `<span class="collectible-tag">${item.category}</span>` : ''}
+                <strong>${item.id}</strong>
+                ${detailText ? `<small>📍 ${detailText}</small>` : ''}
+              </label>
+            </li>
+          `;
+        }).join('')}
+      </ul>
+    </div>
+  `;
+}
+
+// Reference the central object (works with gameguide or guideData)
+function getCollectiblesData() {
+  return guideData.collectibles || [];
+}
+
+// Render the entire Master Collectibles View
+function renderAllCollectiblesView(containerId = 'main-content') {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const allItems = getCollectiblesData();
+  const checkedIds = getCheckedCollectibles();
+
+  // Extract unique categories for filter dropdown
+  const categories = ['All', ...new Set(allItems.map(item => item.category || 'Uncategorized'))];
+
+  container.innerHTML = `
+    <div class="master-collectibles-view">
+      <!-- Top Summary & Progress Bar -->
+      <header class="master-collectibles-header">
+        <h1>🏆 Master Collectibles & Items Index</h1>
+        <p>Track all key items, rare equipment, and HQ collectibles across Suikoden.</p>
+        
+        <div class="master-progress-container">
+          <div class="master-progress-bar">
+            <div id="master-progress-fill" class="master-progress-fill" style="width: 0%;"></div>
+          </div>
+          <span id="master-progress-text" class="master-progress-text">0 / ${allItems.length} Found (0%)</span>
+        </div>
+      </header>
+
+      <!-- Controls & Filter Bar -->
+      <div class="collectibles-controls">
+        <div class="search-box">
+          <input 
+            type="text" 
+            id="coll-search-input" 
+            placeholder="Search items, locations..." 
+            oninput="filterMasterCollectibles()"
+          />
+        </div>
+
+        <div class="filter-group">
+          <label for="coll-category-select">Category:</label>
+          <select id="coll-category-select" onchange="filterMasterCollectibles()">
+            ${categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
+          </select>
+
+          <label class="toggle-completed-label">
+            <input type="checkbox" id="coll-hide-completed" onchange="filterMasterCollectibles()" />
+            Hide Completed
+          </label>
+        </div>
+      </div>
+
+      <!-- Categories Container -->
+      <div id="master-collectibles-grid" class="master-collectibles-grid">
+        ${renderCategoryGroups(allItems, checkedIds)}
+      </div>
+    </div>
+  `;
+
+  updateAllCollectiblesProgress();
+}
+
+// Helper: Render items grouped by Category
+function renderCategoryGroups(items, checkedIds) {
+  if (!items.length) {
+    return `<div class="empty-results">No collectibles match your search filter.</div>`;
+  }
+
+  // Group items array into object by category
+  const grouped = items.reduce((acc, item) => {
+    const cat = item.category || 'Uncategorized';
+    if (!acc[cat]) acc[cat] = [];
+    acc[cat].push(item);
+    return acc;
+  }, {});
+
+  return Object.keys(grouped).map(catName => {
+    const catItems = grouped[catName];
+    //const catClass = getCategoryTagClass(catName);
+
+const catClass = [];
+
+    return `
+      <section class="master-category-card" data-category="${catName}">
+        <div class="category-card-header">
+          <h2>
+            <span class="collectible-tag ${catClass}">${catName}</span>
+          </h2>
+          <span class="category-count">
+            ${catItems.filter(i => checkedIds.includes(i.id)).length} / ${catItems.length}
+          </span>
+        </div>
+
+        <ul class="master-items-list">
+          ${catItems.map(item => {
+            const isChecked = checkedIds.includes(item.id);
+            const domId = sanitizeId(item.id);
+            const detailText = item.desc || '';
+            const detailGet =  item.get || '';
+
+            return `
+              <li 
+                class="master-item-row ${isChecked ? 'completed' : ''}" 
+                id="master-row-${domId}"
+                data-name="${item.id.toLowerCase()}"
+                data-desc="${detailText.toLowerCase()}"
+                data-get="${detailGet}"
+                data-status="${isChecked ? 'completed' : 'pending'}"
+              >
+                <input 
+                  type="checkbox" 
+                  id="master_chk_${domId}" 
+                  ${isChecked ? 'checked' : ''}
+                  onchange="toggleMasterCollectible('${item.id.replace(/'/g, "\\'")}')"
+                />
+                <label for="master_chk_${domId}">
+                  <strong>${item.id}</strong>
+                  ${detailText ? `<small>${detailText}</small>` : ''}
+                  ${detailGet ? `<small>${detailGet}</small>` : ''}
+                </label>
+              </li>
+            `;
+          }).join('')}
+        </ul>
+      </section>
+    `;
+  }).join('');
+}
+
+// Interactive Toggle & Progress Updates
+function toggleMasterCollectible(itemId) {
+  let saved = getCheckedCollectibles();
+  if (saved.includes(itemId)) {
+    saved = saved.filter(id => id !== itemId);
+  } else {
+    saved.push(itemId);
+  }
+  localStorage.setItem('suiko1_collectibles', JSON.stringify(saved));
+
+  const domId = sanitizeId(itemId);
+  const row = document.getElementById(`master-row-${domId}`);
+  if (row) {
+    const isNowChecked = saved.includes(itemId);
+    row.classList.toggle('completed', isNowChecked);
+    row.dataset.status = isNowChecked ? 'completed' : 'pending';
+  }
+
+  updateAllCollectiblesProgress();
+  filterMasterCollectibles(); // Re-apply "Hide Completed" filter if active
+}
+
+// Progress Bar Counter
+function updateAllCollectiblesProgress() {
+  const allItems = getCollectiblesData();
+  if (!allItems.length) return;
+
+  const saved = getCheckedCollectibles();
+  const total = allItems.length;
+  const count = saved.length;
+  const pct = Math.round((count / total) * 100) || 0;
+
+  const bar = document.getElementById('master-progress-fill');
+  const text = document.getElementById('master-progress-text');
+
+  if (bar) bar.style.width = `${pct}%`;
+  if (text) text.innerText = `${count} / ${total} Found (${pct}%)`;
+}
+
+// Live Filter: Search Text + Category Dropdown + Hide Completed
+function filterMasterCollectibles() {
+  const query = (document.getElementById('coll-search-input')?.value || '').toLowerCase();
+  const selectedCategory = document.getElementById('coll-category-select')?.value || 'All';
+  const hideCompleted = document.getElementById('coll-hide-completed')?.checked || false;
+
+  const categoryCards = document.querySelectorAll('.master-category-card');
+
+  categoryCards.forEach(card => {
+    const cardCategory = card.dataset.category;
+    const categoryMatches = selectedCategory === 'All' || cardCategory === selectedCategory;
+
+    let visibleItemCount = 0;
+    const itemRows = card.querySelectorAll('.master-item-row');
+
+    itemRows.forEach(row => {
+      const name = row.dataset.name || '';
+      const desc = row.dataset.desc || '';
+      const isCompleted = row.dataset.status === 'completed';
+
+      const searchMatches = name.includes(query) || desc.includes(query);
+      const completionMatches = !hideCompleted || !isCompleted;
+
+      if (categoryMatches && searchMatches && completionMatches) {
+        row.style.display = 'flex';
+        visibleItemCount++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    // Hide whole category box if zero matching items remain
+    card.style.display = (categoryMatches && visibleItemCount > 0) ? 'block' : 'none';
   });
 }

@@ -245,6 +245,11 @@ function switchView(viewName) {
         renderHQView();
       }
       break;  
+          case 'collectibles':
+      if (typeof renderAllCollectiblesView === 'function') {
+        renderAllCollectiblesView();
+      }
+      break;  
     default:
       console.warn(`Unknown view: ${viewName}. Defaulting to walkthrough.`);
       if (typeof renderCurrentChapter === 'function') {
@@ -254,7 +259,34 @@ function switchView(viewName) {
   }
 }
 
+// Get saved collected item IDs from localStorage
+function getCheckedCollectibles() {
+  return JSON.parse(localStorage.getItem('suiko1_collectibles') || '[]');
+}
 
+// Toggle saved state in localStorage
+function toggleChapterCollectible(itemId, chapterIdsJson) {
+  let saved = getCheckedCollectibles();
+  if (saved.includes(itemId)) {
+    saved = saved.filter(id => id !== itemId);
+  } else {
+    saved.push(itemId);
+  }
+  localStorage.setItem('suiko1_collectibles', JSON.stringify(saved));
+
+  // Toggle visual completed state on the row
+  const domId = sanitizeId(itemId);
+  const row = document.getElementById(`chapter-item-${domId}`);
+  if (row) row.classList.toggle('completed');
+
+  // Update chapter header counter
+  const chapterIds = JSON.parse(chapterIdsJson);
+  const countSpan = document.getElementById('chapter-coll-count');
+  if (countSpan) {
+    const foundCount = chapterIds.filter(cId => saved.includes(cId)).length;
+    countSpan.innerText = `${foundCount} / ${chapterIds.length} Found`;
+  }
+}
 // Start app when DOM loads
 window.addEventListener('DOMContentLoaded', initApp);
 

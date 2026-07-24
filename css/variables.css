@@ -1,0 +1,27 @@
+/* Custom Properties & Color Themes */
+:root, [data-theme="dark"] {
+  --bg-dark: #0f172a;
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-sidebar: #090d16;
+  --border-color: #334155;
+  --accent-gold: #f59f0b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --tag-item-bg: #854d0e;
+  --tag-item-text: #fef08a;
+  --note-bg: #1e1b4b;
+  --note-border: #6366f1;
+  --place-bg: #14532d;
+  --place-border: #22c55e;
+}
+
+[data-theme="light"] {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-sidebar: #f1f5f9;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #cbd5e1;
+  --accent-gold: #d97706;
+}
