@@ -3,7 +3,7 @@ guideData.hq = {
     "levels":[
       {
         "id":1,
-        "unlock":"Defeat Zombie Dragon, 24 or fewer stars recruited",
+        "unlock":"0",
         "upgrades":[
           "Basement",
           "Ground floor",
@@ -13,7 +13,7 @@ guideData.hq = {
       },
       {
         "id":2,
-        "unlock":"Recruit more than 25 characters",
+        "unlock":"25",
         "upgrades":[
           "1st Floor Left Wing",
           "3rd Floor",
@@ -23,7 +23,7 @@ guideData.hq = {
       },
       {
         "id":3,
-        "unlock":"Recruit more than 45 characters",
+        "unlock":"45",
         "upgrades":[
           "1st Floor Right Wing",
           "Half of 4th Floor",
@@ -33,7 +33,7 @@ guideData.hq = {
       },
       {
         "id":4,
-        "unlock":"Recruit more than 90 characters",
+        "unlock":"90",
         "upgrades":[
           "Flag",
         ]

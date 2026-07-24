@@ -328,3 +328,47 @@ function findRecruitData(key) {
 function sanitizeId(str) {
   return String(str).replace(/[^a-zA-Z0-9_-]/g, '_');
 }
+
+function enhanceParagraphText(text) {
+  const recruits = guideData?.recruits || [];
+  if (!recruits.length || !text) return text;
+
+  // 1. Sort recruits by name length (descending) 
+  // Ensures longer names like "Tir McDohl" match before shorter names like "Tir"
+  const sortedRecruits = [...recruits].sort((a, b) => b.name.length - a.name.length);
+
+  // 2. Escape special regex characters in names
+  const escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  // 3. Create a pattern matching any recruit name with word boundaries (\b)
+  const namesPattern = sortedRecruits.map(r => escapeRegExp(r.name)).join('|');
+  const regex = new RegExp(`\\b(${namesPattern})\\b`, 'gi');
+
+  // 4. Replace matches with inline tooltip HTML
+  return text.replace(regex, (matchedName) => {
+    // Find the matching recruit object (case-insensitive)
+    const recruit = sortedRecruits.find(r => r.name.toLowerCase() === matchedName.toLowerCase());
+    if (!recruit) return matchedName;
+
+    return `
+      <span class="inline-recruit-mention">
+        <span class="recruit-mention-text">${matchedName}</span>
+        <span class="recruit-inline-tooltip">
+          <span class="tooltip-header">
+            <img 
+              src= "./img/stars/${recruit.name.toLowerCase()}.png" 
+              alt="${recruit.name}" 
+              onerror="this.src='img/placeholder.png'" 
+            />
+            <strong>${recruit.name}</strong>
+          </span>
+          <ul>
+            ${recruit.star ? `<li>🌟 <span>${recruit.star}</span></li>` : ''}
+            ${recruit.range ? `<li>🎯 <span>${recruit.range}</span></li>` : ''}
+            ${recruit.condition ? `<li>📍 <span>${recruit.condition}</span></li>` : ''}
+          </ul>
+        </span>
+      </span>
+    `.replace(/\s+/g, ' ').trim();
+  });
+}

@@ -222,3 +222,101 @@ mark.item-tag {
   padding: 60px 20px;
   color: var(--text-muted);
 }
+
+/* Highlighted recruit name inside text */
+.inline-recruit-mention {
+  position: relative;
+  display: inline;
+  cursor: help;
+}
+
+.recruit-mention-text {
+  color: #f1c40f; /* Gold text */
+  border-bottom: 1px dotted #f1c40f;
+  font-weight: 600;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.inline-recruit-mention:hover .recruit-mention-text {
+  color: #f39c12;
+  border-bottom-style: solid;
+}
+
+/* Tooltip popup box */
+.recruit-inline-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 125%; /* Position above text */
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 220px;
+  background: #1a1a26;
+  border: 1px solid #f1c40f;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+/* Pointer arrow */
+.recruit-inline-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #f1c40f transparent transparent transparent;
+}
+
+/* Tooltip Header (Avatar + Name) */
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+.tooltip-header img {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #111;
+}
+
+.tooltip-header strong {
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+/* Details List */
+.recruit-inline-tooltip ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.78rem;
+  color: #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recruit-inline-tooltip ul span {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Hover trigger state */
+.inline-recruit-mention:hover .recruit-inline-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

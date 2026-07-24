@@ -51,7 +51,8 @@ function toggleProgress(category, key) {
   if (!userProgress[category]) userProgress[category] = [];
   
   // Convert key to string for consistent comparison
-  const strKey = String(key);
+  const strKey = parseInt(key);
+
   const index = userProgress[category].indexOf(strKey);
 
   if (index > -1) {
@@ -66,7 +67,7 @@ function toggleProgress(category, key) {
 
 function isChecked(category, key) {
   if (!userProgress[category]) return false;
-  return userProgress[category].includes(String(key));
+  return userProgress[category].includes(key);
 }
 
 // Theme Switcher Functions
@@ -187,6 +188,7 @@ function setupEventListeners() {
           renderCurrentChapter();
         }
           */
+         switchView('walkthrough');
          renderCurrentChapter();
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;

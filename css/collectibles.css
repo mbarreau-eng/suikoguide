@@ -37,7 +37,9 @@
   flex-direction: column;
   gap: 8px;
 }
-
+.chapter-collectibles-list input {
+  display: none;
+}
 .chapter-collectible-item {
   display: flex;
   align-items: center;
@@ -181,6 +183,9 @@
   gap: 8px;
 }
 
+.master-items-list input {
+  display: none;
+}
 .master-item-row {
   display: flex;
   align-items: flex-start;

@@ -161,7 +161,7 @@ const bgImageName = chapter.pictures || chapter.picture || chapter.image;
             />
           </figure>
         ` : '';
-      const formattedText = p.text.replace(/\[_(.*?)_\]/g, '<mark class="item-tag">$1</mark>');
+      const formattedText = enhanceParagraphText(p.text.replace(/\[_(.*?)_\]/g, '<mark class="item-tag">$1</mark>'));
       el.innerHTML = imageMarkup + formattedText;
     } 
     else if (p.type === 'choices') {
@@ -412,6 +412,7 @@ function renderBossCard(bossName) {
         </div>
       ` : ''}
   `;
+  container.scrollTop = 0;
 }
 
 // Render Individual Normal Enemy Card
@@ -555,6 +556,7 @@ function renderEnemiesView() {
       }
     </div>
   `;
+  main.scrolltop = 0;
 }
 
 // Render Active Walkthrough Chapter
@@ -620,6 +622,7 @@ function renderCurrentChapter() {
       }
       break;
   }
+main.scrollTop = 0;
 }
 
 // Render Major Battle Card
@@ -868,7 +871,21 @@ function renderHQView() {
     return;
   }
 
+  const totalRecruits = guideData.recruits.length;
+  const recruitedCount = userProgress.recruits ? userProgress.recruits.length : 0;
   
+  let activeStageNumber = 1;
+  if (recruitedCount >= 90) activeStageNumber = 4;
+  else if (recruitedCount >= 45) activeStageNumber = 3;
+  else if (recruitedCount >= 25) activeStageNumber = 2;
+
+  // Calculate next upgrade threshold info
+  let nextThreshold = 25;
+   if (recruitedCount >= 45) nextThreshold = 90;
+  else if (recruitedCount >= 25) nextThreshold = 45;
+
+  const starsNeeded = Math.max(0, nextThreshold - recruitedCount);
+const progressPercent = Math.min(100, Math.round((recruitedCount / nextThreshold) * 100));
 
   const bgPicture = hq.picture ? `./img/hq/${hq.picture}` : '';
   const levels = Array.isArray(hq.levels) ? hq.levels : [];
@@ -884,16 +901,52 @@ function renderHQView() {
       </div>
     </section>
 
+<!-- Progress Banner -->
+      <section class="hq-banner">
+        <div class="hq-banner-info">
+          <h2>Toran Castle Status</h2>
+          <div class="hq-recruit-counter">
+            <span class="count-highlight">${recruitedCount}</span> / 108 Stars Recrypted
+          </div>
+        </div>
+
+        <div class="hq-progress-box">
+          <div class="hq-progress-label">
+            <span>Next Castle Level: <strong>${starsNeeded === 0 ? 'MAX REACHED' : `${starsNeeded} stars remaining`}</strong></span>
+            <span>${progressPercent}%</span>
+          </div>
+          <div class="hq-progress-bar-bg">
+            <div class="hq-progress-bar-fill" style="width: ${progressPercent}%;"></div>
+          </div>
+        </div>
+      </section>
+
     <!-- HQ Castle Levels Section -->
     ${levels.length > 0 ? `
       <section class="hq-section">
         <h2 class="hq-section-title">🏰 Castle Expansion Levels</h2>
         <div class="hq-levels-list">
-          ${levels.map(lvl => `
+          ${levels.map(lvl => {
+          const isUnlocked = recruitedCount >= lvl.unlock;
+          const isActive = lvl.id === activeStageNumber;
+
+          let statusClass = "locked";
+          let statusText = "Locked";
+
+          if (isActive) {
+            statusClass = "current";
+            statusText = "Current Level";
+          } else if (isUnlocked) {
+            statusClass = "unlocked";
+            statusText = "Unlocked";
+          }
+
+            return `
             <div class="hq-level-card">
               <div class="hq-level-header">
                 <span class="hq-level-badge">Level ${lvl.id}</span>
                 <span class="hq-level-unlock"><strong>Unlock:</strong> ${lvl.unlock || 'Default'}</span>
+                <span class="status-pill ${statusClass}">${statusText}</span>
               </div>
               ${Array.isArray(lvl.upgrades) && lvl.upgrades.length > 0 ? `
                 <div class="hq-upgrades-box">
@@ -904,7 +957,7 @@ function renderHQView() {
                 </div>
               ` : ''}
             </div>
-          `).join('')}
+          `}).join('')}
         </div>
       </section>
     ` : ''}
@@ -920,12 +973,16 @@ function renderHQView() {
             const rawUnlock = fac["Unlocked By"] || fac.unlockedBy;
             const description = fac.Description || fac.description || '';
             const recruitInfo = getRecruitInfo(rawUnlock);
-
+const recruitId = Number(fac["Unlocked By"]);
+const isFacilityUnlocked = userProgress.recruits.includes(recruitId);
             return `
               <div class="hq-facility-card">
                 <div class="hq-facility-header">
                   <h3 class="facility-name">${facilityName}</h3>
                   ${reqLevel ? `<span class="facility-hq-tag">HQ Lv. ${reqLevel}</span>` : ''}
+                  <span class="facility-status-pill ${isFacilityUnlocked ? 'pill-unlocked' : 'pill-locked'}">
+                          ${isFacilityUnlocked ? '✓ Unlocked' : `🔒 Needs Recruit #${recruitId}`}
+                        </span>
                 </div>
                 
                 <div class="hq-facility-body">
@@ -955,6 +1012,7 @@ function renderHQView() {
 
   // Attach hover pop-up event handlers
   initRecruitPopups();
+  main.scrollTop = 0;
 }
 
 // Pop-up Card Mouse Hover Controller
@@ -1134,6 +1192,7 @@ function renderAllCollectiblesView(containerId = 'main-content') {
   `;
 
   updateAllCollectiblesProgress();
+  container.scrollTop = 0;
 }
 
 // Helper: Render items grouped by Category
@@ -1324,6 +1383,7 @@ function renderUnitesView(containerId = 'main-content') {
       `).join('')}
     </div>
   `;
+  container.scrollTop = 0;
 }
 
 // Render individual Unite Card with character avatars & tooltips
@@ -1366,7 +1426,7 @@ function renderUniteCard(unite, allRecruits) {
                 <strong>${recruit.name}</strong>
                 <ul>
                   ${recruit.range ? `<li>🎯 Range: <span>${recruit.range}</span></li>` : ''}
-                  ${recruit.condition ? `<li>📍 How to Recruit: <span>${recruit.condition}</span></li>` : ''}
+                  ${recruit.condition ? `<li>🤝<span>${recruit.condition}</span></li>` : ''}
                 </ul>
               </div>
             </div>
