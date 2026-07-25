@@ -4,7 +4,7 @@ const STORAGE_THEME_KEY = 'suiko_theme';
 const STORAGE_CHAPTER_KEY = 'suiko_chapter';
 let currentChapterId = loadSavedChapter() || 1;
 let userProgress = loadProgress();
-let activeTab = 'walktrough';
+let activeTab = 'walkthrough';
 
 
 function loadProgress() {

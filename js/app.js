@@ -47,8 +47,18 @@ const dataFiles = [
   './js/storage.js',
   './js/helpers.js',
   './js/tooltips.js',
-  './js/components.js',
-  './js/views.js'
+  './js/components/chapter.components.js',
+  './js/components/cities.components.js',
+  './js/components/enemies.components.js',
+  './js/components/recruits.components.js',
+  './js/components/unites.components.js',
+  './js/views/chapter.view.js',
+  './js/views/recruits.view.js',
+  './js/views/enemies.view.js',
+  './js/views/hq.view.js',
+  './js/views/collectibles.view.js',
+  './js/views/unites.view.js',
+  './js/views/city.view.js'
 ];
 
 function loadScripts(files) {
