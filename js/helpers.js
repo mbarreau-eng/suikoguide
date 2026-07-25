@@ -133,3 +133,4 @@ function enhanceParagraphText(text) {
     `.replace(/\s+/g, ' ').trim();
   });
 }
+
