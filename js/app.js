@@ -1,107 +1,83 @@
-// State variables
+// Global guideData baseline
+const guideData = { collectibles: [], chapters: [] };
 
+// Application Data & Module Scripts Loader
+const dataFiles = [
+  './data/collectibles.js',
+  './data/enemies.js',
+  './data/recruits.js',
+  './data/major.js',
+  './data/duel.js',
+  './data/hq.js',
+  './data/unites.js',
+  './data/cities.js',
+  './data/chapters/ch01.js',
+  './data/chapters/ch02.js',
+  './data/chapters/ch03.js',
+  './data/chapters/ch04.js',
+  './data/chapters/ch05.js',
+  './data/chapters/ch06.js',
+  './data/chapters/ch07.js',
+  './data/chapters/ch08.js',
+  './data/chapters/ch09.js',
+  './data/chapters/ch10.js',
+  './data/chapters/ch11.js',
+  './data/chapters/ch12.js',
+  './data/chapters/ch13.js',
+  './data/chapters/ch14.js',
+  './data/chapters/ch15.js',
+  './data/chapters/ch16.js',
+  './data/chapters/ch17.js',
+  './data/chapters/ch18.js',
+  './data/chapters/ch19.js',
+  './data/chapters/ch20.js',
+  './data/chapters/ch21.js',
+  './data/chapters/ch22.js',
+  './data/chapters/ch23.js',
+  './data/chapters/ch24.js',
+  './data/chapters/ch25.js',
+  './data/chapters/ch26.js',
+  './data/chapters/ch27.js',
+  './data/chapters/ch28.js',
+  './data/chapters/ch29.js',
+  './data/chapters/ch30.js',
+  './data/chapters/ch31.js',
+  './data/chapters/ch32.js',
+  // Application Modular Scripts
+  './js/storage.js',
+  './js/helpers.js',
+  './js/tooltips.js',
+  './js/components.js',
+  './js/views.js'
+];
 
-// Local Storage Keys
-const STORAGE_PROGRESS_KEY = 'suiko_progress_data';
-const STORAGE_THEME_KEY = 'suiko_theme';
-const STORAGE_CHAPTER_KEY = 'suiko_chapter';
-
-// Load User Progress from localStorage
-let userProgress = loadProgress();
-let currentChapterId = loadSavedChapter();
-
-var activeTab = 'walkthrough';
-
-function loadProgress() {
-  try {
-    const data = localStorage.getItem(STORAGE_PROGRESS_KEY);
-    return data ? JSON.parse(data) : { recruits: [], items: [], equipment: [], runes: [], bits: [] };
-  } catch (e) {
-    return { recruits: [], items: [], equipment: [], runes: [], bits: [] };
-  }
+function loadScripts(files) {
+  return files.reduce((promise, src) => {
+    return promise.then(() => new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+      document.head.appendChild(script);
+    }));
+  }, Promise.resolve());
 }
 
-function loadSavedChapter() {
-  try {
-    const data = localStorage.getItem(STORAGE_CHAPTER_KEY);
-    return parseInt(data) ;
-  } catch (e) {
-    return 1;
-  }
-}
+// Application Global State
 
 
-function saveProgress() {
-  try {
-    localStorage.setItem(STORAGE_PROGRESS_KEY, JSON.stringify(userProgress));
-  } catch (e) {
-    console.error('Failed to save progress to localStorage:', e);
-  }
-}
-
-function saveCurrentChapter() {
-  try {
-    localStorage.setItem(STORAGE_CHAPTER_KEY, currentChapterId);
-  } catch (e) {
-    console.error('Failed to save chapter to localStorage:', e);
-  }
-}
-
-function toggleProgress(category, key) {
-  if (!userProgress[category]) userProgress[category] = [];
-  
-  // Convert key to string for consistent comparison
-  const strKey = parseInt(key);
-
-  const index = userProgress[category].indexOf(strKey);
-
-  if (index > -1) {
-    userProgress[category].splice(index, 1);
-  } else {
-    userProgress[category].push(strKey);
-  }
-
-  saveProgress();
-  renderCurrentChapter(); // Re-render view to reflect checked state
-}
-
-function isChecked(category, key) {
-  if (!userProgress[category]) return false;
-  return userProgress[category].includes(key);
-}
-
-// Theme Switcher Functions
-function initTheme() {
-  const savedTheme = localStorage.getItem(STORAGE_THEME_KEY) || 'dark';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-}
-
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme') || 'dark';
-  const newTheme = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem(STORAGE_THEME_KEY, newTheme);
-  updateThemeButtonUI(newTheme);
-}
-
-function updateThemeButtonUI(theme) {
-  const btn = document.getElementById('theme-toggle-btn');
-  if (btn) {
-    btn.innerHTML = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-  }
-}
-
-
-
-// Initialize the app
 function initApp() {
+
+  let userProgress = loadProgress();
+let currentChapterId = loadSavedChapter();
+var activeTab = 'walkthrough';
   initTheme();
 
   if (typeof guideData === 'undefined' || !guideData) {
     document.getElementById('main-content').innerHTML = `
       <div class="empty-state">
         <h3>Unable to load guide data</h3>
-        <p>Make sure <code>data.js</code> is correctly loaded in <code>index.html</code> before <code>app.js</code>.</p>
+        <p>Make sure all data files in <code>/data/</code> are available.</p>
       </div>
     `;
     return;
@@ -114,15 +90,11 @@ function initApp() {
 }
 
 function setupEventListeners() {
-  /*
-  document.getElementById('tab-walkthrough').addEventListener('click', () => switchTab('walkthrough'));
-  document.getElementById('tab-recruits').addEventListener('click', () => switchTab('recruits'));
-  document.getElementById('tab-enemies').addEventListener('click', () => switchTab('enemies'));
-*/
-  // Global Event Delegation for interactive progress tracking clicks (Items, Recruits, etc.)
+  // Global Event Delegation for interactive progress tracking
   document.getElementById('main-content').addEventListener('click', (e) => {
     const trackable = e.target.closest('[data-track-cat]');
     if (trackable) {
+      if (e.target.tagName.toLowerCase() === 'label') return;
       e.stopPropagation();
       const cat = trackable.getAttribute('data-track-cat');
       const key = trackable.getAttribute('data-track-key');
@@ -130,14 +102,11 @@ function setupEventListeners() {
     }
   });
 
-  // Initialize floating tooltip div
-  if (typeof initEnemyTooltip === 'function') {
-    initEnemyTooltip();
-  }
+  // Initialize tooltips
+  initEnemyTooltip();
 
   // GLOBAL HOVER DELEGATION FOR ENEMIES/BOSSES
   document.addEventListener('mouseover', (e) => {
-    // Looks for elements with class .enemy-chip or attribute data-enemy-name
     const target = e.target.closest('.enemy-chip, [data-enemy-name]');
     if (!target) return;
 
@@ -160,7 +129,7 @@ function setupEventListeners() {
 
   if (sidebar) {
     sidebar.addEventListener('click', (e) => {
-      // A. Toggle Accordion Header (Open / Collapse Walkthrough)
+      // Accordion Header Toggle
       const toggleBtn = e.target.closest('.accordion-toggle');
       if (toggleBtn) {
         const group = toggleBtn.closest('.accordion-group');
@@ -168,49 +137,37 @@ function setupEventListeners() {
         return;
       }
 
-      // B. Click Chapter Link
+      // Click Chapter Link
       const chapterLink = e.target.closest('.nav-item[data-chapter-id]');
       if (chapterLink) {
         e.preventDefault();
         const rawId = chapterLink.getAttribute('data-chapter-id');
-        currentChapterId = parseInt(rawId);
+        currentChapterId = parseInt(rawId, 10);
         saveCurrentChapter();
-        // Highlight active chapter
+        
         sidebar.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
         chapterLink.classList.add('active');
 
-
-        /*
-        // Render selected chapter & scroll up
-        if (typeof switchView === 'function') {
-          switchView('walkthrough');
-        } else {
-          renderCurrentChapter();
-        }
-          */
-         switchView('walkthrough');
-         renderCurrentChapter();
+        switchView('walkthrough');
+        renderCurrentChapter();
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
 
-      // C. Click Main View Buttons (Enemies / Recruits)
+      // Click Main View Buttons
       const viewBtn = e.target.closest('.nav-btn-main[data-view]');
       if (viewBtn) {
         const viewName = viewBtn.getAttribute('data-view');
-        if (typeof switchView === 'function') {
-          switchView(viewName);
-        }
+        switchView(viewName);
       }
-/* Cities */
+
+      // Click Cities
       const cityLink = e.target.closest('.nav-item[data-city-id]');
       if (cityLink) {
         e.preventDefault();
         const rawId = cityLink.getAttribute('data-city-id');
-        
         const container = document.getElementById('main-content');
         container.innerHTML = renderCity(rawId, guideData.cities[rawId]);
-
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
@@ -218,13 +175,11 @@ function setupEventListeners() {
   }
 }
 
-
-
 function switchTab(tab) {
   activeTab = tab;
-  document.getElementById('tab-walkthrough').classList.toggle('active', tab === 'walkthrough');
-  document.getElementById('tab-recruits').classList.toggle('active', tab === 'recruits');
-  document.getElementById('tab-enemies').classList.toggle('active', tab === 'enemies');
+  document.getElementById('tab-walkthrough')?.classList.toggle('active', tab === 'walkthrough');
+  document.getElementById('tab-recruits')?.classList.toggle('active', tab === 'recruits');
+  document.getElementById('tab-enemies')?.classList.toggle('active', tab === 'enemies');
   renderSidebar();
   renderContent();
 }
@@ -236,134 +191,185 @@ function selectChapter(id) {
   renderContent();
 }
 
-
-// Global View Switcher
 function switchView(viewName) {
   const sidebar = document.getElementById('sidebar-nav') || document.getElementById('sidebar');
 
-  // 1. Update Active Highlight on Sidebar Main Buttons
   if (sidebar) {
-    // Remove active state from all main view buttons
     sidebar.querySelectorAll('.nav-btn-main').forEach(btn => btn.classList.remove('active'));
 
     if (viewName !== 'walkthrough') {
-      // De-highlight active chapter link when switching away from walkthrough
       sidebar.querySelectorAll('.nav-item').forEach(link => link.classList.remove('active'));
-
-      // Highlight target main view button
       const targetBtn = sidebar.querySelector(`.nav-btn-main[data-view="${viewName}"]`);
       if (targetBtn) targetBtn.classList.add('active');
     }
   }
 
-  // 2. Scroll to top of page cleanly
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  activeTab = viewName;
 
-  // 3. Render Content Based on View Name
-
-activeTab = viewName;
   switch (viewName) {
     case 'walkthrough':
-      if (typeof renderCurrentChapter === 'function') {
-
-        renderCurrentChapter();
-      }
+      renderCurrentChapter();
       break;
-
     case 'enemies':
-      if (typeof renderEnemiesView === 'function') {
-        renderEnemiesView();
-      }
+      renderEnemiesView();
       break;
-
     case 'recruits':
-      if (typeof renderRecruitsView === 'function') {
-        let container = document.getElementById('main-content');
-        renderRecruitsView(container);
-      }
+      renderRecruitsView(document.getElementById('main-content'));
       break;
     case 'hq':
-      if (typeof renderHQView === 'function') {
-        renderHQView();
-      }
+      renderHQView();
       break;  
-          case 'collectibles':
-      if (typeof renderAllCollectiblesView === 'function') {
-        renderAllCollectiblesView();
-      }
+    case 'collectibles':
+      renderAllCollectiblesView();
       break;  
-      case 'unites':
-          if (typeof renderUnitesView === 'function') {
-            renderUnitesView();
-          }
+    case 'unites':
+      renderUnitesView();
       break;  
-
-
     default:
       console.warn(`Unknown view: ${viewName}. Defaulting to walkthrough.`);
-      if (typeof renderCurrentChapter === 'function') {
-        renderCurrentChapter();
-      }
+      renderCurrentChapter();
       break;
   }
 }
 
-// Get saved collected item IDs from localStorage
-function getCheckedCollectibles() {
-  return JSON.parse(localStorage.getItem('suiko1_collectibles') || '[]');
+function renderSidebarControls() {
+  const sidebar = document.querySelector('.sidebar') || document.getElementById('sidebar');
+  if (!sidebar) return;
+
+  let controlsContainer = document.getElementById('sidebar-controls');
+  if (!controlsContainer) {
+    controlsContainer = document.createElement('div');
+    controlsContainer.id = 'sidebar-controls';
+    controlsContainer.className = 'sidebar-controls';
+    sidebar.insertBefore(controlsContainer, sidebar.lastChild);
+  }
+
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  controlsContainer.innerHTML = `
+    <button id="theme-toggle-btn" class="theme-btn" onclick="toggleTheme()">
+      ${currentTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+    </button>
+  `;
 }
 
-// Toggle saved state in localStorage
-function toggleChapterCollectible(itemId, chapterIdsJson) {
-  let saved = getCheckedCollectibles();
-  if (saved.includes(itemId)) {
-    saved = saved.filter(id => id !== itemId);
-  } else {
-    saved.push(itemId);
-  }
-  localStorage.setItem('suiko1_collectibles', JSON.stringify(saved));
+function renderSidebar() {
+  const sidebar = document.getElementById('sidebar-nav') || document.getElementById('sidebar');
+  if (!sidebar) return;
 
-  // Toggle visual completed state on the row
-  const domId = sanitizeId(itemId);
-  const row = document.getElementById(`chapter-item-${domId}`);
-  if (row) row.classList.toggle('completed');
+  const chapters = guideData.chapters || [];
+  const cities = guideData.cities || [];
 
-  // Update chapter header counter
-  const chapterIds = JSON.parse(chapterIdsJson);
-  const countSpan = document.getElementById('chapter-coll-count');
-  if (countSpan) {
-    const foundCount = chapterIds.filter(cId => saved.includes(cId)).length;
-    countSpan.innerText = `${foundCount} / ${chapterIds.length} Found`;
-  }
+  sidebar.innerHTML = `
+    <nav class="sidebar-accordion">
+      <div class="accordion-group expanded" id="group-walkthrough">
+        <button class="accordion-toggle" id="toggle-walkthrough">
+          <span>📖 Walkthrough</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        
+        <div class="accordion-menu" id="chapter-sub-menu">
+          ${chapters.map(ch => {
+            const label = getChapterLabel(ch);
+            const isActive = String(ch.id) === String(currentChapterId);
+            return `
+              <a href="#" class="nav-item ${isActive ? 'active' : ''}" data-chapter-id="${ch.id}">
+                ${label}
+              </a>
+            `;
+          }).join('')}
+        </div>
+      </div>
+
+      <button class="nav-btn-main" data-view="enemies">
+        <span>👾 Enemies / Bestiary</span>
+      </button>
+
+      <button class="nav-btn-main" data-view="recruits">
+        <span>★ Recruits</span>
+      </button>
+
+      <button class="nav-btn-main" data-view="hq">
+        <span>🏰 Headquarters</span>
+      </button>
+
+      <button class="nav-btn-main" data-view="collectibles">
+        <span>💎 Collectibles</span>
+      </button>
+
+      <button class="nav-btn-main" data-view="unites">
+        <span>🤜🤛 Unites</span>
+      </button>
+
+      <div class="accordion-group" id="group-cities">
+        <button class="accordion-toggle" id="toggle-cities">
+          <span>🛖 Cities</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        
+        <div class="accordion-menu" id="city-sub-menu">
+          ${cities.map((c, index) => `
+            <a href="#" class="nav-item" data-city-id="${index}">
+              ${c.name}
+            </a>
+          `).join('')}
+        </div>
+      </div>
+    </nav>
+  `;
 }
 
-// Wait for the DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // Attach to document.body to survive any innerHTML re-renders
-  document.body.addEventListener('click', (e) => {
-    const trackable = e.target.closest('[data-track-cat]');
-    
-    if (trackable) {
-      // PREVENT DOUBLE-FIRE: If they clicked a label, let the browser 
-      // trigger the checkbox's click event instead of handling it twice.
-      if (e.target.tagName.toLowerCase() === 'label') {
-        return; 
-      }
+function renderCurrentChapter() {
+  const main = document.getElementById('main-content');
+  if (!main) return;
 
-      // Read your data attributes
-      const cat = trackable.getAttribute('data-track-cat');
-      const key = trackable.getAttribute('data-track-key');
-      
-      // Execute your logic
-      if (typeof toggleProgress === 'function') {
-         toggleProgress(cat, key);
-      }
-    }
-  });
+  const chapter = (guideData.chapters || []).find(
+    ch => String(ch.id) === String(currentChapterId)
+  ) || guideData.chapters?.[0];
 
+  if (!chapter) {
+    main.innerHTML = `<p style="padding: 20px; color: #e74c3c;">Chapter ${currentChapterId} not found in guideData!</p>`;
+    return;
+  }
+
+  activeTab = activeTab || 'walkthrough';
+
+  switch (activeTab) {
+    case 'walkthrough':
+      renderChapterView(main, currentChapterId);
+      break;
+    case 'enemies':
+      renderEnemiesView();
+      break;
+    case 'recruits':
+      renderRecruitsView(main);
+      break;
+    case 'hq':
+      renderHQView();
+      break;  
+    case 'collectibles':
+      renderAllCollectiblesView();
+      break;  
+    case 'unites':
+      renderUnitesView();
+      break;  
+    default:
+      renderChapterView(main, 1);
+      break;
+  }
+  main.scrollTop = 0;
+}
+
+function renderContent() {
+  renderCurrentChapter();
+}
+
+// Kick off Script Loading on DOM Ready
+window.addEventListener('DOMContentLoaded', () => {
+  loadScripts(dataFiles)
+    .then(() => {
+      console.log('All modules loaded successfully!');
+      initApp();
+    })
+    .catch(err => console.error(err));
 });
-
-// Start app when DOM loads
-window.addEventListener('DOMContentLoaded', initApp);
-

@@ -1,3 +1,817 @@
+// State variables
+
+
+// Local Storage Keys
+const STORAGE_PROGRESS_KEY = 'suiko_progress_data';
+const STORAGE_THEME_KEY = 'suiko_theme';
+const STORAGE_CHAPTER_KEY = 'suiko_chapter';
+
+// Load User Progress from localStorage
+let userProgress = loadProgress();
+let currentChapterId = loadSavedChapter() || 1;
+
+var activeTab = 'walkthrough';
+
+function loadProgress() {
+  try {
+    const data = localStorage.getItem(STORAGE_PROGRESS_KEY);
+    return data ? JSON.parse(data) : { recruits: [], items: [], equipment: [], runes: [], bits: [] };
+  } catch (e) {
+    return { recruits: [], items: [], equipment: [], runes: [], bits: [] };
+  }
+}
+
+function loadSavedChapter() {
+  try {
+    const data = localStorage.getItem(STORAGE_CHAPTER_KEY);
+    return parseInt(data) ;
+  } catch (e) {
+    return 1;
+  }
+}
+
+
+function saveProgress() {
+  try {
+    localStorage.setItem(STORAGE_PROGRESS_KEY, JSON.stringify(userProgress));
+  } catch (e) {
+    console.error('Failed to save progress to localStorage:', e);
+  }
+}
+
+function saveCurrentChapter() {
+  try {
+    localStorage.setItem(STORAGE_CHAPTER_KEY, currentChapterId);
+  } catch (e) {
+    console.error('Failed to save chapter to localStorage:', e);
+  }
+}
+
+function toggleProgress(category, key) {
+  if (!userProgress[category]) userProgress[category] = [];
+  
+  // Convert key to string for consistent comparison
+  const strKey = parseInt(key);
+
+  const index = userProgress[category].indexOf(strKey);
+
+  if (index > -1) {
+    userProgress[category].splice(index, 1);
+  } else {
+    userProgress[category].push(strKey);
+  }
+
+  saveProgress();
+  renderCurrentChapter(); // Re-render view to reflect checked state
+}
+
+function isChecked(category, key) {
+  if (!userProgress[category]) return false;
+  return userProgress[category].includes(key);
+}
+
+// Theme Switcher Functions
+function initTheme() {
+  const savedTheme = localStorage.getItem(STORAGE_THEME_KEY) || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const newTheme = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem(STORAGE_THEME_KEY, newTheme);
+  updateThemeButtonUI(newTheme);
+}
+
+function updateThemeButtonUI(theme) {
+  const btn = document.getElementById('theme-toggle-btn');
+  if (btn) {
+    btn.innerHTML = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+  }
+}
+
+
+
+// Initialize the app
+function initApp() {
+  initTheme();
+
+  if (typeof guideData === 'undefined' || !guideData) {
+    document.getElementById('main-content').innerHTML = `
+      <div class="empty-state">
+        <h3>Unable to load guide data</h3>
+        <p>Make sure <code>data.js</code> is correctly loaded in <code>index.html</code> before <code>app.js</code>.</p>
+      </div>
+    `;
+    return;
+  }
+
+  renderSidebar();
+  setupEventListeners();
+  renderSidebarControls();
+  renderCurrentChapter();
+}
+
+function setupEventListeners() {
+  /*
+  document.getElementById('tab-walkthrough').addEventListener('click', () => switchTab('walkthrough'));
+  document.getElementById('tab-recruits').addEventListener('click', () => switchTab('recruits'));
+  document.getElementById('tab-enemies').addEventListener('click', () => switchTab('enemies'));
+*/
+  // Global Event Delegation for interactive progress tracking clicks (Items, Recruits, etc.)
+  document.getElementById('main-content').addEventListener('click', (e) => {
+    const trackable = e.target.closest('[data-track-cat]');
+    if (trackable) {
+      e.stopPropagation();
+      const cat = trackable.getAttribute('data-track-cat');
+      const key = trackable.getAttribute('data-track-key');
+      toggleProgress(cat, key);
+    }
+  });
+
+  // Initialize floating tooltip div
+  if (typeof initEnemyTooltip === 'function') {
+    initEnemyTooltip();
+  }
+
+  // GLOBAL HOVER DELEGATION FOR ENEMIES/BOSSES
+  document.addEventListener('mouseover', (e) => {
+    // Looks for elements with class .enemy-chip or attribute data-enemy-name
+    const target = e.target.closest('.enemy-chip, [data-enemy-name]');
+    if (!target) return;
+
+    const enemyName = target.getAttribute('data-enemy-name') || target.textContent;
+    showEnemyTooltip(enemyName, e);
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    positionEnemyTooltip(e);
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    const target = e.target.closest('.enemy-chip, [data-enemy-name]');
+    if (target) {
+      hideEnemyTooltip();
+    }
+  });
+
+  const sidebar = document.getElementById('sidebar-nav') || document.getElementById('sidebar');
+
+  if (sidebar) {
+    sidebar.addEventListener('click', (e) => {
+      // A. Toggle Accordion Header (Open / Collapse Walkthrough)
+      const toggleBtn = e.target.closest('.accordion-toggle');
+      if (toggleBtn) {
+        const group = toggleBtn.closest('.accordion-group');
+        group.classList.toggle('expanded');
+        return;
+      }
+
+      // B. Click Chapter Link
+      const chapterLink = e.target.closest('.nav-item[data-chapter-id]');
+      if (chapterLink) {
+        e.preventDefault();
+        const rawId = chapterLink.getAttribute('data-chapter-id');
+        currentChapterId = parseInt(rawId);
+        saveCurrentChapter();
+        // Highlight active chapter
+        sidebar.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
+        chapterLink.classList.add('active');
+
+
+        /*
+        // Render selected chapter & scroll up
+        if (typeof switchView === 'function') {
+          switchView('walkthrough');
+        } else {
+          renderCurrentChapter();
+        }
+          */
+         switchView('walkthrough');
+         renderCurrentChapter();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      // C. Click Main View Buttons (Enemies / Recruits)
+      const viewBtn = e.target.closest('.nav-btn-main[data-view]');
+      if (viewBtn) {
+        const viewName = viewBtn.getAttribute('data-view');
+        if (typeof switchView === 'function') {
+          switchView(viewName);
+        }
+      }
+/* Cities */
+      const cityLink = e.target.closest('.nav-item[data-city-id]');
+      if (cityLink) {
+        e.preventDefault();
+        const rawId = cityLink.getAttribute('data-city-id');
+        
+        const container = document.getElementById('main-content');
+        container.innerHTML = renderCity(rawId, guideData.cities[rawId]);
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+    });
+  }
+}
+
+
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.getElementById('tab-walkthrough').classList.toggle('active', tab === 'walkthrough');
+  document.getElementById('tab-recruits').classList.toggle('active', tab === 'recruits');
+  document.getElementById('tab-enemies').classList.toggle('active', tab === 'enemies');
+  renderSidebar();
+  renderContent();
+}
+
+function selectChapter(id) {
+  currentChapterId = id;
+  if (activeTab !== 'walkthrough') switchTab('walkthrough');
+  renderSidebar();
+  renderContent();
+}
+
+
+// Global View Switcher
+function switchView(viewName) {
+  const sidebar = document.getElementById('sidebar-nav') || document.getElementById('sidebar');
+
+  // 1. Update Active Highlight on Sidebar Main Buttons
+  if (sidebar) {
+    // Remove active state from all main view buttons
+    sidebar.querySelectorAll('.nav-btn-main').forEach(btn => btn.classList.remove('active'));
+
+    if (viewName !== 'walkthrough') {
+      // De-highlight active chapter link when switching away from walkthrough
+      sidebar.querySelectorAll('.nav-item').forEach(link => link.classList.remove('active'));
+
+      // Highlight target main view button
+      const targetBtn = sidebar.querySelector(`.nav-btn-main[data-view="${viewName}"]`);
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+  }
+
+  // 2. Scroll to top of page cleanly
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // 3. Render Content Based on View Name
+
+activeTab = viewName;
+  switch (viewName) {
+    case 'walkthrough':
+      if (typeof renderCurrentChapter === 'function') {
+
+        renderCurrentChapter();
+      }
+      break;
+
+    case 'enemies':
+      if (typeof renderEnemiesView === 'function') {
+        renderEnemiesView();
+      }
+      break;
+
+    case 'recruits':
+      if (typeof renderRecruitsView === 'function') {
+        let container = document.getElementById('main-content');
+        renderRecruitsView(container);
+      }
+      break;
+    case 'hq':
+      if (typeof renderHQView === 'function') {
+        renderHQView();
+      }
+      break;  
+          case 'collectibles':
+      if (typeof renderAllCollectiblesView === 'function') {
+        renderAllCollectiblesView();
+      }
+      break;  
+      case 'unites':
+          if (typeof renderUnitesView === 'function') {
+            renderUnitesView();
+          }
+      break;  
+
+
+    default:
+      console.warn(`Unknown view: ${viewName}. Defaulting to walkthrough.`);
+      if (typeof renderCurrentChapter === 'function') {
+        renderCurrentChapter();
+      }
+      break;
+  }
+}
+
+// Get saved collected item IDs from localStorage
+function getCheckedCollectibles() {
+  return JSON.parse(localStorage.getItem('suiko1_collectibles') || '[]');
+}
+
+// Toggle saved state in localStorage
+function toggleChapterCollectible(itemId, chapterIdsJson) {
+  let saved = getCheckedCollectibles();
+  if (saved.includes(itemId)) {
+    saved = saved.filter(id => id !== itemId);
+  } else {
+    saved.push(itemId);
+  }
+  localStorage.setItem('suiko1_collectibles', JSON.stringify(saved));
+
+  // Toggle visual completed state on the row
+  const domId = sanitizeId(itemId);
+  const row = document.getElementById(`chapter-item-${domId}`);
+  if (row) row.classList.toggle('completed');
+
+  // Update chapter header counter
+  const chapterIds = JSON.parse(chapterIdsJson);
+  const countSpan = document.getElementById('chapter-coll-count');
+  if (countSpan) {
+    const foundCount = chapterIds.filter(cId => saved.includes(cId)).length;
+    countSpan.innerText = `${foundCount} / ${chapterIds.length} Found`;
+  }
+}
+
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // Attach to document.body to survive any innerHTML re-renders
+  document.body.addEventListener('click', (e) => {
+    const trackable = e.target.closest('[data-track-cat]');
+    
+    if (trackable) {
+      // PREVENT DOUBLE-FIRE: If they clicked a label, let the browser 
+      // trigger the checkbox's click event instead of handling it twice.
+      if (e.target.tagName.toLowerCase() === 'label') {
+        return; 
+      }
+
+      // Read your data attributes
+      const cat = trackable.getAttribute('data-track-cat');
+      const key = trackable.getAttribute('data-track-key');
+      
+      // Execute your logic
+      if (typeof toggleProgress === 'function') {
+         toggleProgress(cat, key);
+      }
+    }
+  });
+
+});
+
+// Start app when DOM loads
+window.addEventListener('DOMContentLoaded', initApp);
+
+ const guideData = { collectibles: [], chapters: [] };
+
+// Files to load in order
+const dataFiles = [
+  './data/collectibles.js',
+  './data/enemies.js',
+  './data/recruits.js',
+  './data/major.js',
+  './data/duel.js',
+  './data/hq.js',
+  './data/unites.js',
+  './data/cities.js',
+  './data/chapters/ch01.js',
+  './data/chapters/ch02.js',
+  './data/chapters/ch03.js',
+  './data/chapters/ch04.js',
+  './data/chapters/ch05.js',
+  './data/chapters/ch06.js',
+  './data/chapters/ch07.js',
+  './data/chapters/ch08.js',
+  './data/chapters/ch09.js',
+  './data/chapters/ch10.js',
+  './data/chapters/ch11.js',
+  './data/chapters/ch12.js',
+  './data/chapters/ch13.js',
+  './data/chapters/ch14.js',
+  './data/chapters/ch15.js',
+  './data/chapters/ch16.js',
+  './data/chapters/ch17.js',
+  './data/chapters/ch18.js',
+  './data/chapters/ch19.js',
+  './data/chapters/ch20.js',
+  './data/chapters/ch21.js',
+  './data/chapters/ch22.js',
+  './data/chapters/ch23.js',
+  './data/chapters/ch24.js',
+  './data/chapters/ch25.js',
+  './data/chapters/ch26.js',
+  './data/chapters/ch27.js',
+  './data/chapters/ch28.js',
+  './data/chapters/ch29.js',
+  './data/chapters/ch30.js',
+  './data/chapters/ch31.js',
+  './data/chapters/ch32.js',
+  './js/helpers.js',
+  './js/render.js',
+  './js/app.js' // Loads app logic last
+];
+
+// Load scripts sequentially
+function loadScripts(files) {
+  return files.reduce((promise, src) => {
+    return promise.then(() => new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error(`Failed to load ${src}`));
+      document.head.appendChild(script);
+    }));
+  }, Promise.resolve());
+}
+
+// Start loading
+loadScripts(dataFiles)
+  .then(() => {
+    console.log('All data loaded successfully!');
+    if (typeof initApp === 'function') initApp();
+  })
+  .catch(err => console.error(err));
+
+  // Helper to render distinct range badges
+function renderRangeBadge(range) {
+  if (!range) return '';
+
+  const r = String(range).trim().toUpperCase();
+
+  if (r === 'NP') {
+    return `<span class="range-badge range-np" title="Non-Playable / Support Staff">NP</span>`;
+  }
+
+  // Standard combat ranges (S, M, L)
+  return `<span class="range-badge range-${r.toLowerCase()}">${r}</span>`;
+}
+
+// Helper: Generates HTML for a single Recruit Card (Interactive for recruiting)
+function renderRecruitCard(ref) {
+  const recruit = resolveRecruit(ref);
+
+  if (!recruit) {
+    const fallbackName = typeof ref === 'object' ? (ref.name || 'Unknown Recruit') : String(ref);
+    return `
+      <div class="recruit-card">
+        <div class="recruit-header">
+          <div class="recruit-info">
+            <div class="recruit-name"><span>${fallbackName}</span></div>
+          </div>
+        </div>
+        <div class="recruit-condition">${recruit.condition}</div>
+      </div>
+    `;
+  }
+
+  const recruitKey = recruit.id !== null && recruit.id !== undefined ? recruit.id : recruit.name;
+  const recruited = isChecked('recruits', recruitKey);
+
+  const imgSrc = getImagePath(recruit.name);
+  const idPrefix = (recruit.id !== null && recruit.id !== undefined) ? `#${recruit.id} ` : '';
+
+  return `
+    <div class="recruit-card ${recruited ? 'recruited' : ''} ${recruit.range === 'NP' ? 'recruit-support' : ''}" 
+         data-track-cat="recruits" 
+         data-track-key="${recruitKey}"
+         title="Click to toggle recruited status">
+      <div class="recruit-header">
+        <img src="${imgSrc}" alt="${recruit.name}" class="recruit-img" onerror="this.style.display='none'">
+        <div class="recruit-info">
+          <div class="recruit-name">
+            <span>${idPrefix}${recruit.name}</span>
+           ${renderRangeBadge(recruit.range)}
+          </div>
+        </div>
+        <span class="recruit-status-badge">${recruited ? '✔ Recruited' : '◯ Not Recruited'}</span>
+      </div>
+      <div class="recruit-condition">${recruit.condition ? recruit.condition : ''}</div>
+    </div>
+  `;
+}
+
+// Helper: Renders inline badges with interactive checkbox progress tracking
+function renderBadges(dataObj) {
+  if (!dataObj) return '';
+
+  const categories = [
+    { key: 'savepoints', label: 'Save Points', trackable: false },
+    { key: 'places', label: 'Locations', trackable: false },
+    { key: 'enemies', label: 'Enemies', trackable: false },
+    { key: 'items', label: 'Items', trackable: true },
+    { key: 'equipment', label: 'Equipment', trackable: true },
+    { key: 'runes', label: 'Runes', trackable: true },
+    { key: 'bits', label: 'Bits', trackable: true }
+  ];
+
+  let html = '';
+  categories.forEach(cat => {
+    const val = dataObj[cat.key];
+    if (val && Array.isArray(val) && val.length > 0) {
+      const badges = val.map(x => {
+        const isObj = typeof x === 'object' && x !== null;
+        const label = isObj ? (x.name || x.title || JSON.stringify(x)) : x;
+        const typeStr = isObj && typeof x.type === 'string' ? x.type.toLowerCase() : '';
+        const isBoss = isObj && (typeStr === 'boss' || x.isBoss === true);
+
+        // Check trackable state
+        const checked = cat.trackable ? isChecked(cat.key, label) : false;
+
+        let badgeClass = 'badge';
+        if (isBoss) badgeClass += ' badge-boss';
+        if (cat.trackable) badgeClass += ' badge-trackable';
+        if (checked) badgeClass += ' checked';
+        if(cat.key === 'enemies') badgeClass += ' enemy-chip ';
+
+        const icon = isBoss ? '💀 ' : (checked ? '✔ ' : '');
+        const trackAttrs = cat.trackable ? `data-track-cat="${cat.key}" data-track-key="${label}" title="Click to check off"` : '';
+
+        return `<span data-enemy-name="${cat.key === 'enemies' ? label : ''}" class="${badgeClass}" ${trackAttrs}>${icon}${label}</span>`;
+      }).join('');
+
+      html += `<div class="badge-group"><span class="badge-label">${cat.label}:</span> ${badges}</div>`;
+    }
+  });
+
+  return html;
+}
+
+// Helper: Generates HTML for a single party member chip with an avatar
+function renderPartyChip(m) {
+  const name = typeof m === 'object' ? (m.name || m.character) : m;
+  const level = typeof m === 'object' && m.level ? `Lv. ${m.level}` : '';
+  const imgSrc = getImagePath(name);
+
+  return `
+    <div class="party-member-chip">
+      <img src="${imgSrc}" alt="${name}" class="member-img" onerror="this.style.display='none'">
+      <div class="member-details">
+        <span class="member-name">${name}</span>
+        ${level ? `<span class="member-level">${level}</span>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+// Helper: Builds full party card elements
+function createPartyCard(members, title = 'Current Party') {
+  const el = document.createElement('div');
+  el.className = 'party-card';
+  
+  const membersHTML = members.map(m => renderPartyChip(m)).join('');
+
+  el.innerHTML = `
+    <div class="party-header">⚔️ ${title}</div>
+    <div class="party-grid">${membersHTML}</div>
+  `;
+  return el;
+}
+
+// Helper: Formats image path into ./img/stars/ with NO spaces
+function getImagePath(name) {
+  if (!name) return '';
+  const fileName = name.toLowerCase().replace(/\s+/g, '');
+  return `./img/stars/${fileName}.png`;
+}
+
+// Helper: Resolves a recruit reference (ID, ID object, or full object) to guideData.recruits
+function resolveRecruit(ref) {
+  if (!guideData || !guideData.recruits) return null;
+
+  let recruitId = null;
+  let customOverrides = null;
+
+  if (typeof ref === 'number' || (typeof ref === 'string' && !isNaN(Number(ref)))) {
+    recruitId = Number(ref);
+  } else if (ref && typeof ref === 'object') {
+    if (ref.id !== undefined && ref.id !== null) {
+      recruitId = Number(ref.id);
+      customOverrides = ref;
+    } else {
+      return ref; // Object without ID, treat as direct recruit object
+    }
+  }
+
+  if (recruitId !== null) {
+    const found = guideData.recruits.find(r => r.id === recruitId);
+    if (found) {
+      return customOverrides ? { ...found, ...customOverrides } : found;
+    }
+  }
+
+  return null;
+}
+
+
+
+// Helper: Builds a recruits section grid for chapters or place blocks
+function renderRecruitsSection(dataObj) {
+  if (!dataObj || !dataObj.recruits || !Array.isArray(dataObj.recruits) || dataObj.recruits.length === 0) {
+    return '';
+  }
+
+  const cardsHTML = dataObj.recruits.map(ref => renderRecruitCard(ref)).join('');
+
+  return `
+    <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border-color);">
+      <div style="font-size: 0.8rem; font-weight: bold; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">⭐ Available Recruit(s)</div>
+      <div class="recruits-grid">${cardsHTML}</div>
+    </div>
+  `;
+}
+
+// Generates image path from boss name (e.g. "Zombie Dragon" -> "./img/bosses/zombie dragon.gif" or "zombie_dragon.gif")
+function getBossImagePath(bossName) {
+  if (!bossName) return '';
+  const cleanName = String(bossName).trim().toLowerCase();
+  return `./img/bosses/${cleanName}.gif`;
+}
+
+// Formats object keys into user-friendly labels (e.g., "item_drop" -> "Item Drop", "hp" -> "HP")
+function formatStatLabel(key) {
+  const customLabels = {
+    hp: 'HP',
+    exp: 'EXP',
+    mp: 'MP',
+    potch: 'Potch',
+    bits: 'Potch'
+  };
+
+  if (customLabels[key.toLowerCase()]) {
+    return customLabels[key.toLowerCase()];
+  }
+
+  return key
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, l => l.toUpperCase());
+}
+
+// 1. Ensure floating element exists in DOM
+function initEnemyTooltip() {
+  if (!document.getElementById('enemy-tooltip')) {
+    const tooltip = document.createElement('div');
+    tooltip.id = 'enemy-tooltip';
+    document.body.appendChild(tooltip);
+  }
+}
+
+// 2. Show Tooltip
+function showEnemyTooltip(enemyName, mouseEvent) {
+  const tooltip = document.getElementById('enemy-tooltip');
+  if (!tooltip || !guideData.enemies) return;
+
+  // Clean name lookup (removes leading emojis or icons)
+  const cleanName = enemyName.replace(/^[\s★⚔️👾]+/g, '').trim();
+  const enemyData = guideData.enemies[0][cleanName];
+
+  if (!enemyData) return; // If enemy isn't in database, do nothing
+
+  // Render using your existing card generator!
+  tooltip.innerHTML = renderEnemyCard(cleanName, enemyData);
+  tooltip.classList.add('visible');
+
+  positionEnemyTooltip(mouseEvent);
+}
+
+// 3. Move Tooltip with Cursor + Viewport Safety
+function positionEnemyTooltip(e) {
+  const tooltip = document.getElementById('enemy-tooltip');
+  if (!tooltip || !tooltip.classList.contains('visible')) return;
+
+  const offset = 16; // Margin from cursor
+  let left = e.clientX + offset;
+  let top = e.clientY + offset;
+
+  const rect = tooltip.getBoundingClientRect();
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  // Flip horizontally if overflow right
+  if (left + rect.width > windowWidth - 10) {
+    left = e.clientX - rect.width - offset;
+  }
+
+  // Flip vertically if overflow bottom
+  if (top + rect.height > windowHeight - 10) {
+    top = e.clientY - rect.height - offset;
+  }
+
+  tooltip.style.left = `${Math.max(10, left)}px`;
+  tooltip.style.top = `${Math.max(10, top)}px`;
+}
+
+// 4. Hide Tooltip
+function hideEnemyTooltip() {
+  const tooltip = document.getElementById('enemy-tooltip');
+  if (tooltip) {
+    tooltip.classList.remove('visible');
+  }
+}
+
+/**
+ * Formats a clean chapter label from a chapter object or ID.
+ * @param {Object|string|number} chapter - The chapter object or identifier
+ * @returns {string} Formatted label (e.g., "Chapter 1", "Prologue", etc.)
+ */
+function getChapterLabel(chapter) {
+  if (!chapter) return 'Chapter';
+
+  return `${chapter.id} - ${chapter.title}`
+  return 'Chapter';
+}
+// Helper to search recruit data across guideData structures
+function findRecruitData(key) {
+  if (!key) return null;
+  const rawKey = String(key).trim();
+  const recruits = guideData.recruits || guideData.stars || [];
+
+  if (Array.isArray(recruits)) {
+    return recruits.find(r => 
+      String(r.id) === rawKey || 
+      String(r.star) === rawKey || 
+      String(r.number) === rawKey ||
+      (r.name && r.name.toLowerCase() === rawKey.toLowerCase())
+    ) || null;
+  } else if (typeof recruits === 'object' && recruits !== null) {
+    if (recruits[rawKey]) return recruits[rawKey];
+    return Object.values(recruits).find(r => 
+      r.name && String(r.name).toLowerCase() === rawKey.toLowerCase()
+    ) || null;
+  }
+  return null;
+}
+
+// Helper to resolve recruit display info
+  const getRecruitInfo = (unlockedBy) => {
+    if (!unlockedBy && unlockedBy !== 0) return null;
+
+    const rawKey = String(unlockedBy).trim();
+    const found = findRecruitData(rawKey);
+    const recruitName = found ? (found.name || found.character || rawKey) : rawKey;
+    const picFileName = (found && found.picture) ? found.picture : `${recruitName}.png`;
+
+    return {
+      rawKey: rawKey,
+      name: recruitName,
+      picture: `./img/stars/${picFileName.toLowerCase()}`,
+      isStar: !!found
+    };
+  };
+
+  // Helper to safely format HTML element IDs from titles with spaces
+function sanitizeId(str) {
+  return String(str).replace(/[^a-zA-Z0-9_-]/g, '_');
+}
+
+function enhanceParagraphText(text) {
+  const recruits = guideData?.recruits || [];
+  if (!recruits.length || !text) return text;
+
+  // 1. Sort recruits by name length (descending) 
+  // Ensures longer names like "Tir McDohl" match before shorter names like "Tir"
+  const sortedRecruits = [...recruits].sort((a, b) => b.name.length - a.name.length);
+
+  // 2. Escape special regex characters in names
+  const escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  // 3. Create a pattern matching any recruit name with word boundaries (\b)
+  const namesPattern = sortedRecruits.map(r => escapeRegExp(r.name)).join('|');
+  const regex = new RegExp(`\\b(${namesPattern})\\b`, 'gi');
+
+  // 4. Replace matches with inline tooltip HTML
+  return text.replace(regex, (matchedName) => {
+    // Find the matching recruit object (case-insensitive)
+    const recruit = sortedRecruits.find(r => r.name.toLowerCase() === matchedName.toLowerCase());
+    if (!recruit) return matchedName;
+
+    return `
+      <span class="inline-recruit-mention">
+        <span class="recruit-mention-text">${matchedName}</span>
+        <span class="recruit-inline-tooltip">
+          <span class="tooltip-header">
+            <img 
+              src= "./img/stars/${recruit.name.toLowerCase()}.png" 
+              alt="${recruit.name}" 
+              onerror="this.src='img/placeholder.png'" 
+            />
+            <strong>${recruit.name}</strong>
+          </span>
+          <ul>
+            ${recruit.star ? `<li>🌟 <span>${recruit.star}</span></li>` : ''}
+            ${recruit.range ? `<li>🎯 <span>${recruit.range}</span></li>` : ''}
+            ${recruit.condition ? `<li>📍 <span>${recruit.condition}</span></li>` : ''}
+          </ul>
+        </span>
+      </span>
+    `.replace(/\s+/g, ' ').trim();
+  });
+}
+
 function renderSidebarControls() {
   const sidebar = document.querySelector('.sidebar') || document.getElementById('sidebar');
   if (!sidebar) return;

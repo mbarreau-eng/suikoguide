@@ -1,146 +1,39 @@
-// Helper to render distinct range badges
-function renderRangeBadge(range) {
-  if (!range) return '';
-
-  const r = String(range).trim().toUpperCase();
-
-  if (r === 'NP') {
-    return `<span class="range-badge range-np" title="Non-Playable / Support Staff">NP</span>`;
-  }
-
-  // Standard combat ranges (S, M, L)
-  return `<span class="range-badge range-${r.toLowerCase()}">${r}</span>`;
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
-// Helper: Generates HTML for a single Recruit Card (Interactive for recruiting)
-function renderRecruitCard(ref) {
-  const recruit = resolveRecruit(ref);
-
-  if (!recruit) {
-    const fallbackName = typeof ref === 'object' ? (ref.name || 'Unknown Recruit') : String(ref);
-    return `
-      <div class="recruit-card">
-        <div class="recruit-header">
-          <div class="recruit-info">
-            <div class="recruit-name"><span>${fallbackName}</span></div>
-          </div>
-        </div>
-        <div class="recruit-condition">${recruit.condition}</div>
-      </div>
-    `;
-  }
-
-  const recruitKey = recruit.id !== null && recruit.id !== undefined ? recruit.id : recruit.name;
-  const recruited = isChecked('recruits', recruitKey);
-
-  const imgSrc = getImagePath(recruit.name);
-  const idPrefix = (recruit.id !== null && recruit.id !== undefined) ? `#${recruit.id} ` : '';
-
-  return `
-    <div class="recruit-card ${recruited ? 'recruited' : ''} ${recruit.range === 'NP' ? 'recruit-support' : ''}" 
-         data-track-cat="recruits" 
-         data-track-key="${recruitKey}"
-         title="Click to toggle recruited status">
-      <div class="recruit-header">
-        <img src="${imgSrc}" alt="${recruit.name}" class="recruit-img" onerror="this.style.display='none'">
-        <div class="recruit-info">
-          <div class="recruit-name">
-            <span>${idPrefix}${recruit.name}</span>
-           ${renderRangeBadge(recruit.range)}
-          </div>
-        </div>
-        <span class="recruit-status-badge">${recruited ? '✔ Recruited' : '◯ Not Recruited'}</span>
-      </div>
-      <div class="recruit-condition">${recruit.condition ? recruit.condition : ''}</div>
-    </div>
-  `;
+function sanitizeId(str) {
+  return String(str).replace(/[^a-zA-Z0-9_-]/g, '_');
 }
 
-// Helper: Renders inline badges with interactive checkbox progress tracking
-function renderBadges(dataObj) {
-  if (!dataObj) return '';
-
-  const categories = [
-    { key: 'savepoints', label: 'Save Points', trackable: false },
-    { key: 'places', label: 'Locations', trackable: false },
-    { key: 'enemies', label: 'Enemies', trackable: false },
-    { key: 'items', label: 'Items', trackable: true },
-    { key: 'equipment', label: 'Equipment', trackable: true },
-    { key: 'runes', label: 'Runes', trackable: true },
-    { key: 'bits', label: 'Bits', trackable: true }
-  ];
-
-  let html = '';
-  categories.forEach(cat => {
-    const val = dataObj[cat.key];
-    if (val && Array.isArray(val) && val.length > 0) {
-      const badges = val.map(x => {
-        const isObj = typeof x === 'object' && x !== null;
-        const label = isObj ? (x.name || x.title || JSON.stringify(x)) : x;
-        const typeStr = isObj && typeof x.type === 'string' ? x.type.toLowerCase() : '';
-        const isBoss = isObj && (typeStr === 'boss' || x.isBoss === true);
-
-        // Check trackable state
-        const checked = cat.trackable ? isChecked(cat.key, label) : false;
-
-        let badgeClass = 'badge';
-        if (isBoss) badgeClass += ' badge-boss';
-        if (cat.trackable) badgeClass += ' badge-trackable';
-        if (checked) badgeClass += ' checked';
-        if(cat.key === 'enemies') badgeClass += ' enemy-chip ';
-
-        const icon = isBoss ? '💀 ' : (checked ? '✔ ' : '');
-        const trackAttrs = cat.trackable ? `data-track-cat="${cat.key}" data-track-key="${label}" title="Click to check off"` : '';
-
-        return `<span data-enemy-name="${cat.key === 'enemies' ? label : ''}" class="${badgeClass}" ${trackAttrs}>${icon}${label}</span>`;
-      }).join('');
-
-      html += `<div class="badge-group"><span class="badge-label">${cat.label}:</span> ${badges}</div>`;
-    }
-  });
-
-  return html;
-}
-
-// Helper: Generates HTML for a single party member chip with an avatar
-function renderPartyChip(m) {
-  const name = typeof m === 'object' ? (m.name || m.character) : m;
-  const level = typeof m === 'object' && m.level ? `Lv. ${m.level}` : '';
-  const imgSrc = getImagePath(name);
-
-  return `
-    <div class="party-member-chip">
-      <img src="${imgSrc}" alt="${name}" class="member-img" onerror="this.style.display='none'">
-      <div class="member-details">
-        <span class="member-name">${name}</span>
-        ${level ? `<span class="member-level">${level}</span>` : ''}
-      </div>
-    </div>
-  `;
-}
-
-// Helper: Builds full party card elements
-function createPartyCard(members, title = 'Current Party') {
-  const el = document.createElement('div');
-  el.className = 'party-card';
-  
-  const membersHTML = members.map(m => renderPartyChip(m)).join('');
-
-  el.innerHTML = `
-    <div class="party-header">⚔️ ${title}</div>
-    <div class="party-grid">${membersHTML}</div>
-  `;
-  return el;
-}
-
-// Helper: Formats image path into ./img/stars/ with NO spaces
 function getImagePath(name) {
   if (!name) return '';
   const fileName = name.toLowerCase().replace(/\s+/g, '');
   return `./img/stars/${fileName}.png`;
 }
 
-// Helper: Resolves a recruit reference (ID, ID object, or full object) to guideData.recruits
+function getBossImagePath(bossName) {
+  if (!bossName) return '';
+  const cleanName = String(bossName).trim().toLowerCase();
+  return `./img/bosses/${cleanName}.gif`;
+}
+
+function formatStatLabel(key) {
+  const customLabels = { hp: 'HP', exp: 'EXP', mp: 'MP', potch: 'Potch', bits: 'Potch' };
+  if (customLabels[key.toLowerCase()]) return customLabels[key.toLowerCase()];
+  return key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+}
+
+function getChapterLabel(chapter) {
+  if (!chapter) return 'Chapter';
+  return `${chapter.id} - ${chapter.title}`;
+}
+
 function resolveRecruit(ref) {
   if (!guideData || !guideData.recruits) return null;
 
@@ -154,7 +47,7 @@ function resolveRecruit(ref) {
       recruitId = Number(ref.id);
       customOverrides = ref;
     } else {
-      return ref; // Object without ID, treat as direct recruit object
+      return ref;
     }
   }
 
@@ -168,124 +61,6 @@ function resolveRecruit(ref) {
   return null;
 }
 
-
-
-// Helper: Builds a recruits section grid for chapters or place blocks
-function renderRecruitsSection(dataObj) {
-  if (!dataObj || !dataObj.recruits || !Array.isArray(dataObj.recruits) || dataObj.recruits.length === 0) {
-    return '';
-  }
-
-  const cardsHTML = dataObj.recruits.map(ref => renderRecruitCard(ref)).join('');
-
-  return `
-    <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border-color);">
-      <div style="font-size: 0.8rem; font-weight: bold; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">⭐ Available Recruit(s)</div>
-      <div class="recruits-grid">${cardsHTML}</div>
-    </div>
-  `;
-}
-
-// Generates image path from boss name (e.g. "Zombie Dragon" -> "./img/bosses/zombie dragon.gif" or "zombie_dragon.gif")
-function getBossImagePath(bossName) {
-  if (!bossName) return '';
-  const cleanName = String(bossName).trim().toLowerCase();
-  return `./img/bosses/${cleanName}.gif`;
-}
-
-// Formats object keys into user-friendly labels (e.g., "item_drop" -> "Item Drop", "hp" -> "HP")
-function formatStatLabel(key) {
-  const customLabels = {
-    hp: 'HP',
-    exp: 'EXP',
-    mp: 'MP',
-    potch: 'Potch',
-    bits: 'Potch'
-  };
-
-  if (customLabels[key.toLowerCase()]) {
-    return customLabels[key.toLowerCase()];
-  }
-
-  return key
-    .replace(/_/g, ' ')
-    .replace(/\b\w/g, l => l.toUpperCase());
-}
-
-// 1. Ensure floating element exists in DOM
-function initEnemyTooltip() {
-  if (!document.getElementById('enemy-tooltip')) {
-    const tooltip = document.createElement('div');
-    tooltip.id = 'enemy-tooltip';
-    document.body.appendChild(tooltip);
-  }
-}
-
-// 2. Show Tooltip
-function showEnemyTooltip(enemyName, mouseEvent) {
-  const tooltip = document.getElementById('enemy-tooltip');
-  if (!tooltip || !guideData.enemies) return;
-
-  // Clean name lookup (removes leading emojis or icons)
-  const cleanName = enemyName.replace(/^[\s★⚔️👾]+/g, '').trim();
-  const enemyData = guideData.enemies[0][cleanName];
-
-  if (!enemyData) return; // If enemy isn't in database, do nothing
-
-  // Render using your existing card generator!
-  tooltip.innerHTML = renderEnemyCard(cleanName, enemyData);
-  tooltip.classList.add('visible');
-
-  positionEnemyTooltip(mouseEvent);
-}
-
-// 3. Move Tooltip with Cursor + Viewport Safety
-function positionEnemyTooltip(e) {
-  const tooltip = document.getElementById('enemy-tooltip');
-  if (!tooltip || !tooltip.classList.contains('visible')) return;
-
-  const offset = 16; // Margin from cursor
-  let left = e.clientX + offset;
-  let top = e.clientY + offset;
-
-  const rect = tooltip.getBoundingClientRect();
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
-
-  // Flip horizontally if overflow right
-  if (left + rect.width > windowWidth - 10) {
-    left = e.clientX - rect.width - offset;
-  }
-
-  // Flip vertically if overflow bottom
-  if (top + rect.height > windowHeight - 10) {
-    top = e.clientY - rect.height - offset;
-  }
-
-  tooltip.style.left = `${Math.max(10, left)}px`;
-  tooltip.style.top = `${Math.max(10, top)}px`;
-}
-
-// 4. Hide Tooltip
-function hideEnemyTooltip() {
-  const tooltip = document.getElementById('enemy-tooltip');
-  if (tooltip) {
-    tooltip.classList.remove('visible');
-  }
-}
-
-/**
- * Formats a clean chapter label from a chapter object or ID.
- * @param {Object|string|number} chapter - The chapter object or identifier
- * @returns {string} Formatted label (e.g., "Chapter 1", "Prologue", etc.)
- */
-function getChapterLabel(chapter) {
-  if (!chapter) return 'Chapter';
-
-  return `${chapter.id} - ${chapter.title}`
-  return 'Chapter';
-}
-// Helper to search recruit data across guideData structures
 function findRecruitData(key) {
   if (!key) return null;
   const rawKey = String(key).trim();
@@ -307,46 +82,32 @@ function findRecruitData(key) {
   return null;
 }
 
-// Helper to resolve recruit display info
-  const getRecruitInfo = (unlockedBy) => {
-    if (!unlockedBy && unlockedBy !== 0) return null;
+const getRecruitInfo = (unlockedBy) => {
+  if (!unlockedBy && unlockedBy !== 0) return null;
 
-    const rawKey = String(unlockedBy).trim();
-    const found = findRecruitData(rawKey);
-    const recruitName = found ? (found.name || found.character || rawKey) : rawKey;
-    const picFileName = (found && found.picture) ? found.picture : `${recruitName}.png`;
+  const rawKey = String(unlockedBy).trim();
+  const found = findRecruitData(rawKey);
+  const recruitName = found ? (found.name || found.character || rawKey) : rawKey;
+  const picFileName = (found && found.picture) ? found.picture : `${recruitName}.png`;
 
-    return {
-      rawKey: rawKey,
-      name: recruitName,
-      picture: `./img/stars/${picFileName.toLowerCase()}`,
-      isStar: !!found
-    };
+  return {
+    rawKey: rawKey,
+    name: recruitName,
+    picture: `./img/stars/${picFileName.toLowerCase()}`,
+    isStar: !!found
   };
-
-  // Helper to safely format HTML element IDs from titles with spaces
-function sanitizeId(str) {
-  return String(str).replace(/[^a-zA-Z0-9_-]/g, '_');
-}
+};
 
 function enhanceParagraphText(text) {
   const recruits = guideData?.recruits || [];
   if (!recruits.length || !text) return text;
 
-  // 1. Sort recruits by name length (descending) 
-  // Ensures longer names like "Tir McDohl" match before shorter names like "Tir"
   const sortedRecruits = [...recruits].sort((a, b) => b.name.length - a.name.length);
-
-  // 2. Escape special regex characters in names
   const escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-  // 3. Create a pattern matching any recruit name with word boundaries (\b)
   const namesPattern = sortedRecruits.map(r => escapeRegExp(r.name)).join('|');
   const regex = new RegExp(`\\b(${namesPattern})\\b`, 'gi');
 
-  // 4. Replace matches with inline tooltip HTML
   return text.replace(regex, (matchedName) => {
-    // Find the matching recruit object (case-insensitive)
     const recruit = sortedRecruits.find(r => r.name.toLowerCase() === matchedName.toLowerCase());
     if (!recruit) return matchedName;
 
@@ -356,7 +117,7 @@ function enhanceParagraphText(text) {
         <span class="recruit-inline-tooltip">
           <span class="tooltip-header">
             <img 
-              src= "./img/stars/${recruit.name.toLowerCase()}.png" 
+              src="./img/stars/${recruit.name.toLowerCase()}.png" 
               alt="${recruit.name}" 
               onerror="this.src='img/placeholder.png'" 
             />
