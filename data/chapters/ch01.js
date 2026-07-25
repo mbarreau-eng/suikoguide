@@ -85,11 +85,11 @@ guideData.chapters.push({
             "N. Kwaba Area"
           ],
           "enemies": [
-            "BonBon",
+            "BonBon (PS1) / Furball (Remaster)",
             "Crow",
             "Mosquito",
             "Red Soldier Ant",
-            "Wild Boar"
+            "Wild Boar (PS1) / Boar (Remaster)"
           ]
         },
         {
@@ -115,7 +115,7 @@ guideData.chapters.push({
           "enemies": [
             "Giant Snail",
             "Killer Slime",
-            "Slasher Rabbit"
+            "Slasher Rabbit (PS1) / Blade Bunny (Remaster)"
           ],
           "party": [
             {

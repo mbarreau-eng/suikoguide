@@ -87,9 +87,9 @@ guideData.chapters.push(
                 "Leggings"
               ],
               "enemies":[
-                "Bandit (A)",
-                "Bandit (B)",
-                "Bandit (C)",
+                "Bandit (red)",
+                "Bandit (green)",
+                "Bandit (yellow)",
                 "Soldier Ant",
                 "Black Wild Boar",
                 "Queen Ant",
