@@ -25,6 +25,7 @@ function renderSidebar() {
   if (!sidebar) return;
 
   const chapters = guideData.chapters || [];
+  const cities = guideData.cities || [];
 
   sidebar.innerHTML = `
     <nav class="sidebar-accordion">
@@ -69,6 +70,24 @@ function renderSidebar() {
       <button class="nav-btn-main" data-view="unites">
         <span>🤜🤛 Unites</span>
       </button>
+<!--cities -->
+      <div class="accordion-group" id="group-cities">
+        <button class="accordion-toggle" id="toggle-cities">
+          <span>🛖 Cities</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        
+        <div class="accordion-menu" id="city-sub-menu">
+          ${cities.map((c, index ) => {
+
+            return `
+              <a href="#" class="nav-item" data-city-id="${index}">
+                ${c.name}
+              </a>
+            `;
+          }).join('')}
+        </div>
+      </div>
     </nav>
   `;
 }
@@ -1439,4 +1458,93 @@ function renderUniteCard(unite, allRecruits) {
       </div>
     </div>
   `;
+}
+
+/**
+ * Renders a full City card
+ */
+function renderCity(cityKey, cityData) {
+  // Parse comma-separated star string: "79,80,88"
+  const starIds = cityData.stars
+    ? cityData.stars.split(',').map(s => s.trim()).filter(Boolean)
+    : [];
+
+const recruits = guideData?.recruits || [];
+    const participants = String(cityData.stars || '')
+      .split(',')
+      .map(id => id.trim())
+      .filter(Boolean);
+
+  //const starsHtml = starIds.map(id => renderStarChip(id)).join('');
+
+  // Shops rendering
+  let shopsHtml = '';
+  if (cityData.shops && cityData.shops.length > 0) {
+    const shopListHtml = cityData.shops.map(shop => {
+      let sections = [];
+      if (shop.items && shop.items.length > 0) {
+        sections.push(renderShopCategory('🎒 Item Shop', shop.items));
+      }
+      if (shop.armor && shop.armor.length > 0) {
+        sections.push(renderShopCategory('🛡️ Armor Shop', shop.armor));
+      }
+      return sections.join('');
+    }).join('');
+
+    shopsHtml = `<div class="rpg-shops-grid">${shopListHtml}</div>`;
+  }
+
+  return `
+    <div class="rpg-box rpg-city-card" id="city-${cityKey}">
+      <div class="rpg-city-header">
+        <div class="rpg-city-title-group">
+          <h2 class="rpg-city-title">🏰 ${escapeHtml(cityData.name)}</h2>
+        </div>
+        ${cityData.inn !== undefined ? `<div class="rpg-city-inn">🛌 Inn: ${cityData.inn} Bits per person.</div>` : ''}
+      </div>
+
+      ${cityData.picture ? `<img src="./img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">` : ''}
+
+
+<div class="rpg-section-label">✨ Recruitable Stars</div>
+<div class="rpg-stars-section">
+
+        ${participants.map(id => {
+          // Find recruit by numeric or string ID match
+          const recruit = recruits.find(r => String(r.id) === String(id));
+          return  renderRecruitCard(recruit);
+        }).join(' ')}
+        </div>
+      ${shopsHtml}
+    </div>
+  `;
+}
+
+function renderShopCategory(title, itemList) {
+  const rows = itemList.map(item => `
+    <tr>
+      <td>${escapeHtml(item.name)}</td>
+      <td class="rpg-shop-price">${item.price.toLocaleString()} Bits</td>
+    </tr>
+  `).join('');
+
+  return `
+    <div class="rpg-shop-box">
+      <div class="rpg-section-label">${title}</div>
+      <table class="rpg-shop-table">
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }

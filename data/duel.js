@@ -83,5 +83,47 @@ guideData.duel = [
         "That's...no good.",
         "The next one will be more painful."
       ]
-    }  
+    },
+    {
+      "id":2,
+      "me":"Hero",
+      "opp":"Teo McDohl",
+      "picture":"ooo3.jpg",
+      "super":[
+        "Did you see that coming?",
+        "Do you see how much better I am?",
+        "Is defending yourself all you can do? You'll never win that way.",
+        "That was nothing. Now it's my turn.",
+        "That was pretty good. Now it's my turn.",
+        "The numbness in my hands, it's real!",
+        "We're getting nowhere. Here I come!",
+        "Well done!",
+        "You're soft...soft! This is how you attack!",
+        "Here I come, my son. ",
+      ],
+      "normal":[
+        "Come on! Show me what a man you've become.",
+        "Good, try it again!",
+        "I mustn't underestimate you.",
+        "I underestimated you! What's wrong? Another round?",
+        "I'll see you coming next time!",
+        "I'm losing my cool. I must be more cautious!",
+        "Is that all you've got?",
+        "Leader of the Liberation Army! No wonder you're careful.",
+        "Show me what you've learned.",
+        "Well done! I must be more careful too. ",
+      ],
+      "defend":[
+        "Are you trying to surpass me?",
+        "Can you avoid my sword?",
+        "I'm delighted, my son. You're quite a warrior. But here's another!",
+        "If you don't attack, I will!",
+        "My deadly sword...",
+        "My sword is the Emperor's sword. I'll show no mercy!",
+        "Now that I've seen what you've got, I'll show you what I can do.",
+        "That's... no good.",
+        "The next one will be more painful.",
+        "Hmmm. Here I come again! ",
+      ]
+    }    
   ];

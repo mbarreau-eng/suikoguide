@@ -202,6 +202,18 @@ function setupEventListeners() {
           switchView(viewName);
         }
       }
+/* Cities */
+      const cityLink = e.target.closest('.nav-item[data-city-id]');
+      if (cityLink) {
+        e.preventDefault();
+        const rawId = cityLink.getAttribute('data-city-id');
+        
+        const container = document.getElementById('main-content');
+        container.innerHTML = renderCity(rawId, guideData.cities[rawId]);
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
     });
   }
 }

@@ -1,0 +1,206 @@
+/* ==========================================================================
+   CITY CARD BLOCK (`rpg-city-card`)
+   ========================================================================== */
+.rpg-city-card {
+  background: linear-gradient(180deg, #131d38 0%, #080d1a 100%);
+  border-color: #93c5fd;
+}
+
+.rpg-city-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #1e3a8a;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.rpg-city-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rpg-city-title {
+  font-size: 2rem;
+  color: #fef08a;
+  margin: 0;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.rpg-city-inn {
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  font-size: 1.15rem;
+}
+
+.rpg-city-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border: 2px solid var(--rpg-border-inner);
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+}
+
+/* --- RECRUITABLE STARS SECTION --- */
+.rpg-stars-section {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid #334155;
+  padding: 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+  flex-direction: row;
+  display: flex;
+flex-wrap: wrap;
+}
+
+.rpg-section-label {
+  font-size: 1.1rem;
+  color: var(--rpg-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rpg-stars-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Star Chip & Hover Popover Trigger */
+.rpg-star-chip {
+  position: relative;
+  background: #1e1b4b;
+  border: 1px solid #818cf8;
+  color: #e0e7ff;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rpg-star-chip:hover {
+  background: #3730a3;
+  border-color: #c7d2fe;
+  color: var(--rpg-gold);
+}
+
+/* Popover Star Card (Displayed on Mouse Hover) */
+.rpg-star-card-popover {
+  display: none;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  background: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
+  border: 2px double #a5b4fc;
+  outline: 2px solid #000;
+  border-radius: 6px;
+  padding: 0.85rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.rpg-star-chip:hover .rpg-star-card-popover {
+  display: block;
+  animation: popover-fade 0.2s ease-out;
+}
+
+@keyframes popover-fade {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.rpg-star-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.rpg-star-avatar {
+  width: 48px;
+  height: 48px;
+  background: #334155;
+  border: 1px solid #94a3b8;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.rpg-star-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.rpg-star-name {
+  color: var(--rpg-gold);
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+.rpg-star-constellation {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.rpg-star-number {
+  font-size: 0.9rem;
+  color: #818cf8;
+}
+
+/* --- SHOPS SECTION --- */
+.rpg-shops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.rpg-shop-box {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #334155;
+  border-radius: 4px;
+  padding: 0.75rem;
+}
+
+.rpg-shop-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+}
+
+.rpg-shop-table tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rpg-shop-table tr:last-child {
+  border-bottom: none;
+}
+
+.rpg-shop-table td {
+  padding: 0.4rem 0.2rem;
+}
+
+.rpg-shop-price {
+  text-align: right;
+  color: var(--rpg-gold);
+  font-family: var(--rpg-font);
+}
+
+.rpg-stars-section .recruit-card {
+  width:20%;
+    margin:1em;
+}
