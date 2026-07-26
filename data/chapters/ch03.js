@@ -92,11 +92,19 @@ guideData.chapters.push(
                 "Bandit (yellow)",
                 "Soldier Ant",
                 "Black Wild Boar",
-                "Queen Ant",
                 {
                   "type": "Boss",
-                  "name": "Varkas Sydonia"
+                  "name": "Queen Ant"
+                },
+                {
+                  "type": "Boss",
+                  "name": "Varkas"
+                },
+                {
+                  "type": "Boss",
+                  "name": "Sydonia"
                 }
+
               ]
         },
         {

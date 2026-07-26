@@ -17,18 +17,6 @@ function getImagePath(name) {
   return `./img/stars/${fileName}.png`;
 }
 
-function getBossImagePath(bossName) {
-  if (!bossName) return '';
-  const cleanName = String(bossName).trim().toLowerCase();
-  return `./img/bosses/${cleanName}.gif`;
-}
-
-function formatStatLabel(key) {
-  const customLabels = { hp: 'HP', exp: 'EXP', mp: 'MP', potch: 'Potch', bits: 'Potch' };
-  if (customLabels[key.toLowerCase()]) return customLabels[key.toLowerCase()];
-  return key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-}
-
 function getChapterLabel(chapter) {
   if (!chapter) return 'Chapter';
   return `${chapter.id} - ${chapter.title}`;

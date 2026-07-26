@@ -40,9 +40,3 @@ function switchView(viewName) {
   }
 }
 
-function selectChapter(id) {
-  currentChapterId = id;
-  if (activeTab !== 'walkthrough') switchTab('walkthrough');
-  renderSidebar();
-  renderContent();
-}
