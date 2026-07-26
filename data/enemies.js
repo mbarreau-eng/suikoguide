@@ -3133,6 +3133,533 @@ guideData.enemies = [
         "Rarity": "1.04%"
       }
     ]
+  },
+  
+  "Golem (PS1) / Clay Doll (Remaster)": {
+    "type": "boss",
+    "picture": "golem.gif",
+    "Level": 12,
+    "HP": 300,
+    "power": 40,
+    "skill": 21,
+    "defense": 2,
+    "speed": 17,
+    "magic": 25,
+    "luck": 20,
+    "bits": 1500,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "strong",
+        "thunder": "weak",
+        "earth": "",
+        "wind": "strong",
+        "holy": "",
+        "death": ""
+      }
+    ],
+    "drop": [
+      {
+        "name": "Medicine x6",
+        "Rarity": "1.96%"
+      }
+    ]
+  },
+  "Queen Ant": {
+    "type": "boss",
+    "picture": "queen_ant.gif",
+    "Level": 15,
+    "HP": 7100,
+    "power": 75,
+    "skill": 25,
+    "defense": 50,
+    "speed": 20,
+    "magic": 55,
+    "luck": 55,
+    "bits": 2000,
+    "weaknesses": [
+      {
+        "water": "weak",
+        "fire": "",
+        "thunder": "",
+        "earth": "weak",
+        "wind": "",
+        "holy": "",
+        "death": ""
+      }
+    ],
+    "drop": [
+      {
+        "name": "Pointed Hat",
+        "Rarity": "1.31%"
+      }
+    ]
+  },
+  "Varkas": {
+    "type": "boss",
+    "picture": "varkas.gif",
+    "Level": 12,
+    "HP": 210,
+    "power": 76,
+    "skill": 40,
+    "defense": 15,
+    "speed": 27,
+    "magic": 18,
+    "luck": 16,
+    "bits": 400,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "",
+        "thunder": "",
+        "earth": "",
+        "wind": "",
+        "holy": "",
+        "death": ""
+      }
+    ],
+    "drop": []
+  },
+  "Sydonia": {
+    "type": "boss",
+    "picture": "sydonia.gif",
+    "Level": 10,
+    "HP": 140,
+    "power": 67,
+    "skill": 55,
+    "defense": 8,
+    "speed": 42,
+    "magic": 30,
+    "luck": 19,
+    "bits": 300,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "strong",
+        "thunder": "",
+        "earth": "",
+        "wind": "",
+        "holy": "",
+        "death": ""
+      }
+    ],
+    "drop": []
+  },
+  "Zombie Dragon": {
+    "type": "boss",
+    "picture": "zombie_dragon.gif",
+    "Level": 30,
+    "HP": 3700,
+    "power": 175,
+    "skill": 50,
+    "defense": 35,
+    "speed": 65,
+    "magic": 130,
+    "luck": 40,
+    "bits": 2000,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "weak",
+        "thunder": "",
+        "earth": "",
+        "wind": "",
+        "holy": "weak",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": [
+      {
+        "name": "Lightning Rune",
+        "Rarity": "10.46%"
+      }
+    ]
+  },
+  "Assassin": {
+    "type": "boss",
+    "picture": "assassin.gif",
+    "Level": 18,
+    "HP": 2000,
+    "power": 120,
+    "skill": 60,
+    "defense": 9,
+    "speed": 35,
+    "magic": 30,
+    "luck": 50,
+    "bits": 400,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "",
+        "thunder": "",
+        "earth": "",
+        "wind": "",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Gigantes": {
+    "type": "boss",
+    "picture": "gigantes.gif",
+    "Level": 35,
+    "HP": 3900,
+    "power": 260,
+    "skill": 60,
+    "defense": 25,
+    "speed": 80,
+    "magic": 120,
+    "luck": 55,
+    "bits": 3000,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "inv.",
+        "thunder": "weak",
+        "earth": "",
+        "wind": "weak",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": [
+      {
+        "name": "Goldlet",
+        "Rarity": "0.78%"
+      }
+    ]
+  },
+  "Dragon": {
+    "type": "boss",
+    "picture": "dragon.gif",
+    "Level": 40,
+    "HP": 6000,
+    "power": 250,
+    "skill": 60,
+    "defense": 35,
+    "speed": 40,
+    "magic": 150,
+    "luck": 65,
+    "bits": 3500,
+    "weaknesses": [
+      {
+        "water": "strong",
+        "fire": "strong",
+        "thunder": "strong",
+        "earth": "strong",
+        "wind": "weak",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": [
+      {
+        "name": "Half Armor",
+        "Rarity": "10.46%"
+      }
+    ]
+  },
+  "Anji": {
+    "type": "boss",
+    "picture": "anji.gif",
+    "Level": 39,
+    "HP": 1700,
+    "power": 250,
+    "skill": 68,
+    "defense": 60,
+    "speed": 80,
+    "magic": 80,
+    "luck": 35,
+    "bits": 1000,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "strong",
+        "thunder": "strong",
+        "earth": "",
+        "wind": "",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Leonardo": {
+    "type": "boss",
+    "picture": "leonardo.gif",
+    "Level": 36,
+    "HP": 1400,
+    "power": 270,
+    "skill": 98,
+    "defense": 55,
+    "speed": 100,
+    "magic": 60,
+    "luck": 40,
+    "bits": 400,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "strong",
+        "thunder": "",
+        "earth": "",
+        "wind": "strong",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Kanak": {
+    "type": "boss",
+    "picture": "kanak.gif",
+    "Level": 35,
+    "HP": 2200,
+    "power": 240,
+    "skill": 38,
+    "defense": 70,
+    "speed": 60,
+    "magic": 50,
+    "luck": 70,
+    "bits": 400,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "",
+        "thunder": "strong",
+        "earth": "",
+        "wind": "strong",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Neclord (1st fight)": {
+    "type": "boss",
+    "picture": "neclord.gif",
+    "Level": 55,
+    "HP": 10000,
+    "power": 460,
+    "skill": 100,
+    "defense": 300,
+    "speed": 75,
+    "magic": 300,
+    "luck": 30,
+    "bits": 10000,
+    "weaknesses": [
+      {
+        "water": "inv.",
+        "fire": "inv.",
+        "thunder": "inv.",
+        "earth": "inv.",
+        "wind": "inv.",
+        "holy": "inv.",
+        "death": "inv."
+      }
+    ],
+    "drop": []
+  },
+  "Neclord (2nd fight)": {
+    "type": "boss",
+    "picture": "neclord.gif",
+    "Level": 55,
+    "HP": 7500,
+    "power": 450,
+    "skill": 100,
+    "defense": 80,
+    "speed": 75,
+    "magic": 275,
+    "luck": 30,
+    "bits": 10000,
+    "weaknesses": [
+      {
+        "water": "inv.",
+        "fire": "inv.",
+        "thunder": "inv.",
+        "earth": "inv.",
+        "wind": "inv.",
+        "holy": "inv.",
+        "death": "inv."
+      }
+    ],
+    "drop": []
+  },
+  "Crystal Core": {
+    "type": "boss",
+    "picture": "crystal_core.gif",
+    "Level": 60,
+    "HP": 5000,
+    "power": 350,
+    "skill": 70,
+    "defense": 90,
+    "speed": 65,
+    "magic": 275,
+    "luck": 80,
+    "bits": 70000,
+    "weaknesses": [
+      {
+        "water": "weak",
+        "fire": "strong",
+        "thunder": "strong",
+        "earth": "weak",
+        "wind": "strong",
+        "holy": "inv.",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Shell Venus (PS1) / Venus Shell (Remaster)": {
+    "type": "boss",
+    "picture": "shell_venus.gif",
+    "Level": 65,
+    "HP": 15000,
+    "power": 470,
+    "skill": 80,
+    "defense": 40,
+    "speed": 80,
+    "magic": 350,
+    "luck": 100,
+    "bits": 100000,
+    "weaknesses": [
+      {
+        "water": "strong",
+        "fire": "strong",
+        "thunder": "weak",
+        "earth": "weak",
+        "wind": "strong",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Sonya Shulen": {
+    "type": "boss",
+    "picture": "sonya_shulen.gif",
+    "Level": 58,
+    "HP": 6000,
+    "power": 480,
+    "skill": 125,
+    "defense": 110,
+    "speed": 160,
+    "magic": 390,
+    "luck": 120,
+    "bits": 1500,
+    "weaknesses": [
+      {
+        "water": "strong",
+        "fire": "strong",
+        "thunder": "strong",
+        "earth": "strong",
+        "wind": "strong",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Ain Gide": {
+    "type": "boss",
+    "picture": "ain_gide.gif",
+    "Level": 60,
+    "HP": 8000,
+    "power": 500,
+    "skill": 80,
+    "defense": 120,
+    "speed": 130,
+    "magic": 410,
+    "luck": 90,
+    "bits": 2000,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "strong",
+        "thunder": "strong",
+        "earth": "",
+        "wind": "",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Golden Hydra (right head)": {
+    "type": "boss",
+    "picture": "golden_hydra_right.gif",
+    "Level": 75,
+    "HP": 10000,
+    "power": 540,
+    "skill": 105,
+    "defense": 55,
+    "speed": 75,
+    "magic": 470,
+    "luck": 80,
+    "bits": 0,
+    "weaknesses": [
+      {
+        "water": "strong",
+        "fire": "",
+        "thunder": "strong",
+        "earth": "",
+        "wind": "inv.",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Golden Hydra (middle head)": {
+    "type": "boss",
+    "picture": "golden_hydra_middle.gif",
+    "Level": 75,
+    "HP": 10000,
+    "power": 560,
+    "skill": 105,
+    "defense": 55,
+    "speed": 75,
+    "magic": 430,
+    "luck": 80,
+    "bits": 0,
+    "weaknesses": [
+      {
+        "water": "",
+        "fire": "strong",
+        "thunder": "inv.",
+        "earth": "strong",
+        "wind": "",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
+  },
+  "Golden Hydra (left head)": {
+    "type": "boss",
+    "picture": "golden_hydra_left.gif",
+    "Level": 75,
+    "HP": 10000,
+    "power": 570,
+    "skill": 105,
+    "defense": 55,
+    "speed": 75,
+    "magic": 420,
+    "luck": 80,
+    "bits": 0,
+    "weaknesses": [
+      {
+        "water": "strong",
+        "fire": "inv.",
+        "thunder": "strong",
+        "earth": "",
+        "wind": "",
+        "holy": "",
+        "death": "no inst.death"
+      }
+    ],
+    "drop": []
   }
 }
+
   ];

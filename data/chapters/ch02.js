@@ -39,7 +39,7 @@ guideData.chapters.push(
         "Holly Boy",
         {
           "type": "Boss",
-          "name": "Golem"
+          "name": "Golem (PS1) / Clay Doll (Remaster)"
         }
       ],
       "collectibles":["Astral Predications"],
@@ -51,7 +51,7 @@ guideData.chapters.push(
         },
         {
           "type":"boss",
-          "name":"Golem",
+          "name":"Golem (PS1) / Clay Doll (Remaster)",
           "reward": "1500 Bits",
           "picture": "golem.gif",
           "text":"Have Gremio and Pahn use the Unite command to perform their Talisman Attack, and have Hero, Cleo, and Ted attack. This battle should be really easy if you took  the time to travel to Sarady to get one of those runes. Even if you didn't, it isn't too terribly hard. "

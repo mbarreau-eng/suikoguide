@@ -74,7 +74,7 @@ function renderBossCard(bossName) {
 function renderEnemyCard(name, enemyData) {
   const isBoss = String(enemyData.type || '').toLowerCase() === 'boss';
   const imgFolder = isBoss ? 'bosses' : 'enemies';
-  const imgPath = isBoss ? `./img/${imgFolder}/${name.toLowerCase()}.gif` : `./img/${imgFolder}/${enemyData.picture}`;
+  const imgPath =  `./img/${imgFolder}/${enemyData.picture}`;
 
   const cardClass = isBoss ? 'boss-card' : 'boss-card enemy-card-style';
   const badgeText = isBoss ? '⚔️ BOSS' : '👾 ENEMY';

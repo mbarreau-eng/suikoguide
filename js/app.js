@@ -78,12 +78,11 @@ function loadScripts(files) {
 
 // Application Global State
 
-
 function initApp() {
 
-let userProgress = loadProgress();
-let currentChapterId = loadSavedChapter();
-var activeTab = 'walkthrough';
+  let userProgress = loadProgress();
+  let currentChapterId = loadSavedChapter();
+  var activeTab = 'walkthrough';
   initTheme();
 
   if (typeof guideData === 'undefined' || !guideData) {
@@ -101,15 +100,6 @@ var activeTab = 'walkthrough';
   renderSidebarControls();
   renderCurrentChapter();
 }
-
-
-
-
-
-
-
-
-
 
 // Kick off Script Loading on DOM Ready
 window.addEventListener('DOMContentLoaded', () => {
