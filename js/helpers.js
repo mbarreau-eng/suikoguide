@@ -105,7 +105,7 @@ function enhanceParagraphText(text) {
         <span class="recruit-inline-tooltip">
           <span class="tooltip-header">
             <img 
-              src="./img/stars/${recruit.name.toLowerCase()}.png" 
+              src="./img/stars/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
               alt="${recruit.name}" 
               onerror="this.src='img/placeholder.png'" 
             />
