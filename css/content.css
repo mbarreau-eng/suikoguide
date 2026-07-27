@@ -5,7 +5,7 @@
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 24px;
-  height:12em;
+  min-height:12em;
 }
 
 .chapter-title {
