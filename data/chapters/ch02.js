@@ -63,6 +63,7 @@ guideData.chapters.push(
         },
         {
           "type":"plain",
+          "picture":"2-4.png",
           "text":"Leave the room and approach your party. As you prepare to leave, Leknaat will come back in and decide to have Luc take you to the shore. Before you leave, Leknaat will give Cleo a [_FIRE CRYSTAL_] to use to protect you. Luc will then transport you back to the shore with Futch, where you'll fly back to Gregminster after some bickering."
         },
         {

@@ -109,6 +109,7 @@ guideData.chapters.push(
         },
         {
             "type":"plain",
+            "picture":"3-5.png",
             "text":"Follow the path until your party has a little discussion, then keep going until you go into a cavern. (Fighting the Bandits here, as well as the Black Wild Boars, with the Prosperity Rune equipped can get you some easy money!)"
         },
         {

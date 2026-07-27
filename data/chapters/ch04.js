@@ -22,6 +22,7 @@ guideData.chapters.push({
           },
           {
             "type":"plain",
+            "picture":"4-3.png",
             "text":"Help him, and you'll take him into one of the beds. After some discussion, Ted will come to and he'll tell you what happened. Ted was taken to see Lady Windy, who turns out to be a witch that Ted remembers from 300 years ago; she wanted the rune on his right hand, but he used the power of that rune, the Soul Eater, to escape from them."
           },
           {
@@ -48,6 +49,7 @@ guideData.chapters.push({
           },
           {
             "type":"plain",
+            "picture":"4-4.png",
             "text":"Choose to take it, and he will bestow the Soul Eater upon your right hand. As soon as you do, something happens at the door. Head   to the front door to find that Pahn has brought the Imperial Guard back with him. His excuse; he can't allow any trouble while Master Teo is away. They're here for Ted, but Cleo won't let them enter Master Teo's house without just cause."
           },
           {
@@ -67,6 +69,7 @@ guideData.chapters.push({
           },
           {
             "type":"plain",
+            "picture":"4-5.png",
             "text":"Out in the pouring rain, go behind the house and head left, then down and into Marie's Inn. Inside, she'll decide to let you hide out in the attic. Talk to Cleo and Gremio, then attempt to head downstairs to have Gremio scold you. Go downstairs anyway, and while you're at it, make your way to the exit on the first floor. As you go to leave, members of the Imperial Guard will come crashing through, complaining about you being in the way."
           },
           {
@@ -94,6 +97,7 @@ guideData.chapters.push({
           },
           {
             "type":"plain",
+            "picture":"4-6.png",
             "text":"Choose to let him help, and he will agree on one condition; you must meet someone he knows. Not too bad of a deal! Anyway, Viktor will then join your party! Before doing anything else, go to your menu and select FORMATION, then move Viktor into the front row so he can attack during a battle. Now, head to the southern gate to let Viktor talk to the guard. Once he does that, you'll head outside. As it turns out, Viktor was able to bribe the guard; the whole Empire is corrupt and everything is about to come apart at the seams. Oh, to bribe him, he used Gremio's money! Now that we're out, we have a previous arrangement to meet someone, whom Viktor says is in Lenankamp."
           },
           {
@@ -105,6 +109,7 @@ guideData.chapters.push({
           },
           {
             "type":"plain",
+            "picture":"4-7.png",
             "text": "Choose 1, then leave Gregminster. If you want, you can level up or go to Rockland and play Marco's game. When you're finished, head to Lenankamp."
           }
         ]
