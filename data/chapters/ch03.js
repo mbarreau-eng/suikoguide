@@ -125,8 +125,13 @@ guideData.chapters.push(
           "text":"From the center of this room, grab the [_MEDICINE_] to the southwest, the [_LEGGINGS_] to the southeast, and an [_ESCAPE TALISMAN_] to the northwest. Move northeast and follow the path here up to the next room, up a set of stairs, and down to a large room where you'll find the Queen Ant. "
         },
         {
+          "type":"boss",
+          "name":"Queen Ant",
+          "text":"It's impossible to win this battle, so have everyone DEFEND until you leave the battle."
+        },
+        {
           "type":"plain",
-          "text":"It's impossible to win this battle, so have everyone DEFEND until you leave the battle. At this point, Ted suggests that you let him take care of it."
+          "text":"At this point, Ted suggests that you let him take care of it."
         },
         {
           "type":"choices",
@@ -142,9 +147,14 @@ guideData.chapters.push(
         },
         {
           "type":"boss",
-          "name":"Varkas & Sydonia",
-          "reward": "700 Bits",
-          "picture": "varkas_sydonia.jpg",
+          "name":"Varkas",
+          "reward": "400 Bits",
+          "text":""
+        },
+        {
+          "type":"boss",
+          "name":"Sydonia",
+          "reward": "300 Bits",
           "text":"Concentrate on Sydonia first, since he has fewer HP and he can attack your back row. Have Cleo use her Fire Rune, Gremio and Pahn use the Talisman attack, and have Hero and Ted attack/heal. Once Sydonia is down, take out Varkas. This battle is easy,  and you shouldn't have to worry about losing unless you haven't been leveling up lately."
         },
         {
