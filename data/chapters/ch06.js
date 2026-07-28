@@ -1,7 +1,7 @@
 guideData.chapters.push({
       "id": 6,
       "title": "Rockland, bandits in need",
-      "picture":"6.jpg",
+      "picture":"6/6.jpg",
       party:[
         {
           "name":"Hero",
@@ -37,7 +37,7 @@ guideData.chapters.push({
       "paragraphs":[
         {
           "type":"plain",
-          "picture":"6-1.png",
+          "picture":"6/6-1.png",
           "text":"Head up to the mansion as usual, but this time, talk to the guard blocking the door. He won't let you through, so Viktor will go distract him. Watch the events unfold as the Grady mansion mysteriously bursts into flames. Viktor will come back, and you'll regain control. Head into the mansion, and make your way left to be attacked by some Empire Soldiers. Once you're done with them, grab the [_MEDICINE_] out of the chest in the room above you."
         },
         {
@@ -46,7 +46,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"6-2.png",
+          "picture":"6/6-2.png",
           "text":"Go back out, move left, take out the soldiers, then head left to be outside with the bandits. Talk to Varkas, and at first, he'll think that you're with the Imperials, but once you help him, he'll change his mind. He'll ask you to free Sydonia as well, but Sydonia will escape on his own, begging the question of why he didn't escape sooner?"
         },
         {

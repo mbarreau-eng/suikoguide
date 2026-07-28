@@ -1,7 +1,7 @@
 guideData.chapters.push({
       "id": 11,
       "title": "Kaku, off to the Lake Toran Castle",
-      "picture":"11.jpg",
+      "picture":"11/11.jpg",
       "recruits":[{"id":6}],
       "party":[
         {"name":"Hero","level":"15"},
@@ -13,7 +13,7 @@ guideData.chapters.push({
       "paragraphs":[
         {
           "type":"plain",
-          "picture":"11-1.png",
+          "picture":"11/11-1.png",
           "text":"Once you're here in Kaku, make sure to SAVE at the Inn. Once you've done that, go to the Tavern, which is down the southern stairs, then right and up those stairs. Talk to the red haired girl in here and she'll say that she's finally caught Gremio!? He wonders what he did wrong; the girl, Camille, says that he owes her money, and she's been looking for him for two months."
         },
         {
@@ -22,7 +22,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"11-2.png",
+          "picture":"11/11-2.png",
           "text":"He thinks that you're nuts, wanting to go to the castle since it's loaded with monsters. He will let fate decide; you will have to put all of your money on the line (this is why I told you to save), and beat him in a game of dice."
         },
         {
@@ -33,7 +33,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"11-3.png",
+          "picture":"11/11-3.png",
           "text":"You don't have any other choice, so choose to do so. Ask him for the rules of Dice (Chinchirorin is what it's called in Suikoden II), then play away! I actually enjoy playing this game, and it's going to be a great source of money later in the game. If you lose, you'll only lose between 1000-3000, so only reset if you don't have much money. He got a STORM on my first game with him, so I gained 3000 Bits. When he loses, he decides to play along with the luckier folks, so he'll drag his brother Yam Koo into this madness as well. Go to the docks and talk to Tai Ho, telling him that you're ready to go."
         },
         {
@@ -67,6 +67,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
+          "picture":"11/11-4.png",
           "text":"Once you're at the castle, Tai Ho will decide to go with you to fight the monsters inside, so another one joins your party! Yam Koo also automatically joins your party, but you aren't told this; you'll find that you can put him in your battle party once you capture this castle."
         },
         {
@@ -83,7 +84,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"11-4.png",
+          
           "text":"Move right and up the stairs, then left to the next screen, then follow the long path as it turns east to a Journeyman's Crystal and a chest with an [_ANTITOXIN_]. Save your game, and make sure that Viktor has some Medicine on him for the upcoming boss battle. When you're done with that, head north two screens, then head east to the next screen."
         },
         {
@@ -96,7 +97,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"11-5.png",
+          "picture":"11/11-5.png",
           "text":"There are no more random encounters here, so if you want to level up some more, head back. Otherwise, head down the nearby stairs to your right, and when you're down to the next floor, do the same thing until you're at the first floor with the boss, the Zombie Dragon."
         },
         {
@@ -107,6 +108,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
+          "picture":"11/11-6.png",
           "text":"Since you've beaten the Zombie Dragon, the fog has cleared! Now that the castle is ours, we'll be able to name it! Just to let you know, in the history books in Suikoden II, the default name for this castle is Tora Castle, so I will refer to it as either Headquarters or Tora/Toran Castle, okay? Feel free to name it however you want. It DOES have the same glitch when it carries the name over to Suikoden II, so if it's over four letters, use all uppercase so it carries over completely. Refer to the beginning of the Walkthrough if you are confused on what I'm talking about."
         }
       ]

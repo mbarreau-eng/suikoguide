@@ -1,11 +1,11 @@
 guideData.chapters.push({
       "id": 12,
       "title": "Headquarters, building a new army",
-      "picture":"12.png",
+      "picture":"12/12.png",
       "paragraphs":[
         {
           "type":"plain",
-          "picture":"12-1.png",
+          "picture":"12/12-1.png",
           "text":"Mathiu will congratulate you for gaining the castle, as well as designate today as the New Liberation Army's founding date. As everyone starts to throw in their ideas for what to do, Leknaat will show up to give you some gifts; 1) The Stone Tablet of Promise, which shows the names of all of the people who join you in your fight. 2) Luc. He's one of the best magic users in the game, though he does basically nothing physically in battle."
         },
         {
@@ -31,7 +31,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"12-2.png",
+          "picture":"12/12-2.png",
           "text":"Once you're there, head over to the Tavern. Talk to Sergei in here; he happens to be an inventor, and he invented a great device called an elevator. We have a very tall castle, and we could really use an elevator, so recruit him! That's it for Kaku for now, so leave town and head back to the World Map. There are a few people we can recruit now before getting Lepant, so we'll start all the way north at Kwaba."
         },
         {
@@ -49,7 +49,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"12-4.png",
+          "picture":"12/12-4.png",
           "text":"Talk to our good buddy Chandler, and choose to recruit him! Cool, now our castle has an Item Shop. To add items to those at our store, we must visit other shops around the world to add to our inventory. Same goes with the Armories, as I told you back at Gregminster. Once you have Chandler, leave Kwaba and head over to Seika."
         },
         {
@@ -67,22 +67,22 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"12-6.png",
+          "picture":"12/12-6.png",
           "text":"Go into the Inn first, and go into the room on the far right. Talk to the woman in here; it's Marie from Gregminster! Talk to her to recruit her and you'll have an Inn at your castle!"
         },
         {
           "type":"plain",
-          "picture":"12-3.png",
+          "picture":"12/12-3.png",
           "text":"Go into the building north of the Inn, and talk to the woman in here; she is Onil, a know-it-all. By recruiting her, you'll be able to talk to her in your castle, and if you're lost, she'll tell you what you need to do."
         },
         {
           "type":"plain",
-          "picture":"12-8.png",
+          "picture":"12/12-8.png",
           "text":"Now, talk to the chef beside the counter in the Inn; this is Antonio, and he wishes he had his own restaurant. To recruit him, we have to do a little bit of traveling, so leave Seika and make your way back to Headquarters via the boat in Kaku. Go to the first floor and go to the Inn to the right of you. Talk to Marie and keep choosing to stay the night until she says, 'I finally opened my Inn, but I have no time to prepare the food. Do you know any good cooks?'"
         },
         {
           "type":"plain",
-          "picture":"12-9.png",
+          "picture":"12/12-9.png",
           "text":"Leave Headquarters and head back to the Inn at Seika. Talk to Antonio and recruit him into your party as well. We're done here, but we're not going to go to Kouan just yet. Head south of Kaku to come near Kouan, but instead of going there, keep going west until you reach a bridge. This is Garan."
         },
         {
@@ -100,7 +100,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"12-5.png",
+          "picture":"12/12-5.png",
           "text":"Talk to the man standing beside the flag; this is Kai, and he is the BEST person to have in your party when taking on groups of enemies, thanks to his Unite Attack with Hero. Anyway, Kai was Hero's stick-fighting teacher, or his Sensei if you will, and he knows that you're now leading the Liberation Army. He will decide to join you, so go ahead and recruit him."
         },
         {
@@ -134,12 +134,12 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"12-7.png",
+          "picture":"12/12-7.png",
           "text":"Go to the Blacksmith and talk to Maas; he says that the world is twisted, and that the people's minds are as well. He wants to join the Liberation Army so he can help straighten them out, so recruit him to get your first of five Blacksmiths! Don't worry about him though; he can only sharpen your weapons to level 5 anyway."
         },
         {
           "type":"plain",
-          "picture":"12-10.png",
+          "picture":"12/12-10.png",
           "text":"Next, go to the house just northwest of the blacksmith; this is Sansuke's house, and he is a master of baths. Talk to him and recruit him; he will put a bath in our castle. Cool!"
         },
         {

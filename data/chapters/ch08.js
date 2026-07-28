@@ -1,7 +1,7 @@
 guideData.chapters.push({
       "id": 8,
       "title": "Lenankamp, the end of one era; the beginning of another",
-      "picture":"8.jpg",
+      "picture":"8/8.jpg",
       "party":[
         {"name":"Hero","level":"14"},
         {"name":"Gremio","level":"11"},
@@ -18,12 +18,12 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"8-1.png",
+          "picture":"8/8-1.png",
           "text":"When you arrive to the Inn, you'll see the Innkeeper lying on the ground. Odessa will rush off to the hideout, so quickly follow her, examining the clock to go down there. Go left as soon as you're down there to fight a group of Empire Soldiers. After beating them, go down and left into the next section to fight another group. Again, once you're done with them, go down and left into the third section."
         },
         {
           "type":"plain",
-          "picture":"8-2.jpg",
+          "picture":"8/8-2.png",
           "text":"You'll hear Odessa scream, so hurry over there to fight one last group of soldiers. After that, go over to Odessa to find out that she sacrificed herself to save a child, saying that she chose to be a woman over being a leader. She'll ask you to come closer, then will ask you to do two things; 1) She wants you to give her earring to a man called Mathiu in the village of Seika (you'll receive the [_EARRING_].) 2) She wants you to throw her body into the stream down here."
         },
         {
@@ -32,6 +32,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
+          "picture":"8/8-3.png",
           "text":"It's her dying wish, so do as she asks. She'll tell Viktor to keep her death a secret, that way the Movement won't lose hope and die off. After a last few words to you, Odessa will pass away. "
         },
         {

@@ -1,7 +1,7 @@
 guideData.chapters.push({
       "id": 9,
       "title": "Kwaba, the Fortress of Lord Ain Gide",
-      "picture":"9.jpg",
+      "picture":"9/9.jpg",
       "party":[
         {"name":"Hero","level":"14"},
         {"name":"Gremio","level":"12"},
@@ -11,6 +11,7 @@ guideData.chapters.push({
       "paragraphs":[
         {
           "type":"plain",
+          "picture":"9/9-1.png",
           "text":"Cleo says that Lord Ain Gide, a friend of Teo's, is in charge here; he knows your face, but not anyone else's here. Viktor will decide to come up with fake names in case, so Gremio will be Roi, Cleo will be Maria, and Viktor will be Schtolteheim Reinbach III (haha, play all of the Suikodens, and you'll know why I'm laughing). As for you..."
         },
         {
@@ -19,6 +20,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
+          "picture":"9/9-2.png",
           "text":"Pick whichever you like, then head south  to be stopped by the guards. They will notice that you look like the McDohl kid, and that's when Ain Gide himself will show up (uh oh). He'll demand to see your face, and that will be when Gremio will charge you and start screaming at you for always causing trouble and being useless and everything else. He'll also offer to lop off your head!"
         },
         {
@@ -27,6 +29,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
+          "picture":"9/9-3.png",
           "text":"On the other side, Gremio apologizes for his behavior back there, and will even let you kill him if you think that's what needs done..."
         },
         {
@@ -35,7 +38,7 @@ guideData.chapters.push({
         },
         {
           "type":"plain",
-          "picture":"9-1.png",
+          
           "text":"Choose 2 to forgive him, since he was just trying to help. Talk to Chandler on the left;he wants to open his own store one day, so remember that. Head south out of Kwaba."
         },
         {
