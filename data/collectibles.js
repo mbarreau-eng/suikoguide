@@ -282,7 +282,7 @@ guideData.collectibles = [
    "get":"Drop ・Sunshine King"
   },
   {
-   "id":"World Map",
+   "id":"Suiko Map",
    "category":"Special",
    "desc":"A map that shows your current location on the field. Obtained by recruiting Templeton.",
    "get":"Recruit Templeton ・You can obtain the World Map after recruiting Templeton."
