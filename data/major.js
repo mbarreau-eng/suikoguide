@@ -21,5 +21,42 @@ guideData.major = [
         "Now for the battle; use the Thieves command first off to see what they're going to do; if they fail, you'll just have to pick one of the three. I always use a Bow attack in this case, because it WILL do damage no matter what they do, even though if they charge, you'll take a bigger hit. Kwanda's Attack is a Charge attack, so use a Magic attack to counter it, and it's usually the first attack that they will use in this battle. If  your thieves tell you that they're going to do a Bow attack, use the Strategists command under Other to boost your Charge attack power, then  use the Charge command with the Commander's Team or the Lepant family. After that turn, use the Thieves command again, then do whichever is strongest, and so on and so forth until you win the battle.",
         "Like I said, if you're ever in doubt, or if the Thieves command fails, just use a Bow attack, that way you will be able to inflict damage on them no matter what. Pretty easy, isn't it?"
       ]
+    },
+     {
+      "id":2,
+      "title":"Battle at Fortress of Garan",
+      "picture":"garen.gif",
+      "countUs":8135,
+      "countThem":6000,
+      "intro":[{
+        "Imperial Soldier": "Liberation Army? What's that? What? The guys who beat Kwanda's army?!",
+        "Gremio": "Here we go, Young Master. Please take care.",
+        "Cleo": "Let's go Pahn!",
+        "Pahn": "All right, let's go!"
+    }],
+      "outro":[{
+        "Mathiu": "Congratulations! We won!",
+        "Flik": "We did it! We beat the Imperial Army!",
+      }],
+      "strategy":[
+        "You've got the edge number-wise this time, so do what you usually do; have your Thieves group do  some reconnaissance to see what they're going to do, then do what's best, remembering that if they are going to use a Bow attack to use the Strategists command first so you can boost your Charge attack power. If you're unsure, just use the Bow."
+      ]
+    },
+     {
+      "id":3,
+      "title":"Battle at Scarleticia Castle",
+      "picture":"scarleticia.gif",
+      "countUs":8135,
+      "countThem":12000,
+      "intro":[{
+        "Milich": "What fools I'll show you how wonderful my Antoinette is.",
+        "Mathiu": "Please be careful. There's something wrong."
+    }],
+      "outro":[{
+        "Mathiu": "We're all over. We should retreat (said after 3 rounds) "
+      }],
+      "strategy":[
+        "It doesn't matter what you do here, because he'll use his Poisonous Pollen attack, which will take a HUGE chunk out of your troops. There's no chance to win here, so Mathiu will order the retreat. "
+      ]
     }
   ];

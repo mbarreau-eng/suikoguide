@@ -122,7 +122,7 @@ function renderCurrentChapter() {
       renderChapterView(main, 1);
       break;
   }
-  main.scrollTop = 0;
+  
 }
 
 function renderContent() {
