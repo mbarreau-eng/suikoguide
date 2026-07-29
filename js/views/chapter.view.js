@@ -8,6 +8,9 @@ function renderChapterView(container, chapterId) {
   header.className = 'chapter-header-card';
   const chapterBadgesHTML = renderBadges(chapter);
   const chapterRecruitsHTML = renderRecruitsSection(chapter);
+  const divTrackables = document.getElementById('trackables');
+  divTrackables.innerHTML += chapterRecruitsHTML;
+
   const bgImageName = chapter.pictures || chapter.picture || chapter.image;
 
   if (bgImageName) {
@@ -25,7 +28,7 @@ function renderChapterView(container, chapterId) {
     <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.05em; font-weight: bold;">Chapter ${chapter.id}</div>
     <h2 class="chapter-title">${chapter.title}</h2>
     ${chapterBadgesHTML ? `<div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--border-color);">${chapterBadgesHTML}</div>` : ''}
-    ${chapterRecruitsHTML}
+    <!--${chapterRecruitsHTML}-->
   `;
   container.appendChild(header);
 
@@ -37,7 +40,8 @@ function renderChapterView(container, chapterId) {
   if (chapter.collectibles && Array.isArray(chapter.collectibles) && chapter.collectibles.length > 0) {
     const collectiblesWrapper = document.createElement('div');
     collectiblesWrapper.innerHTML = renderChapterCollectibles(chapter.collectibles);
-    container.appendChild(collectiblesWrapper.firstElementChild || collectiblesWrapper);
+    //container.appendChild(collectiblesWrapper.firstElementChild || collectiblesWrapper);
+    divTrackables.innerHTML += collectiblesWrapper.innerHTML;
   }
 
   if (!chapter.paragraphs || chapter.paragraphs.length === 0) {
