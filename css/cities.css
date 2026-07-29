@@ -2,15 +2,15 @@
    CITY CARD BLOCK (`rpg-city-card`)
    ========================================================================== */
 .rpg-city-card {
-  background: linear-gradient(180deg, #131d38 0%, #080d1a 100%);
-  border-color: #93c5fd;
+  background: var(--city-card-bg);
+  border-color: var(--city-border);
 }
 
 .rpg-city-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #1e3a8a;
+  border-bottom: 2px solid var(--city-header-border);
   padding-bottom: 0.75rem;
   margin-bottom: 1.25rem;
 }
@@ -23,15 +23,15 @@
 
 .rpg-city-title {
   font-size: 2rem;
-  color: #fef08a;
+  color: var(--city-title);
   margin: 0;
-  text-shadow: 2px 2px 0 #000;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
 }
 
 .rpg-city-inn {
-  background: rgba(30, 41, 59, 0.9);
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
+  background: var(--city-inn-bg);
+  border: 1px solid var(--city-inn-border);
+  color: var(--city-inn-text);
   padding: 0.35rem 0.85rem;
   border-radius: 4px;
   font-size: 1.15rem;
@@ -41,26 +41,26 @@
   width: 100%;
   max-height: 200px;
   object-fit: cover;
-  border: 2px solid var(--rpg-border-inner);
+  border: 2px solid var(--border-color);
   border-radius: 4px;
   margin-bottom: 1.25rem;
 }
 
 /* --- RECRUITABLE STARS SECTION --- */
 .rpg-stars-section {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid #334155;
+  background: var(--star-section-bg);
+  border: 1px solid var(--border-color);
   padding: 0.85rem;
   border-radius: 4px;
   margin-bottom: 1.25rem;
   flex-direction: row;
   display: flex;
-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .rpg-section-label {
   font-size: 1.1rem;
-  color: var(--rpg-gold);
+  color: var(--accent-gold);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0.6rem;
@@ -78,9 +78,9 @@ flex-wrap: wrap;
 /* Star Chip & Hover Popover Trigger */
 .rpg-star-chip {
   position: relative;
-  background: #1e1b4b;
-  border: 1px solid #818cf8;
-  color: #e0e7ff;
+  background: var(--star-chip-bg);
+  border: 1px solid var(--star-chip-border);
+  color: var(--star-chip-text);
   padding: 0.3rem 0.75rem;
   border-radius: 4px;
   font-size: 1.1rem;
@@ -89,9 +89,9 @@ flex-wrap: wrap;
 }
 
 .rpg-star-chip:hover {
-  background: #3730a3;
-  border-color: #c7d2fe;
-  color: var(--rpg-gold);
+  background: var(--star-chip-hover-bg);
+  border-color: var(--star-chip-border);
+  color: var(--accent-gold);
 }
 
 /* Popover Star Card (Displayed on Mouse Hover) */
@@ -102,12 +102,11 @@ flex-wrap: wrap;
   left: 50%;
   transform: translateX(-50%);
   width: 240px;
-  background: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
-  border: 2px double #a5b4fc;
-  outline: 2px solid #000;
+  background: var(--star-popover-bg);
+  border: 2px double var(--star-popover-border);
   border-radius: 6px;
   padding: 0.85rem;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
   z-index: 100;
   pointer-events: none;
 }
@@ -126,7 +125,7 @@ flex-wrap: wrap;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  border-bottom: 1px dashed var(--border-color);
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -134,8 +133,8 @@ flex-wrap: wrap;
 .rpg-star-avatar {
   width: 48px;
   height: 48px;
-  background: #334155;
-  border: 1px solid #94a3b8;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   object-fit: cover;
 }
@@ -146,20 +145,20 @@ flex-wrap: wrap;
 }
 
 .rpg-star-name {
-  color: var(--rpg-gold);
+  color: var(--accent-gold);
   font-size: 1.25rem;
   font-weight: bold;
   line-height: 1.1;
 }
 
 .rpg-star-constellation {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
 .rpg-star-number {
   font-size: 0.9rem;
-  color: #818cf8;
+  color: var(--star-chip-border);
 }
 
 /* --- SHOPS SECTION --- */
@@ -170,8 +169,8 @@ flex-wrap: wrap;
 }
 
 .rpg-shop-box {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid #334155;
+  background: var(--shop-box-bg);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 0.75rem;
 }
@@ -183,7 +182,7 @@ flex-wrap: wrap;
 }
 
 .rpg-shop-table tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-color-subtle);
 }
 
 .rpg-shop-table tr:last-child {
@@ -196,11 +195,10 @@ flex-wrap: wrap;
 
 .rpg-shop-price {
   text-align: right;
-  color: var(--rpg-gold);
-  font-family: var(--rpg-font);
+  color: var(--accent-gold);
 }
 
 .rpg-stars-section .recruit-card {
-  width:20%;
-    margin:1em;
+  width: 20%;
+  margin: 1em;
 }

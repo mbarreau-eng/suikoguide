@@ -24,12 +24,12 @@
 
 .recruit-card.recruited {
   border: 1px solid var(--accent-gold);
-  background: rgba(245, 159, 11, 0.336);
-  box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);
+  background: var(--recruit-recruited-bg);
+  box-shadow: 0 0 10px var(--accent-gold-subtle);
 }
 
 .recruit-support {
-  background-color: #8d44ad5e;
+  background-color: var(--recruit-support-bg);
 }
 
 .recruit-header {
@@ -57,16 +57,13 @@
   object-fit: cover;
   border-radius: 6px;
   border: 1px solid var(--border-color);
-  /*
-  background-color: var(--bg-sidebar);
-  */
   flex-shrink: 0;
-  background-color:#FFF;
+  background-color: var(--img-bg);
 }
 
 .recruit-range {
   font-size: 0.75rem;
-  background: var(--border-color);
+  background: var(--border-color-subtle);
   padding: 2px 6px;
   border-radius: 4px;
 }
@@ -85,38 +82,38 @@
   border-radius: 4px;
   margin-left: auto;
   align-self: center;
-  background: var(--border-color);
+  background: var(--border-color-subtle);
   color: var(--text-muted);
   display: none;
 }
 
 .recruit-card.recruited .recruit-status-badge {
   background: var(--accent-gold);
-  color: #000;
+  color: var(--text-inverse);
 }
 
 /* Party Card & Grid Layout */
 .party-card {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, var(--bg-card, #1e293b) 100%);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  border-left: 4px solid #6366f1;
+  background: var(--party-card-bg);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--note-border);
   border-radius: 8px;
   padding: 18px 20px;
   margin: 20px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  width:100%;
+  width: 100%;
 }
 
 .party-card:hover {
-  border-color: rgba(99, 102, 241, 0.8);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  border-color: var(--note-border);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .party-card .party-header {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #a5b4fc;
+  color: var(--note-title-color);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 12px;
@@ -129,26 +126,26 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  width:40%;
-  background-color:#8b00ff5c;
-  border:1px solid #8b00ffee;
+  width: 40%;
+  background-color: var(--party-grid-bg);
+  border: 1px solid var(--party-grid-border);
   padding: 3px;
 }
 
 .party-member-chip {
-  background-color: rgba(15, 23, 42, 0.75);
-  border: 1px solid #475569;
+  background-color: var(--party-chip-bg);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 8px 10px;
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-width: 0;
 }
 
 .party-member-chip:hover {
-  border-color: var(--accent-gold, #f59e0b);
+  border-color: var(--accent-gold);
   transform: translateY(-1px);
 }
 
@@ -162,21 +159,21 @@
 .member-name {
   font-weight: 600;
   font-size: 0.875rem;
-  color: var(--text-main, #f8fafc);
+  color: var(--text-main);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .member-level {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  color: #0f172a;
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+  color: var(--text-inverse);
   font-size: 0.7rem;
   font-weight: 800;
   padding: 1px 5px;
   border-radius: 3px;
   align-self: flex-start;
-  margin:0 0.2em;
+  margin: 0 0.2em;
 }
 
 .member-img {
@@ -185,11 +182,8 @@
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid var(--accent-gold);
-  /*
-  background-color: var(--bg-sidebar);
-  */
   flex-shrink: 0;
-  background-color:#FFF;
+  background-color: var(--img-bg);
 }
 
 /* Floating Recruit Card Pop-up */
@@ -198,10 +192,10 @@
   z-index: 9999;
   pointer-events: none;
   width: 280px;
-  background: rgba(18, 18, 26, 0.95);
-  border: 1px solid #f1c40f;
+  background: var(--popup-card-bg);
+  border: 1px solid var(--accent-gold);
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 12px rgba(241, 196, 15, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 12px var(--accent-gold-subtle);
   backdrop-filter: blur(8px);
   transition: opacity 0.15s ease;
   opacity: 1;
@@ -227,21 +221,21 @@
   height: 52px;
   border-radius: 6px;
   object-fit: cover;
-  border: 1px solid #f1c40f;
-  background-color: #000;
+  border: 1px solid var(--accent-gold);
+  background-color: var(--img-bg);
   image-rendering: pixelated;
   flex-shrink: 0;
 }
 
 .popup-card-title h4 {
   margin: 2px 0;
-  color: #ffffff;
+  color: var(--text-main);
   font-size: 1.05rem;
 }
 
 .popup-star-tag {
   font-size: 0.68rem;
-  color: #f1c40f;
+  color: var(--accent-gold);
   font-weight: 800;
   letter-spacing: 0.5px;
   display: block;
@@ -255,9 +249,9 @@
 .popup-card-body {
   margin-top: 10px;
   padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-color);
   font-size: 0.82rem;
-  color: #dddddd;
+  color: var(--text-main);
 }
 
 .popup-card-body p {
@@ -265,7 +259,6 @@
   line-height: 1.35;
 }
 
-/* Responsive adjustment */
 @media (max-width: 640px) {
   .party-grid {
     grid-template-columns: repeat(2, 1fr);

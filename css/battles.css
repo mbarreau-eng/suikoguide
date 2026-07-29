@@ -1,12 +1,12 @@
 /* Major Battle Container */
 .major-battle-card {
-  background: rgba(28, 18, 24, 0.9);
-  border: 1px solid #d35400;
-  border-left: 5px solid #e67e22;
+  background: var(--mb-card-bg);
+  border: 1px solid var(--mb-border);
+  border-left: 5px solid var(--mb-border-accent);
   border-radius: 8px;
   padding: 20px;
   margin: 24px 0;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .mb-header {
@@ -14,12 +14,12 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
-  border-bottom: 1px solid rgba(230, 126, 34, 0.3);
+  border-bottom: 1px solid var(--mb-header-border);
   padding-bottom: 10px;
 }
 
 .mb-badge {
-  background: #d35400;
+  background: var(--mb-border);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 800;
@@ -31,7 +31,7 @@
 .mb-title {
   margin: 0;
   font-size: 1.35rem;
-  color: #f39c12;
+  color: var(--mb-title);
 }
 
 /* Forces Comparison Bar */
@@ -39,8 +39,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--mb-forces-bg);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 12px 16px;
   margin-bottom: 18px;
@@ -55,7 +55,7 @@
 
 .force-label {
   font-size: 0.72rem;
-  color: #aaa;
+  color: var(--text-muted);
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -77,16 +77,16 @@
 .force-vs {
   font-size: 0.9rem;
   font-weight: 900;
-  color: #e67e22;
+  color: var(--mb-border-accent);
   opacity: 0.8;
   padding: 0 10px;
 }
 
 /* Battle Intro & Dialogue */
 .mb-intro-box {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(230, 126, 34, 0.25);
-  border-left: 3px solid #e67e22;
+  background: var(--mb-box-bg);
+  border: 1px solid var(--mb-header-border);
+  border-left: 3px solid var(--mb-border-accent);
   border-radius: 6px;
   padding: 12px 16px;
   margin-bottom: 18px;
@@ -94,7 +94,7 @@
 
 .mb-intro-title {
   margin: 0 0 10px 0;
-  color: #f39c12;
+  color: var(--mb-title);
   font-size: 0.95rem;
   font-weight: 700;
 }
@@ -114,26 +114,27 @@
 }
 
 .mb-speaker {
-  color: #f1c40f;
+  color: var(--accent-gold);
   white-space: nowrap;
   font-weight: 700;
 }
 
 .mb-quote {
-  color: var(--text-main, #e0e0e0);
+  color: var(--text-main);
   font-style: italic;
 }
 
 .mb-strategy-box {
-  background: rgba(243, 156, 18, 0.05);
-  border-left: 3px solid #f39c12;
+  /*background: var(--mb-strategy-bg);*/
+  background: var(--mb-box-bg);
+  border-left: 3px solid var(--mb-title);
   border-radius: 4px;
   padding: 14px 18px;
 }
 
 .mb-strategy-title {
   margin: 0 0 10px 0;
-  color: #f39c12;
+  color: var(--mb-title);
   font-size: 1rem;
   font-weight: 700;
 }
@@ -141,7 +142,7 @@
 .mb-strategy-paragraphs p {
   margin: 0 0 10px 0;
   line-height: 1.6;
-  color: var(--text-main, #e0e0e0);
+  color: var(--text-main);
   font-size: 0.92rem;
 }
 
@@ -151,13 +152,13 @@
 
 /* Duels & Dialogue Grid */
 .duel-card {
-  background: rgba(22, 14, 28, 0.92);
-  border: 1px solid #8e44ad;
-  border-left: 5px solid #9b59b6;
+  background: var(--duel-card-bg);
+  border: 1px solid var(--duel-border);
+  border-left: 5px solid var(--duel-border-accent);
   border-radius: 8px;
   padding: 20px;
   margin: 24px 0;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .duel-header {
@@ -165,12 +166,12 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
-  border-bottom: 1px solid rgba(155, 89, 182, 0.3);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 10px;
 }
 
 .duel-badge {
-  background: #8e44ad;
+  background: var(--duel-border);
   color: #ffffff;
   font-size: 0.72rem;
   font-weight: 800;
@@ -182,15 +183,15 @@
 .duel-title {
   margin: 0;
   font-size: 1.35rem;
-  color: #e0aaff;
+  color: var(--duel-title);
 }
 
 .duel-matchup-bar {
   display: flex;
   align-items: center;
   gap: 16px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(155, 89, 182, 0.25);
+  background: var(--duel-bar-bg);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 12px 18px;
   margin-bottom: 20px;
@@ -218,7 +219,7 @@
 
 .combatant small {
   font-size: 0.7rem;
-  color: #aaa;
+  color: var(--text-muted);
   text-transform: uppercase;
 }
 
@@ -236,9 +237,9 @@
 }
 
 .duel-vs-badge {
-  background: rgba(241, 196, 15, 0.15);
-  color: #f1c40f;
-  border: 1px solid #f1c40f;
+  background: var(--accent-gold-subtle);
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
   font-weight: 900;
   font-size: 0.75rem;
   padding: 4px 8px;
@@ -254,8 +255,8 @@
 .duel-move-block {
   border-radius: 6px;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--duel-move-bg);
+  border: 1px solid var(--border-color);
 }
 
 .move-header {
@@ -264,7 +265,7 @@
   gap: 10px;
   margin-bottom: 8px;
   padding-bottom: 6px;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  border-bottom: 1px dashed var(--border-color);
 }
 
 .move-icon {
@@ -312,7 +313,7 @@
   padding-left: 20px;
   font-style: italic;
   font-size: 0.88rem;
-  color: var(--text-main, #d1d5db);
+  color: var(--text-main);
 }
 
 .dialogue-list li {
