@@ -129,7 +129,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  width:65%;
+  width:40%;
+  background-color:#8b00ff5c;
+  border:1px solid #8b00ffee;
+  padding: 3px;
 }
 
 .party-member-chip {
@@ -151,7 +154,7 @@
 
 .member-details {
   display: flex;
-  flex-direction: line;
+  flex-direction: column;
   gap: 2px;
   overflow: hidden;
 }
