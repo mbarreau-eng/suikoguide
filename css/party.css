@@ -52,13 +52,16 @@
 }
 
 .recruit-img {
-  width: 42px;
-  height: 42px;
+  width: 75px;
+  height: 100px;
   object-fit: cover;
   border-radius: 6px;
   border: 1px solid var(--border-color);
+  /*
   background-color: var(--bg-sidebar);
+  */
   flex-shrink: 0;
+  background-color:#FFF;
 }
 
 .recruit-range {
@@ -174,13 +177,16 @@
 }
 
 .member-img {
-  width: 28px;
-  height: 28px;
+  width: 56px;
+  height: 56px;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid var(--accent-gold);
+  /*
   background-color: var(--bg-sidebar);
+  */
   flex-shrink: 0;
+  background-color:#FFF;
 }
 
 /* Floating Recruit Card Pop-up */

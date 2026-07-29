@@ -41,10 +41,11 @@ function renderRecruitCard(ref) {
             <span>${idPrefix}${recruit.name}</span>
             ${renderRangeBadge(recruit.range)}
           </div>
+          <div class="recruit-condition">${recruit.condition ? recruit.condition : ''}</div>
         </div>
         <span class="recruit-status-badge">${recruited ? '✔ Recruited' : '◯ Not Recruited'}</span>
       </div>
-      <div class="recruit-condition">${recruit.condition ? recruit.condition : ''}</div>
+      
     </div>
   `;
 }
