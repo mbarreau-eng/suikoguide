@@ -9,6 +9,7 @@ function renderChapterView(container, chapterId) {
   const chapterBadgesHTML = renderBadges(chapter);
   const chapterRecruitsHTML = renderRecruitsSection(chapter);
   const divTrackables = document.getElementById('trackables');
+  divTrackables.innerHTML = '';
   divTrackables.innerHTML += chapterRecruitsHTML;
 
   const bgImageName = chapter.pictures || chapter.picture || chapter.image;
