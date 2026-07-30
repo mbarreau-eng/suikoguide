@@ -44,7 +44,7 @@
 
 .chapter-collectible-item {
   display: flex;
-  flex-direction:column;
+  flex-direction:row;
   align-items: center;
   gap: 12px;
   padding: 6px 10px;
@@ -78,6 +78,7 @@
   border-radius: 4px;
   font-weight: bold;
   white-space: nowrap;
+  width:74px;
 }
 
 .chapter-collectible-item label small {

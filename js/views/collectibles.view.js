@@ -76,9 +76,9 @@ ${chapterItems.map(item => {
               <label for="chk_${domId}">
                 ${item.category ? `<span class="collectible-tag">${item.category}</span>` : ''}
                 <strong>${item.id}</strong>
-                
+                ${detailText ? `<small>📍 ${detailText}</small>` : ''}
               </label>
-              ${detailText ? `<small>📍 ${detailText}</small>` : ''}
+              
             </span>
           `;
         }).join('')}

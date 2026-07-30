@@ -127,7 +127,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  width: 40%;
+  width: 60%;
   background-color: var(--party-grid-bg);
   border: 1px solid var(--party-grid-border);
   padding: 3px;

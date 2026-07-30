@@ -16,6 +16,7 @@ body {
 }
 
 #trackables {
-  max-width:15%;
+  max-width:27%;
+  min-width: 20%;
   overflow-y: auto;
 }
