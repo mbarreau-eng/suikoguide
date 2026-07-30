@@ -3,7 +3,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
-  margin-top: 20px;
+  margin-top: 5px;
+  width: 95%;
 }
 
 .recruit-card {

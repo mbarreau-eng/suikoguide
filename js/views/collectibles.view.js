@@ -1,6 +1,7 @@
 function renderChapterCollectibles(chapterCollectibleIds = []) {
   if (!chapterCollectibleIds.length) return '';
-
+const trackables = document.getElementById('trackables');
+  trackables.innerHTML = '';
   const checkedIds = getCheckedCollectibles();
   const allCollectibles = guideData.collectibles || [];
 
@@ -11,7 +12,7 @@ function renderChapterCollectibles(chapterCollectibleIds = []) {
   if (!chapterItems.length) return '';
 
   const chapterIdsAttr = JSON.stringify(chapterCollectibleIds).replace(/"/g, '&quot;');
-
+/*
   return `
     <div class="chapter-collectibles-card">
       <div class="collectibles-card-header">
@@ -26,7 +27,7 @@ function renderChapterCollectibles(chapterCollectibleIds = []) {
           const isCheckedItem = checkedIds.includes(item.id);
           const domId = sanitizeId(item.id);
           const detailText = item.desc || item.get || '';
-
+        
           return `
             <li class="chapter-collectible-item ${isCheckedItem ? 'completed' : ''}" id="chapter-item-${domId}">
               <input 
@@ -44,9 +45,45 @@ function renderChapterCollectibles(chapterCollectibleIds = []) {
             </li>
           `;
         }).join('')}
+        
       </ul>
     </div>
   `;
+  */
+ return `
+ <div class="chapter-collectibles-card">
+      <div class="collectibles-card-header">
+        <h3>🏆 Collectibles & Key Items</h3>
+        <span class="collectibles-count" id="chapter-coll-count">
+          ${chapterItems.filter(i => checkedIds.includes(i.id)).length} / ${chapterItems.length} Found
+        </span>
+      </div>
+      <div>
+${chapterItems.map(item => {
+          const isCheckedItem = checkedIds.includes(item.id);
+          const domId = sanitizeId(item.id);
+          const detailText = item.desc || item.get || '';
+        
+          return `
+            <span class="chapter-collectible-item ${isCheckedItem ? 'completed' : ''}" id="chapter-item-${domId}">
+              <input 
+                type="checkbox" 
+                id="chk_${domId}" 
+                ${isCheckedItem ? 'checked' : ''}
+                onchange="toggleChapterCollectible('${item.id.replace(/'/g, "\\'")}', '${chapterIdsAttr}')"
+              />
+              
+              <label for="chk_${domId}">
+                ${item.category ? `<span class="collectible-tag">${item.category}</span>` : ''}
+                <strong>${item.id}</strong>
+                
+              </label>
+              ${detailText ? `<small>📍 ${detailText}</small>` : ''}
+            </span>
+          `;
+        }).join('')}
+      </div>
+ `;
 }
 
 function renderAllCollectiblesView(containerId = 'main-content') {

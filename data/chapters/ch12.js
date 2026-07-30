@@ -2,6 +2,7 @@ guideData.chapters.push({
       "id": 12,
       "title": "Headquarters, building a new army",
       "picture":"12/12.png",
+      "recruits":[{"id":10},{"id":11},{"id":12},{"id":13},{"id":14},{"id":15},{"id":16},{"id":17}],
       "paragraphs":[
         {
           "type":"plain",
@@ -19,7 +20,7 @@ guideData.chapters.push({
         {
           "type":"place",
           "text":"Kaku",
-          "recruits":[{"id":10}],
+          
           "party":[
             {"name":"Hero","level":19},
             {"name":"Gremio","level":18},
@@ -37,7 +38,7 @@ guideData.chapters.push({
         {
           "type":"place",
           "text":"Kwaba",
-          "recruits":[{"id":11}],
+          "recruits":[],
           "party":[
             {"name":"Hero","level":19},
             {"name":"Gremio","level":18},
@@ -55,7 +56,7 @@ guideData.chapters.push({
         {
           "type":"place",
           "text":"Seika",
-          "recruits":[{"id":12},{"id":13},{"id":14}],
+          "recruits":[],
           "party":[
             {"name":"Hero","level":19},
             {"name":"Gremio","level":18},
@@ -88,7 +89,7 @@ guideData.chapters.push({
         {
           "type":"place",
           "text":"Garan",
-          "recruits":[{"id":15}],
+          "recruits":[],
           "party":[
             {"name":"Hero","level":19},
             {"name":"Gremio","level":19},
@@ -118,7 +119,7 @@ guideData.chapters.push({
         {
           "type":"place",
           "text":"Great Forest",
-          "recruits":[{"id":16},{"id":17}],
+          "recruits":[],
           "savePoints":['Inn'],
           "enemies":[
             "Holly Boy","Holly Spirit (PS1) / Holly Elf (Remaster)","Kobold (bow)","Kobold (sword)"

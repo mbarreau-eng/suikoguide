@@ -14,7 +14,7 @@ guideData.chapters.push({
       "equipment":["Steel Shield","Half Armor","Gauntlet"],
       "runes":["Gale Crystal"],
       "collectibles":["Old Book Vol. 1"],
-      "recruits":[{"id":37},{"id":38},{"id":39}],
+      "recruits":[{"id":37},{"id":38},{"id":39},{"id":40},{"id":41},{"id":42},{"id":43}],
       "enemies":["Devil Armor","Devil Shield","Veteran Soldier (spear)","Veteran Soldier (bow)","Veteran Soldier (sabre)",{"name":"Dragon","type":"boss"}],
       "paragraphs":[
         {
@@ -92,7 +92,7 @@ guideData.chapters.push({
             {"name":"Gremio","level":"30"},
             {"name":"Kirkis","level":"30"}
           ],
-          "recruits":[{"id":40},{"id":41}]
+          "recruits":[]
         },
         {
           "type":"plain",
@@ -115,7 +115,7 @@ guideData.chapters.push({
         {
           "type":"place",
           "text":"Kouan",
-          "recruits":[{"id":42}],
+          "recruits":[],
           "party":[
             {"name":"Viktor","level":"27"},
             {"name":"Valeria","level":"31"},
@@ -133,7 +133,7 @@ guideData.chapters.push({
         {
           "type":"place",
           "text":"Seika",
-          "recruits":[{"id":43}],
+          "recruits":[],
           "party":[
             {"name":"Viktor","level":"27"},
             {"name":"Valeria","level":"31"},

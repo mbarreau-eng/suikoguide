@@ -2,6 +2,7 @@ guideData.chapters.push({
       "id": 18,
       "title": "Headquarters, three months later",
       "picture":"18/18.jpg",
+      "recruits":[{"id":44},{"id":45},{"id":46},{"id":47},{"id":48},{"id":49},{"id":50},{"id":51},{"id":52},{"id":53}],
       "collectibles":["Blinking Mirror","Nameless Urn","Blue Flower Seeds","Blue Paint","Yellow Flower Seeds","Yellow Paint"],
       "paragraphs":[
         {
@@ -54,7 +55,7 @@ guideData.chapters.push({
     {
       "type":"place",
       "text":"Garan",
-      "recruits":[{"id":44}],
+      "recruits":[],
       "party":[]
     },
     {
@@ -116,7 +117,7 @@ guideData.chapters.push({
         {"name":"Kai","level":"28"}
       ],
       "items":["Mega Medicine"],
-      "recruits":[{"id":45}]
+      "recruits":[]
     },
     {
       "type":"plain",
@@ -156,7 +157,7 @@ guideData.chapters.push({
         {"name":"Tai Ho","level":"28"},
         {"name":"Yam Koo","level":"28"}
       ],
-      "recruits":[{"id":46},{"id":47},{"id":48}]
+      "recruits":[]
     },{
       "type":"plain",
       "picture":"18/18-8.png",
@@ -191,7 +192,7 @@ guideData.chapters.push({
         {"name":"Tai Ho","level":"28"},
         {"name":"Yam Koo","level":"28"}
       ],
-      "recruits":[{"id":49},{"id":50}]
+      "recruits":[]
     },
     {
       "type":"plain",
@@ -213,6 +214,7 @@ guideData.chapters.push({
     },
     {
       "type":"place",
+      "text":"Pirates' Fortress",
       "party":[
         {"name":"Hero","level":"31"},
         {"name":"Viktor","level":"28"},
@@ -221,7 +223,7 @@ guideData.chapters.push({
         {"name":"Tai Ho","level":"28"},
         {"name":"Yam Koo","level":"28"}
       ],
-      "recruits":[{"id":51},{"id":52},{"id":53}],
+      "recruits":[],
       "enemies":[{"name":"Anji","type":"boss"},{"name":"Leonardo","type":"boss"},{"name":"Kanak","type":"boss"}]
     },
     {

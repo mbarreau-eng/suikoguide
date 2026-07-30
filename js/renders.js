@@ -86,6 +86,8 @@ function renderSidebar() {
 
 function renderCurrentChapter() {
   const main = document.getElementById('main-content');
+  const trackables = document.getElementById('trackables');
+  trackables.innerHTML = '';
   if (!main) return;
 
   const chapter = (guideData.chapters || []).find(

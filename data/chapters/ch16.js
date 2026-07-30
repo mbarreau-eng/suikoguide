@@ -11,7 +11,7 @@ guideData.chapters.push({
         {"name":"Kirkis","level":"23"}
       ],
       "savepoints":["Inn"],
-      "recruits":[{"id":33}],
+      "recruits":[{"id":33},{"id":34},{"id":35},{"id":36}],
       "collectibles":["Running Water Root","Suiko Map"],
       "paragraphs":[
         {
@@ -131,7 +131,7 @@ guideData.chapters.push({
             {"name":"Kirkis","level":"28"}
           ],
           "savepoints":["Tree Base"],
-          "recruits":[{"id":34}]
+          "recruits":[]
         },
         {
           "type":"plain",
@@ -154,7 +154,7 @@ guideData.chapters.push({
             {"name":"Gremio","level":"28"},
             {"name":"Kirkis","level":"28"}
           ],
-          "recruits":[{"id":35},{"id":36}],
+          "recruits":[],
           "enemies":["Veteran Soldier (spear)"]
         },
         {

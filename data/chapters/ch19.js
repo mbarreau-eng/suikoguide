@@ -11,7 +11,7 @@ guideData.chapters.push({
         {"name":"Gremio","level":"33"},
         {"name":"Kai","level":"28"}
       ],
-      "recruits":[{"id":54},{"id":55}],
+      "recruits":[{"id":54},{"id":55},{"id":56},{"id":57}],
       "paragraphs":[
         {
           "type":"note",
@@ -108,7 +108,7 @@ guideData.chapters.push({
             {"name":"Gremio","level":"33"},
             {"name":"Kai","level":"28"}
           ],
-          "recruits":[{"id":56},{"id":57}]
+          "recruits":[]
         },
         {
           "type":"plain",

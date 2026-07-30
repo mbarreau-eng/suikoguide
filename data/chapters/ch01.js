@@ -15,15 +15,16 @@ guideData.chapters.push({
       "bits": [
         "100"
       ],
-      "recruits": [
-        {
-          "id": 1
-        },
-        {
-          "id": null,
-          "name": "Ted",
-          "range": "M"
-        }
+      "recruits": [{"id": 1},{"id": null,"name": "Ted","range": "M"},{"id": 2},{"id": null,"name": "Pahn","range": "S"},{"id":3}],
+          "party":[ 
+            {
+              "level": "13",
+              "name": "Hero"
+            },
+            {
+              "level": "08",
+              "name": "Ted"
+            }
       ],
       "items": [],
       "equipment": [],
@@ -191,32 +192,6 @@ guideData.chapters.push({
             "Inn"
           ],
           recruits: [
-            {
-              "id": 2
-            },
-            {
-              "id": null,
-              "name": "Pahn",
-              "range": "S"
-            },
-            {
-              "id":3
-            },
-            {
-              "id": null,
-              "name": "Ted",
-              "range": "M"
-            },
-          ],
-          "party":[ 
-            {
-              "level": "13",
-              "name": "Hero"
-            },
-            {
-              "level": "08",
-              "name": "Ted"
-            }
           ]
         },
         {

@@ -10,7 +10,7 @@ function renderChapterView(container, chapterId) {
   const chapterRecruitsHTML = renderRecruitsSection(chapter);
   const divTrackables = document.getElementById('trackables');
   divTrackables.innerHTML = '';
-  divTrackables.innerHTML += chapterRecruitsHTML;
+  
 
   const bgImageName = chapter.pictures || chapter.picture || chapter.image;
 
@@ -38,12 +38,16 @@ function renderChapterView(container, chapterId) {
     container.appendChild(partyCard);
   }
 
+  const collectiblesWrapper = document.createElement('div');
+
   if (chapter.collectibles && Array.isArray(chapter.collectibles) && chapter.collectibles.length > 0) {
-    const collectiblesWrapper = document.createElement('div');
+    
     collectiblesWrapper.innerHTML = renderChapterCollectibles(chapter.collectibles);
     //container.appendChild(collectiblesWrapper.firstElementChild || collectiblesWrapper);
-    divTrackables.innerHTML += collectiblesWrapper.innerHTML;
   }
+
+  divTrackables.innerHTML = collectiblesWrapper.innerHTML + chapterRecruitsHTML;
+
 
   if (!chapter.paragraphs || chapter.paragraphs.length === 0) {
     const emptyState = document.createElement('div');
@@ -124,7 +128,7 @@ function renderChapterView(container, chapterId) {
       el.className = 'place-card';
       const badgesHTML = renderBadges(p);
       const placeRecruitsHTML = renderRecruitsSection(p);
-
+      divTrackables.innerHTML += placeRecruitsHTML;
       let placePartyHTML = '';
       if (p.party && Array.isArray(p.party) && p.party.length > 0) {
         const partyChips = p.party.map(m => renderPartyChip(m)).join('');
@@ -139,7 +143,7 @@ function renderChapterView(container, chapterId) {
       el.innerHTML = `
         <div class="place-header">📍 ${p.text}</div>
         ${badgesHTML}
-        ${placeRecruitsHTML}
+        <!--${placeRecruitsHTML}-->
         ${placePartyHTML}
       `;
     }

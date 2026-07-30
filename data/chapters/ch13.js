@@ -2,6 +2,7 @@ guideData.chapters.push({
       "id": 13,
       "title": "Kouan, the theft of the great Kirinji",
       "picture":"13/13.png",
+      "recruits":[{"id":18},{"id":19},{"id":20},{"id":21},{"id":22},{"id":23},{"id":24},{"id":25},{"id":26},{"id":27},{"id":28},{"id":29},{"id":30}],
       "party":[
         {"name":"Hero", "level":"21"},
         {"name":"Kai", "level":"22"},
@@ -16,7 +17,7 @@ guideData.chapters.push({
       "Equipement":["Shoulder Pads"],
       "runes":["Counter Crystal"],
       "collectibles":["Kirinji","Dragon Incense"],
-      "recruits":[{"id":18},{"id":19},{"id":20},{"id":21},{"id":22},{"id":23},{"id":24}],
+      
       "enemies":["Empire Soldier (PS1) / Imperial Soldier (Remaster) (sword #1)","Robot Soldier (spear)","Robot Soldier (sword)"],
       "paragraphs":[
         {
@@ -134,7 +135,7 @@ guideData.chapters.push({
             {"name":"Cleo","level":"21"},
             {"name":"Gremio","level":"21"}
           ],
-          "recruits":[{"id":25},{"id":26},{"id":27}]
+          "recruits":[]
         },
         {
           "type":"plain",
@@ -187,7 +188,7 @@ guideData.chapters.push({
             {"name":"Kirkis","level":"15"},
             {"name":"Juppo","level":"10"}
           ],
-          "recruits":[{"id":28},{"id":29}]
+          "recruits":[]
         },
         {
           "type":"plain",
@@ -210,7 +211,7 @@ guideData.chapters.push({
             {"name":"Kirkis","level":"15"},
             {"name":"Juppo","level":"10"}
           ],
-          "recruits":[{"id":30}]
+          "recruits":[]
         },
         {
           "type":"plain",

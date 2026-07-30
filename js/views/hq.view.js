@@ -1,4 +1,8 @@
 function renderHQView() {
+
+  const trackables = document.getElementById('trackables');
+  trackables.innerHTML = '';
+  
   const main = document.getElementById('main-content');
   if (!main) return;
 

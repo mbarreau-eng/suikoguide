@@ -2,7 +2,7 @@ guideData.chapters.push({
       "id": 11,
       "title": "Kaku, off to the Lake Toran Castle",
       "picture":"11/11.jpg",
-      "recruits":[{"id":6}],
+      "recruits":[{"id":6},{"id":7},{"id":8},{"id":9}],
       "party":[
         {"name":"Hero","level":"15"},
         {"name":"Gremio","level":"14"},
@@ -57,9 +57,7 @@ guideData.chapters.push({
           "Hazy Crystal","Wind Crystal"
          ],
          "recruits":[
-          {"id":7},
-          {"id":8},
-          {"id":9}
+          
          ],
          "enemies":[
           "Ghost Armor","Giant Slug","Oannes",{"name":"Zombie Dragon","type":"boss"}
