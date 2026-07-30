@@ -3,6 +3,7 @@ guideData.chapters.push({
       "title": "Soniere, the sacrifice",
       "picture":"20/20.jpg",
       "collectibles":["Old Book Vol. 6","Sound Set 0"],
+      "recruits":[{"id":58},{"id":59}],
       "savepoints":["First Area"],
       "items":["Antitoxin"],
       "equipment":["Silver Necklace","Half Helmet"],
@@ -63,6 +64,46 @@ guideData.chapters.push({
         {
           "type":"note",
           "text":"You will be able to revive Gremio, but only if no one else permanently dies, and if you recruit all of the other 107 Stars."
+        },
+        {
+          "type":"place",
+          "text":"Heaquarters"
+        },
+        {
+          "type":"plain",
+          "text":"Leave your room and talk to everyone along the way, but don't talk to Mathiu just yet; we should recruit one more person before we go to the next Major Battle. Make sure that someone in your party has the Opal and teleport to Antei. (If Hero doesn't have it, talk to Sanchez to put that person who had it in your party. If Pahn, Cleo, Camille, Viktor, or Flik had it, talk to Mathiu first, but refuse to go to the next battle, THEN come back and take them with you to Antei.)"
+        },
+        {
+          "type":"place",
+          "text":"Antei",
+          "party":[{"name":"Hero","level":"34"}]
+        },
+        {
+          "type":"plain",
+          "picture":"20/20-8.png",
+          "text":"Go to the second floor of the Inn, and give the Opal that you got in Soniere to Esmerelda. She will then join your party! Now, leave Antei and head back to Headquarters."
+        },
+        {
+          "type":"place",
+          "text":"Headquarters",
+          "party":[{"name":"Hero","level":"34"}]
+        },
+        {
+          "type":"plain",
+          "picture":"20/20-9.png",
+          "text":"Save your game at the Inn. Now, I strongly recommend making sure that Pahn has THE BEST equipment and a level 12 weapon; his moment to shine is coming soon. When you're ready, go to the War Room and talk to Mathiu. He advises that we attack Scarleticia now, since Liukan has made the antitoxin. Liukan will then join your party! Mathiu will then ask if you're ready."
+        },
+        {
+          "type":"choices",
+          "items":["All right. Let's begin assembling the troops.","I just don't feel like it right now."]
+        },
+        {
+          "type":"plain",
+          "text":"If you need to save your game, choose option 2 and go to the Inn and save. When youhave done that, come back and tell him that you're ready to assemble the troops. Here we go!"
+        },
+        {
+          "type":"mb",
+          "id":4
         }
       ]
     });

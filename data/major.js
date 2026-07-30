@@ -58,5 +58,23 @@ guideData.major = [
       "strategy":[
         "It doesn't matter what you do here, because he'll use his Poisonous Pollen attack, which will take a HUGE chunk out of your troops. There's no chance to win here, so Mathiu will order the retreat. "
       ]
+    },
+     {
+      "id":4,
+      "title":"Battle at Scarleticia Castle",
+      "picture":"scarleticia.gif",
+      "countUs":10295,
+      "countThem":12000,
+      "intro":[{
+        "Milich": "You're wasting our time.",
+        "Viktor": "Not this time!"
+    }],
+      "outro":[{
+        "Mathiu": "Congratulations! We won!",
+        "Liukan": "I'm still pretty good at this age."
+      }],
+      "strategy":[
+        "As usual, you're outnumbered, but it shouldn't be a problem. Also as usual, use the Thieves ability to see what they're going to do, and if they are going to use the Bow attack, make sure to have the Strategists boost the Charge attack power. Milich's Attack is a Magic attack, so use a Bow attack to counter it. Your most powerful team is now the Lepant Family, considering that you lost an important part of the Commander's Team in Gremio. "
+      ]
     }
   ];
