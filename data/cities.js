@@ -22,7 +22,7 @@ guideData.cities = [{
     
 {
             "name":"Teien",
-            "picture":"",
+            "picture":"Teien.png",
             "shops":[{
                 "items":[
                     {
@@ -84,7 +84,7 @@ guideData.cities = [{
                     },
                     {
                         "name":"Champion's Rune",
-                        "price":8000
+                        "price":200000
                     }
                 ],
                 "armor":[
@@ -113,4 +113,26 @@ guideData.cities = [{
         
         
     
+},
+{
+    "name":"Rockland",
+    "picture":"rockland.jpg",
+    "inn":30,
+    "stars":"",
+    "shops":[{
+        "items":[
+            {"name":"Medicine","price": 100},
+            {"name":"Antitoxin","price":  	200},
+            {"name":"Escape Talisman","price":  	500}
+        ],
+        "armor":[
+                {"name":"Greaves","price": 	200},
+                {"name":"Tunic","price": 	200},
+                {"name":"Wooden Shield","price": 	300},
+                {"name":"Gloves","price": 	300},
+                {"name":"Headband","price": 	300},
+                {"name":"Fur Robe","price": 	700}
+        ]
+        }
+    ]
 }];
