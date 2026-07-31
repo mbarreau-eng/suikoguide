@@ -76,5 +76,22 @@ guideData.major = [
       "strategy":[
         "As usual, you're outnumbered, but it shouldn't be a problem. Also as usual, use the Thieves ability to see what they're going to do, and if they are going to use the Bow attack, make sure to have the Strategists boost the Charge attack power. Milich's Attack is a Magic attack, so use a Bow attack to counter it. Your most powerful team is now the Lepant Family, considering that you lost an important part of the Commander's Team in Gremio. "
       ]
+    },
+     {
+      "id":5,
+      "title":"Battle with Teo",
+      "picture":"teobattle.gif",
+      "countUs":10655,
+      "countThem":14000,
+      "intro":[{
+        "Teo": "Traitors! I'll show no mercy, not even for my son! I swear by my name, Teo McDohl!" ,
+        "Pahn": "Master Teo..." 
+    }],
+      "outro":[{
+        "Mathiu": "We're all over. We should retreat (said after 3 rounds)"
+      }],
+      "strategy":[
+        "You can now use your Ninjas command to see what they're going to do, which works 100% of the time, but this battle is like the first battle at Scarleticia; it is not meant to be won. Just do whatever you want until you're wiped out."
+      ]
     }
   ];
