@@ -1,6 +1,9 @@
 function switchView(viewName) {
   const sidebar = document.getElementById('sidebar-nav') || document.getElementById('sidebar');
 
+  const divTrackables = document.getElementById('trackables');
+  divTrackables.innerHTML = '';
+
   if (sidebar) {
     sidebar.querySelectorAll('.nav-btn-main').forEach(btn => btn.classList.remove('active'));
 

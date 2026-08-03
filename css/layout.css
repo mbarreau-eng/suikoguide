@@ -14,7 +14,7 @@
 
 /* Sidebar Navigation */
 .sidebar {
-  width: 320px;
+  width: 400px;
   background-color: var(--bg-sidebar);
   border-right: 1px solid var(--border-color);
   display: flex;

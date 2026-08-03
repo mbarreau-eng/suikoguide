@@ -8,8 +8,8 @@ function renderChapterView(container, chapterId) {
   header.className = 'chapter-header-card';
   const chapterBadgesHTML = renderBadges(chapter);
   const chapterRecruitsHTML = renderRecruitsSection(chapter);
-  const divTrackables = document.getElementById('trackables');
-  divTrackables.innerHTML = '';
+  const divTrackables = document.getElementById("trackables");
+  divTrackables.innerHTML = "";
   
 
   const bgImageName = chapter.pictures || chapter.picture || chapter.image;
