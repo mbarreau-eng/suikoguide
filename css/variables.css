@@ -1,27 +1,211 @@
-/* Custom Properties & Color Themes */
-:root, [data-theme="dark"] {
-  --bg-dark: #0f172a;
-  --bg-main: #0f172a;
-  --bg-card: #1e293b;
-  --bg-sidebar: #090d16;
-  --border-color: #334155;
-  --accent-gold: #f59f0b;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --tag-item-bg: #854d0e;
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES (THEME VARIABLES)
+   Dark Theme is default (:root). Light Theme is active on [data-theme="light"].
+   ========================================================================== */
+
+:root {
+  /* --- Core & System Colors --- */
+  --bg-main: #0f0f17;
+  --bg-sidebar: #14141f;
+  --bg-card: #1a1a26;
+  --bg-card-hover: #222233;
+  --bg-input: rgba(0, 0, 0, 0.4);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-color-subtle: rgba(255, 255, 255, 0.06);
+  
+  --text-main: #e0e0e0;
+  --text-muted: #aaaaaa;
+  --text-inverse: #0f172a;
+
+  /* --- Accent & Tag Colors --- */
+  --accent-gold: #f1c40f;
+  --accent-gold-dark: #f39c12;
+  --accent-gold-subtle: rgba(241, 196, 15, 0.15);
+  
+  --tag-item-bg: rgba(245, 158, 11, 0.2);
   --tag-item-text: #fef08a;
-  --note-bg: #1e1b4b;
+
+  /* --- Callout Blocks --- */
+  --note-bg: rgba(99, 102, 241, 0.1);
   --note-border: #6366f1;
-  --place-bg: #14532d;
+  --note-title-color: #a5b4fc;
+
+  --place-bg: linear-gradient(135deg, rgba(20, 83, 45, 0.3) 0%, var(--bg-card) 100%);
   --place-border: #22c55e;
+  --place-header-color: #4ade80;
+
+  /* --- Major Battle Module --- */
+  --mb-card-bg: rgba(28, 18, 24, 0.9);
+  --mb-border: #d35400;
+  --mb-border-accent: #e67e22;
+  --mb-header-border: rgba(230, 126, 34, 0.3);
+  --mb-title: #f39c12;
+  --mb-forces-bg: rgba(0, 0, 0, 0.4);
+  --mb-box-bg: rgba(0, 0, 0, 0.35);
+  --mb-strategy-bg: rgba(243, 156, 18, 0.05);
+
+  /* --- Duels Module --- */
+  --duel-card-bg: rgba(22, 14, 28, 0.92);
+  --duel-border: #8e44ad;
+  --duel-border-accent: #9b59b6;
+  --duel-title: #e0aaff;
+  --duel-bar-bg: rgba(0, 0, 0, 0.4);
+  --duel-move-bg: rgba(255, 255, 255, 0.03);
+
+  /* --- Cities Module --- */
+  --city-card-bg: linear-gradient(180deg, #131d38 0%, #080d1a 100%);
+  --city-border: #93c5fd;
+  --city-header-border: #1e3a8a;
+  --city-title: #fef08a;
+  --city-inn-bg: rgba(30, 41, 59, 0.9);
+  --city-inn-border: #38bdf8;
+  --city-inn-text: #38bdf8;
+  --star-section-bg: rgba(15, 23, 42, 0.6);
+  --star-chip-bg: #1e1b4b;
+  --star-chip-border: #818cf8;
+  --star-chip-text: #e0e7ff;
+  --star-chip-hover-bg: #3730a3;
+  --star-popover-bg: linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%);
+  --star-popover-border: #a5b4fc;
+  --shop-box-bg: rgba(0, 0, 0, 0.3);
+
+  /* --- Collectibles Module --- */
+  --collectible-card-bg: rgba(26, 26, 38, 0.9);
+  --collectible-item-bg: rgba(0, 0, 0, 0.25);
+  --progress-bar-bg: rgba(255, 255, 255, 0.1);
+  --controls-bg: rgba(20, 20, 30, 0.6);
+
+  /* --- Boss & Enemy Modules --- */
+  --boss-card-bg: rgba(20, 20, 28, 0.85);
+  --boss-border: #c0392b;
+  --boss-border-accent: #e74c3c;
+  --boss-badge-bg: #900c3f;
+  --boss-title: #fca5a5;
+  --enemy-card-bg: rgba(20, 20, 28, 0.85);
+
+  /* --- HQ Module --- */
+  --hq-header-bg: rgba(20, 20, 28, 0.9);
+  --hq-banner-bg: #1a1a26;
+  --hq-stage-card-bg: #161622;
+  --hq-stage-card-border: #2a2a3c;
+  --hq-stage-current-bg: #1d1d2e;
+  --hq-facility-unlocked-bg: #1e2923;
+  --hq-facility-locked-bg: #14141d;
+
+  /* --- Party & Recruits Module --- */
+  --party-card-bg: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, var(--bg-card) 100%);
+  --party-grid-bg: rgba(139, 0, 255, 0.36);
+  --party-grid-border: rgba(139, 0, 255, 0.93);
+  --party-chip-bg: rgba(15, 23, 42, 0.75);
+  --recruit-recruited-bg: rgba(245, 159, 11, 0.336);
+  --recruit-support-bg: rgba(141, 68, 173, 0.37);
+  --popup-card-bg: rgba(18, 18, 26, 0.95);
+  --img-bg: #ffffff;
+
 }
 
+/* ==========================================================================
+   LIGHT THEME OVERRIDES
+   ========================================================================== */
+
 [data-theme="light"] {
+  /* --- Core & System Colors --- */
   --bg-main: #f8fafc;
-  --bg-card: #ffffff;
   --bg-sidebar: #f1f5f9;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-input: #ffffff;
   --border-color: #cbd5e1;
+  --border-color-subtle: #e2e8f0;
+  
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+
+  /* --- Accent & Tag Colors --- */
   --accent-gold: #d97706;
+  --accent-gold-dark: #b45309;
+  --accent-gold-subtle: rgba(217, 119, 6, 0.12);
+  
+  --tag-item-bg: rgba(217, 119, 6, 0.15);
+  --tag-item-text: #92400e;
+
+  /* --- Callout Blocks --- */
+  --note-bg: rgba(99, 102, 241, 0.08);
+  --note-border: #4f46e5;
+  --note-title-color: #4338ca;
+
+  --place-bg: linear-gradient(135deg, rgba(220, 252, 231, 0.8) 0%, var(--bg-card) 100%);
+  --place-border: #16a34a;
+  --place-header-color: #15803d;
+
+  /* --- Major Battle Module --- */
+  --mb-card-bg: #fff7ed;
+  --mb-border: #ea580c;
+  --mb-border-accent: #f97316;
+  --mb-header-border: rgba(234, 88, 12, 0.66);
+  --mb-title: #c2410c;
+  --mb-forces-bg: #ffedd57a;
+  --mb-box-bg: #fff3e059;
+  --mb-strategy-bg: rgba(245, 158, 11, 0.1);
+
+  /* --- Duels Module --- */
+  --duel-card-bg: #faf5ff;
+  --duel-border: #9333ea;
+  --duel-border-accent: #a855f7;
+  --duel-title: #6b21a8;
+  --duel-bar-bg: #f3e8ff;
+  --duel-move-bg: #ffffff;
+
+  /* --- Cities Module --- */
+  --city-card-bg: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+  --city-border: #3b82f6;
+  --city-header-border: #93c5fd;
+  --city-title: #1e3a8a;
+  --city-inn-bg: #ffffff;
+  --city-inn-border: #0284c7;
+  --city-inn-text: #0369a1;
+  --star-section-bg: #ffffff;
+  --star-chip-bg: #e0e7ff;
+  --star-chip-border: #6366f1;
+  --star-chip-text: #312e81;
+  --star-chip-hover-bg: #c7d2fe;
+  --star-popover-bg: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  --star-popover-border: #818cf8;
+  --shop-box-bg: #f1f5f9;
+
+  /* --- Collectibles Module --- */
+  --collectible-card-bg: #ffffff;
+  --collectible-item-bg: #f1f5f9;
+  --progress-bar-bg: #e2e8f0;
+  --controls-bg: #f8fafc;
+
+  /* --- Boss & Enemy Modules --- */
+  --boss-card-bg: #fff5f5;
+  --boss-border: #dc2626;
+  --boss-border-accent: #ef4444;
+  --boss-badge-bg: #991b1b;
+  --boss-title: #991b1b;
+  --enemy-card-bg: #ffffff;
+
+  /* --- HQ Module --- */
+  --hq-header-bg: #ffffff;
+  --hq-banner-bg: #f8fafc;
+  --hq-stage-card-bg: #ffffff;
+  --hq-stage-card-border: #e2e8f0;
+  --hq-stage-current-bg: #fffbeb;
+  --hq-facility-unlocked-bg: #f0fdf4;
+  --hq-facility-locked-bg: #f8fafc;
+
+  /* --- Party & Recruits Module --- */
+  --party-card-bg: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, var(--bg-card) 100%);
+  --party-grid-bg: #f3e8ff;
+  --party-grid-border: #c084fc;
+  --party-chip-bg: #ffffff;
+  --recruit-recruited-bg: rgba(251, 191, 36, 0.25);
+  --recruit-support-bg: rgba(192, 132, 252, 0.25);
+  --popup-card-bg: rgba(255, 255, 255, 0.98);
+  --img-bg: #f1f5f9;
+
+
 }

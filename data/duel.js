@@ -85,7 +85,7 @@ guideData.duel = [
       ]
     },
     {
-      "id":2,
+      "id":3,
       "me":"Hero",
       "opp":"Teo McDohl",
       "picture":"ooo3.jpg",

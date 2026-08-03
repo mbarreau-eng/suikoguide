@@ -1,3 +1,5 @@
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,4 +15,10 @@ body {
   overflow: hidden;
   transition: background-color 0.25s ease, color 0.25s ease;
   min-height: 100%;
+}
+
+#trackables {
+  max-width:27%;
+  min-width: 20%;
+  overflow-y: auto;
 }

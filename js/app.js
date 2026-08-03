@@ -11,6 +11,7 @@ const dataFiles = [
   './data/hq.js',
   './data/unites.js',
   './data/cities.js',
+  './data/chapters/ch00.js',
   './data/chapters/ch01.js',
   './data/chapters/ch02.js',
   './data/chapters/ch03.js',

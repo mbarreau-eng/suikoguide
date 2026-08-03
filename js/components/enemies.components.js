@@ -1,7 +1,7 @@
 function renderBossCard(bossName) {
   const bossData = (guideData.enemies?.[0] && guideData.enemies[0][bossName]) || {};
   const name = bossName || 'Unknown Boss';
-  const imgPath = `./img/bosses/${name.toLowerCase()}.gif`;
+  const imgPath = `./img/bosses/${bossData.picture}`;
 
   const statsList = [
     { key: 'level', label: 'LEVEL', val: bossData.Level },
@@ -75,6 +75,8 @@ function renderEnemyCard(name, enemyData) {
   const isBoss = String(enemyData.type || '').toLowerCase() === 'boss';
   const imgFolder = isBoss ? 'bosses' : 'enemies';
   const imgPath =  `./img/${imgFolder}/${enemyData.picture}`;
+
+
 
   const cardClass = isBoss ? 'boss-card' : 'boss-card enemy-card-style';
   const badgeText = isBoss ? '⚔️ BOSS' : '👾 ENEMY';

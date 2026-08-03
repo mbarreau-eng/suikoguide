@@ -2,7 +2,7 @@ guideData.chapters.push(
     {
       "id": 2,
       "title": "Magician's Island, the future in the stars",
-      "picture":"2.jpg",
+      "picture":"2/2.jpg",
       "party": [
         {
           "level": "13",
@@ -46,7 +46,7 @@ guideData.chapters.push(
       "paragraphs": [
         {
           "type": "plain",
-          "picture":"2-1.png",
+          "picture":"2/2-1.png",
           "text":"Move north to go into the forest, then follow the straightforward path to the next area. Once there, head northwest and grab the [_MEDICINE_] out of the chest. Make your way northeast and follow the path to the next area. Keep following the path until you reach a fork; take the eastern path north to find a chest containing a [_LEATHER COAT_]. Go back and take the western path north, following it some more to run into a kid named Luc. He'll summon a Golem to battle you."
         },
         {
@@ -58,11 +58,12 @@ guideData.chapters.push(
         },
         {
           "type":"plain",
-          "picture":"2-2.png",
+          "picture":"2/2-2.png",
           "text":"After the battle, Luc is impressed that you beat his magic, recognizing you as the Imperial Guards; he was just testing you to make sure you were the real thing. Follow him into the tower, then follow the path, climbing the stairs to the top. When you reach the top, talk to Leknaat, and she'll ask you to follow her to get the Astral Conclusions. Follow her into the next room, and when she gives them to you, she seems surprised; she can see the future, and she says that she sees you bearing a huge burden in the flow of destiny, and that you will experience much pain and sorrow, but you'll be able to handle it. You'll finally receive the [_ASTRAL CONCLUSIONS_]."
         },
         {
           "type":"plain",
+          "picture":"2/2-4.png",
           "text":"Leave the room and approach your party. As you prepare to leave, Leknaat will come back in and decide to have Luc take you to the shore. Before you leave, Leknaat will give Cleo a [_FIRE CRYSTAL_] to use to protect you. Luc will then transport you back to the shore with Futch, where you'll fly back to Gregminster after some bickering."
         },
         {
@@ -93,7 +94,7 @@ guideData.chapters.push(
         },
         {
           "type":"plain",
-          "picture":"2-3.png",
+          "picture":"2/2-3.png",
           "text":"Head into the castle and report to Commander Kraze. He decides that you're not totally useless, so he gives you another assignment; now we've got to go east of Gregminster to a town called Rockland and find out why they're not paying their taxes. To make it even more fun, we have to take his idiotic assistant, Kanaan, with us to talk to the town's head honcho, Grady. After Kanaan joins you, leave the palace."
         },
         {

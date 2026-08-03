@@ -5,6 +5,8 @@
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 24px;
+  min-height: 12em;
+  
 }
 
 .chapter-title {
@@ -15,49 +17,46 @@
 
 /* Paragraph Blocks & Inline Items */
 .paragraph-block {
-  margin-bottom: 16px;
+  margin-bottom: 1.5rem;
   line-height: 1.6;
   font-size: 1rem;
-  margin-bottom: 1.5rem;
+  
 }
 
 .paragraph-block::after {
-content: "";
+  content: "";
   display: table;
   clear: both;
 }
 
 /* Floating Image Container */
 .inline-paragraph-img {
-  float: left; /* Text wraps around to the left */
-  margin: 4px 18px 12px 0; /* Top, Right, Bottom, Left spacing */
-  max-width: 240px; /* Limits size on desktop */
-  width: 35%; /* Scales down on medium screens */
+  float: left;
+  margin: 4px 18px 12px 0;
+  max-width: 240px;
+  width: 35%;
   min-width: 140px;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  background: #111;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: var(--img-bg);
   overflow: hidden;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Image behavior inside container */
 .inline-paragraph-img img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
-  z-index:999;
+  z-index: 999;
 }
 
-/* Subtle hover effect */
 .inline-paragraph-img:hover {
   transform: scale(1.92) translate(100px, 0);
-  border-color: rgba(241, 196, 15, 0.5); /* Gold highlight */
+  border-color: var(--accent-gold);
 }
 
-/* Responsive: On mobile screens, center the image instead of floating */
 @media (max-width: 480px) {
   .inline-paragraph-img {
     float: none;
@@ -79,7 +78,7 @@ mark.item-tag {
 
 /* Choices Block */
 .choices-card {
-  background-color: rgba(245, 158, 11, 0.1);
+  background-color: var(--accent-gold-subtle);
   border-left: 4px solid var(--accent-gold);
   border-radius: 0 8px 8px 0;
   padding: 16px 20px;
@@ -115,7 +114,7 @@ mark.item-tag {
 }
 
 .note-title {
-  color: #a5b4fc;
+  color: var(--note-title-color);
   font-size: 0.85rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -124,7 +123,7 @@ mark.item-tag {
 
 /* Place / Location Block */
 .place-card {
-  background: linear-gradient(135deg, rgba(20, 83, 45, 0.3) 0%, var(--bg-card) 100%);
+  background: var(--place-bg);
   border: 1px solid var(--place-border);
   border-radius: 8px;
   padding: 20px;
@@ -133,7 +132,7 @@ mark.item-tag {
 
 .place-header {
   font-size: 1.25rem;
-  color: #4ade80;
+  color: var(--place-header-color);
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -149,7 +148,7 @@ mark.item-tag {
 }
 
 .badge {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--border-color-subtle);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -231,14 +230,14 @@ mark.item-tag {
 }
 
 .recruit-mention-text {
-  color: #f1c40f; /* Gold text */
-  border-bottom: 1px dotted #f1c40f;
+  color: var(--accent-gold);
+  border-bottom: 1px dotted var(--accent-gold);
   font-weight: 600;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .inline-recruit-mention:hover .recruit-mention-text {
-  color: #f39c12;
+  color: var(--accent-gold-dark);
   border-bottom-style: solid;
 }
 
@@ -247,21 +246,20 @@ mark.item-tag {
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  bottom: 125%; /* Position above text */
+  bottom: 125%;
   left: 50%;
   transform: translateX(-50%) translateY(8px);
   width: 220px;
-  background: #1a1a26;
-  border: 1px solid #f1c40f;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-gold);
   border-radius: 8px;
   padding: 10px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   z-index: 200;
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
 }
 
-/* Pointer arrow */
 .recruit-inline-tooltip::after {
   content: '';
   position: absolute;
@@ -270,15 +268,14 @@ mark.item-tag {
   margin-left: -6px;
   border-width: 6px;
   border-style: solid;
-  border-color: #f1c40f transparent transparent transparent;
+  border-color: var(--accent-gold) transparent transparent transparent;
 }
 
-/* Tooltip Header (Avatar + Name) */
 .tooltip-header {
   display: flex;
   align-items: center;
   gap: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 6px;
   margin-bottom: 6px;
 }
@@ -288,35 +285,401 @@ mark.item-tag {
   height: 36px;
   border-radius: 4px;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: #111;
+  border: 1px solid var(--border-color);
+  background: var(--img-bg);
 }
 
 .tooltip-header strong {
-  color: #fff;
+  color: var(--text-main);
   font-size: 0.95rem;
 }
 
-/* Details List */
 .recruit-inline-tooltip ul {
   list-style: none;
   padding: 0;
   margin: 0;
   font-size: 0.78rem;
-  color: #ccc;
+  color: var(--text-muted);
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
 .recruit-inline-tooltip ul span {
-  color: #fff;
+  color: var(--text-main);
   font-weight: 500;
 }
 
-/* Hover trigger state */
 .inline-recruit-mention:hover .recruit-inline-tooltip {
   visibility: visible;
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* Boss Cards & Badges */
+.badge.badge-boss {
+  background: rgba(220, 38, 38, 0.25);
+  color: #fca5a5;
+  border: 1px solid #ef4444;
+  font-weight: 700;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.3);
+}
+
+.boss-card {
+  background: var(--boss-card-bg);
+  border: 1px solid var(--boss-border);
+  border-left: 5px solid var(--boss-border-accent);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.boss-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.boss-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.boss-badge {
+  background: var(--boss-badge-bg);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.boss-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--boss-title);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.boss-name {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--accent-gold);
+}
+
+.boss-stat-badge {
+  background: #7f1d1d;
+  color: #fef2f2;
+  border: 1px solid #ef4444;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.boss-field {
+  font-size: 0.9rem;
+  color: var(--boss-title);
+  margin-bottom: 8px;
+}
+
+/* Boss Body & Stats Grid */
+.boss-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.boss-portrait-container {
+  min-width: 100px;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.boss-sprite {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  width: 100%;
+}
+
+.boss-stats-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--border-color-subtle);
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color-subtle);
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 0.88rem;
+  color: var(--text-main);
+  font-weight: bold;
+}
+
+.stat-item.stat-level {
+  grid-row: span 2;
+  background: rgba(231, 76, 60, 0.12);
+  border: 1px solid rgba(231, 76, 60, 0.4);
+}
+
+.stat-item.stat-level .stat-label {
+  font-size: 0.72rem;
+  color: #e74c3c;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.stat-item.stat-level .stat-value {
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+  font-weight: 900;
+  margin-top: 2px;
+}
+
+.boss-strategy {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: var(--accent-gold-subtle);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.boss-strategy strong {
+  color: var(--accent-gold);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Elemental Affinities & Item Drops */
+.boss-affinities, .boss-drops {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.affinity-title, .drop-title {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  min-width: 80px;
+}
+
+.affinity-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.affinity-chip {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  text-transform: capitalize;
+  border: 1px solid var(--border-color);
+  background: var(--bg-input);
+}
+
+.affinity-chip.affinity-weak {
+  border-color: #2ecc71;
+  color: #2ecc71;
+  background: rgba(46, 204, 113, 0.1);
+}
+
+.affinity-chip.affinity-strong {
+  border-color: #e74c3c;
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.drop-chip {
+  background: var(--accent-gold-subtle);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.drop-chip small {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  margin-left: 4px;
+}
+
+/* Bestiary & Enemy Grid */
+.enemies-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.enemy-card {
+  background: var(--enemy-card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.enemy-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+.enemy-lvl {
+  background: rgba(52, 152, 219, 0.2);
+  color: #3498db;
+  border: 1px solid rgba(52, 152, 219, 0.4);
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.enemy-card-title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+.enemy-card-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.enemy-portrait img {
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.enemy-quick-stats {
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.enemy-quick-stats .stat-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.enemy-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border-color);
+  padding-top: 6px;
+  line-height: 1.3;
+}
+
+.enemy-meta strong {
+  color: var(--accent-gold);
+}
+
+.boss-card.enemy-card-style {
+  border-color: #2980b9;
+  border-left-color: #3498db;
+}
+
+.boss-badge.enemy-badge {
+  background: #2980b9;
+}
+
+.stat-item.stat-level.enemy-level {
+  background: rgba(52, 152, 219, 0.12);
+  border-color: rgba(52, 152, 219, 0.4);
+}
+
+.stat-item.stat-level.enemy-level .stat-label {
+  color: #3498db;
+}
+
+/* Floating Enemy Card Tooltip */
+#enemy-tooltip {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+  transform: translateY(6px);
+  max-width: 650px;
+  width: 90vw;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+
+#enemy-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#enemy-tooltip .boss-card {
+  margin: 0;
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
 }

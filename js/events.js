@@ -11,6 +11,17 @@ function setupEventListeners() {
     }
   });
 
+  document.getElementById('trackables').addEventListener('click', (e) => {
+    const trackable = e.target.closest('[data-track-cat]');
+    if (trackable) {
+      if (e.target.tagName.toLowerCase() === 'label') return;
+      e.stopPropagation();
+      const cat = trackable.getAttribute('data-track-cat');
+      const key = trackable.getAttribute('data-track-key');
+      toggleProgress(cat, key);
+    }
+  });
+
   // Initialize tooltips
   initEnemyTooltip();
 

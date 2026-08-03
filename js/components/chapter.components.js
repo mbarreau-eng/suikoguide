@@ -43,7 +43,7 @@ function renderBadges(dataObj) {
 
 function renderPartyChip(m) {
   const name = typeof m === 'object' ? (m.name || m.character) : m;
-  const level = typeof m === 'object' && m.level ? `Lv. ${m.level}` : '';
+  const level = typeof m === 'object' && m.level ? `Level ${m.level}` : '';
   const imgSrc = getImagePath(name);
 
   return `
