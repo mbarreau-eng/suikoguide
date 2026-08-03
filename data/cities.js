@@ -135,4 +135,26 @@ guideData.cities = [{
         ]
         }
     ]
-}];
+},
+{
+    "name":"Lenankamp",
+    "picture":"Lenankamp.png",
+    "inn":70,
+    "stars":[],
+    "shops":[{
+        "items":[
+            {"name":"Medicine","price": 	100},
+            {"name":"Antitoxin","price": 	200}
+        ],
+        "armor":[
+            {"name":"Tunic","price": 	200},
+            {"name":"Headband","price": 	300},
+            {"name":"Cape","price": 	400},
+            {"name":"Circlet","price": 	600},
+            {"name":"Fur Robe","price": 	700},
+            {"name":"Chest Plate","price": 	1000},
+            {"name":"Pointy Hat","price": 	1200}
+        ]
+    }]
+}
+];
