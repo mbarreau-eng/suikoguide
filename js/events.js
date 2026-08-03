@@ -11,6 +11,8 @@ function setupEventListeners() {
     }
   });
 
+
+  
   document.getElementById('trackables').addEventListener('click', (e) => {
     const trackable = e.target.closest('[data-track-cat]');
     if (trackable) {
@@ -93,4 +95,26 @@ function setupEventListeners() {
       }
     });
   }
+
+/*
+  const toggleBtn = document.getElementById('panel-toggle-btn');
+  const leftPanel = document.getElementById('left-panel');
+  const main = document.getElementById('main-content');
+ 
+
+  toggleBtn.addEventListener('click', () => {
+    // Toggle the collapsed class
+    const isClosed = leftPanel.classList.toggle('is-closed');
+    
+    // Update ARIA attributes for accessibility
+    toggleBtn.setAttribute('aria-expanded', (!isClosed).toString());
+    main.classList.toggle('sidebar-closed');
+    
+    // Optional: Update button label indicator
+    toggleBtn.textContent = isClosed ? '▶ Open Menu' : '◀ Close Menu';
+  });
+
+ */
+
+  
 }

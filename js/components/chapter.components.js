@@ -108,7 +108,8 @@ function renderMajorBattleCard(mbId) {
   }
 
   return `
-    <div class="major-battle-card" style="${bgStyle}">
+    <!-- <div class="major-battle-card" style="${bgStyle}"> -->
+    <div class="major-battle-card" >
       <div class="mb-header">
         <span class="mb-badge">⚔️ MAJOR BATTLE</span>
         <h3 class="mb-title">${title}</h3>
@@ -196,7 +197,8 @@ function renderDuelCard(duelId) {
   let bgStyle = img ? `background-image: linear-gradient(rgba(15, 15, 22, 0.2), rgb(15, 15, 22)), url('${img}'); background-size: cover; background-position: center center;` : '';
 
   return `
-    <div class="duel-card" style="${bgStyle}">
+    <!-- <div class="duel-card" style="${bgStyle}"> -->
+    <div class="duel-card" >
       <div class="duel-header">
         <span class="duel-badge">🗡️ DUEL</span>
         <h3 class="duel-title">${me} vs. ${opp}</h3>
