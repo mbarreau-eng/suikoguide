@@ -3446,7 +3446,6 @@ guideData.enemies = [
     "speed": 75,
     "magic": 300,
     "luck": 30,
-    "bits": 10000,
     "weaknesses": [
       {
         "water": "inv.",
