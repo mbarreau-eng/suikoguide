@@ -1,15 +1,176 @@
 guideData.chapters.push({
-      "id": 22,
-      "title": "Kirov, retrieving our final gift",
-      "picture":"22/22.png",
-      "savepoints":"Inn",
-      "collectibles":["Yardstick","Salt","Soy Sauce","Soap"],
-      "recruits":[{"id":65},{"id":66},{"id":67},{"id":68},{"id":69},{"id":70},{"id":71},{"id":72},{"id":73},{"id":74},{"id":75}],
-      "paragraphs":[
-        {
-          "type":"plain",
-          "picture":"22/22-1.png",
-          "text":"There are three people to recruit here in Kirov, as well as some new armor to get. First off, let's recruit Georges. Go to the Inn and talk to him; he's the guy directly up from the door. He has a pretty fun card game to play, and if you beat one of his records, he'll join you! It's pretty simple; all cards are face down and you have to match pairs of your recruits, as well as memorize where they were when you flipped them over. Ask Georges for details."
-        }
-      ]
-    });
+  id: 22,
+  title: "Kirov, retrieving our final gift",
+  picture: "22/22.png",
+  savepoints: "Inn",
+  collectibles: [
+    "Yardstick",
+    "Salt",
+    "Soy Sauce",
+    "Soap",
+    "Old Book Vol. 8",
+    "Sound Rune",
+    "Window Set 0",
+    "Fire Spears",
+  ],
+  recruits: [
+    { id: 65 },
+    { id: 66 },
+    { id: 67 },
+    { id: 68 },
+    { id: 69 },
+    { id: 70 },
+    { id: 71 },
+    { id: 72 },
+    { id: 73 },
+    { id: 74 },
+    { id: 75 },
+  ],
+  paragraphs: [
+    {
+      type: "plain",
+      picture: "22/22-1.png",
+      text: "There are three people to recruit here in Kirov, as well as some new armor to get. First off, let's recruit Georges. Go to the Inn and talk to him; he's the guy directly up from the door. He has a pretty fun card game to play, and if you beat one of his records, he'll join you! It's pretty simple; all cards are face down and you have to match pairs of your recruits, as well as memorize where they were when you flipped them over. Ask Georges for details.",
+    },
+    {
+      type: "plain",
+      picture: "22/22-2.png",
+      text: "Next, we'll recruit Lester; go into the house to the left of the woman washing clothes and taste the stew cooking on the stove, then leave this house and go into the one to your right. Taste the stew cooking on this stove as well. Now, leave this house and go into the house that's right beside the docks and our boat. Talk to the chef in here;  he's Lester, and he's happy to hear that you like his stews, and when he learns that you're the leader of the Liberation Army, he'll decide to join you!",
+    },
+    {
+      type: "plain",
+      picture: "22/22-3.png",
+      text: "Finally, there's Sarah; she's a chore to recruit, so follow along carefully. Talk to Sarah, the woman who's washing clothes, and choose to recruit her; she'll agree to join, but only if you get her some soap.",
+    },
+    {
+      type: "plain",
+      picture: "22/22-4.png",
+      text: "Go talk to the man walking between the Inn and the Armory, and he says that he'll give you some Soap if you get him some Soy Sauce. Go talk to the guy that's close to the house below the Inn; he'll give you some Soy Sauce if you give him some Salt. Go to the southeast end of town and talk to the person here; they will give you some Salt, but only if you give them a Yardstick. Go to the Inn and talk to the guy in the room on the right; he'll give you a Yardstick if you can get him some Sugar. SO after you talk to ALL of them...",
+    },
+    {
+      type: "plain",
+      picture: "22/22-5.png",
+      text: "Go to the Item Shop and buy some Sugar, then go to the Inn and give it to the man here to get the [_YARDSTICK_].Go to the southeast end of town and give the Yardstick to the person here to get the [_SALT_]. Talk to the guy between the Item Shop and building beside Sarah and give him the Salt to get the [_SOY SAUCE_]. Talk to the guy between the Inn and the Armory and give him the Soy Sauce and he'll give you the [_SOAP_]. Finally, go over to Sarah and give her the Soap, only to find out that she had some all along (ARGH!). She will then join your party!",
+    },
+    {
+      type: "note",
+      text: "The Item Shop here has the Fortune Crystal, the same crystal you may have chosen to get at the very beginning of the game if you traveled to Sarady without Ted.",
+    },
+    {
+      type: "plain",
+      text: "Now that those tasks are done, head north and leave Kirov.",
+    },
+    {
+      type: "place",
+      text: "World Map",
+      places: ["Kirov", "Kalekka", "Secret Factory"],
+      enemies: ["Dagon", "Grizzly Bear", "Siren"],
+    },
+    {
+      type: "plain",
+      text: "Fight around on the World Map if you want to, but when you're finished doing that, head north to Kalekka.",
+    },
+    {
+      type: "note",
+      text: "The Dagons here can drop Dragon Armor, and the Sirens can drop Prosperity Crystals. The Dragon Armor can be bought later on if you can wait.",
+    },
+    {
+      type: "place",
+      text: "Kalekka",
+      enemies: ["Demon Hound", "Hawk Man", "Shadow"],
+      items: ["Earth Rune Piece", "Antique"],
+      party: [
+        { name: "Hero", level: 35 },
+        { name: "Tai Ho", level: 33 },
+        { name: "Kai", level: 33 },
+        { name: "Yam Koo", level: 33 },
+        { name: "Kirkis", level: 33 },
+        { name: "Stallion", level: 32 },
+      ],
+    },
+    {
+      type: "plain",
+      picture: "22/22-6.png",
+      text: "Go into the first building here and talk to Leon Silverberg; all he'll do is give you some advice for now. Leave the building and head east to the next building, where you'll find an [_EARTH RUNE PIECE_]. Go back out and through the path between the two buildings.",
+    },
+    {
+      type: "plain",
+      text: " In the next building, grab the  [_OLD BOOK VOL. 8_] out of the chest. Go out  through the door on the left, then go left  here into this building; there's an  [_ANTIQUE_] in here, so grab it. Go around  the back of this building, then head east and  into this last one; get the  [_SOUND CRYSTAL_], then leave.",
+    },
+    {
+      type: "plain",
+      picture: "22/22-7.png",
+      text: "As you go to leave here, DO NOT STEP ON THE PLANTS! Go around and talk to Blackman here, and if you didn't step on them, he will join your party! Head north and leave Kalekka, then head north to the Secret Factory.",
+    },
+    {
+      type: "place",
+      text: "Secret Factory",
+      party: [
+        { name: "Hero", level: 37 },
+        { name: "Tai Ho", level: 37 },
+        { name: "Kai", level: 37 },
+        { name: "Yam Koo", level: 37 },
+        { name: "Kirkis", level: 37 },
+        { name: "Stallion", level: 37 },
+      ],
+    },
+    {
+      type: "plain",
+      picture: "22/22-8.png",
+      text: "When you enter, you'll see a giant woman named Ronnie Bell yelling at two of our old friends; Ledon and Kessler. You'll get to put your two cents in...",
+    },
+    {
+      type: "choices",
+      items: ["Hey, it's Ledon and Kessler.", "Hey, giant woman."],
+    },
+    {
+      type: "plain",
+      text: " Choose either option (HA!), then when Tai Ho  asks if you know them",
+    },
+    {
+      type: "choices",
+      items: ["Yes.", "I've never seen them before."],
+    },
+    {
+      type: "plain",
+      text: "Ronnie Bell will notice that you're the leader of the Liberation Army, so she'll go tell Mose that you're here. Talk to Kessler and Ledon here, and they will both join your party! Go inside the Factory.",
+    },
+    {
+      type: "plain",
+      picture: "22/22-9.png",
+      text: "Ronnie Bell will ask you what to you so long, then tell you that Mose is in the back. First, go to the upper left and talk to Kage; if you pay him 20,000 Bits, he will join your party too! If you don't have 20,000, just go back outside or to Kalekka and fight for 5 minutes.",
+    },
+    {
+      type: "plain",
+      picture: "22/22-10.png",
+      text: "Go to the lower right and open the chest for the [_WINDOW SETTING 0_]. Talk to Mose here and he will ask how Odessa is doing; you'll have to tell him that she's gone. He says that the Fire Spears are ready, but he can't transport them without a boat. Tai Ho says that a friend of his named Kun To might be able to help him. He's in Kirov too, so after you receive the [_FIRE SPEARS_], leave here and head back to Kirov.",
+    },
+    {
+      type: "place",
+      text: "Kirov",
+      party: [
+        { name: "Hero", level: 37 },
+        { name: "Tai Ho", level: 37 },
+        { name: "Kai", level: 37 },
+        { name: "Yam Koo", level: 37 },
+        { name: "Kirkis", level: 37 },
+        { name: "Stallion", level: 37 },
+      ],
+    },
+    {
+      type: "plain",
+      picture: "22/22-11.png",
+      text: "Go straight down from the exit and talk to the person standing beside the house and river; this is Melodye, who will want the Sound Rune that you just got, and will join if you give it up, so give it to Melodye! You can talk to Melodye at HQ and change your menu sound settings, depending on which Sound Sets you have acquired.",
+    },
+    {
+      type: "plain",
+      picture: "22/22-12.png",
+      text: "Now, go into the large house beside the docks, talk to Kun To in here, and he will tell you that he still works with boats. Tai Ho asks to borrow 10 of his boats, and Kun To will let him do so, which also means that Kun To will join your party!",
+    },
+    {
+      type: "plain",
+      picture: "22/22-13.png",
+      text: "Back outside, Ronnie Bell will be loading the rest of the Fire Spears on the boats. After all is said and done here, Mose and Ronnie Bell will also join your party! All that's left now is to hop on your boat and go back to HQ!",
+    },
+  ],
+});

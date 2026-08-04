@@ -66,7 +66,7 @@ guideData.collectibles = [
    "get":"Obtained from Story event ・You can obtain the Fake Orders from Kimberly and Tesla as part of the story in Story."
   },
   {
-   "id":"Fire Spear",
+   "id":"Fire Spears",
    "category":"Key Item",
    "desc":"Used to fight Teo's army. Get it at the Secret Factory",
    "get":"Obtained from Story event ・You can obtain the Fire Spear from a story event in Story, after visiting the Secret Factory."
