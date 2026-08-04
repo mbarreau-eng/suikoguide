@@ -10,9 +10,10 @@
 }
 
 .chapter-title {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   color: var(--accent-gold);
   margin-bottom: 8px;
+  font-family: 'Press Start 2P', serif;
 }
 
 /* Paragraph Blocks & Inline Items */
@@ -105,12 +106,16 @@ mark.item-tag {
 }
 
 /* Note Block */
-.note-card {
+.note-card  {
   background-color: var(--note-bg);
   border-left: 4px solid var(--note-border);
   padding: 16px 20px;
   border-radius: 0 8px 8px 0;
   margin: 20px 0;
+  
+}
+.note-card div {
+  font-family:   'Courier New', Consolas, Monaco, monospace;
 }
 
 .note-title {
