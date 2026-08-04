@@ -15,7 +15,7 @@ function renderChapterView(container, chapterId) {
   const bgImageName = chapter.pictures || chapter.picture || chapter.image;
 
   if (bgImageName) {
-    header.style.backgroundImage = `linear-gradient(rgba(15, 15, 22, 0.2), rgba(15, 15, 22, 1)), url('./img/chapters/${bgImageName}')`;
+   // header.style.backgroundImage = `linear-gradient(rgba(15, 15, 22, 0.2), rgba(15, 15, 22, 1)), url('./img/chapters/${bgImageName}')`;
     header.style.backgroundSize = "cover";
     header.style.backgroundPosition = "center";
   }
@@ -26,7 +26,7 @@ function renderChapterView(container, chapterId) {
   const nextChapter = (currentIndex >= 0 && currentIndex < chapters.length - 1) ? chapters[currentIndex + 1] : null;
 
   header.innerHTML = `
-    <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.05em; font-weight: bold;">Chapter ${chapter.id}</div>
+    <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.05em; font-weight: bold; text-align: right;">Chapter ${chapter.id}</div>
     <h2 class="chapter-title">${chapter.title}</h2>
     ${chapterBadgesHTML ? `<div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--border-color);">${chapterBadgesHTML}</div>` : ''}
     <!--${chapterRecruitsHTML}-->

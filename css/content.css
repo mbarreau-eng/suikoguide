@@ -5,7 +5,7 @@
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 24px;
-  min-height: 12em;
+  /*min-height: 12em;*/
   
 }
 
@@ -80,8 +80,10 @@ mark.item-tag {
 /* Choices Block */
 .choices-card {
   background-color: var(--accent-gold-subtle);
-  border-left: 4px solid var(--accent-gold);
-  border-radius: 0 8px 8px 0;
+  border-color: var(--accent-gold);
+  border-style: solid;
+  border-width:1px 1px 1px 4px;
+  border-radius: 8px;
   padding: 16px 20px;
   margin: 20px auto;
   width: 40%;
@@ -108,9 +110,11 @@ mark.item-tag {
 /* Note Block */
 .note-card  {
   background-color: var(--note-bg);
-  border-left: 4px solid var(--note-border);
+  border-color: var(--note-border);
+  border-width:1px 1px 1px 4px;
+  border-style: solid;
   padding: 16px 20px;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
   margin: 20px 0;
   
 }
@@ -321,123 +325,7 @@ mark.item-tag {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Boss Cards & Badges */
-.badge.badge-boss {
-  background: rgba(220, 38, 38, 0.25);
-  color: #fca5a5;
-  border: 1px solid #ef4444;
-  font-weight: 700;
-  box-shadow: 0 0 6px rgba(239, 68, 68, 0.3);
-}
 
-.boss-card {
-  background: var(--boss-card-bg);
-  border: 1px solid var(--boss-border);
-  border-left: 5px solid var(--boss-border-accent);
-  border-radius: 8px;
-  padding: 16px;
-  margin: 20px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.boss-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, rgba(239, 68, 68, 0.18) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.boss-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 8px;
-}
-
-.boss-badge {
-  background: var(--boss-badge-bg);
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 800;
-  padding: 2px 8px;
-  border-radius: 4px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.boss-title {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--boss-title);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.boss-name {
-  margin: 0;
-  font-size: 1.25rem;
-  color: var(--accent-gold);
-}
-
-.boss-stat-badge {
-  background: #7f1d1d;
-  color: #fef2f2;
-  border: 1px solid #ef4444;
-  font-size: 0.8rem;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: 4px;
-}
-
-.boss-field {
-  font-size: 0.9rem;
-  color: var(--boss-title);
-  margin-bottom: 8px;
-}
-
-/* Boss Body & Stats Grid */
-.boss-body {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.boss-portrait-container {
-  min-width: 100px;
-  min-height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--bg-input);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 10px;
-}
-
-.boss-sprite {
-  max-width: 120px;
-  max-height: 120px;
-  object-fit: contain;
-  image-rendering: pixelated;
-  width: 100%;
-}
-
-.boss-stats-grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 6px;
-}
 
 .stat-item {
   display: flex;
