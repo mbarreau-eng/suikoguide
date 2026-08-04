@@ -117,4 +117,26 @@ guideData.major = [
       "You can now use your Ninjas command to see what they're going to do, which works 100% of the time, but this battle is like the first battle at Scarleticia; it is not meant to be won. Just do whatever you want until you're wiped out.",
     ],
   },
+  {
+    id: 6,
+    title: "Battle with Teo",
+    picture: "teobattle2.gif",
+    countUs: 12585,
+    countThem: 14000,
+    intro: [
+      {
+        "Teo": "You're wasting time. Do not waste any more lives." ,
+        "Tai Ho": "Ha! We've got a secret weapon!"
+      },
+    ],
+    outro: [
+      {
+        Mathiu: "Congratulations! We won!",
+        Teo: "Incredible... I do not believe this..." 
+      },
+    ],
+    strategy: [
+      "This is THE EASIEST battle of the game; have the Strategists boost the Charge attack power, then attack with your strongest Charge groups; keep doing this until the battle is over!",
+    ],
+  }
 ];
