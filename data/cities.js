@@ -1,7 +1,7 @@
 guideData.cities = [
   {
     name: "Gregminster",
-    picture: "",
+    picture: "Gregminster_Map.png",
     shops: [
       {
         items: [
@@ -20,7 +20,7 @@ guideData.cities = [
   },
   {
     name: "Rockland",
-    picture: "rockland.jpg",
+    picture: "rockland.png",
     inn: 30,
     stars: "",
     shops: [
@@ -194,7 +194,7 @@ guideData.cities = [
   },
   {
     name: "Village of the Dwarves",
-    picture: "Dwarves.jpg",
+    picture: "dwarves.png",
     inn: 200,
     stars: [33],
     shops: [
@@ -353,7 +353,7 @@ guideData.cities = [
   },
   {
     name: "Qlon Temple",
-    picture: "QlonTemple.png",
+    picture: "Qlon.png",
     stars: "81,82,83,84",
     shops: [],
   },

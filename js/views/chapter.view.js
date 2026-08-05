@@ -76,15 +76,15 @@ function renderChapterView(container, chapterId) {
     else if (p.type === 'choices') {
       el.className = 'choices-card';
       el.innerHTML = `
-        <div class="choices-title">Dialogue</div>
+        <!--<div class="choices-title">Dialogue</div>-->
         ${p.items.map(choice => `<div class="choice-item">▸ "${choice}"</div>`).join('')}
       `;
     } 
     else if (p.type === 'note') {
       el.className = 'note-card';
       el.innerHTML = `
-        <div class="note-title">💡</div>
-        <div>${p.text}</div>
+        <!--<div class="note-title">💡</div>-->
+        <div>💡 ${p.text}</div>
       `;
     } 
     else if (p.type === 'boss') {

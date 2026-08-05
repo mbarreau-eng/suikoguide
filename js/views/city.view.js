@@ -27,12 +27,13 @@ function renderCity(cityKey, cityData) {
     <div class="rpg-box rpg-city-card" id="city-${cityKey}">
       <div class="rpg-city-header">
         <div class="rpg-city-title-group">
-          <h2 class="rpg-city-title">🏰 ${escapeHtml(cityData.name)}</h2>
+         ${cityData.picture ? `<img src="./img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">` : ''}
+          <h2 class="rpg-city-title">${escapeHtml(cityData.name)}</h2>
         </div>
         ${cityData.inn !== undefined ? `<div class="rpg-city-inn">🛌 Inn: ${cityData.inn} Bits per person.</div>` : ''}
       </div>
 
-      ${cityData.picture ? `<img src="./img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">` : ''}
+     
 
       ${participants.length > 0 ? `
         <div class="rpg-section-label">✨ Recruitable Stars</div>

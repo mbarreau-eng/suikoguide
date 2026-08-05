@@ -26,6 +26,7 @@
   color: var(--city-title);
   margin: 0;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  font-family: 'Press Start 2P', serif;
 }
 
 .rpg-city-inn {
@@ -38,8 +39,10 @@
 }
 
 .rpg-city-img {
+  /*
   width: 100%;
   max-height: 200px;
+  */
   object-fit: cover;
   border: 2px solid var(--border-color);
   border-radius: 4px;
