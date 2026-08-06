@@ -51,7 +51,7 @@ function renderSidebar() {
       </button>
 
       <button class="nav-btn-main" data-view="recruits">
-        <span>★ Recruits</span>
+        <span>★ 108 Stars</span>
       </button>
 
       <button class="nav-btn-main" data-view="hq">

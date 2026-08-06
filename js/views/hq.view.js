@@ -31,13 +31,14 @@ function renderHQView() {
   const facilities = Array.isArray(hq.facilities) ? hq.facilities : [];
 
   main.innerHTML = `
-    <section class="hq-header-card" ${bgPicture ? `style="background-image: linear-gradient(rgba(15, 15, 22, 0.2), rgba(15, 15, 22, 0.95)), url('${bgPicture}');"` : ''}>
+    <!--<section class="hq-header-card" ${bgPicture ? `style="background-image: linear-gradient(rgba(15, 15, 22, 0.2), rgba(15, 15, 22, 0.95)), url('${bgPicture}');"` : ''}>-->
+    <div class="chapter-header-card" >
       <div class="hq-header-content">
-        <span class="hq-badge">🏰 CASTLE HEADQUARTERS</span>
-        <h1 class="hq-title">Headquarters Upgrades & Facilities</h1>
-        <p class="hq-subtitle">Track castle growth, level unlock conditions, and available facilities.</p>
+        <!--<span class="hq-badge">🏰 CASTLE HEADQUARTERS</span>-->
+        <h2 class="chapter-title">Headquarters Upgrades & Facilities</h2>
+        <p style="color: var(--text-muted); margin-top: 6px;">Track castle growth, level unlock conditions, and available facilities.</p>
       </div>
-    </section>
+    </div>
 
     <section class="hq-banner">
       <div class="hq-banner-info">

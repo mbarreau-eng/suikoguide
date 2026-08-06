@@ -12,44 +12,7 @@ const trackables = document.getElementById('trackables');
   if (!chapterItems.length) return '';
 
   const chapterIdsAttr = JSON.stringify(chapterCollectibleIds).replace(/"/g, '&quot;');
-/*
-  return `
-    <div class="chapter-collectibles-card">
-      <div class="collectibles-card-header">
-        <h3>🏆 Collectibles & Key Items</h3>
-        <span class="collectibles-count" id="chapter-coll-count">
-          ${chapterItems.filter(i => checkedIds.includes(i.id)).length} / ${chapterItems.length} Found
-        </span>
-      </div>
 
-      <ul class="chapter-collectibles-list">
-        ${chapterItems.map(item => {
-          const isCheckedItem = checkedIds.includes(item.id);
-          const domId = sanitizeId(item.id);
-          const detailText = item.desc || item.get || '';
-        
-          return `
-            <li class="chapter-collectible-item ${isCheckedItem ? 'completed' : ''}" id="chapter-item-${domId}">
-              <input 
-                type="checkbox" 
-                id="chk_${domId}" 
-                ${isCheckedItem ? 'checked' : ''}
-                onchange="toggleChapterCollectible('${item.id.replace(/'/g, "\\'")}', '${chapterIdsAttr}')"
-              />
-              
-              <label for="chk_${domId}">
-                ${item.category ? `<span class="collectible-tag">${item.category}</span>` : ''}
-                <strong>${item.id}</strong>
-                ${detailText ? `<small>📍 ${detailText}</small>` : ''}
-              </label>
-            </li>
-          `;
-        }).join('')}
-        
-      </ul>
-    </div>
-  `;
-  */
  return `
  <div class="chapter-collectibles-card">
       <div class="collectibles-card-header">
@@ -95,10 +58,10 @@ function renderAllCollectiblesView(containerId = 'main-content') {
   const categories = ['All', ...new Set(allItems.map(item => item.category || 'Uncategorized'))];
 
   container.innerHTML = `
-    <div class="master-collectibles-view">
-      <header class="master-collectibles-header">
-        <h1>🏆 Master Collectibles & Items Index</h1>
-        <p>Track all key items, rare equipment, and HQ collectibles across Suikoden.</p>
+    <div class="chapter-header-card">
+    <div>
+        <h2 class="chapter-title">Collectibles & Key Items</h2>
+        <p style="color: var(--text-muted); margin-top: 6px;">Track all key items and collectibles.</p>
         
         <div class="master-progress-container">
           <div class="master-progress-bar">
@@ -106,7 +69,7 @@ function renderAllCollectiblesView(containerId = 'main-content') {
           </div>
           <span id="master-progress-text" class="master-progress-text">0 / ${allItems.length} Found (0%)</span>
         </div>
-      </header>
+      </div></div>
 
       <div class="collectibles-controls">
         <div class="search-box">
@@ -134,7 +97,7 @@ function renderAllCollectiblesView(containerId = 'main-content') {
       <div id="master-collectibles-grid" class="master-collectibles-grid">
         ${renderCategoryGroups(allItems, checkedIds)}
       </div>
-    </div>
+    
   `;
 
   updateAllCollectiblesProgress();

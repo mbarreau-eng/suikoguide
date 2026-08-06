@@ -248,9 +248,10 @@
 /* Bestiary & Enemy Grid */
 .enemies-grid {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 16px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .enemy-card {
@@ -328,6 +329,7 @@
 .boss-card.enemy-card-style {
   border-color: #2980b9;
   border-left-color: #3498db;
+  width:550px;
 }
 
 .boss-badge.enemy-badge {

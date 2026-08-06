@@ -1,59 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Suikoden Walkthrough & Guide</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suikoden Walkthrough & Guide</title>
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body>
 
-  <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
+    <aside class="sidebar suiko-window suiko-side-panel" id="left-panel">
+      <div class="sidebar-header">
+        <h1>Suikoden Guide</h1>
+        <p>Walkthrough & 108 Stars Database</p>
+      </div>
+      <nav id="sidebar-nav" >
+      </nav>
+      <ul class="chapter-list" id="chapter-list-container"></ul>
+    </aside>
 
-  <aside class="sidebar suiko-window suiko-side-panel" id="left-panel">
-    
-    <div class="sidebar-header">
-      <h1>Suikoden Guide</h1>
-      <p>Walkthrough & 108 Stars Database</p>
-    </div>
+    <button id="toggle-btn" aria-label="Toggle Navigation" class="chapter-nav-btn"><</button>
 
-    <!-- Toggle Button -->
+    <main class="main-content" id="main-content">
+    </main>
 
+    <aside id="trackables">
+    </aside>
 
-    <nav id="sidebar-nav" >
-      <!--
-      <button class="nav-tab active" id="tab-walkthrough">Walkthrough</button>
-      <button class="nav-tab" id="tab-recruits">Recruits</button>
-      <button class="nav-tab" id="tab-enemies">Bestiary</button>
-    -->
-    </nav>
-    <ul class="chapter-list" id="chapter-list-container"></ul>
-  </aside>
-<button id="toggle-btn" aria-label="Toggle Navigation" class="chapter-nav-btn"><</button>
-  <main class="main-content" id="main-content">
-    
-    <div class="content-container" id="main-container">
-      <!-- Dynamic Content Rendered Here -->
-    </div>
-  </main>
-  <aside id="trackables">
-
-
-  </aside>
-  <!--
-<button 
-  id="panel-toggle-btn" 
-  class="suiko-menu-item suiko-toggle-trigger" 
-  aria-expanded="true" 
-  aria-controls="left-panel">
-  ◀ Close Menu
-</button>
--->
-<!--
-  <script src="./js/data.js"></script>
-  <script src="js/helpers.js"></script>
-  <script src="js/render.js"></script>
-  <script src="./js/app.js"></script>
--->
-  <script src="./js/app.js"></script>
-</body>
+    <script src="./js/app.js"></script>
+  </body>
 </html>

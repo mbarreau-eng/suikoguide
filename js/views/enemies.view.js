@@ -10,8 +10,8 @@ function renderEnemiesView() {
 
   main.innerHTML = `
     <section class="chapter-header-card">
-      <h1 class="chapter-title">👾 Enemy Bestiary</h1>
-      <p>Stats, drops, and weaknesses for monsters encountered across the realm (${normalEnemies.length} entries).</p>
+      <h1 class="chapter-title">Bestiary</h1>
+      <p style="color: var(--text-muted); margin-top: 6px;">Stats, drops, and weaknesses for monsters encountered across the realm (${normalEnemies.length} entries).</p>
     </section>
 
     <div class="enemies-grid">

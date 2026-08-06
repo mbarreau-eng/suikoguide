@@ -2,7 +2,9 @@ function renderShopCategory(title, itemList) {
   const rows = itemList.map(item => `
     <tr>
       <td>${escapeHtml(item.name)}</td>
-      <td class="rpg-shop-price">${item.price.toLocaleString()} Bits</td>
+      ${item.name == "Inn" ? `<td class="rpg-shop-price">${item.price.toLocaleString()} Bits per person</td>` : ''}
+      ${item.name == "Blacksmith" ? `<td class="rpg-shop-price">Up to level ${item.price.toLocaleString()}</td>` : ''}
+      ${item.name != "Blacksmith" && item.name != "Inn" ? `<td class="rpg-shop-price">${item.price.toLocaleString()} Bits</td>` : ''}
     </tr>
   `).join('');
 
