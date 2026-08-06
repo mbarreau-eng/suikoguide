@@ -22,3 +22,15 @@ body {
   overflow-y: auto;
   margin-top:20px;
 }
+
+[data-style = "remaster"] {
+  .original {
+    display: none;
+  }
+}
+
+[data-style = "original"] {
+  .remaster {
+    display: none;
+  }
+}

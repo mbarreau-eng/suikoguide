@@ -11,10 +11,10 @@ function sanitizeId(str) {
   return String(str).replace(/[^a-zA-Z0-9_-]/g, '_');
 }
 
-function getImagePath(name) {
+function getImagePath(name, style) {
   if (!name) return '';
   const fileName = name.toLowerCase().replace(/\s+/g, '');
-  return `./img/stars/${fileName}.png`;
+  return `./img/stars/${style}/${fileName}.png`;
 }
 
 function getChapterLabel(chapter) {
@@ -81,7 +81,8 @@ const getRecruitInfo = (unlockedBy) => {
   return {
     rawKey: rawKey,
     name: recruitName,
-    picture: `./img/stars/${picFileName.toLowerCase()}`,
+    pictureO: `./img/stars/original/${picFileName.toLowerCase()}`,
+    pictureR: `./img/stars/remaster/${picFileName.toLowerCase()}`,
     isStar: !!found
   };
 };

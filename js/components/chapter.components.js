@@ -44,11 +44,13 @@ function renderBadges(dataObj) {
 function renderPartyChip(m) {
   const name = typeof m === 'object' ? (m.name || m.character) : m;
   const level = typeof m === 'object' && m.level ? `Level ${m.level}` : '';
-  const imgSrc = getImagePath(name);
+  const imgSrcO = getImagePath(name,'original');
+  const imgSrcR = getImagePath(name,'remaster');
 
   return `
     <div class="party-member-chip">
-      <img src="${imgSrc}" alt="${name}" class="member-img" onerror="this.style.display='none'">
+      <img src="${imgSrcO}" alt="${name}" class="member-img original" onerror="this.style.display='none'">
+      <img src="${imgSrcR}" alt="${name}" class="member-img remaster" onerror="this.style.display='none'">
       <div class="member-details">
         <span class="member-name">${name}</span>
         ${level ? `<span class="member-level">${level}</span>` : ''}

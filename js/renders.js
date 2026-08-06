@@ -11,9 +11,16 @@ function renderSidebarControls() {
   }
 
   const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-  controlsContainer.innerHTML = `
+  controlsContainer.innerHTML += `
     <button id="theme-toggle-btn" class="theme-btn" onclick="toggleTheme()">
       ${currentTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+    </button>
+  `;
+
+  const currentStyle = document.documentElement.getAttribute('data-style') || 'original';
+  controlsContainer.innerHTML += `
+    <button id="style-toggle-btn" class="theme-btn" onclick="toggleStyle()">
+      ${currentStyle === 'original' ? '● Remaster Style' : '■ PS1 Style'}
     </button>
   `;
 }

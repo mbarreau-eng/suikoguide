@@ -26,7 +26,8 @@ function renderRecruitCard(ref) {
 
   const recruitKey = recruit.id !== null && recruit.id !== undefined ? recruit.id : recruit.name;
   const recruited = isChecked('recruits', recruitKey);
-  const imgSrc = getImagePath(recruit.name);
+  const imgSrcO = getImagePath(recruit.name, 'original');
+  const imgSrcR = getImagePath(recruit.name, 'remaster');
   const idPrefix = (recruit.id !== null && recruit.id !== undefined) ? `#${recruit.id} ` : '';
 
   return `
@@ -35,7 +36,8 @@ function renderRecruitCard(ref) {
          data-track-key="${recruitKey}"
          title="Click to toggle recruited status">
       <div class="recruit-header">
-        <img src="${imgSrc}" alt="${recruit.name}" class="recruit-img" onerror="this.style.display='none'">
+        <img src="${imgSrcO}" alt="${recruit.name}" class="recruit-img original" onerror="this.style.display='none'">
+        <img src="${imgSrcR}" alt="${recruit.name}" class="recruit-img remaster" onerror="this.style.display='none'">
         <div class="recruit-info">
           <div class="recruit-name">
             <span>${idPrefix}${recruit.name}</span>

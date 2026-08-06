@@ -85,6 +85,7 @@ function initApp() {
   let currentChapterId = loadSavedChapter();
   var activeTab = 'walkthrough';
   initTheme();
+  initStyle();
 
   if (typeof guideData === 'undefined' || !guideData) {
     document.getElementById('main-content').innerHTML = `

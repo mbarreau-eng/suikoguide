@@ -6,7 +6,7 @@ function renderRecruitsView(container) {
 
 const trackables = document.getElementById('trackables');
   trackables.innerHTML = '';
-
+  
   const totalRecruits = guideData.recruits.length;
   const recruitedCount = userProgress.recruits ? userProgress.recruits.length : 0;
 

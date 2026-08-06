@@ -129,9 +129,15 @@ function renderHQView() {
                     ${recruitInfo ? `
                       <div class="hq-recruit-unlock">
                         <img 
-                          src="${recruitInfo.picture}" 
+                          src="${recruitInfo.pictureO}" 
                           alt="${recruitInfo.name}" 
-                          class="hq-recruit-thumb" 
+                          class="hq-recruit-thumb original" 
+                          onerror="this.style.display='none'"
+                        />
+                        <img 
+                          src="${recruitInfo.pictureR}" 
+                          alt="${recruitInfo.name}" 
+                          class="hq-recruit-thumb remaster" 
                           onerror="this.style.display='none'"
                         />
                         <span>${recruitInfo.isStar ? '★ ' : ''}${recruitInfo.name}</span>

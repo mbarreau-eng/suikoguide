@@ -66,8 +66,11 @@ function renderChapterView(container, chapterId) {
     if (p.type === 'plain') {
       el.className = 'paragraph-block';
       const imageMarkup = p.picture ? `
-        <figure class="inline-paragraph-img">
-          <img src="img/chapters/${p.picture}" alt="Walkthrough screenshot" loading="lazy" onerror="this.parentNode.style.display='none'"/>
+        <figure class="inline-paragraph-img original">
+          <img src="img/chapters/original/${p.picture}"  alt="Walkthrough screenshot" loading="lazy" onerror="this.parentNode.style.display='none'"/>
+        </figure>
+        <figure class="inline-paragraph-img remaster">
+          <img src="img/chapters/remaster/${p.picture}"  alt="Walkthrough screenshot" loading="lazy" onerror="this.parentNode.style.display='none'"/>
         </figure>
       ` : '';
       const formattedText = enhanceParagraphText(p.text.replace(/\[_(.*?)_\]/g, '<mark class="item-tag">$1</mark>'));

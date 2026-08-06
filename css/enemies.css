@@ -201,7 +201,7 @@
   font-weight: bold;
   color: #aaa;
   text-transform: uppercase;
-  min-width: 80px;
+  min-width: 98px;
 }
 
 .affinity-chips {
@@ -360,8 +360,6 @@
   visibility: hidden;
   transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
   transform: translateY(6px);
-
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
   border-radius: 8px;
 }
 

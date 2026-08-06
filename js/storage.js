@@ -1,6 +1,7 @@
 // Local Storage Keys
 const STORAGE_PROGRESS_KEY = 'suiko_progress_data';
 const STORAGE_THEME_KEY = 'suiko_theme';
+const STORAGE_STYLE_KEY = 'suiko_style';
 const STORAGE_CHAPTER_KEY = 'suiko_chapter';
 let currentChapterId = loadSavedChapter() || 1;
 let userProgress = loadProgress();
@@ -81,6 +82,27 @@ function updateThemeButtonUI(theme) {
   const btn = document.getElementById('theme-toggle-btn');
   if (btn) {
     btn.innerHTML = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+  }
+}
+
+// Style Handling
+function initStyle() {
+  const savedTheme = localStorage.getItem(STORAGE_STYLE_KEY) || 'original';
+  document.documentElement.setAttribute('data-style', savedTheme);
+}
+
+function toggleStyle() {
+  const current = document.documentElement.getAttribute('data-style') || 'original';
+  const newStyle = current === 'original' ? 'remaster' : 'original';
+  document.documentElement.setAttribute('data-style', newStyle);
+  localStorage.setItem(STORAGE_STYLE_KEY, newStyle);
+  updateStyleButtonUI(newStyle);
+}
+
+function updateStyleButtonUI(theme) {
+  const btn = document.getElementById('style-toggle-btn');
+  if (btn) {
+    btn.innerHTML = theme === 'original' ? '● Remaster Style' : '■ PS1 Style';
   }
 }
 
