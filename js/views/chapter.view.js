@@ -1,4 +1,4 @@
-function renderChapterView(container, chapterId) {
+function renderChapterView(container, chapterId, toTop = false) {
   const chapter = guideData.chapters.find(c => c.id === chapterId);
   if (!chapter) return;
 
@@ -197,5 +197,7 @@ function renderChapterView(container, chapterId) {
       }
     });
   }); 
-  document.getElementById("main-content").scrollTo({ top: 0, behavior: 'smooth' });
+  if ( toTop === true) {
+    document.getElementById("main-content").scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

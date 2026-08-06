@@ -122,9 +122,16 @@ function enhanceParagraphText(text) {
         <span class="recruit-inline-tooltip">
           <span class="tooltip-header">
             <img 
-              src="./img/stars/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
+              src="./img/stars/original/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
               alt="${recruit.name}" 
               onerror="this.src='img/placeholder.png'" 
+              class="original"
+            />
+            <img 
+              src="./img/stars/remaster/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
+              alt="${recruit.name}" 
+              onerror="this.src='img/placeholder.png'" 
+              class="remaster"
             />
             <strong>${recruit.name}</strong>
           </span>

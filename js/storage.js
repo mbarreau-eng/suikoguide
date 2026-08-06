@@ -56,7 +56,7 @@ function toggleProgress(category, key) {
   }
 
   saveProgress();
-  renderCurrentChapter();
+  renderCurrentChapter(false);
 }
 
 function isChecked(category, key) {
