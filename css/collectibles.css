@@ -51,6 +51,7 @@
   background: var(--collectible-item-bg);
   border-radius: 6px;
   transition: opacity 0.2s ease, background 0.2s ease;
+  margin: 5px auto;
 }
 
 .chapter-collectible-item.completed {

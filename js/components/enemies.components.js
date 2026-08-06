@@ -32,12 +32,13 @@ function renderBossCard(bossName) {
 
   return `
     <div class="boss-body">
-      <div class="boss-portrait-container">
+     
+      <div class="boss-stats-grid">
+       <div class="boss-portrait-container">
         <img src="${imgPath}" alt="${name}" class="boss-sprite" onerror="this.parentElement.style.display='none'"/>
       </div>
-      <div class="boss-stats-grid">
         ${statsList.map(s => `
-          <div class="stat-item ${s.key === 'level' ? 'stat-level' : ''}">
+          <div class="stat-item ${s.key === 'level' || s.key === 'hp' ? 'stat-level' : ''}">
             <span class="stat-label">${s.label}</span>
             <span class="stat-value">${s.val}</span>
           </div>
@@ -51,7 +52,7 @@ function renderBossCard(bossName) {
         <div class="affinity-chips">
           ${weaknesses.map(w => `
             <span class="affinity-chip affinity-${w.affinity.toLowerCase()}">
-              ${w.element} <strong>${w.affinity}</strong>
+               <img src="./img/assets/${w.element}.gif" alt="${w.element}" /> <strong>&nbsp;${w.affinity}</strong>
             </span>
           `).join('')}
         </div>
@@ -125,7 +126,7 @@ function renderEnemyCard(name, enemyData) {
           <img src="${imgPath}" alt="${name}" class="boss-sprite" onerror="this.parentElement.style.display='none'"/>
         </div>
           ${statsList.map(s => `
-            <div class="${s.key === 'level' ? levelClass : 'stat-item'}">
+            <div class="${s.key === 'level' || s.key === 'hp' ? levelClass : 'stat-item'}">
               <span class="stat-label">${s.label}</span>
               <span class="stat-value">${s.val}</span>
             </div>
