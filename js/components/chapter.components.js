@@ -63,7 +63,7 @@ function createPartyCard(members, title = 'Current Party') {
   const membersHTML = members.map(m => renderPartyChip(m)).join('');
 
   el.innerHTML = `
-    <div class="party-header">⚔️ ${title}</div>
+    <div class="party-header">${title}</div>
     <div class="party-grid">${membersHTML}</div>
   `;
   return el;

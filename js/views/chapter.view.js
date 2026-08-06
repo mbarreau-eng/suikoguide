@@ -134,7 +134,7 @@ function renderChapterView(container, chapterId) {
         const partyChips = p.party.map(m => renderPartyChip(m)).join('');
         placePartyHTML = `
           <div style="margin:14px auto; padding-top: 12px; width:60%;">
-            <div class="party-header" style="font-size: 0.8rem; margin-bottom: 8px;">⚔️ Active / Recommended Party</div>
+            <div class="party-header" style="font-size: 0.8rem; margin-bottom: 8px;">Active / Recommended Party</div>
             <div class="party-grid">${partyChips}</div>
           </div>
         `;
