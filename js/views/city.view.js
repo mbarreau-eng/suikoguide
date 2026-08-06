@@ -1,6 +1,9 @@
 function renderCity(cityKey, cityData) {
   if (!cityData) return `<div class="empty-state"><h3>City data not found</h3></div>`;
 
+  const coll = document.getElementById('trackables');
+  coll.innerHTML = '';
+
   const recruits = guideData?.recruits || [];
   const participants = String(cityData.stars || '')
     .split(',')
@@ -49,7 +52,7 @@ function renderCity(cityKey, cityData) {
           }).join('')}
         </div>
       ` : ''}
-      <div class="rpg-section-label">Shops & Services</div>
+      <div class="rpg-section-label">🪙 Shops & Services</div>
       ${shopsHtml}
     </div>
   `;

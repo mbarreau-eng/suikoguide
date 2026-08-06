@@ -79,7 +79,7 @@ function renderEnemyCard(name, enemyData) {
 
 
   const cardClass = isBoss ? 'boss-card' : 'boss-card enemy-card-style';
-  const badgeText = isBoss ? '⚔️ BOSS' : '👾 ENEMY';
+  const badgeText = isBoss ? 'BOSS' : 'ENEMY';
   const badgeClass = isBoss ? 'boss-badge' : 'boss-badge enemy-badge';
   const levelClass = isBoss ? 'stat-item stat-level' : 'stat-item stat-level enemy-level';
 
@@ -118,11 +118,12 @@ function renderEnemyCard(name, enemyData) {
       </div>
 
       <div class="boss-body">
+        
+
+        <div class="boss-stats-grid">
         <div class="boss-portrait-container">
           <img src="${imgPath}" alt="${name}" class="boss-sprite" onerror="this.parentElement.style.display='none'"/>
         </div>
-
-        <div class="boss-stats-grid">
           ${statsList.map(s => `
             <div class="${s.key === 'level' ? levelClass : 'stat-item'}">
               <span class="stat-label">${s.label}</span>
@@ -138,7 +139,8 @@ function renderEnemyCard(name, enemyData) {
           <div class="affinity-chips">
             ${weaknesses.map(w => `
               <span class="affinity-chip affinity-${w.affinity.toLowerCase()}">
-                ${w.element} <strong>${w.affinity}</strong>
+                <img src="./img/assets/${w.element}.gif" alt="${w.element}" />
+                <strong>&nbsp;${w.affinity}</strong>
               </span>
             `).join('')}
           </div>

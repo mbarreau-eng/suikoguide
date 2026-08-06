@@ -93,7 +93,6 @@
 .boss-portrait-container {
   min-width: 100px;
   min-height: 100px;
-  display: flex;
   justify-content: center;
   align-items: center;
   /*
@@ -102,6 +101,8 @@
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 10px;
+  display:grid;
+  grid-row: span 2;
 }
 
 .boss-sprite {
@@ -109,13 +110,13 @@
   max-height: 120px;
   object-fit: contain;
   image-rendering: pixelated;
-  width: 100%;
+  width: 96px;
 }
 
 .boss-stats-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 6px;
 }
@@ -215,6 +216,10 @@
   text-transform: capitalize;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display:flex;
 }
 
 .affinity-chip.affinity-weak {

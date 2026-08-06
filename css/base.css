@@ -22,9 +22,3 @@ body {
   overflow-y: auto;
   margin-top:30px;
 }
-
-#toggle-btn {
-  width: 1em;
-  min-width: 0;
-  padding: 1px;
-}

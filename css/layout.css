@@ -23,6 +23,7 @@
   flex-direction: column;
   flex-shrink: 0;
   overflow-y: auto;
+  transition: all 0.7s ease;
 }
 
 .sidebar-header {
@@ -31,10 +32,17 @@
   background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-sidebar) 100%);
 }
 
+.sidebar-header img {
+  float: left;
+  height: 100px;
+}
+
 .sidebar-header h1 {
   font-size: 1.25rem;
   color: var(--accent-gold);
   margin-bottom: 4px;
+  font-family: 'Press Start 2P';
+  margin-top: 24px;
 }
 
 .sidebar-header p {
@@ -130,8 +138,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 95%;
-  margin:auto;
+  width: 92%;
+  margin:4px auto;
 }
 
 .accordion-toggle, 
@@ -233,7 +241,7 @@
   background: var(--accent-gold-subtle);
   border-color: var(--accent-gold);
   color: var(--accent-gold);
-  transform: translateY(-2px);
+  transform: translateY(0);
 }
 
 .nav-arrow {
@@ -261,9 +269,18 @@
 /* Hidden state for Left Panel */
 #left-panel.collapsed {
   margin-left: -400px; /* Slides off-screen */
+  
   opacity: 0;
 }
 
 #toggle-btn {
-  height:100%;
+  width: 2em;
+  min-width: 0;
+  padding: 1px;
+  height: 2em;
+  border-radius: 50%;
+  text-align: center;
+  margin-top:50vh;
+  display:block;
+  margin-left: -1em;
 }

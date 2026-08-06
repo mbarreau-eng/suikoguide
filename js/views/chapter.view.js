@@ -26,7 +26,7 @@ function renderChapterView(container, chapterId) {
   const nextChapter = (currentIndex >= 0 && currentIndex < chapters.length - 1) ? chapters[currentIndex + 1] : null;
 
   header.innerHTML = `
-    <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.05em; font-weight: bold; text-align: right;">Chapter ${chapter.id}</div>
+    <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.05em; font-weight: bold; text-align: left;">Chapter ${chapter.id}</div>
     <h2 class="chapter-title">${chapter.title}</h2>
     ${chapterBadgesHTML ? `<div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--border-color);">${chapterBadgesHTML}</div>` : ''}
     <!--${chapterRecruitsHTML}-->
@@ -133,7 +133,7 @@ function renderChapterView(container, chapterId) {
       if (p.party && Array.isArray(p.party) && p.party.length > 0) {
         const partyChips = p.party.map(m => renderPartyChip(m)).join('');
         placePartyHTML = `
-          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border-color);">
+          <div style="margin:14px auto; padding-top: 12px; width:60%;">
             <div class="party-header" style="font-size: 0.8rem; margin-bottom: 8px;">⚔️ Active / Recommended Party</div>
             <div class="party-grid">${partyChips}</div>
           </div>
@@ -163,7 +163,7 @@ function renderChapterView(container, chapterId) {
     ${prevChapter ? `
       <button class="chapter-nav-btn prev-btn" data-chapter-id="${prevChapter.id}">
         <span class="nav-arrow">←</span>
-        <div class="nav-btn-text">
+        <div class="nav-btn-text" style="text-align: left;">
           <small>Previous</small>
           <span>${getChapterLabel(prevChapter)}</span>
         </div>
