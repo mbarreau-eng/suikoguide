@@ -86,17 +86,33 @@ const getRecruitInfo = (unlockedBy) => {
   };
 };
 
+
 function enhanceParagraphText(text) {
   const recruits = guideData?.recruits || [];
   if (!recruits.length || !text) return text;
 
+  // 1. Sort by length descending to match longer names first (e.g. "Rock V" before "Rock")
   const sortedRecruits = [...recruits].sort((a, b) => b.name.length - a.name.length);
+  
+  // 2. Map for O(1) case-sensitive lookups
+  const recruitMap = new Map(sortedRecruits.map(r => [r.name, r]));
+
+  // 3. Escape regex characters in names
   const escapeRegExp = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const namesPattern = sortedRecruits.map(r => escapeRegExp(r.name)).join('|');
-  const regex = new RegExp(`\\b(${namesPattern})\\b`, 'gi');
 
-  return text.replace(regex, (matchedName) => {
-    const recruit = sortedRecruits.find(r => r.name.toLowerCase() === matchedName.toLowerCase());
+  // 4. Combined Regex:
+  //    Group 1: Matches [_..._] blocks (ignored)
+  //    Group 2: Matches exact recruit names with word boundaries (processed)
+  //    Flags: Removed 'i' for case-sensitivity
+  const regex = new RegExp(`(\\[_[\\s\\S]*?_\\])|\\b(${namesPattern})\\b`, 'g');
+
+  return text.replace(regex, (fullMatch, bracketedContent, matchedName) => {
+    // If matched inside [_ ... _], leave it untouched
+    if (bracketedContent) return bracketedContent;
+
+    // Direct case-sensitive lookup
+    const recruit = recruitMap.get(matchedName);
     if (!recruit) return matchedName;
 
     return `
