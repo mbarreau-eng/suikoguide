@@ -1,14 +1,14 @@
 /* Boss Cards & Badges */
 .badge.badge-boss {
   background: rgba(220, 38, 38, 0.25);
-  color: #fca5a5;
+  color: #f71111;
   border: 1px solid #ef4444;
   font-weight: 700;
   box-shadow: 0 0 6px rgba(239, 68, 68, 0.3);
 }
 
 .boss-card {
-  background: rgba(20, 20, 28, 0.85);
+  background: var(--bg-card);
   border: 1px solid #c0392b;
   border-left: 5px solid #e74c3c;
   border-radius: 8px;
@@ -53,7 +53,7 @@
 .boss-title {
   font-size: 1.05rem;
   font-weight: 800;
-  color: #fca5a5;
+  color: #f71111;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
@@ -96,8 +96,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /*
   background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  */
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 10px;
 }
@@ -140,7 +142,7 @@
 
 .stat-value {
   font-size: 0.88rem;
-  color: #ffffff;
+  color: var(--text-main);
   font-weight: bold;
 }
 
@@ -364,6 +366,6 @@
 
 #enemy-tooltip .boss-card {
   margin: 0;
-  background: rgba(15, 15, 22, 0.96);
+  background: var(--bg-card);
   backdrop-filter: blur(8px);
 }

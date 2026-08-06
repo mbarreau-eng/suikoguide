@@ -14,6 +14,7 @@
   color: var(--accent-gold);
   margin-bottom: 8px;
   font-family: 'Press Start 2P', serif;
+  text-shadow: 7px 5px var(--accent-gold-subtle);
 }
 
 /* Paragraph Blocks & Inline Items */
@@ -23,6 +24,7 @@
   font-size: 1rem;
   
 }
+
 
 .paragraph-block::after {
   content: "";
@@ -167,6 +169,7 @@ mark.item-tag {
   font-weight: bold;
   color: var(--text-muted);
   margin-right: 4px;
+  width: 6em;
 }
 
 .badge.badge-trackable {

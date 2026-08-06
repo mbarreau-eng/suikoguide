@@ -194,4 +194,5 @@ function renderChapterView(container, chapterId) {
       }
     });
   }); 
+  document.getElementById("main-content").scrollTo({ top: 0, behavior: 'smooth' });
 }

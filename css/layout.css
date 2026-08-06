@@ -128,7 +128,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 100%;
+  width: 95%;
+  margin:auto;
 }
 
 .accordion-toggle, 
@@ -255,33 +256,12 @@
   font-weight: 600;
 }
 
-/* Left Panel Layout & Transition */
-.suiko-side-panel {
-
-  box-sizing: border-box;
-  z-index: 1000;
-  margin: 0;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Hidden state for Left Panel */
+#left-panel.collapsed {
+  margin-left: -400px; /* Slides off-screen */
+  opacity: 0;
 }
 
-/* Off-screen state */
-.suiko-side-panel.is-closed {
-  transform: translateX(-100%);
-}
-
-/* Toggle Trigger Button Position */
-.suiko-toggle-trigger {
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 1001;
-}
-
-#main-content.sidebar-closed  {
-  transform: translateX(-100%);
-}
-
-/* Expand main content to full left edge */
-#main-content.sidebar-closed  {
-  margin-left: 0;
+#toggle-btn {
+  height:100%;
 }

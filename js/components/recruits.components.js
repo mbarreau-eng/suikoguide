@@ -58,7 +58,7 @@ function renderRecruitsSection(dataObj) {
   const cardsHTML = dataObj.recruits.map(ref => renderRecruitCard(ref)).join('');
 
   return `
-    <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border-color);">
+    <div style="margin-top: 0; padding-top: 0; border-top: 1px dashed var(--border-color);">
       <div style="font-size: 0.8rem; font-weight: bold; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">⭐ Available Recruit(s)</div>
       <div class="recruits-grid">${cardsHTML}</div>
     </div>
