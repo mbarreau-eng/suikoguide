@@ -150,7 +150,7 @@ guideData.chapters.push({
     {
       type: "plain",
       picture: "26/26-11.png",
-      text: "Head to the Inn. If your castle is at the highest level (meaning that you've seen the scene with a flag on your castle), there should be a man in a black cloak in the upper left part of the room; if there isn't, head back out onto the World Map then come back and check again. If you've been following the guide from the start, you should have seen it already, so just keep on exiting and entering until he shows up. Once he's here, talk to him; this is Clive. Just talk to him and will join your party! Now, the next stop is Kalekka."
+      text: "Head to the Inn. If your castle is at the highest level (meaning that you've seen the scene with a flag on your castle), there should be a man in a black cloak in the upper left part of the room; if there isn't, head back out onto the World Map then come back and check again. If you've been following the guide from the start, you should have seen it already, so just keep on exiting and entering until he shows up. Once he's here, talk to him; this is Clive. Just talk to him and will join your party! Now, the next stop is Kalekka.",
     },
     {
       type: "place",
@@ -167,12 +167,12 @@ guideData.chapters.push({
     {
       type: "plain",
       picture: "26/26-12.png",
-      text: " Go into the first house to the north if you  are coming in from the south; talk to Leon  inside. He will tell you to tell Mathiu that  he's impressed on how big the Liberation Army  has become."
+      text: " Go into the first house to the north if you  are coming in from the south; talk to Leon  inside. He will tell you to tell Mathiu that  he's impressed on how big the Liberation Army  has become.",
     },
     {
       type: "plain",
       picture: "26/26-13.png",
-      text: "Leave Kalekka and head back to Headquarters. Talk to Mathiu on the fourth floor and he will give you a letter to give to Leon. Head back to Kalekka and give Leon the letter; after you give it to him, Mathiu himself will come in and say that he'll do anything to win this war, even if it means asking for his help. Even though Mathiu doesn't trust him, Leon decides that he will help the Liberation Army and fight with Mathiu one last time. Leon joins! Leave Kalekka, then head over to Qlon."
+      text: "Leave Kalekka and head back to Headquarters. Talk to Mathiu on the fourth floor and he will give you a letter to give to Leon. Head back to Kalekka and give Leon the letter; after you give it to him, Mathiu himself will come in and say that he'll do anything to win this war, even if it means asking for his help. Even though Mathiu doesn't trust him, Leon decides that he will help the Liberation Army and fight with Mathiu one last time. Leon joins! Leave Kalekka, then head over to Qlon.",
     },
     {
       type: "place",
@@ -188,11 +188,11 @@ guideData.chapters.push({
     },
     {
       type: "plain",
-      text: " Head north past the Temple and into the caves  once again. Go north to the next screen, then  down the stairs to the third screen, then  east and south to the fourth screen. Head  east and then south at the fork on this  screen, then follow the path up a set of stairs then down another set on the next screen. Head south through this little room, and you'll be in the big room where you can find Crowley."
+      text: " Head north past the Temple and into the caves  once again. Go north to the next screen, then  down the stairs to the third screen, then  east and south to the fourth screen. Head  east and then south at the fork on this  screen, then follow the path up a set of stairs then down another set on the next screen. Head south through this little room, and you'll be in the big room where you can find Crowley.",
     },
     {
       type: "plain",
-      text: "Head south from the entrance of the big room and search the bottom wall for the entrance of the maze, then follow the diagram below to get to Crowley. Talk to him, and since your castle is now large enough, he will decide to join your party!"
+      text: "Head south from the entrance of the big room and search the bottom wall for the entrance of the maze, then follow the diagram below to get to Crowley. Talk to him, and since your castle is now large enough, he will decide to join your party!",
     },
     {
       type: "note",
@@ -201,7 +201,7 @@ guideData.chapters.push({
     },
     {
       type: "plain",
-      text: "All right, we have one more recruit to get before continuing on. Head out of Qlon, then head over to Neclord's Castle."
+      text: "All right, we have one more recruit to get before continuing on. Head out of Qlon, then head over to Neclord's Castle.",
     },
     {
       type: "place",
@@ -218,15 +218,15 @@ guideData.chapters.push({
     {
       type: "plain",
       picture: "26/26-15.png",
-      text: "I shouldn't really have to give you directions, but if you do get lost, check earlier in the guide for directions. Head all the way to the TOP of the castle where you fought Neclord. There is a strange Black Knight here who resembles Yuber; he is Pesmerga, and he is actually pursuing Yuber. He will join your party since you might run into Yuber again!"
+      text: "I shouldn't really have to give you directions, but if you do get lost, check earlier in the guide for directions. Head all the way to the TOP of the castle where you fought Neclord. There is a strange Black Knight here who resembles Yuber; he is Pesmerga, and he is actually pursuing Yuber. He will join your party since you might run into Yuber again!",
     },
     {
       type: "plain",
-      text: "Now march all the way back down, then go back to Headquarters. I switched out my three old members for new ones (Clive, Pesmerga, and Liukan) then upgraded their equipment. You REALLY should bring Liukan with you, since it will save you a trip back and forth to put him in your party in a little while."
+      text: "Now march all the way back down, then go back to Headquarters. I switched out my three old members for new ones (Clive, Pesmerga, and Liukan) then upgraded their equipment. You REALLY should bring Liukan with you, since it will save you a trip back and forth to put him in your party in a little while.",
     },
     {
       type: "plain",
-      text: "I also put the Spark Rune on Clive since he has a good speed. The Spark Rune makes all of the other members of your party that are slower than the holder of the rune as fast as the holder, and I also put a Ninja Suit instead of the Dragon Armor on him to boost his speed even more. It's very helpful for the slow guys like Pesmerga and Humphrey! I also put Killer Runes on Pesmerga and Humphrey, and a Water Rune on Liukan so he can heal. If you need to prepare for anything else, go ahead, then warp to or travel west-northwest of Antei to the Dragon's Den."
-    }
+      text: "I also put the Spark Rune on Clive since he has a good speed. The Spark Rune makes all of the other members of your party that are slower than the holder of the rune as fast as the holder, and I also put a Ninja Suit instead of the Dragon Armor on him to boost his speed even more. It's very helpful for the slow guys like Pesmerga and Humphrey! I also put Killer Runes on Pesmerga and Humphrey, and a Water Rune on Liukan so he can heal. If you need to prepare for anything else, go ahead, then warp to or travel west-northwest of Antei to the Dragon's Den.",
+    },
   ],
 });
