@@ -125,18 +125,50 @@ guideData.major = [
     countThem: 14000,
     intro: [
       {
-        "Teo": "You're wasting time. Do not waste any more lives." ,
-        "Tai Ho": "Ha! We've got a secret weapon!"
+        Teo: "You're wasting time. Do not waste any more lives.",
+        "Tai Ho": "Ha! We've got a secret weapon!",
       },
     ],
     outro: [
       {
         Mathiu: "Congratulations! We won!",
-        Teo: "Incredible... I do not believe this..." 
+        Teo: "Incredible... I do not believe this...",
       },
     ],
     strategy: [
       "This is THE EASIEST battle of the game; have the Strategists boost the Charge attack power, then attack with your strongest Charge groups; keep doing this until the battle is over!",
     ],
-  }
+  },
+  {
+    id: 7,
+    title: "Battle at the Northern Checkpoint",
+    picture: "northencheckpoint.gif",
+    countUs: 15365,
+    countThem: 3700,
+    intro: [
+      
+        {Griffith: "The Liberation Army has no mercy. No time for breakfast?"},
+        {Mathiu: "Oh,excuse me. But I must say it's pretty late for breakfast."},
+        {Griffith:
+          "It's not your business. In any case we're badly mismatched. We surrender."},
+        {Sanchez: "If we can avoid bloodshed..."},
+        {Griffith:
+          "Of course, but some soldiers may prefer not to surrender. So give me some time."},
+        {Mathiu:
+          "This is a ploy to stall us. We'd better attack at once. Give out the signal!"},
+        {Griffith:
+          "Damn, we couldn't fool them. Troops, do the best you can, but don't waste your lives."}
+      
+    ],
+    outro: [
+      {
+        Mathiu: "Congratulations! We won!",
+        Griffith:
+          "I thought that if I joined the Imperial Army, Iwas set for life. I was wrong.",
+      },
+    ],
+    strategy: [
+      "They'll attempt to stall us at first, but Mathiuwon't fall for it.<br />From now on, these battles are almost IMPOSSIBLE to lose! Just use these commands for the rest of the Major Battles in the game to win with flying colors:<br /><ul /><li>Turn 1: Use the Dragons Knights under Others, and hope they don't use a  Bow attack. Even if they do, you don't lose any troops.</li><li>Turn 2: Use Kage to spy, then counter (use Strategists if necessary).</li><li>Turn 3: Use Kasumi to spy, then counter.</li><li>Turn 4: Use Fuma to spy, then counter.</li><li>Turn 5: Use the Merchants command to try to get the some of them to join.</li><li>Turn 6: Use Krin to spy, then counter.</li><li>Turn 7: Use Ledon to spy, then counter.</li><li>Turn 8: Use Giovanni to spy, then counter.</li></ul><br />Griffith's Charge is a normal Charge attack, so counter with Magic. Most of the time, you will never even have to worry about getting past turn 4, since you'll have beaten them already.",
+    ],
+  },
 ];
