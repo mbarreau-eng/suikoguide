@@ -8,7 +8,7 @@ function renderRangeBadge(range) {
   return `<span class="range-badge range-${r.toLowerCase()}">${r}</span>`;
 }
 
-function renderRecruitCard(ref) {
+function renderRecruitCard(ref, displayEnd = false) {
   const recruit = resolveRecruit(ref);
 
   if (!recruit) {
@@ -47,7 +47,7 @@ function renderRecruitCard(ref) {
         </div>
         <span class="recruit-status-badge">${recruited ? '✔ Recruited' : '◯ Not Recruited'}</span>
       </div>
-      
+      <div class="recruit-condition" style="border-top:1px dashed var(--border-color);margin-top:3px;">${recruit.end}</div>
     </div>
   `;
 }

@@ -21,7 +21,7 @@ const trackables = document.getElementById('trackables');
       <p style="color: var(--text-muted); margin-top: 6px;">Master list of available character recruits. Click any hero card to toggle recruited status.</p>
     </div>
     <div class="recruits-grid">
-      ${guideData.recruits.map(r => renderRecruitCard(r)).join('')}
+      ${guideData.recruits.map(r => renderRecruitCard(r, true)).join('')}
     </div>
   `;
 }
