@@ -29,7 +29,7 @@ function renderRecruitCard(ref, displayEnd = false) {
   const imgSrcO = getImagePath(recruit.name, 'original');
   const imgSrcR = getImagePath(recruit.name, 'remaster');
   const idPrefix = (recruit.id !== null && recruit.id !== undefined) ? `#${recruit.id} ` : '';
-
+  const endSection = `<div class="recruit-condition" style="border-top:1px dashed var(--border-color);margin-top:3px;">${recruit.end}</div>`;
   return `
     <div class="recruit-card ${recruited ? 'recruited' : ''} ${recruit.range === 'NP' ? 'recruit-support' : ''}" 
          data-track-cat="recruits" 
@@ -47,7 +47,7 @@ function renderRecruitCard(ref, displayEnd = false) {
         </div>
         <span class="recruit-status-badge">${recruited ? '✔ Recruited' : '◯ Not Recruited'}</span>
       </div>
-      <div class="recruit-condition" style="border-top:1px dashed var(--border-color);margin-top:3px;">${recruit.end}</div>
+      ${displayEnd === true ? endSection : ``}
     </div>
   `;
 }
@@ -57,7 +57,7 @@ function renderRecruitsSection(dataObj) {
     return '';
   }
 
-  const cardsHTML = dataObj.recruits.map(ref => renderRecruitCard(ref)).join('');
+  const cardsHTML = dataObj.recruits.map(ref => renderRecruitCard(ref, false)).join('');
 
   return `
     <div  class="chapter-collectibles-card">
