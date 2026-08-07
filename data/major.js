@@ -146,19 +146,27 @@ guideData.major = [
     countUs: 15365,
     countThem: 3700,
     intro: [
-      
-        {Griffith: "The Liberation Army has no mercy. No time for breakfast?"},
-        {Mathiu: "Oh,excuse me. But I must say it's pretty late for breakfast."},
-        {Griffith:
-          "It's not your business. In any case we're badly mismatched. We surrender."},
-        {Sanchez: "If we can avoid bloodshed..."},
-        {Griffith:
-          "Of course, but some soldiers may prefer not to surrender. So give me some time."},
-        {Mathiu:
-          "This is a ploy to stall us. We'd better attack at once. Give out the signal!"},
-        {Griffith:
-          "Damn, we couldn't fool them. Troops, do the best you can, but don't waste your lives."}
-      
+      { Griffith: "The Liberation Army has no mercy. No time for breakfast?" },
+      {
+        Mathiu: "Oh,excuse me. But I must say it's pretty late for breakfast.",
+      },
+      {
+        Griffith:
+          "It's not your business. In any case we're badly mismatched. We surrender.",
+      },
+      { Sanchez: "If we can avoid bloodshed..." },
+      {
+        Griffith:
+          "Of course, but some soldiers may prefer not to surrender. So give me some time.",
+      },
+      {
+        Mathiu:
+          "This is a ploy to stall us. We'd better attack at once. Give out the signal!",
+      },
+      {
+        Griffith:
+          "Damn, we couldn't fool them. Troops, do the best you can, but don't waste your lives.",
+      },
     ],
     outro: [
       {
@@ -168,7 +176,35 @@ guideData.major = [
       },
     ],
     strategy: [
-      "They'll attempt to stall us at first, but Mathiuwon't fall for it.<br />From now on, these battles are almost IMPOSSIBLE to lose! Just use these commands for the rest of the Major Battles in the game to win with flying colors:<br /><ul /><li>Turn 1: Use the Dragons Knights under Others, and hope they don't use a  Bow attack. Even if they do, you don't lose any troops.</li><li>Turn 2: Use Kage to spy, then counter (use Strategists if necessary).</li><li>Turn 3: Use Kasumi to spy, then counter.</li><li>Turn 4: Use Fuma to spy, then counter.</li><li>Turn 5: Use the Merchants command to try to get the some of them to join.</li><li>Turn 6: Use Krin to spy, then counter.</li><li>Turn 7: Use Ledon to spy, then counter.</li><li>Turn 8: Use Giovanni to spy, then counter.</li></ul><br />Griffith's Charge is a normal Charge attack, so counter with Magic. Most of the time, you will never even have to worry about getting past turn 4, since you'll have beaten them already.",
+      "They'll attempt to stall us at first, but Mathiu won't fall for it.<br />From now on, these battles are almost IMPOSSIBLE to lose! Just use these commands for the rest of the Major Battles in the game to win with flying colors:<br /><ul /><li>Turn 1: Use the Dragons Knights under Others, and hope they don't use a  Bow attack. Even if they do, you don't lose any troops.</li><li>Turn 2: Use Kage to spy, then counter (use Strategists if necessary).</li><li>Turn 3: Use Kasumi to spy, then counter.</li><li>Turn 4: Use Fuma to spy, then counter.</li><li>Turn 5: Use the Merchants command to try to get the some of them to join.</li><li>Turn 6: Use Krin to spy, then counter.</li><li>Turn 7: Use Ledon to spy, then counter.</li><li>Turn 8: Use Giovanni to spy, then counter.</li></ul><br />Griffith's Charge is a normal Charge attack, so counter with Magic. Most of the time, you will never even have to worry about getting past turn 4, since you'll have beaten them already.",
+    ],
+  },
+  {
+    id: 8,
+    title: "Battle at Floating Fortress Shasarazade",
+    picture: "shazarazade.gif",
+    countUs: 18380,
+    countThem: 17000,
+    intro: [
+      {
+        Sonya:
+          "I swear by my name of Sonya Shulen that I will defend the Floating Fortress!",
+      },
+      { "Tai Ho": "Hey, you're pretty cute." },
+      {
+        Sonya:
+          "H-how dare you, you impertinent scoundrel! I'll lop off your head!",
+      },
+    ],
+    outro: [
+      {
+        Mathiu: "Congratulations! We won!",
+        Tengaar: "Yeah, we did it!",
+        Sonya: "I'm so sorry, Master Teo. ",
+      },
+    ],
+    strategy: [
+      "We now have the advantage in numbers as well, so as usual, just follow the pattern for victory and we  will move on:<br /><ul /><li>Turn 1: Use the Dragons Knights under Others, and hope they don't use a  Bow attack. Even if they do, you don't lose any troops.</li><li>Turn 2: Use Kage to spy, then counter (use Strategists if necessary).</li><li>Turn 3: Use Kasumi to spy, then counter.</li><li>Turn 4: Use Fuma to spy, then counter.</li><li>Turn 5: Use the Merchants command to try to get the some of them to join.</li><li>Turn 6: Use Krin to spy, then counter.</li><li>Turn 7: Use Ledon to spy, then counter.</li><li>Turn 8: Use Giovanni to spy, then counter.</li></ul><br />Sonya's Charge is a normal Charge attack, so counter with Magic. Once you win, you'll land at Shasarazade.",
     ],
   },
 ];

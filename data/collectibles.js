@@ -304,5 +304,11 @@ guideData.collectibles = [
    "category":"Paint",
    "desc":"Item used to complete Ivanov's mural in the Toran Lake Castle",
    "get":"Shop ・Teien"
+  },
+  {
+   "id":"Copper Axe",
+   "category":"Key Item",
+   "desc":"The axe of your best friend who perished to deadly sponges.",
+   "get":"Recovered by Viktor from Soniere Prison immediately following Gremio's death."
   }
 ]
