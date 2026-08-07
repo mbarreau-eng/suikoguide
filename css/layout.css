@@ -284,3 +284,18 @@
   display:block;
   margin-left: -1em;
 }
+
+ .paragraph-block table td {
+  border: 1px solid var(--mb-border-accent);
+  border-collapse: collapse;
+  text-align: center;
+  padding: 4px;
+}
+.paragraph-block table {
+  width:65%;
+  margin: 4px auto;
+}
+
+.paragraph-block ul, .mb-strategy-paragraphs ul {
+  margin-left: 40px;
+}

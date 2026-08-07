@@ -207,4 +207,24 @@ guideData.major = [
       "We now have the advantage in numbers as well, so as usual, just follow the pattern for victory and we  will move on:<br /><ul /><li>Turn 1: Use the Dragons Knights under Others, and hope they don't use a  Bow attack. Even if they do, you don't lose any troops.</li><li>Turn 2: Use Kage to spy, then counter (use Strategists if necessary).</li><li>Turn 3: Use Kasumi to spy, then counter.</li><li>Turn 4: Use Fuma to spy, then counter.</li><li>Turn 5: Use the Merchants command to try to get the some of them to join.</li><li>Turn 6: Use Krin to spy, then counter.</li><li>Turn 7: Use Ledon to spy, then counter.</li><li>Turn 8: Use Giovanni to spy, then counter.</li></ul><br />Sonya's Charge is a normal Charge attack, so counter with Magic. Once you win, you'll land at Shasarazade.",
     ],
   },
+  {
+    id: 9,
+    title: "The Last Battle",
+    picture: "gregminister.gif",
+    countUs: 18710,
+    countThem: 20000,
+    intro: [{
+      Yuber: "You scum! How dare you defy me! I'll kill you all!",
+Kuromimi: "No way. Woof. "
+  }],
+    outro: [
+      {
+        Mathiu: "Congratulations! We won!",
+Yuber: "Damn! This is the end."
+      },
+    ],
+    strategy: [
+      "We don't have the advantage in numbers here, but we're the Liberation Army! We don't need the numbers! Here we go! As usual, command as follows:<br /><ul /><li>Turn 1: Use the Dragons Knights under Others, and hope they don't use a  Bow attack. Even if they do, you don't lose any troops.</li><li>Turn 2: Use Kage to spy, then counter (use Strategists if necessary).</li><li>Turn 3: Use Kasumi to spy, then counter.</li><li>Turn 4: Use Fuma to spy, then counter.</li><li>Turn 5: Use the Merchants command to try to get the some of them to join.</li><li>Turn 6: Use Krin to spy, then counter.</li><li>Turn 7: Use Ledon to spy, then counter.</li><li>Turn 8: Use Giovanni to spy, then counter.</li></ul><br />Yuber's Charge is a normal Charge attack, so counter with Magic.",
+    ],
+  }
 ];
