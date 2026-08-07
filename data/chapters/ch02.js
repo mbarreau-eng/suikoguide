@@ -2,7 +2,7 @@ guideData.chapters.push(
     {
       "id": 2,
       "title": "Magician's Island, the future in the stars",
-      "picture":"2/2.jpg",
+      "picture":"2.jpg",
       "party": [
         {
           "level": "13",

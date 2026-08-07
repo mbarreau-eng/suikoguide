@@ -1,7 +1,7 @@
 guideData.chapters.push({
   id: 1,
   title: "Gregminster, the Golden Capital",
-  picture: "1/1.png",
+  picture: "1.png",
   party: [
     {
       level: "01",

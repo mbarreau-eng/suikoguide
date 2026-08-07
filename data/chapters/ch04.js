@@ -1,7 +1,7 @@
 guideData.chapters.push({
       "id": 4,
       "title": "Gregminster, the rain's dark omen",
-      "picture":"4/4.jpg",
+      "picture":"4/4.png",
       "recruits": [
         {
           "id": 4

@@ -299,3 +299,17 @@
 .paragraph-block ul, .mb-strategy-paragraphs ul {
   margin-left: 40px;
 }
+
+.p-img {
+  margin: 0 auto;
+  max-width: 70%;
+  display: block;
+}
+
+.header-img {
+  display: block;
+  margin:4px auto;
+  max-height: 150px;
+  object-fit: cover;
+  width:95%
+}

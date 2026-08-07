@@ -2,7 +2,7 @@ guideData.chapters.push(
 {
       "id": 3,
       "title": "Rockland, capturing tax thieves",
-      "picture":"3/3.jpg",
+      "picture":"3.jpg",
       "party":[
         {
           "name":"Hero",

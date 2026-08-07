@@ -28,6 +28,8 @@ function renderChapterView(container, chapterId, toTop = false) {
   header.innerHTML = `
     <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.05em; font-weight: bold; text-align: left;">Chapter ${chapter.id}</div>
     <h2 class="chapter-title">${chapter.title}</h2>
+    <img src="./img/chapters/original/${bgImageName}" class="original header-img" />
+    <img src="./img/chapters/remaster/${bgImageName}" class="remaster header-img" />
     ${chapterBadgesHTML ? `<div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--border-color);">${chapterBadgesHTML}</div>` : ''}
     <!--${chapterRecruitsHTML}-->
   `;
@@ -156,7 +158,9 @@ function renderChapterView(container, chapterId, toTop = false) {
     else if (p.type === 'duel') {
       el.innerHTML = renderDuelCard(p.id);
     }
-
+     else if (p.type === 'picture') {
+      el.innerHTML = `<img src="img/chapters/original/${p.picture}" loading="lazy" onerror="this.parentNode.style.display='none'" class="original p-img" /><img src="img/chapters/remaster/${p.picture}" loading="lazy" onerror="this.parentNode.style.display='none'" class="remaster p-img" />`;
+    }
     container.appendChild(el);
   });
 

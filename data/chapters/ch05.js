@@ -2,7 +2,7 @@
 guideData.chapters.push({
       "id": 5,
       "title": "Lenankamp, meeting a new ally",
-      "picture":"5/5.jpg",
+      "picture":"5/5.png",
       "party": [
         {
           "level": "13",

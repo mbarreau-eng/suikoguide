@@ -54,7 +54,7 @@ function renderSidebar() {
       </div>
 
       <button class="nav-btn-main" data-view="enemies">
-        <span>👾 Enemies / Bestiary</span>
+        <span>👾 Bestiary</span>
       </button>
 
       <button class="nav-btn-main" data-view="recruits">

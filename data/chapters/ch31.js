@@ -164,8 +164,12 @@ guideData.chapters.push({
         },
         {
           type:"plain",
-          picture:"31/31-10.png",
+          
           text:"Give all of the Paints (Red, Blue, Pink, Black, Green, White, and Yellow) to Ivanov on the third floor to the lower right, and view the mural. Once it's complete, he will give you the [_BINOCULARS_]. To use them, you must have controller 2 hooked up to your system; use the buttons on that controller to change your view in battle.<br /><ul><li>Red Paint - Found in a chest at Scarleticia.</li><li>Blue Paint - Buy at the Item Shop in Rikon.</li><li>Pink Paint - Found in a chest at Moravia.</li><li>Black Paint - Found in a chest at Liukan's Hermitage.</li><li>Green Paint - Found in a chest at Neclord's Castle.</li><li>White Paint - Found in a chest in Lepant's mansion in Kouan.</li><li>Yellow Paint - Buy at the Item Shop in Teien.</li></ul>"
+        },
+        {
+            type:"picture",
+            picture:"31/31-10.png",
         },
         {
           type:"plain",
