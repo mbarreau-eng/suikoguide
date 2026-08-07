@@ -1,7 +1,7 @@
 guideData.chapters.push({
       "id": 8,
       "title": "Lenankamp, the end of one era; the beginning of another",
-      "picture":"8/8.jpg",
+      "picture":"8/8.png",
       "party":[
         {"name":"Hero","level":"14"},
         {"name":"Gremio","level":"11"},

@@ -1,7 +1,7 @@
 guideData.chapters.push({
       "id": 12,
       "title": "Headquarters, building a new army",
-      "picture":"12/12.png",
+      "picture":"12/12.jpg",
       "recruits":[{"id":10},{"id":11},{"id":12},{"id":13},{"id":14},{"id":15},{"id":16},{"id":17}],
       "paragraphs":[
         {
