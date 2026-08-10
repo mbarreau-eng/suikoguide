@@ -1,7 +1,9 @@
+gameId = sessionStorage.getItem('game');
+
 function renderBossCard(bossName) {
   const bossData = (guideData.enemies?.[0] && guideData.enemies[0][bossName]) || {};
   const name = bossName || 'Unknown Boss';
-  const imgPath = `./img/bosses/${bossData.picture}`;
+  const imgPath = `./${gameId}/img/bosses/${bossData.picture}`;
 
   const statsList = [
     { key: 'level', label: 'LEVEL', val: bossData.Level },
@@ -52,7 +54,7 @@ function renderBossCard(bossName) {
         <div class="affinity-chips">
           ${weaknesses.map(w => `
             <span class="affinity-chip affinity-${w.affinity.toLowerCase()}">
-               <img src="./img/assets/${w.element}.gif" alt="${w.element}" /> <strong>&nbsp;${w.affinity}</strong>
+               <img src="./${gameId}/img/assets/${w.element}.gif" alt="${w.element}" /> <strong>&nbsp;${w.affinity}</strong>
             </span>
           `).join('')}
         </div>
@@ -75,7 +77,7 @@ function renderBossCard(bossName) {
 function renderEnemyCard(name, enemyData) {
   const isBoss = String(enemyData.type || '').toLowerCase() === 'boss';
   const imgFolder = isBoss ? 'bosses' : 'enemies';
-  const imgPath =  `./img/${imgFolder}/${enemyData.picture}`;
+  const imgPath =  `./${gameId}/img/${imgFolder}/${enemyData.picture}`;
 
 
 
@@ -140,7 +142,7 @@ function renderEnemyCard(name, enemyData) {
           <div class="affinity-chips">
             ${weaknesses.map(w => `
               <span class="affinity-chip affinity-${w.affinity.toLowerCase()}">
-                <img src="./img/assets/${w.element}.gif" alt="${w.element}" />
+                <img src="./${gameId}/img/assets/${w.element}.gif" alt="${w.element}" />
                 <strong>&nbsp;${w.affinity}</strong>
               </span>
             `).join('')}

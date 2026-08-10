@@ -1,3 +1,5 @@
+gameId = sessionStorage.getItem('game');
+
 function renderUniteCard(unite, allRecruits) {
   return `
     <div class="unite-card">
@@ -22,13 +24,13 @@ function renderUniteCard(unite, allRecruits) {
             <div class="unite-char-container">
               <div class="unite-char-avatar">
                 <img 
-                  src="./img/stars/original/${recruit.name.replace(/\s/g, '')}.png" 
+                  src="./${gameId}/img/stars/original/${recruit.name.replace(/\s/g, '')}.png" 
                   alt="${recruit.name}" 
                   onerror="this.src='img/placeholder.png'" 
                   class="original"
                 />
                 <img 
-                  src="./img/stars/remaster/${recruit.name.replace(/\s/g, '')}.png" 
+                  src="./${gameId}/img/stars/remaster/${recruit.name.replace(/\s/g, '')}.png" 
                   alt="${recruit.name}" 
                   onerror="this.src='img/placeholder.png'" 
                   class="remaster"

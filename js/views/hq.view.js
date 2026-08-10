@@ -1,3 +1,5 @@
+gameId = sessionStorage.getItem('game');
+
 function renderHQView() {
 
   const trackables = document.getElementById('trackables');
@@ -26,7 +28,7 @@ function renderHQView() {
   const starsNeeded = Math.max(0, nextThreshold - recruitedCount);
   const progressPercent = Math.min(100, Math.round((recruitedCount / nextThreshold) * 100));
 
-  const bgPicture = hq.picture ? `./img/hq/${hq.picture}` : '';
+  const bgPicture = hq.picture ? `./${gameId}/img/hq/${hq.picture}` : '';
   const levels = Array.isArray(hq.levels) ? hq.levels : [];
   const facilities = Array.isArray(hq.facilities) ? hq.facilities : [];
 

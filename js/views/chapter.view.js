@@ -1,3 +1,5 @@
+gameId = sessionStorage.getItem('game');
+
 function renderChapterView(container, chapterId, toTop = false) {
   const chapter = guideData.chapters.find(c => c.id === chapterId);
   if (!chapter) return;
@@ -28,8 +30,8 @@ function renderChapterView(container, chapterId, toTop = false) {
   header.innerHTML = `
     <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 0.05em; font-weight: bold; text-align: left;">Chapter ${chapter.id}</div>
     <h2 class="chapter-title">${chapter.title}</h2>
-    <img src="./img/chapters/original/${bgImageName}" class="original header-img" />
-    <img src="./img/chapters/remaster/${bgImageName}" class="remaster header-img" />
+    <img src="./${gameId}/img/chapters/original/${bgImageName}" class="original header-img" />
+    <img src="./${gameId}/img/chapters/remaster/${bgImageName}" class="remaster header-img" />
     ${chapterBadgesHTML ? `<div style="margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--border-color);">${chapterBadgesHTML}</div>` : ''}
     <!--${chapterRecruitsHTML}-->
   `;
@@ -69,10 +71,10 @@ function renderChapterView(container, chapterId, toTop = false) {
       el.className = 'paragraph-block';
       const imageMarkup = p.picture ? `
         <figure class="inline-paragraph-img original">
-          <img src="img/chapters/original/${p.picture}"  alt="Walkthrough screenshot" loading="lazy" onerror="this.parentNode.style.display='none'"/>
+          <img src="./${gameId}/img/chapters/original/${p.picture}"  alt="Walkthrough screenshot" loading="lazy" onerror="this.parentNode.style.display='none'"/>
         </figure>
         <figure class="inline-paragraph-img remaster">
-          <img src="img/chapters/remaster/${p.picture}"  alt="Walkthrough screenshot" loading="lazy" onerror="this.parentNode.style.display='none'"/>
+          <img src="./${gameId}/img/chapters/remaster/${p.picture}"  alt="Walkthrough screenshot" loading="lazy" onerror="this.parentNode.style.display='none'"/>
         </figure>
       ` : '';
       const formattedText = enhanceParagraphText(p.text.replace(/\[_(.*?)_\]/g, '<mark class="item-tag">$1</mark>'));
@@ -159,7 +161,7 @@ function renderChapterView(container, chapterId, toTop = false) {
       el.innerHTML = renderDuelCard(p.id);
     }
      else if (p.type === 'picture') {
-      el.innerHTML = `<img src="img/chapters/original/${p.picture}" loading="lazy" onerror="this.parentNode.style.display='none'" class="original p-img" /><img src="img/chapters/remaster/${p.picture}" loading="lazy" onerror="this.parentNode.style.display='none'" class="remaster p-img" />`;
+      el.innerHTML = `<img src="./${gameId}/img/chapters/original/${p.picture}" loading="lazy" onerror="this.parentNode.style.display='none'" class="original p-img" /><img src="./${gameId}/img/chapters/remaster/${p.picture}" loading="lazy" onerror="this.parentNode.style.display='none'" class="remaster p-img" />`;
     }
     container.appendChild(el);
   });

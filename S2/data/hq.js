@@ -1,0 +1,3 @@
+guideData.hq = {
+
+};

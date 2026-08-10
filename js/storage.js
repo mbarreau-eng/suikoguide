@@ -1,8 +1,12 @@
+//retrieve displayed game
+gameId = sessionStorage.getItem('game') || 'S1';
+
 // Local Storage Keys
-const STORAGE_PROGRESS_KEY = 'suiko_progress_data';
-const STORAGE_THEME_KEY = 'suiko_theme';
-const STORAGE_STYLE_KEY = 'suiko_style';
-const STORAGE_CHAPTER_KEY = 'suiko_chapter';
+const STORAGE_PROGRESS_KEY = 'suiko' + gameId + '_progress_data';
+const STORAGE_THEME_KEY = 'suiko' + gameId + '_theme';
+const STORAGE_STYLE_KEY = 'suiko' + gameId + '_style';
+const STORAGE_CHAPTER_KEY = 'suiko' + gameId + '_chapter';
+
 let currentChapterId = loadSavedChapter() || 1;
 let userProgress = loadProgress();
 let activeTab = 'walkthrough';

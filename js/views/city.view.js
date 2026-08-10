@@ -1,3 +1,5 @@
+gameId = sessionStorage.getItem('game');
+
 function renderCity(cityKey, cityData) {
   if (!cityData) return `<div class="empty-state"><h3>City data not found</h3></div>`;
 
@@ -40,7 +42,7 @@ function renderCity(cityKey, cityData) {
       
       <div>
 
-      <!--${cityData.picture ? `<img src="./img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">` : ''}-->
+      <!--${cityData.picture ? `<img src="./${gameId}/img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">` : ''}-->
       </div>
 
       ${participants.length > 0 ? `

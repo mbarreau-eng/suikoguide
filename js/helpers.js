@@ -1,3 +1,5 @@
+gameId = sessionStorage.getItem('game');
+
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
@@ -14,7 +16,7 @@ function sanitizeId(str) {
 function getImagePath(name, style) {
   if (!name) return '';
   const fileName = name.toLowerCase().replace(/\s+/g, '');
-  return `./img/stars/${style}/${fileName}.png`;
+  return `./${gameId}/img/stars/${style}/${fileName}.png`;
 }
 
 function getChapterLabel(chapter) {
@@ -81,8 +83,8 @@ const getRecruitInfo = (unlockedBy) => {
   return {
     rawKey: rawKey,
     name: recruitName,
-    pictureO: `./img/stars/original/${picFileName.toLowerCase()}`,
-    pictureR: `./img/stars/remaster/${picFileName.toLowerCase()}`,
+    pictureO: `./${gameId}/img/stars/original/${picFileName.toLowerCase()}`,
+    pictureR: `./${gameId}/img/stars/remaster/${picFileName.toLowerCase()}`,
     isStar: !!found
   };
 };
@@ -122,13 +124,13 @@ function enhanceParagraphText(text) {
         <span class="recruit-inline-tooltip">
           <span class="tooltip-header">
             <img 
-              src="./img/stars/original/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
+              src="./${gameId}/img/stars/original/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
               alt="${recruit.name}" 
               onerror="this.src='img/placeholder.png'" 
               class="original"
             />
             <img 
-              src="./img/stars/remaster/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
+              src="./${gameId}/img/stars/remaster/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
               alt="${recruit.name}" 
               onerror="this.src='img/placeholder.png'" 
               class="remaster"

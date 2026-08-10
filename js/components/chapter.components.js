@@ -1,3 +1,5 @@
+gameId = sessionStorage.getItem('game');
+
 function renderBadges(dataObj) {
   if (!dataObj) return '';
 
@@ -84,7 +86,7 @@ function renderMajorBattleCard(mbId) {
   const countThem = battle.countThem !== undefined ? battle.countThem.toLocaleString() : '???';
   const strategyItems = Array.isArray(battle.strategy) ? battle.strategy : [battle.strategy].filter(Boolean);
 
-  let img = battle.picture ? `./img/major/${battle.picture}` : '';
+  let img = battle.picture ? `./${gameId}/img/major/${battle.picture}` : '';
   let bgStyle = img ? `background-image: linear-gradient(rgba(15, 15, 22, 0.2), rgb(15, 15, 22)), url('${img}'); background-size: cover; background-position: center center;` : '';
 
   let introLines = [];
@@ -195,7 +197,7 @@ function renderDuelCard(duelId) {
   const normalQuotes = cleanQuotes(duel.normal);
   const defendQuotes = cleanQuotes(duel.defend);
 
-  let img = duel.picture ? `./img/duels/${duel.picture}` : '';
+  let img = duel.picture ? `./${gameId}/img/duels/${duel.picture}` : '';
   let bgStyle = img ? `background-image: linear-gradient(rgba(15, 15, 22, 0.2), rgb(15, 15, 22)), url('${img}'); background-size: cover; background-position: center center;` : '';
 
   return `
