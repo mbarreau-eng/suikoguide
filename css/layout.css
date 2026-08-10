@@ -282,7 +282,19 @@
   text-align: center;
   margin-top:50vh;
   display:block;
-  margin-left: -1em;
+  margin-left: -3em;
+}
+
+#home-btn {
+  width: 2em;
+  min-width: 0;
+  padding: 1px;
+  height: 2em;
+  border-radius: 50%;
+  text-align: center;
+  margin-top:1vh;
+  display:block;
+  margin-left: 0em;
 }
 
  .paragraph-block table td {

@@ -99,10 +99,14 @@ function setupEventListeners() {
     const leftPanel = document.getElementById("left-panel");
     const toggleBtn = document.getElementById("toggle-btn");
 
-    toggleBtn.addEventListener("click", () => {
+      toggleBtn.addEventListener("click", () => {
       leftPanel.classList.toggle("collapsed");
       toggleBtn.innerText = toggleBtn.innerText === "<" ? ">" : "<";
     });
 
+    const homeBtn = document.getElementById("home-btn");
+    homeBtn.addEventListener("click", () => {
+      window.location.href = 'index.html';
+    });
   
 }
