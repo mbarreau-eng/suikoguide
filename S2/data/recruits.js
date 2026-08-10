@@ -96,11 +96,11 @@ guideData.recruits = [
     range: "S",
     id: 13,
     condition:
-      " Talk to her at the Tavern in Muse after  meeting with Anabelle and Jess. She'll ask you to do several things for her. After each request, you'll have to leave Muse out to the World Map, then come back in to talk to her to be able to recruit her. Her requests:    1) She'll ask you for a refill of her wine.  Talk to Leona to get it filled.    2) She'll say something about a female  swordsman being so rare.    o-------------------------------------------o | [1] That's true.  | [2] But I've never seen one so beautiful. | [3] .............................  o-------------------------------------------o    Choose option 2 to make her happy.    3) She'll ask you if you o-------------o could give her some [1] No way. Antitoxin; choose option [2] Okay. 2 to give her one of o-------------o yours. If you're out,  you may have to go get some, leave Muse  and come back, then try again.    After doing these things for her, she'll ask you what you really want.    o-------------------------------------------o | [1] C'mon, join our group.  | [2] I....I...how about a date?  | [2] Nothing really.....  o-------------------------------------------o    Choosing 1 or 2 will allow Anita to join  your party!     If you didn't get her in Muse, she will  reappear at the Tavern at Banner Village. Either follow the same steps above there to recruit her, or bring Valeria with you and talk to her.  ",
+      " Talk to her at the Tavern in Muse after  meeting with Anabelle and Jess. She'll ask you to do several things for her. After each request, you'll have to leave Muse out to the World Map, then come back in to talk to her to be able to recruit her. Her requests:    1) She'll ask you for a refill of her wine.  Talk to Leona to get it filled.    2) She'll say something about a female  swordsman being so rare.[1] That's true.  | [2] But I've never seen one so beautiful. | [3]Choose option 2 to make her happy.    3) She'll ask you if you could give her some [1] No way. Antitoxin; choose option [2] Okay. 2 to give her one of  yours. If you're out,  you may have to go get some, leave Muse  and come back, then try again.    After doing these things for her, she'll ask you what you really want. [1] C'mon, join our group.  | [2] I....I...how about a date?  | [2] Nothing really.....   Choosing 1 or 2 will allow Anita to join  your party!     If you didn't get her in Muse, she will  reappear at the Tavern at Banner Village. Either follow the same steps above there to recruit her, or bring Valeria with you and talk to her.  ",
     end: "",
   },
   {
-    name: "Templton (NP",
+    name: "Templeton",
     id: 14,
     condition:
       " After receiving your mission to spy at the Highland Camp, go to the Mercenary Fortress and talk to him, then follow him to Toto and talk to him again to recruit. ",
@@ -231,7 +231,7 @@ guideData.recruits = [
     end: "",
   },
   {
-    name: "Richmond (NP",
+    name: "Richmond",
     id: 32,
     condition:
       " Play his coin game with him in Radat. After you lose, talk to a man in the bar who will give you a real coin to play Richmond with. Challenge him with the new coin to recruit. ",
@@ -513,24 +513,24 @@ guideData.recruits = [
     end: "",
   },
   {
-    name: "Lebrante (NP",
+    name: "Lebrante",
     id: 69,
     condition:
       " Bring a Celadon Urn with you and talk to him at his Appraiser Shop in the southern part of Radat to recruit. I recommend winning  Celadon Urns in the highest level of the  Rope Climbing game above Hai Yo's kitchen. ",
     end: "",
   },
   {
-    name: "Valeria*",
+    name: "Valeria",
     range: "S",
-    id: 70,
+    id: 701,
     condition:
       " Joins automatically through the storyline. *You have to choose one between Valeria and Kasumi; I strongly recommend Kasumi, as you will be able to recruit several characters at an earlier point. ",
     end: "",
   },
   {
-    name: "Kasumi* ",
+    name: "Kasumi",
     range: "S",
-    id: 70,
+    id: 702,
     condition:
       " Joins automatically through the storyline. *You have to choose one between Valeria and Kasumi; I strongly recommend Kasumi, as you will be able to recruit several characters at an earlier point. ",
     end: "",
@@ -606,7 +606,7 @@ guideData.recruits = [
     end: "",
   },
   {
-    name: "Sigfried",
+    name: "Siegfried",
     range: "M",
     id: 80,
     condition:
@@ -638,7 +638,7 @@ guideData.recruits = [
     end: "",
   },
   {
-    name: "Annallee (NP",
+    name: "Annallee",
     id: 84,
     condition:
       " See her scene at the Inn in South Window, then follow her to the grassy area beside the city hall and listen to her sing to recruit. ",
