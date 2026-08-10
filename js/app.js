@@ -22,7 +22,6 @@ const dataFiles = [
   './' + gameID + '/data/chapters/ch07.js',
   './' + gameID + '/data/chapters/ch08.js',
   './' + gameID + '/data/chapters/ch09.js',
-  /*
   './' + gameID + '/data/chapters/ch10.js',
   './' + gameID + '/data/chapters/ch11.js',
   './' + gameID + '/data/chapters/ch12.js',
@@ -46,7 +45,6 @@ const dataFiles = [
   './' + gameID + '/data/chapters/ch30.js',
   './' + gameID + '/data/chapters/ch31.js',
   './' + gameID + '/data/chapters/ch32.js',
-  */
 ];
 /*
 if(gameID === 'S2') {

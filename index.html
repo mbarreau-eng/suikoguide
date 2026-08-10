@@ -1,33 +1,39 @@
-<button id="S1" onclick="route('S1')">Suikoden 1</button>
-<button id="S2" onclick="route('S2')">Suikoden 2</button>
+<!DOCTYPE html>
+<html lang="en">
 
-<script>
-    /*
-    document.getElementsById('S1').addEventListener('click', () => {
-    //document.getElementById('saveAndNavigate').addEventListener('click', () => {
-      // 1. Save a simple string variable
-      sessionStorage.setItem('game', "S1");
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suikoden 1&2 Walkthrough & Guide</title>
+  <style>
+    .S1 {
+      background-image: url(S1home.png);
+      width:600px;
+      height:280px;
+    }
+        .S2 {
+      background-image: url(S2home.png);
+      width:700px;
+      height:300px;
+    }
+  </style>
+</head>
 
+<body>
 
-      // 3. Navigate to the next page
-      window.location.href = 'guide.html';
-    });
-    document.getElementsById('S2').addEventListener('click', () => {
-    //document.getElementById('saveAndNavigate').addEventListener('click', () => {
-      // 1. Save a simple string variable
-      sessionStorage.setItem('game', "S2");
+  <button id="S1" onclick="route('S1')" class="S1"></button>
+  <br />
+  <button id="S2" onclick="route('S2')" class="S2"></button>
 
-
-      // 3. Navigate to the next page
-      window.location.href = 'guide.html';
-    });
-    */
-
+  <script>
     function route(gameId) {
-         sessionStorage.setItem('game', gameId);
+      sessionStorage.setItem('game', gameId);
 
 
       // 3. Navigate to the next page
       window.location.href = 'guide.html';
     }
   </script>
+</body>
+
+</html>

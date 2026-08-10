@@ -22,7 +22,7 @@ function renderBadges(dataObj) {
         const label = isObj ? (x.name || x.title || JSON.stringify(x)) : x;
         const typeStr = isObj && typeof x.type === 'string' ? x.type.toLowerCase() : '';
         const isBoss = isObj && (typeStr === 'boss' || x.isBoss === true);
-        const checked = cat.trackable ? isChecked(cat.key, label) : false;
+        const checked = cat.trackable ? isChecked(cat.key, label+'-'+dataObj.id) : false;
 
         let badgeClass = 'badge';
         if (isBoss) badgeClass += ' badge-boss';
@@ -31,7 +31,7 @@ function renderBadges(dataObj) {
         if (cat.key === 'enemies') badgeClass += ' enemy-chip ';
 
         const icon = isBoss ? '💀 ' : (checked ? '✔ ' : '');
-        const trackAttrs = cat.trackable ? `data-track-cat="${cat.key}" data-track-key="${label}" title="Click to check off"` : '';
+        const trackAttrs = cat.trackable ? `data-track-cat="${cat.key}" data-track-key="${label}-${dataObj.id}" title="Click to check off"` : '';
 
         return `<span data-enemy-name="${cat.key === 'enemies' ? label : ''}" class="${badgeClass}" ${trackAttrs}>${icon}${label}</span>`;
       }).join('');
