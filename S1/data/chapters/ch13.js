@@ -16,7 +16,7 @@ guideData.chapters.push({
       "items":["Medicine","Speed Rune Piece","Fire Rune Piece","Medicine","Water Rune Piece","Antique"],
       "Equipement":["Shoulder Pads"],
       "runes":["Counter Crystal"],
-      "collectibles":["Kirinji","Dragon Incense"],
+      "collectibles":["Kirinji","Dragon Incense","White Paint"],
       
       "enemies":["Empire Soldier (PS1) / Imperial Soldier (Remaster) (sword #1)","Robot Soldier (spear)","Robot Soldier (sword)"],
       "paragraphs":[

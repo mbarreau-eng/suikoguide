@@ -7,8 +7,16 @@ guideData.chapters.push({
       "items":["Escape Talisman","Needle","Water Rune Piece","Fortune Rune Piece"],
       "equipement":["Gauntlet"],
       "enemies":["Holly Boy","Holly Spirit (PS1) / Holly Elf (Remaster)","Kobold (bow)","Kobold (sword)"],
-      "paragraphs":[
-        {
+  party: [
+    { level: 22, name: "Hero" },
+    { level: 23, name: "Kai" },
+    { level: 19, name: "Pahn" },
+    { level: 22, name: " Gremio" },
+     { level: 22, name: " Cleo" },
+      { level: 19, name: " Kirkis" }
+  ],
+  "paragraphs": [
+    {
           "type":"plain",
           "picture":"14/14-1.png",
           "text":"When you enter the Great Forest, a man will tell you that he's been seeing elves running around, then he'll spot Kirkis and run off to tell everyone. Head north and east, then enter the actual forest. As you go east, Kirkis will tell you that without him you can't go through this area since it's under a spell, which explains why the screen kept repeating if you tried to earlier."
