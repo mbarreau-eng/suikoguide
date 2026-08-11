@@ -72,7 +72,8 @@ function renderSidebar() {
       <button class="nav-btn-main" data-view="unites">
         <span>🤜🤛 Unites</span>
       </button>
-
+        
+      <!--
       <div class="accordion-group" id="group-cities">
         <button class="accordion-toggle" id="toggle-cities">
           <span>🛖 Cities</span>
@@ -87,6 +88,11 @@ function renderSidebar() {
           `).join('')}
         </div>
       </div>
+-->
+      <button class="nav-btn-main" data-view="map">
+        <span>🗺️ World Map</span>
+      </button>
+
     </nav>
   `;
 }
@@ -127,6 +133,9 @@ function renderCurrentChapter(toTop = true) {
     case 'unites':
       renderUnitesView();
       break;  
+    case 'map':
+      renderWorldMap();
+      break;    
     default:
       renderChapterView(main, 1);
       break;

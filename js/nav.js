@@ -36,6 +36,9 @@ function switchView(viewName) {
     case 'unites':
       renderUnitesView();
       break;  
+     case 'map':
+      renderWorldMap();
+      break;    
     default:
       console.warn(`Unknown view: ${viewName}. Defaulting to walkthrough.`);
       renderCurrentChapter();

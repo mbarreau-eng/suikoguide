@@ -120,8 +120,15 @@
 }
 
 @keyframes popover-fade {
-  from { opacity: 0; transform: translate(-50%, 8px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .rpg-star-card-header {
@@ -204,4 +211,14 @@
 .rpg-stars-section .recruit-card {
   width: 29%;
   margin: 0.7em;
+}
+
+#city-tooltip {
+  position: absolute;
+  display: none;
+  background: #3333339a;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  pointer-events: none;
 }

@@ -73,6 +73,7 @@ if(gameID === 'S2') {
   './js/components/enemies.components.js',
   './js/components/recruits.components.js',
   './js/components/unites.components.js',
+  './js/views/map.view.js',
   './js/views/chapter.view.js',
   './js/views/recruits.view.js',
   './js/views/enemies.view.js',

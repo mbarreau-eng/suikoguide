@@ -29,7 +29,7 @@ function renderCity(cityKey, cityData) {
     }).join('');
 
 
-    shopsHtml = `<div class="rpg-shops-grid rpg-stars-section">${shopListHtml}</div>`;
+    shopsHtml = `<div class="rpg-section-label">🪙 Shops & Services</div><div class="rpg-shops-grid rpg-stars-section">${shopListHtml}</div></div>`;
   }
 
   return `
@@ -54,8 +54,8 @@ function renderCity(cityKey, cityData) {
           }).join('')}
         </div>
       ` : ''}
-      <div class="rpg-section-label">🪙 Shops & Services</div>
+      
       ${shopsHtml}
-    </div>
+    
   `;
 }
