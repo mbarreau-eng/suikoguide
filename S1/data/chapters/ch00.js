@@ -1,7 +1,7 @@
 guideData.chapters.push({
       "id": 0,
       "title": "Indroduction",
-      "picture":"0.png",
+      "picture":"intro.png",
       "paragraphs":[
         {
             "type":"plain",
@@ -18,6 +18,10 @@ guideData.chapters.push({
         {
             "type":"plain",
             "text":"One day, Teo makes a trip to the north to protect his Empire. It is then that the boy realizes his place in the Empire and sees the world with his own eyes for the first time. A world filled with resentment toward the Empire awaits..."
+        },
+        {
+            "type":"picture",
+            picture:"0.png"
         }
       ]
     });

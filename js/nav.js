@@ -27,9 +27,11 @@ function switchView(viewName) {
     case 'recruits':
       renderRecruitsView(document.getElementById('main-content'));
       break;
+      /*
     case 'hq':
-      renderHQView();
+      renderHQView('main-content');
       break;  
+      */
     case 'collectibles':
       renderAllCollectiblesView();
       break;  

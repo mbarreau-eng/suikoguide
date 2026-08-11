@@ -60,11 +60,11 @@ function renderSidebar() {
       <button class="nav-btn-main" data-view="recruits">
         <span>★ 108 Stars</span>
       </button>
-
+<!--
       <button class="nav-btn-main" data-view="hq">
         <span>🏰 Headquarters</span>
       </button>
-
+-->
       <button class="nav-btn-main" data-view="collectibles">
         <span>💎 Collectibles</span>
       </button>

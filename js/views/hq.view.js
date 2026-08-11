@@ -1,11 +1,11 @@
 gameId = sessionStorage.getItem('game');
 
-function renderHQView() {
+function renderHQView(container) {
 
   const trackables = document.getElementById('trackables');
   trackables.innerHTML = '';
   
-  const main = document.getElementById('main-content');
+  const main = document.getElementById(container);
   if (!main) return;
 
   const hq = guideData.hq;
@@ -121,7 +121,9 @@ function renderHQView() {
                   <h3 class="facility-name">${facilityName}</h3>
                   ${reqLevel ? `<span class="facility-hq-tag">HQ Lv. ${reqLevel}</span>` : ''}
                   <span class="facility-status-pill ${isFacilityUnlocked ? 'pill-unlocked' : 'pill-locked'}">
-                    ${isFacilityUnlocked ? '✓ Unlocked' : `🔒 Needs Recruit #${recruitId}`}
+ <!--                   ${isFacilityUnlocked ? '✓ Unlocked' : `🔒 Needs Recruit #${recruitId}`} -->
+                        <!--${isFacilityUnlocked ? '✓ Unlocked' : `🔒 Needs ${recruitInfo.name}`}-->
+                        ${isFacilityUnlocked ? '✓ Unlocked' : `🔒 Locked`}
                   </span>
                 </div>
                 

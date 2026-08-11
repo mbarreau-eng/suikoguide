@@ -463,6 +463,7 @@ guideData.cities = [
   },
   {
     name: "Toran Lake Castle",
+    render:"hq",
     picture: "",
     coords:"862,375",
     stars: "",

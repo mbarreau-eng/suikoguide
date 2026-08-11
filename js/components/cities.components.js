@@ -23,7 +23,7 @@ function renderShopCategory(title, itemList) {
 function renderMapArea(city, index) {
   if(city.coords) {
     return `
-      <area shape="circle" coords="${city.coords},12" alt="${city.name}" onclick="displayCity(${index})" href="#" >
+      <area shape="circle" coords="${city.coords},12" alt="${city.name}" onclick="${city.render == 'hq' ? `renderHQView('city-info')` : `displayCity(${index})`}" href="#">
     `;
   }
 }
