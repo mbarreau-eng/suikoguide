@@ -13,7 +13,7 @@ function renderCity(cityKey, cityData) {
     .filter(Boolean);
 
   let shopsHtml = '';
-  if (cityData.shops && cityData.shops.length > 0) {
+  if ((cityData.shops && cityData.shops.length > 0) || cityData.picture) {
     const shopListHtml = cityData.shops.map(shop => {
       let sections = [];
       if (shop.items && shop.items.length > 0) {
@@ -21,7 +21,7 @@ function renderCity(cityKey, cityData) {
       }
       if (shop.armor && shop.armor.length > 0) {
         sections.push(renderShopCategory('🛡️ Armor Shop', shop.armor));
-      }
+      } 
       if (shop.services && shop.services.length > 0) {
         sections.push(renderShopCategory('🛠️ Services', shop.services));
       }
@@ -29,7 +29,10 @@ function renderCity(cityKey, cityData) {
     }).join('');
 
 
-    shopsHtml = `<div class="rpg-section-label">🪙 Shops & Services</div><div class="rpg-shops-grid rpg-stars-section">${shopListHtml}</div></div>`;
+    shopsHtml = `<div class="rpg-section-label">🪙 Shops & Services</div><div class="rpg-shops-grid rpg-stars-section">
+    ${cityData.picture ? `<img src="./${gameId}/img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">` : ''}
+    ${shopListHtml}
+    </div></div>`;
   }
 
   return `
@@ -42,7 +45,7 @@ function renderCity(cityKey, cityData) {
       
       <div>
 
-      <!--${cityData.picture ? `<img src="./${gameId}/img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">` : ''}-->
+      
       </div>
 
       ${participants.length > 0 ? `

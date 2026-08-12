@@ -28,7 +28,8 @@ function renderHQView(container) {
   const starsNeeded = Math.max(0, nextThreshold - recruitedCount);
   const progressPercent = Math.min(100, Math.round((recruitedCount / nextThreshold) * 100));
 
-  const bgPicture = hq.picture ? `./${gameId}/img/hq/${hq.picture}` : '';
+  //const bgPicture = hq.picture ? `./${gameId}/img/hq/${hq.picture}` : '';
+  const bgPicture = `./${gameId}/img/hq/hq${activeStageNumber}.png`
   const levels = Array.isArray(hq.levels) ? hq.levels : [];
   const facilities = Array.isArray(hq.facilities) ? hq.facilities : [];
 
@@ -43,10 +44,11 @@ function renderHQView(container) {
     </div>
 
     <section class="hq-banner">
+    <img src="${bgPicture}" />
       <div class="hq-banner-info">
         <h2>Toran Castle Status</h2>
         <div class="hq-recruit-counter">
-          <span class="count-highlight">${recruitedCount}</span> / 108 Stars Recrypted
+          <span class="count-highlight">${recruitedCount}</span> / 108 Stars Recruited
         </div>
       </div>
 
@@ -59,11 +61,10 @@ function renderHQView(container) {
           <div class="hq-progress-bar-fill" style="width: ${progressPercent}%;"></div>
         </div>
       </div>
-    </section>
-
-    ${levels.length > 0 ? `
-      <section class="hq-section">
+      ${levels.length > 0 ? `
+      <!--<section class="hq-section">-->
         <h2 class="hq-section-title">🏰 Castle Expansion Levels</h2>
+        
         <div class="hq-levels-list">
           ${levels.map(lvl => {
             const isUnlocked = recruitedCount >= lvl.unlock;
@@ -99,8 +100,11 @@ function renderHQView(container) {
             `;
           }).join('')}
         </div>
-      </section>
+      <!--</section>-->
     ` : ''}
+    </section>
+
+    
 
     ${facilities.length > 0 ? `
       <section class="hq-section" style="margin-top: 32px;">
