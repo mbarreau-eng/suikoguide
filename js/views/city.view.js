@@ -87,10 +87,10 @@ function renderCityMini(cityKey) {
       return sections.join('');
     }).join('');
 
-    shopsHtml = `<div class="rpg-shops-grid ">
-   <!-- ${cityData.picture ? `<img src="./${gameId}/img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">` : ''} -->
+    shopsHtml = cityData.type === "city" ? `<div class="rpg-shops-grid ">
+  
     ${shopListHtml}
-    </div></div>`;
+    </div>` : `<img src="./${gameId}/img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">`; 
   }
 
 return `

@@ -62,7 +62,7 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: auto; /* Pushes characters to bottom of card */
+  margin: auto; /* Pushes characters to bottom of card */
 }
 
 .unite-plus {

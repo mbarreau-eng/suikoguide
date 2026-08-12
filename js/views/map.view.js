@@ -21,7 +21,7 @@ function renderWorldMap() {
     map.addEventListener('mouseover', (e) => {
       if (e.target.tagName === 'AREA') {
         //tooltip.textContent = e.target.getAttribute('alt');
-        if( guideData.cities[e.target.getAttribute('data')].type === "city" ) {
+        if( guideData.cities[e.target.getAttribute('data')].type === "city" || true) {
         tooltip.innerHTML = renderCityMini(e.target.getAttribute('data'));
         tooltip.style.display = 'block';
         //tooltip.style.width = '200px';
@@ -37,7 +37,7 @@ function renderWorldMap() {
     });
 
     map.addEventListener('mousemove', (e) => {
-      if (tooltip.style.display === 'block' && tooltip.style.position != "absolute") {
+      if (tooltip.style.display === 'block' && guideData.cities[e.target.getAttribute('data')].type != "city") {
         tooltip.style.left = `${e.pageX + 10}px`;
         tooltip.style.top = `${e.pageY + 10}px`;
       }

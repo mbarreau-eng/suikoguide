@@ -126,13 +126,13 @@ function enhanceParagraphText(text) {
             <img 
               src="./${gameId}/img/stars/original/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
               alt="${recruit.name}" 
-              onerror="this.src='img/placeholder.png'" 
+              onerror="this.style.display='none'" 
               class="original"
             />
             <img 
               src="./${gameId}/img/stars/remaster/${recruit.name.toLowerCase().replace(/\s+/g, '')}.png" 
               alt="${recruit.name}" 
-              onerror="this.src='img/placeholder.png'" 
+              onerror="this.style.display='none'" 
               class="remaster"
             />
             <strong>${recruit.name}</strong>

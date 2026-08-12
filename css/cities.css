@@ -194,6 +194,13 @@
   color:var(--text-main);
 }
 
+#city-tooltip .rpg-shop-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+  color:var(--text-main);
+}
+
 .rpg-shop-table tr {
   border-bottom: 1px solid var(--border-color-subtle);
 }
