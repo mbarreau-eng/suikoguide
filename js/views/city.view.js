@@ -62,3 +62,51 @@ function renderCity(cityKey, cityData) {
     
   `;
 }
+
+function renderCityMini(cityKey) {
+  const cityData = guideData.cities[cityKey] || [];
+  const recruits = guideData?.recruits || [];
+  const participants = String(cityData.stars || '')
+    .split(',')
+    .map(id => id.trim())
+    .filter(Boolean);
+
+     let shopsHtml = '';
+  if ((cityData.shops && cityData.shops.length > 0) || cityData.picture) {
+    const shopListHtml = cityData.shops.map(shop => {
+      let sections = [];
+      if (shop.items && shop.items.length > 0) {
+        sections.push(renderShopCategory('🎒 Item Shop', shop.items));
+      }
+      if (shop.armor && shop.armor.length > 0) {
+        sections.push(renderShopCategory('🛡️ Armor Shop', shop.armor));
+      } 
+      if (shop.services && shop.services.length > 0) {
+        sections.push(renderShopCategory('🛠️ Services', shop.services));
+      }
+      return sections.join('');
+    }).join('');
+
+    shopsHtml = `<div class="rpg-shops-grid ">
+   <!-- ${cityData.picture ? `<img src="./${gameId}/img/cities/${escapeHtml(cityData.picture)}" class="rpg-city-img" alt="${escapeHtml(cityData.name)}">` : ''} -->
+    ${shopListHtml}
+    </div></div>`;
+  }
+
+return `
+    <div class="" id="city-${cityKey}">
+
+          <h4 class="chapter-title">${escapeHtml(cityData.name)}</h4>
+
+      
+      <div>
+
+      
+      </div>
+
+      
+      
+      ${shopsHtml}
+    
+  `;
+}

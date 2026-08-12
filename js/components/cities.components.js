@@ -4,7 +4,8 @@ function renderShopCategory(title, itemList) {
       <td>${escapeHtml(item.name)}</td>
       ${item.name == "Inn" ? `<td class="rpg-shop-price">${item.price.toLocaleString()} Bits per person</td>` : ''}
       ${item.name == "Blacksmith" ? `<td class="rpg-shop-price">Up to level ${item.price.toLocaleString()}</td>` : ''}
-      ${item.name != "Blacksmith" && item.name != "Inn" ? `<td class="rpg-shop-price">${item.price.toLocaleString()} Bits</td>` : ''}
+      ${item.name == "Rune Shop" ? `<td class="rpg-shop-price"></td>` : ''}
+      ${item.name != "Blacksmith" && item.name != "Inn" && item.name != "Rune Shop" ? `<td class="rpg-shop-price">${item.price.toLocaleString()} Bits</td>` : ''}
     </tr>
   `).join('');
 
@@ -23,7 +24,7 @@ function renderShopCategory(title, itemList) {
 function renderMapArea(city, index) {
   if(city.coords) {
     return `
-      <area shape="circle" coords="${city.coords},12" alt="${city.name}" onclick="${city.render == 'hq' ? `renderHQView('city-info')` : `displayCity(${index})`}" href="#">
+      <area data="${index}" shape="circle" coords="${city.coords},12" alt="${city.name}" onclick="${city.render == 'hq' ? `renderHQView('city-info')` : `displayCity(${index})`}" href="#">
     `;
   }
 }

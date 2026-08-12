@@ -115,6 +115,11 @@ function initApp() {
     return;
   }
 
+  const header = document.getElementById('img-header');
+  header.src = "./" + gameID + "/img/header.png";
+
+  document.getElementById('header-title').innerHTML = (gameID === "S1" ? "Suikoden" : "Suikoden 2" );
+
   renderSidebar();
   setupEventListeners();
   renderSidebarControls();

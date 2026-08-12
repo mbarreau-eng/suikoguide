@@ -191,6 +191,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 1.1rem;
+  color:var(--text-main);
 }
 
 .rpg-shop-table tr {
@@ -218,7 +219,7 @@
 #city-tooltip {
   position: absolute;
   display: none;
-  background: #3333339a;
+  background: #333333;
   color: #fff;
   padding: 5px 10px;
   border-radius: 4px;

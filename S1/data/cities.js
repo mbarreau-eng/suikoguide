@@ -1,6 +1,7 @@
 guideData.cities = [
   {
     name: "Gregminster",
+    type:"city",
     coords:"980,150",
     picture: "Gregminster_Map.png",
     shops: [
@@ -14,6 +15,7 @@ guideData.cities = [
   },
   {
     name: "Rockland",
+    type:"city",
     picture: "rockland.png",
     stars: "",
     coords:"1055,158",
@@ -40,6 +42,7 @@ guideData.cities = [
   },
   {
     name: "Lenankamp",
+    type:"city",
     picture: "Lenankamp.png",
     coords:"973,227",
     stars: [],
@@ -67,6 +70,7 @@ guideData.cities = [
   },
   {
     name: "Sarady",
+    type:"city",
     picture: "Sarady.png",
     coords:"882,72",
     stars: [],
@@ -84,6 +88,7 @@ guideData.cities = [
   },
   {
     name: "Seika",
+    type:"city",
     picture: "Seika.png",
     coords:"952,331",
     stars: [5, 12, 13, 14, 30, 43],
@@ -103,6 +108,7 @@ guideData.cities = [
   },
   {
     name: "Kaku",
+    type:"city",
     picture: "Kaku.png",
     coords:"919,379",
     stars: [6, 7, 8, 10, 28, 29, 44],
@@ -133,6 +139,7 @@ guideData.cities = [
   },
   {
     name: "Kouan",
+    type:"city",
     picture: "Kouan.png",
     coords:"899,446",
     stars: [42, 18, 24, 20, 22, 23, 19],
@@ -155,6 +162,7 @@ guideData.cities = [
   },
   {
     name: "Great Forest Village",
+    type:"city",
     picture: "GFV.png",
     coords:"973,523",
     stars: [16, 17, 31],
@@ -175,6 +183,7 @@ guideData.cities = [
   },
   {
     name: "Kobold Village",
+    type:"city",
     picture: "Kobold.png",
     stars: [35, 40, 41, 86],
     shops: [
@@ -193,6 +202,7 @@ guideData.cities = [
   },
   {
     name: "Village of the Elves",
+    type:"city",
     picture: "Elves.png",
     inn: 150,
     coords:"1016,600",
@@ -219,6 +229,7 @@ guideData.cities = [
   },
   {
     name: "Village of the Dwarves",
+    type:"city",
     picture: "dwarves.png",
     stars: [33],
     coords:"1161,552",
@@ -247,6 +258,7 @@ guideData.cities = [
   {
     name: "Teien",
     picture: "Teien.png",
+    type:"city",
     coords:"729,434",
     shops: [
       {
@@ -269,6 +281,7 @@ guideData.cities = [
   {
     name: "Rikon",
     picture: "Rikon.png",
+    type:"city",
     coords:"730,494",
     shops: [
       {
@@ -290,6 +303,7 @@ guideData.cities = [
   {
     name: "Antei",
     picture: "Antei.png",
+    type:"city",
     coords:"618,419",
     shops: [
       {
@@ -319,6 +333,7 @@ guideData.cities = [
   {
     name: "Kirov",
     picture: "Kirov.png",
+    type:"city",
     coords:"740,230",
     inn: 200,
     shops: [
@@ -359,6 +374,7 @@ guideData.cities = [
   {
     name: "Warriors' Village",
     picture: "WarriorsVillage.png",
+    type:"city",
     stars: "79,80,88",
     coords:"530,542",
     shops: [
