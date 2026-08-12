@@ -577,3 +577,17 @@ mark.item-tag {
   background: var(--bg-card);
   backdrop-filter: blur(8px);
 }
+
+/* Container MUST be position: relative to align the canvas overlay */
+    .map-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Canvas covers the image, but pointer-events: none allows hovering the map beneath */
+    #highlightCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
